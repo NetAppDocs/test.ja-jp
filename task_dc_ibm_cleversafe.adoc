@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: task_dc_ibm_cleversafe.html 
+keywords: data collector, IBM Cleversafe 
+summary: IBM Cleversafe データコレクタの設定。 
+---
+= IBM Cleversafe データコレクタ
+
+
+[role="lead"]
+Cloud Insights では、このデータコレクタを使用して IBM Cleversafe ストレージシステムのインベントリデータとパフォーマンスデータを検出します。
+
+
+
+== 用語集
+
+Cloud Insights では、 IBM Cleversafe データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ストレージプール | ストレージプール 
+
+
+| コンテナ | 内部ボリューム 
+
+
+| コンテナ | ファイル共有 
+
+
+| NFS 共有 | 共有 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+* クラスタの外部データサービスの IP アドレス
+* 管理者のユーザ名とパスワード
+* ポート 9440
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| Manager の IP 名またはホスト名 | 管理ノードの IP アドレスまたはホスト名 
+
+
+| ユーザ名 | スーパーユーザまたはシステム管理者のロールを持つユーザアカウントのユーザ名 
+
+
+| パスワード | スーパーユーザまたはシステム管理者のロールを持つユーザアカウントのパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリのポーリング間隔（分） | インベントリのポーリング間隔。 
+
+
+| HTTP 接続タイムアウト（秒） | HTTP タイムアウト（秒）。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

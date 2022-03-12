@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: task_config_cs_incloud.html 
+keywords: Cloud, Storage, AWS, Cloud Volumes, Cloud ONTAP, firewall, VPC, Subnet, 
+summary: Cloud Secure では、データコレクタを使用して、デバイスからファイルとユーザのアクセスデータを収集します。 
+---
+= Cloud Volumes ONTAP Data Collector の設定
+
+
+[role="lead"]
+Cloud Secure では、データコレクタを使用して、デバイスからファイルとユーザのアクセスデータを収集します。
+
+
+
+== Cloud Volumes ONTAP ストレージ構成
+
+Cloud Secure エージェントをホストするシングルノード / HA AWS インスタンスを設定するには、 OnCommand Cloud Manager のドキュメントを参照してください。https://docs.netapp.com/us-en/occm/index.html[]
+
+設定が完了したら、次の手順に従って SVM をセットアップします。https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html[]
+
+
+
+== Agent Machine Configuration の略
+
+Cloud Secure エージェントとして使用するマシンを設定するには、次の手順を実行します。
+
+.手順
+. AWS コンソールにログインし、 EC2-Instances ページに移動して、 _Launch instance_ を選択します。
+. このページに記載されているバージョンに応じて、 RHEL または CentOS AMI を選択します。https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html[]
+. Cloud ONTAP インスタンスが存在する VPC とサブネットを選択します。
+. 割り当てられたリソースとして、 [T2.xlarge _ （ 4 vCPU と 16 GB RAM ） ] を選択します。
++
+.. EC2 インスタンスを作成します。
+
+
+. YUM パッケージマネージャを使用して、必要な Linux パッケージをインストールします。
++
+.. Linux パッケージのインストール _wget_or_unzip_native 。
+
+
+
+
+
+
+== Cloud Secure エージェントをインストールします
+
+. Cloud Insights 環境に管理者またはアカウント所有者としてログインします。
+. Cloud Secure * Admin > Data Collectors * に移動し、 * Agents * タブをクリックします。
+. [*+Agent] をクリックし、ターゲットプラットフォームとして RHEL を指定します。
+. [ エージェントインストール ] コマンドをコピーします。
+. ログインしている RHEL EC2 インスタンスに Agent Installation コマンドを貼り付けます。これにより、すべてのが提供された Cloud Secure エージェントがインストールされます link:concept_cs_agent_requirements.html["エージェントの前提条件"] 達成された。
+
+
+詳細な手順については、 https://docs.netapp.com/us-en/cloudinsights/task_cs_add_agent.html#steps-to-install-agent を参照してください

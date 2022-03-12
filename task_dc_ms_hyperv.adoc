@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: task_dc_ms_hyperv.html 
+keywords: data collector, Microsoft, Hyper-V 
+summary: Microsoft Hyper-V データコレクタの設定 
+---
+= Microsoft Hyper-V データコレクタ
+
+
+[role="lead"]
+Microsoft Hyper-V データコレクタは、仮想サーバコンピューティング環境からインベントリとパフォーマンスのデータを取得します。
+
+
+
+== 用語集
+
+Cloud Insights では、 Microsoft Hyper-V （ WMI ）から次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| 仮想ハードディスク | 仮想ディスク 
+
+
+| ホスト | ホスト 
+
+
+| 仮想マシン | 仮想マシン 
+
+
+| Cluster Shared Volume （ CSV ；クラスタ共有ボリューム）、パーティションボリューム | データストア 
+
+
+| Internet SCSI Device 、 Multi Path SCSI LUN の略 | LUN 
+
+
+| ファイバチャネルポート | ポート 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次のものが必要です。
+
+* Hyper-V では、データ収集とリモートアクセス / 管理用にポート 5985 が開いている必要があります。
+* クラスタリンググループノードの IP アドレス
+* ハイパーバイザーのローカル管理者のユーザとパスワードです
+* 管理者レベルのユーザアカウント
+* Windows でインストールされるデフォルトの Windows Management Instrumentation （ WMI ）コマンド。
+* ポート要件： WMI 経由のポート 135 および Windows 2003 以前の場合は 1024~65535 、 Windows 2008 の場合は 49152~65535 の動的 TCP ポート。
+* データコレクタが IP アドレスだけを参照している場合でも、 DNS 解決は成功する必要があります
+* 各 Hyper-V ハイパーバイザーでは、各ホスト上のすべての VM に対して「リソース計測」をオンにする必要があります。これにより、各ハイパーバイザーは、各ゲストで Cloud Insights に使用できるデータを増やすことができます。この値を設定しない場合は、各ゲストのパフォーマンスメトリックが取得される回数が少なくなります。リソース計測の詳細については、 Microsoft のドキュメントを参照してください。
++
+link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831661(v=ws.11)["Hyper-V のリソース計測の概要"]
+
++
+link:https://docs.microsoft.com/en-us/powershell/module/hyper-v/enable-vmresourcemetering?view=win10-ps["Enable - VMResourceMetering"]
+
+
+
+
+NOTE: Hyper-V データコレクタには Windows Acquisition Unit が必要です。
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 物理ホストの IP アドレス | 物理ホスト（ハイパーバイザー）の IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | ハイパーバイザーの管理者のユーザ名です 
+
+
+| パスワード | ハイパーバイザーのパスワードです 
+
+
+| NT ドメイン | クラスタ内のノードで使用される DNS 名 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 20 分です。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: task_dc_redhat_virtualization.html 
+keywords: data collector, Red Hat Virtualization 
+summary: Red Hat Virtualization データコレクタの設定 
+---
+= Red Hat Virtualization データコレクタ
+
+
+[role="lead"]
+Cloud Insights では、 Red Hat 仮想化データコレクタを使用して、仮想化された Linux および Microsoft Windows のワークロードからインベントリデータを収集します。
+
+
+
+== 用語集
+
+Cloud Insights では、アセットのタイプごとに、アセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ディスク | 仮想ディスク 
+
+
+| ホスト | ホスト 
+
+
+| 仮想マシン | 仮想マシン 
+
+
+| ストレージドメイン | データストア 
+
+
+| Logical Unit の略 | LUN 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+* REST API を使用した RHEV サーバのポート 443 経由の IP アドレス
+* 読み取り専用のユーザ名とパスワード
+* RHEV バージョン 3.0+
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| RHEV サーバの IP アドレス | ストレージシステムの IP アドレス 
+
+
+| ユーザ名 | admin 権限があるユーザ名 
+
+
+| admin 権限があるアカウントのパスワード | パスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| HTTPS 通信ポート | RHEV への HTTPS 通信に使用するポート 
+
+
+| インベントリのポーリング間隔（分） | デフォルトは 20 分です。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

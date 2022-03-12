@@ -1,0 +1,117 @@
+---
+sidebar: sidebar 
+permalink: task_cs_add_agent.html 
+keywords: agent, Cloud Secure, installation 
+summary: Cloud Secure エージェントを追加しています 
+---
+= Cloud Secure エージェントのインストール
+
+
+[role="lead"]
+Cloud Secure は、 1 つ以上のエージェントを使用してユーザアクティビティデータを収集します。エージェントは環境内のデバイスに接続し、 Cloud Secure SaaS レイヤに送信されたデータを収集して分析します。を参照してください link:concept_cs_agent_requirements.html["エージェントの要件"] エージェント VM を設定します。
+
+
+
+== 作業を開始する前に
+
+* インストール、スクリプトの実行、アンインストールには sudo 権限が必要です。
+
+
+
+
+== エージェントをインストールする手順
+
+. Cloud Secure 環境に管理者またはアカウント所有者としてログインします。
+. [*Admin] > [Data Collectors] > [Agents] > [+ Agent*] をクリックします
++
+[ エージェントの追加 ] ページが表示されます。
+
++
+image::Add-agent-1.png[エージェント 1 を追加します]
+
+. エージェントをインストールするオペレーティングシステムを選択します。
+. エージェントサーバが最小システム要件を満たしていることを確認します。
+. エージェントサーバでサポートされているバージョンの Linux が実行されていることを確認するには、 _ サポートされているバージョン（ i ） _ をクリックします。
+. ネットワークでプロキシサーバを使用している場合は、プロキシセクションの指示に従ってプロキシサーバの詳細を設定してください。
++
+image:CloudSecureAgentWithProxy.png["エージェントのインストールとプロキシに関する注意事項"]
+
+. [ クリップボードにコピー ] アイコンをクリックして、インストールコマンドをコピーします。
+. ターミナルウィンドウでインストールコマンドを実行します。
+. インストールが正常に完了すると、次のメッセージが表示されます。
++
+image::new-agent-detect.png[新しいエージェント検出]
+
+
+
+.完了後
+. を設定する必要があります link:task_config_user_dir_connect.html["User Directory Collector の略"]。
+. 1 つ以上のデータコレクタを設定する必要があります。
+
+
+
+
+== ネットワーク構成：
+
+ローカルシステムで次のコマンドを実行して、 Cloud Secure で使用するポートを開きます。ポート範囲に関するセキュリティ上の問題がある場合は、 _35000 ： 35100_ のように小さいポート範囲を使用できます。各 SVM は 2 つのポートを使用します。
+
+.手順
+. 'UDO firewall-cmd --permanent--zone=public--add-port =35000-55000/tcp`
+. 'sudo firewall-cmd -- reload'
+
+
+プラットフォームに応じて、次の手順を実行します。
+
+* CentOS 7.x/RHEL 7.x * ：
+
+. 'UDO IPTables-save|grep 35000'
+
+
+出力例：
+
+ -A IN_public_allow -p tcp -m tcp --dport 35000:55000 -m conntrack -ctstate NEW,UNTRACKED -j ACCEPT
+* CentOS 8.x / RHEL 8.x * ：
+
+. 'sudo firewall-cmd --zone=public--list-ports | grep 35000` (CentOS 8 の場合 )
+
+
+出力例：
+
+ 35000-55000/tcp
+
+
+== エージェントエラーのトラブルシューティング
+
+既知の問題とその解決策を次の表に示します。
+
+[cols="2*"]
+|===
+| 問題 | 解決策： 
+
+
+| エージェントのインストール時に /opt/NetApp/cloudsecure/agent/logs/agent.log フォルダが作成されず、 install.log ファイルに関連情報が記録されません。 | このエラーは、エージェントのブートストラップ中に発生します。ロガーが初期化される前に発生するため、エラーはログファイルに記録されません。エラーは標準出力にリダイレクトされ 'journalctl -u cloudsecure-agent.service` コマンドを使用してサービスログに表示されますこのコマンドを使用して、問題のトラブルシューティングをさらに行うことができます。 
+
+
+| 「この Linux ディストリビューションはサポートされていません。インストールを終了しています。 | Cloud Secure 1.0.0 でサポートされるプラットフォームは、 RHEL 7.x / CentOS 7.x ですRHEL 6.x または CentOS 6.x システムにエージェントをインストールしないようにしてください。 
+
+
+| エージェントのインストールが次のエラーで失敗しました： "-bash: unzip: command not found" | unzip をインストールし、インストールコマンドを再度実行します。Yum がマシンにインストールされている場合は、「 yum install unzip 」を実行して解凍ソフトウェアをインストールしてください。その後、 Agent インストール UI からコマンドをコピーして CLI に貼り付け、再度インストールを実行します。 
+
+
+| エージェントがインストールされ、実行されていました。しかし、エージェントは突然停止しました。 | Agent マシンに SSH 接続します。「 sudo systemctl status cloudsecure-agent.service` 」を使用して、エージェントサービスのステータスを確認します。1. ログに「 Failed to start Cloud Secure daemon service 」というメッセージが表示されるかどうかを確認します。2. cssys ユーザが Agent マシンに存在するかどうかを確認します。次のコマンドを root 権限で 1 つずつ実行し、 cssys ユーザとグループが存在するかどうかを確認します。「 UDO id cssys 」の UDO グループ cssys 3 。存在しない場合は、集中型モニタリングポリシーによって cssys ユーザが削除されている可能性があります。4. 次のコマンドを実行して、 cssys のユーザとグループを手動で作成します。'UDO useradd cssys'sudo groupadd cssys'5次のコマンド「 sudo systemctl restart cloudsecure-agent.service` 6 」を実行して、エージェントサービスを再起動します。まだ実行されていない場合は、他のトラブルシューティングオプションを確認してください。 
+
+
+| エージェントに 50 個を超えるデータコレクタを追加できません。 | エージェントに追加できるデータコレクタは 50 個までです。Active Directory 、 SVM 、その他のコレクタなど、すべてのコレクタタイプを組み合わせて使用できます。 
+
+
+| Agent is in not_connected 状態であることが UI に表示されます。 | エージェントを再起動する手順。1. エージェントマシンに SSH 接続します。2. 次のコマンドを実行して、エージェントサービスを再起動します。 'UDO systemctl restart cloudsecure-agent.service` 3.「 sudo systemctl status cloudsecure-agent.service` 」を使用して、エージェントサービスのステータスを確認します。4. エージェントは接続状態になります。 
+
+
+| エージェント VM が Zscaler プロキシの背後にあり、エージェントのインストールに失敗しています。Zscaler プロキシの SSL 検査により、 Cloud Secure 証明書は Zscaler CA によって署名されたため、エージェントが通信を信頼しないように提示されます。 | *.cloudinsights.netapp.com URL の Zscaler プロキシで SSL 検査をディセーブルにします。Zscaler が SSL 検査を行い、証明書を置き換えた場合、 Cloud Secure は動作しません。 
+
+
+| エージェントのインストール中に、解凍後にインストールがハングします。 | 「 chmod 755 -rf 」コマンドが失敗しています。このコマンドは、別のユーザに属する作業ディレクトリ内のファイルを含む root 以外の sudo ユーザがエージェントのインストールコマンドを実行している場合は失敗し、それらのファイルの権限を変更することはできません。失敗した chmod コマンドのため、残りのインストールは実行されません。1. 「 cloudsecure 」という名前の新しいディレクトリを作成します。2. そのディレクトリに移動します。3. 完全な「 token=… …」をコピーして貼り付けます。 … ./cloudsecure-agent-install.sh インストールコマンドを実行し、 Enter キーを押します。4. インストールを続行できるはずです。 
+
+
+| エージェントがまだ SaaS に接続できない場合は、ネットアップサポートでケースをオープンしてください。Cloud Insights のシリアル番号を入力してケースをオープンし、メモしておいたケースにログを添付します。 | ケースにログを添付するには、次の手順を実行します。 1.次のスクリプトをルート権限で実行し、出力ファイル（ cloudsecure-agent-scripts.zip ）を共有します。A/opt/NetApp/cloudsecure/agent/bin/cloudsecure-agent-symptom-collector.sh 2 に設定します。次のコマンドを root 権限で 1 つずつ実行し、出力を共有します。AID cssys b.グループは cssys c. をCat /etc/os-release 
+|===

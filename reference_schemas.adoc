@@ -1,0 +1,18 @@
+---
+sidebar: sidebar 
+permalink: reference_schemas.html 
+summary: Reporting で使用する Data Warehouse スキーマの図とテーブル 
+keywords: dwh, data warehouse, schema, reporting 
+---
+= レポート作成用の Cloud Insights スキーマ
+
+
+[role="lead"]
+これらのスキーマテーブルと図は、 Cloud Insights レポート作成の参考資料として提供されています。
+
+link:https://docs.netapp.com/us-en/cloudinsights/ci_reporting_database_schema.pdf["* スキーマテーブル *"] .pdf 形式で指定します。リンクをクリックして開くか、右クリックして「 _ 名前を付けて保存 ..._ 」を選択してダウンロードします。
+
+link:reporting_schema_diagrams.html["* スキーマ図 *"]
+
+
+NOTE: レポート機能は Cloud Insights で使用できます link:concept_subscribing_to_cloud_insights.html["Premium Edition の場合"]。

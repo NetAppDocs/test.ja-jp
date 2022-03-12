@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_activemq.html 
+keywords: telegraf, installation, install, ActiveMQ 
+summary: HTTP データコレクタの設定 
+---
+= ActiveMQ データコレクタ
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して ActiveMQ からのメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services] で [ActiveMQ ] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:ActiveMQDCConfigWindows.png["ActiveMQ の設定"]
+
+
+
+== セットアップ（ Setup ）
+
+情報は、に記載されています http://activemq.apache.org/getting-started.html["ActiveMQ のドキュメント"]
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| ActiveMQ キュー | ネームスペースキューポートサーバ | ノード名ノード IP ノード UUID | 消費者数キューカウントキューサイズ 
+
+
+| ActiveMQ サブスクライバ | クライアント ID 接続 ID ポートサーバーの名前空間 | は、アクティブなデスティネーションノード名ノード IP ノード UUID ノード OS セレクタサブスクリプションです | Dequeue Count Depatched Count DeQueue Size Dequeue Count Pending Queue Size （デキューカウントディスパッチキューカウントキューサイズ） 
+
+
+| ActiveMQ トピック | トピックポートサーバーの名前空間 | ノード名ノードの IP ノード UUID ノード OS | 消費者数キューカウントキューカウントサイズ 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

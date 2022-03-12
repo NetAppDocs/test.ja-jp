@@ -1,0 +1,149 @@
+---
+sidebar: sidebar 
+permalink: task_dc_vmware.html 
+keywords: data collector, VMware, 
+summary: VMware データコレクタの設定 
+---
+= VMware vSphere データコレクタの設定
+
+
+[role="lead"]
+VMware vSphere 用のデータコレクタは ESX ホスト情報を収集し、 Virtual Center 内のすべてのオブジェクトに対する読み取り専用の権限が必要です。
+
+
+
+== 用語集
+
+Cloud Insights では、 VMware vSphere データコレクタから次のインベントリ情報を取得します。取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| 仮想ディスク | ディスク 
+
+
+| ホスト | ホスト 
+
+
+| 仮想マシン | 仮想マシン 
+
+
+| データストア | データストア 
+
+
+| LUN | ボリューム 
+
+
+| ファイバ・チャネル・ポート | ポート 
+|===
+これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているとは限りません
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* Virtual Center サーバの IP アドレス
+* Virtual Center の読み取り専用のユーザ名とパスワード
+* Virtual Center 内のすべてのオブジェクトに対する読み取り専用権限が必要です。
+* Virtual Center サーバの SDK へのアクセス - 通常はすでにセットアップされています。
+* ポート要件： http - 80 https-443
+* アクセスの検証：
++
+** 上記のユーザ名とパスワードを使用して、 Virtual Center Client にログインします
+** SDK が有効になっていることを確認します。 telnet <VC_IP> 443
+
+
+
+
+
+
+== セットアップと接続
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 名前 | データコレクタの一意の名前 
+
+
+| Acquisition Unit の場合 | Acquisition Unit の名前 
+|===
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 仮想センターの IP アドレス | Virtual Center の IP アドレス 
+
+
+| ユーザ名 | Virtual Center へのアクセスに使用するユーザ名 
+
+
+| パスワード | Virtual Center へのアクセスに使用するパスワード 
+|===
+
+
+== 高度な設定
+
+詳細設定画面で、 VM パフォーマンス * ボックスをオンにしてパフォーマンスデータを収集します。インベントリ収集は、デフォルトで有効になっています。次のフィールドを設定できます。
+
+[cols="2*"]
+|===
+
+
+| フィールド | 説明 
+
+
+| インベントリのポーリング間隔（分） | デフォルトは 20 です 
+
+
+| VM をフィルタリングします | クラスタ、データセンター、または ESX ホストを選択します 
+
+
+| 「除外」または「含める」を選択してリストを指定します | フィルタリストの作成（クラスタ、データセンター、 ESX_host ） 
+
+
+| 再試行回数 | デフォルトは 3 です 
+
+
+| 通信ポート | デフォルトは 443 です 
+
+
+| デバイスリストのフィルタ ... | このリストには完全な文字列一致のみが含まれている必要があります。 esx_host でフィルタリングする場合は、 Cloud Insights と vSphere の両方で報告される ESX ホストの正確な「名前」をカンマで区切って指定する必要があります。「名前」には、 IP アドレス、単純なホスト名、または Fully Qualified Domain Name （ FQDN ；完全修飾ドメイン名）を指定できます。この名前は、これらのホストが vSphere に最初に追加されたときの命名方法によって決まります。クラスタでフィルタリングする場合、 ハイパーバイザーで CI によって報告される Cloud Insights 形式のクラスタ名を使用する - Cloud Insights では、 vSphere クラスタ名の先頭に vSphere データセンター名が付き、バックスラッシュ「 DC1\clusterA 」が Cloud Insights データセンター DC1 内のクラスタ A 内のハイパーバイザーでレポートされるクラスタ名です 
+
+
+| パフォーマンスのポーリング間隔（秒） | デフォルト値は 300 です 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| エラー：フィルタリングする VM をリストに含めることはできません | [Include List] を選択した場合は、有効なデータセンター、クラスタ、またはホスト名をリストして、 VM をフィルタリングしてください 
+
+
+| エラー： IP で VirtualCenter への接続をインスタンス化できませんでした | 解決策： * 入力された資格情報と IP アドレスを確認してください。* VMware Infrastructure Client を使用して、 Virtual Center との通信を試みます。* Managed Object Browser （ MOB など）を使用して Virtual Center と通信してみます。 
+
+
+| エラー： IP の VirtualCenter には、 JVM で必要な非準拠の証明書があります | 可能な解決策： * 推奨：強力な（など）を使用して、 Virtual Center の証明書を再生成します 1024 ビット） RSA キー。* 推奨されません。 JVM java.security 設定を変更して、 JDK.certPath.disableAlgorithms 制約を利用し、 512 ビット RSA キーを許可します。「 JDK 7 update 40 release notes 」を参照してください "http://www.oracle.com/technetwork/java/javase/7u40-relnotes-2004172.html"[] 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

@@ -1,0 +1,278 @@
+---
+sidebar: sidebar 
+permalink: reporting_schema_diagrams.html 
+keywords: Schema, DB Schema, premium, dwh, data warehouse 
+summary: レポートスキーマの図 
+---
+= Cloud Insights レポートスキーマの図
+
+
+[role="lead"]
+このドキュメントでは、 Reporting Database のスキーマ図を示します。を含むファイルをダウンロードすることもできます link:ci_reporting_database_schema.pdf["スキーマテーブル"]。
+
+
+NOTE: レポート機能は Cloud Insights で使用できます link:concept_subscribing_to_cloud_insights.html["Premium Edition の場合"]。
+
+
+
+== Inventory Datamart のサービスです
+
+次の図は、インベントリデータマートを説明しています。
+
+
+
+=== ストレージ
+
+image:storage.png[""]
+
+
+
+=== ストレージノード
+
+image:storage_node.png[""]
+
+
+
+=== SAN ファブリック
+
+image:fabric.png[""]
+
+
+
+=== ポート接続
+
+image:connectivity.png[""]
+
+
+
+=== VM
+
+image:vm.png[""]
+
+
+
+=== NAS
+
+image:nas.png[""]
+
+
+
+=== パスと違反
+
+image:logical.png[""]
+
+
+
+=== 注釈
+
+image:annotations.png[""]
+
+
+
+=== アプリケーション
+
+image:apps_annot.png[""]
+
+
+
+=== ストレージおよびストレージプールの容量
+
+image:Storage_and_Storage_Pool_Capacity_Fact.png[""]
+
+
+
+=== ボリューム容量
+
+image:Volume_Capacity.png[""]
+
+
+
+=== VM 容量
+
+image:VM_Capacity_Fact.png[""]
+
+
+
+=== 内部ボリューム容量
+
+image:Internal_Volume_Capacity_Fact.png[""]
+
+
+
+=== qtree 容量
+
+image:Qtree_Capacity_Fact.png[""]
+
+
+
+=== ストレージ容量の削減比率
+
+image:efficiency.png[""]
+
+
+
+=== ストレージおよびストレージプールの容量
+
+image:Storage_and_Storage_Pool_Capacity_Fact.png[""]
+
+
+
+=== ファイルシステムの利用率
+
+image:fs_util.png[""]
+
+
+
+=== ポートの容量
+
+image:ports.png[""]
+
+
+
+=== チャージバック
+
+image:Chargeback_Fact.png[""]
+
+
+
+=== ディスクグループの容量
+
+image:Disk_Group_Capacity.png[""]
+
+
+
+== パフォーマンスデータマート
+
+次の図は、パフォーマンスデータマートを説明しています。
+
+
+
+=== アプリケーションボリューム毎時パフォーマンス
+
+image:application_performance_fact.png[""]
+
+
+
+=== 内部ボリューム毎時パフォーマンス
+
+image:host_performance_fact.png[""]
+
+
+
+=== 内部ボリューム毎時パフォーマンス
+
+image:internal_volume_performance_fact.png[""]
+
+
+
+=== 内部ボリュームの日次パフォーマンス
+
+image:internal_volume_daily_performance_fact.png[""]
+
+
+
+=== 1 時間ごとのボリュームパフォーマンス
+
+image:vmdk_hourly_performance_fact.png[""]
+
+
+
+=== ボリュームの日次パフォーマンス
+
+image:volume_daily_performance_fact.png[""]
+
+
+
+=== qtree ：日次パフォーマンス
+
+image:QtreeDailyPerformanceFact.png[""]
+
+
+
+=== Switch Hourly Performance for Host 』を参照してください
+
+image:switch_performance_for_host_hourly_fact.png[""]
+
+
+
+=== Switch Hourly Performance for Port 』を参照してください
+
+image:switch_performance_for_port_hourly_fact.png[""]
+
+
+
+=== Switch Hourly Performance for Storage の略
+
+image:switch_performance_for_storage_hourly_fact.png[""]
+
+
+
+=== Switch Hourly Performance for Tape 』を参照してください
+
+image:switch_performance_for_tape_hourly_fact.png[""]
+
+
+
+=== VM パフォーマンス
+
+image:vm_hourly_performance_fact.png[""]
+
+
+
+=== ホストの VM の日次パフォーマンス
+
+image:vm_daily_performance_fact.png[""]
+
+
+
+=== ホストの VM 1 時間ごとのパフォーマンス
+
+image:vm_hourly_performance_fact.png[""]
+
+
+
+=== ホストの VM の日次パフォーマンス
+
+image:vm_daily_performance_fact.png[""]
+
+
+
+=== ホストの VM 1 時間ごとのパフォーマンス
+
+image:vm_hourly_performance_fact.png[""]
+
+
+
+=== VMDK の日次パフォーマンス
+
+image:vmdk_daily_performance_fact.png[""]
+
+
+
+=== VMDK 毎時パフォーマンス
+
+image:vmdk_hourly_performance_fact.png[""]
+
+
+
+=== Storage Node Hourly Performance の略
+
+image:storage_node_hourly_performance_fact.png[""]
+
+
+
+=== ディスクの日次パフォーマンス
+
+image:disk_daily_performance_fact.png[""]
+
+
+
+=== Disk Hourly Performance の 2 つの機能が
+
+image:disk_hourly_performance_fact.png[""]
+
+
+
+== Kubernetes
+
+image:k8s_schema.jpg["Kubernetes"]

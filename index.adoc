@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: index.html 
+summary: Cloud Insights のドキュメントポータルへようこそ。 
+---
+= Cloud Insights のドキュメント
+
+
+[role="lead"]
+NetApp Cloud Insights は、インフラ全体を可視化できるクラウドインフラ監視ツールです。Cloud Insights を使用すると、パブリッククラウドやプライベートデータセンターなど、すべてのリソースの監視、トラブルシューティング、最適化を行うことができます。
+
+Cloud Insights は、次のようなメリットを
+
+* * 平均解決時間を最大 90% 短縮 *
++
+数日間ログ検索を停止し、インフラの手動関連付けに失敗する：ネットアップの動的なトポロジと相関分析を使用して、問題領域をただちに特定します。
+
+* * クラウドインフラストラクチャのコストを平均 33% 削減 *
++
+放置された未使用のリソースや適切なサイズのワークロードを最適化されたパフォーマンス階層とコスト階層に特定することで、非効率性を排除します。
+
+* * クラウドの問題の 80% がエンドユーザーに影響を与えないようにします *
++
+高度な分析と機械学習を使用して、重大な停止に発展する前に問題を特定することで、膨大な量のデータを検索し、関連するデータを見つけることができます。
+
+
+
+
+
+== はじめに
+
+* 新規のお客様： link:task_cloud_insights_onboarding_1.html["オンボーディング"]
+* サインアップしました。どうすればよいですか？link:task_getting_started_with_cloud_insights.html["データの取得"]
+
+* Cloud Insights を最大限に活用するにはどうすればよいですか？link:task_defining_annotations.html["アセットの準備：アノテーション"]
+
+
+
+* Cloud Insights を試したことがありますが、準備ができました link:concept_subscribing_to_cloud_insights.html["* 予約購読 *"]。
+

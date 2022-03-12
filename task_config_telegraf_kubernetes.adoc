@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_kubernetes.html 
+keywords: telegraf, installation, install, kubernetes 
+summary: Kubernetes のデータコレクタの設定 
+---
+= Kubernetes Data Collector を実行します
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して Kubernetes ポッド、ノード、コンテナの指標を収集します。
+
+
+
+== インストール
+
+Kubernetes のインストール手順については、を参照してください link:task_config_telegraf_agent.html#kubernetes["エージェントのインストール"] ページ
+
+
+NOTE: kube-state-metrics * に関する情報がに移動されました link:task_config_telegraf_agent.html#kubernetes["エージェントのインストール"] ページ
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| Kubernetes コンテナ | ネームスペースポッドコンテナクラスタ | Kubernetes Node Name Node OS Node UUID Node IP の略 | CPU ナノ秒 CPU 使用率ナノストアメモリのメジャーページエラーメモリ常駐セットサイズ（ RSS ）メモリワーキングセットメモリのページエラーメモリ使用状況ルートファイルシステムの使用可能なルートファイルシステムの容量ルートファイルシステムの使用状況 
+
+
+| Kubernetes ノード | Kubernetes ノードクラスタ | ノード名ノードの OS ノード UUID ノード IP | CPU 使用状況ナノ秒ファイルシステム使用可能なファイルシステム使用可能メモリ使用可能メモリ使用量メモリメジャーページ障害メモリページ障害メモリ常駐セットサイズ（ RSS ）メモリワーキングセットネットワーク RX エラー（ 1 秒あたり）ネットワーク TX エラー（ 1 秒あたり）ネットワーク TX エラー（ 1 秒あたり）ネットワーク TX バイト数（ネットワーク TX バイト数）ネットワーク TX バイト数 （ 1 秒あたり）ランタイムイメージファイルシステムの使用可能なランタイムイメージファイルシステムの使用済みランタイムイメージファイルシステムの容量 
+
+
+| Kubernetes ポッド | ネームスペースポッドクラスタ | Kubernetes Node Name Node IP Node OS Node UUID | Network TX Bytes （ 1 秒あたり） Network TX Errors （ 1 秒あたり） Network RX Bytes （ 1 秒あたり） Network RX Errors （ 1 秒あたり） 
+
+
+| Kubernetes ポッドボリューム | ボリュームポッドクラスタネームスペース | Kubernetes ノード名ノード UUID ノード IP ノード OS | 使用可能容量 
+
+
+| Kubernetes システムコンテナ | システムコンテナ Kubernetes ノードクラスタ | ノード名ノード IP ノード OS ノード UUID | CPU 使用状況コアナノ秒メモリメジャーページエラーメモリページエラーメモリ常駐セットサイズ（ RSS ）メモリ使用状況メモリワーキングセットルートファイルシステム使用可能なルートファイルシステムの容量ログファイルシステムの使用可能なログファイルシステムの容量 
+|===
+
+
+== トラブルシューティング
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| Kubernetes エージェントインストーラコマンドを実行しましたが、 sudo kubectl -- 名前空間 CI-monitoring get pod 経由で Teegraf エージェントポッドが動作していません | DemonSet を展開する際にエラーが発生したかどうかを確認します。 sudo kubectl -- 名前空間 CI-monitoring DESCRIBE DS テレグラム af-ds SecurityContextConstraints に関連するエラーがある場合は、次の手順を実行します。 1.Tegraf DemonSet YAML sudo kubectl -- 名前空間 CI-monitoring GET DS テレグラム af-ds-o YAML >/tmp/tegraf-ds-yaml 2 。Telegraf サービス sudo kubectl -- 名前空間 CI-monitoring delete DS テレグラフ作成サービスを停止します。必要な SecurityContextConstraint を作成します（「データを収集するためのエージェントの構成」セクションを参照）。 4.Telegraf DemonSet を再作成します 
+
+
+| Telegraf を設定して Kubernetes クラスタに関する情報を取得しましたが、 Cloud Insights には何も表示されません。設定した Kubernetes 入力プラグインに関連する Telegraf ログファイルに「 Invalid header field value 」というエラーが表示されます。 | 参照先の bearer_token ファイルに末尾の改行がないことを確認してください。確認するには、次のコマンドを実行して、 0 を返すことを確認します。 tail -c1 <bearer_token_file> 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

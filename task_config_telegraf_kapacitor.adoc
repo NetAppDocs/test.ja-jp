@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_kapacitor.html 
+keywords: telegraf, installation, install, kapacitor 
+summary: kapacitor の設定 
+---
+= Kapacitor Data Collector
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して、インフレータデータカパコールタから指標を収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services*] で、 [Kapacitor] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:KapacitorDCConfigWindows.png["Kapacitor の構成"]
+
+
+
+== セットアップ（ Setup ）
+
+セットアップ情報は、で確認できます https://docs.influxdata.com/kapacitor/v1.5/["カパトールの資料"]
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト | 識別子 | 属性（ Attributes ） | 「 dataPoints 」： 
+
+
+| カパトール | ネームスペースノード名ノード IP | OS アーキテクチャ OS 名 OS バージョンランタイム仕様ランタイム仕様ベンダーランタイム仕様バージョン Uptime Kapacitor バージョン Runtime VM 名 Runtime VM ベンダーランタイム VM バージョン | 割り当てられたバイトバックハッシュシステムにより、 GC システムの GCC PU フラクションヒープ割り当てヒープ使用ヒープオブジェクトの使用ヒープ解放されたヒープシステムの最終的な GC (ns) ルックアップの Mallocs の mcache が使用中の mcache システムの確認 Maspan システム Next GC (ns) Num GC Other System Pause Total (ns) Stack In Use Stack System Bytes Total Allocated Bytes Average Execution Time （ ns ） Errors 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

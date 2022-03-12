@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_consul.html 
+keywords: telegraf, installation, install, consul 
+summary: 絶縁データコレクタの設定 
+---
+= 総領事データ収集
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して、総領事からのメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services] で、 [Consul （コンサル） ] を選択します。
++
+収集用にエージェントを設定していない場合は、にプロンプトが表示されます link:task_config_telegraf_agent.html["エージェントをインストールします"] お客様の環境で実現します。
+
++
+エージェントがすでに設定されている場合は、適切な OS またはプラットフォームを選択し、 [* Continue （続行） ] をクリックします。
+
+. [Consul Configuration] 画面の指示に従って、データコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+
+
+== セットアップ（ Setup ）
+
+情報は、に記載されています link:https://www.consul.io/docs/index.html["総領事からのご説明"]。
+
+
+
+== 接続のためのオブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| 総領事 | ネームスペースチェック ID サービスノード | ノード IP ノード OS ノード UUID ノードネームサービス名チェックネームサービス ID ステータス | 重大な合格警告 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

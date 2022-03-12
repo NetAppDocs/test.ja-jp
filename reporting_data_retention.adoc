@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: reporting_data_retention.html 
+summary: レポート用の Cloud Insights データ保持 
+keywords: reporting, cognos, data warehouse, dwh, managing, customizing, copying, retention 
+---
+= レポート用に履歴データを保持する方法
+
+
+[role="lead"]
+Cloud Insights では、次の表に示すように、データマートおよびデータの単位に基づいて Reporting で使用される履歴データが保持されます。
+
+|===
+
+
+| データマート | 測定されたオブジェクト | 精度 | 保持期間 
+
+
+| Performance データマート | ボリュームと内部ボリューム | 毎時 | 14 日 
+
+
+| Performance データマート | ボリュームと内部ボリューム | 毎日 | 13 カ月 
+
+
+| Performance データマート | アプリケーション | 毎時 | 13 カ月 
+
+
+| Performance データマート | ホスト | 毎時 | 13 カ月 
+
+
+| Performance データマート | ポートのスイッチパフォーマンス | 毎時 | 35 日 
+
+
+| Performance データマート | ホスト、ストレージ、およびテープのスイッチパフォーマンス | 毎時 | 13 カ月 
+
+
+| Performance データマート | ストレージノード | 毎時 | 14 日 
+
+
+| Performance データマート | ストレージノード | 毎日 | 13 カ月 
+
+
+| Performance データマート | VM パフォーマンス | 毎時 | 35 日 
+
+
+| Performance データマート | VM パフォーマンス | 毎日 | 13 カ月 
+
+
+| Performance データマート | ハイパーバイザーのパフォーマンス | 毎時 | 35 日 
+
+
+| Performance データマート | ハイパーバイザーのパフォーマンス | 毎日 | 13 カ月 
+
+
+| Performance データマート | VMDK パフォーマンス | 毎時 | 35 日 
+
+
+| Performance データマート | VMDK パフォーマンス | 毎日 | 13 カ月 
+
+
+| Performance データマート | ディスクパフォーマンス | 毎時 | 14 日 
+
+
+| Performance データマート | ディスクパフォーマンス | 毎日 | 13 カ月 
+
+
+| Capacity データマート | すべて（個々のボリュームを除く） | 毎日 | 13 カ月 
+
+
+| Capacity データマート | すべて（個々のボリュームを除く） | 月の代表日 | 14 カ月以上 
+
+
+| Inventory データマート | 個々のボリューム | 現在の状態 | 1 日（または次の ETL まで） 
+|===

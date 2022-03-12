@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: task_cs_delete_agent.html 
+keywords: agent, Cloud Secure, delete agent 
+summary: Cloud Secure エージェントの削除 
+---
+= Cloud Secure エージェントの削除
+
+
+[role="lead"]
+Cloud Secure エージェントを削除する場合は、そのエージェントに関連付けられているすべてのデータコレクタを先に削除する必要があります。
+
+
+
+== エージェントの削除
+
+
+IMPORTANT: エージェントを削除すると、そのエージェントに関連付けられているすべてのデータコレクタが削除されます。別のエージェントでデータコレクタを設定する場合は、 Agent を削除する前に、 Data Collector 設定のバックアップを作成する必要があります。
+
+.作業を開始する前に
+. エージェントに関連付けられているすべてのデータコレクタが Cloud Secure ポータルから削除されていることを確認します。
++
+注：関連するすべてのコレクタが停止状態にある場合は、この手順を無視してください。
+
+
+
+.エージェントを削除する手順：
+. エージェント VM に SSH 接続し、次のコマンドを実行します。プロンプトが表示されたら、「 y 」と入力して続行します。
++
+....
+sudo /opt/netapp/cloudsecure/agent/install/cloudsecure-agent-uninstall.sh
+Uninstall CloudSecure Agent? [y|N]:
+....
+. [*Admin] > [Data Collectors] > [Agents] をクリックします
++
+設定されたエージェントのリストが表示されます。
+
+. 削除するエージェントのオプションメニューをクリックします。
+. [ 削除（ Delete ） ] をクリックします。
++
+[ エージェントの削除 *] ページが表示されます。
+
+. 削除を確認するには、 * Delete * をクリックします。
+

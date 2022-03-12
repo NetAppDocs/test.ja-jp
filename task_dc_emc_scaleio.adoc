@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_scaleio.html 
+keywords: data collector, scaleIO, EMC, DELL 
+summary: Dell EMC ScaleIO データコレクタの設定。 
+---
+= Dell EMC ScaleIO データコレクタ
+
+
+[role="lead"]
+ScaleIO データコレクタは、 ScaleIO ストレージからインベントリ情報を収集します。このデータコレクタを設定するには、 ScaleIO ゲートウェイのアドレス、および管理者ユーザー名とパスワードが必要です。
+
+
+
+== 用語集
+
+Cloud Insights は、 ScaleIO データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| MDM （ Meta Data Manager ）クラスタ | ストレージ 
+
+
+| SDS （ ScaleIO データサーバ） | ストレージノード 
+
+
+| ストレージプール | ストレージプール 
+
+
+| ボリューム | ボリューム 
+
+
+| デバイス | ディスク 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+* Admin ユーザアカウントへの読み取り専用アクセス
+* ポート要件： HTTPS ポート 443
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| ScaleIO ゲートウェイ | ScaleIO ゲートウェイの IP アドレスまたは FQDN （カンマ（ , ）またはセミコロン（ ; ）で区切ります） 
+
+
+| ユーザ名 | ScaleIO デバイスへのログインに使用する管理者ユーザー名 
+
+
+| パスワード | ScaleIO デバイスへのログインに使用するパスワード 
+|===
+
+
+== 高度な設定
+
+Inventory チェックボックスをクリックして、インベントリ収集を有効にします。
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| HTTPS ポート | 443 
+
+
+| インベントリのポーリング間隔（分） | デフォルトは 60. です。 
+
+
+| 接続タイムアウト（秒） | デフォルトは 60. です。 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

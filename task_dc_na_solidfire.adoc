@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: task_dc_na_solidfire.html 
+summary: NetApp SolidFire のデータコレクタを設定する 
+keywords: data collector, queries, create 
+---
+= NetApp SolidFire オールフラッシュアレイデータコレクタ
+
+
+[role="lead"]
+NetApp SolidFire オールフラッシュアレイデータコレクタは、 iSCSI と Fibre Channel の両方の SolidFire 構成からのインベントリとパフォーマンスの収集をサポートします。
+
+SolidFire データコレクタでは、 SolidFire REST API を使用します。データコレクタが配置されている Acquisition Unit から、 SolidFire クラスタ管理 IP アドレス上の TCP ポート 443 への HTTPS 接続を開始できる必要があります。データコレクタには、 SolidFire クラスタに対して REST API クエリを実行するためのクレデンシャルが必要です。
+
+
+
+== 用語集
+
+Cloud Insights では、 NetApp SolidFire All-Flash Array データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ドライブ | ディスク 
+
+
+| クラスタ | ストレージ 
+
+
+| ノード | ストレージノード 
+
+
+| ボリューム | ボリューム 
+
+
+| ファイバ・チャネル・ポート | ポート 
+
+
+| ボリュームアクセスグループ、 LUN の割り当て | ボリュームマップ 
+
+
+| iSCSI セッション | ボリュームマスク 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するための要件は次のとおりです。
+
+* 管理仮想 IP アドレス
+* 読み取り専用のユーザ名とクレデンシャル
+* ポート 443
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 管理仮想 IP アドレス（ MVIP ） | SolidFire クラスタの管理仮想 IP アドレス 
+
+
+| ユーザ名 | SolidFire クラスタへのログインに使用するユーザ名 
+
+
+| パスワード | SolidFire クラスタへのログインに使用するパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 接続タイプ | 接続タイプを選択します 
+
+
+| 通信ポート | NetApp API に使用するポート 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 20 分です 
+
+
+| パフォーマンスポーリング間隔（秒） | デフォルト値は 300 秒です 
+|===
+
+
+== トラブルシューティング
+
+SolidFire からエラーが報告されると、 Cloud Insights に次のように表示されます。
+
+データの取得中に SolidFire デバイスからエラーメッセージを受信しました。呼び出しは <method> （ <parameterString> ）でした。デバイスからのエラーメッセージは次のとおりです（デバイスマニュアルを確認してください）。 <message>_
+
+ここで、
+
+* method> は、 GET や PUT などの HTTP メソッドです。
+* parameterString> は、 REST 呼び出しに含まれていたパラメータをカンマで区切ったリストです。
+* <message> は、エラーメッセージとして返されたデバイスです。
+
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

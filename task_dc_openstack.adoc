@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: task_dc_openstack.html 
+keywords: data collector, openstack, OpenStack 
+summary: OpenStack データコレクタ 
+---
+= OpenStack データコレクタ
+
+
+[role="lead"]
+OpenStack （ REST API / KVM ）データコレクタは、すべての OpenStack インスタンスのインベントリデータ、および必要に応じて VM のパフォーマンスデータを取得します。
+
+
+
+== 要件
+
+* OpenStack コントローラの IP アドレス
+* OpenStack admin ロールのクレデンシャルと Linux KVM ハイパーバイザーへの sudo アクセス。admin アカウントや admin 相当の権限を使用していない場合は、データコレクタユーザ ID に基づいて緩和するデフォルトポリシーを特定するために、トライアルとエラーを使用する必要があります。
+* OpenStack Ceilometer モジュールがインストールされ、パフォーマンス収集用に設定されている必要があります。Ceilometer の設定は、各ハイパーバイザーの Nova .conf ファイルを編集してから、各ハイパーバイザーで Nova Compute サービスを再起動することで実行します。オプション名は、 OpenStack の各リリースで変更されています。
++
+** Icehouse のあるホテル
+** Juno 社
+** キロ
+** リバティー
+** 三鷹
+** ニュートン
+** 八幡市
+
+
+* CPU の統計情報の場合、コンピューティングノードの /etc/nova/nover.conf で [compute_monitors = ComputeDriverCPUMonitor] をオンにする必要があります。
+* ポート要件
++
+** HTTP は 5000 、 Keystone サービスは 13000 、 HTTPS は 13000 です
+** KVM SSH の場合は 22
+** Nova Compute Service の場合は 8774
+** Cinder ブロックサービスの場合は 8776
+** Ceilometer パフォーマンスサービス用 8777
+** 9292 for Glance Image Service* 注 * ポートは特定のサービスにバインドされており、大規模な環境ではコントローラまたは別のホストでサービスを実行できます。
+
+
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| OpenStack Controller の IP アドレス | OpenStack Controller の IP アドレスまたは完全修飾ドメイン名 
+
+
+| OpenStack 管理者 | OpenStack 管理者のユーザ名 
+
+
+| OpenStack パスワード | OpenStack 管理に使用するパスワード 
+
+
+| OpenStack 管理者のテナント | OpenStack 管理者のテナント名 
+
+
+| KVM sudo ユーザー | KVM Sudo ユーザー名 
+
+
+| クレデンシャルタイプを指定するには、「 Password 」または「 OpenSSH Key File 」を選択してください | SSH 経由でデバイスに接続するために使用されるクレデンシャルのタイプ 
+
+
+| Inventory Private Key への完全パス | Inventory Private Key への完全パス 
+
+
+| KVM sudo パスワード | KVM sudo パスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| SSH を使用してハイパーバイザーのインベントリ検出を有効にし | SSH を使用してハイパーバイザーインベントリの検出を有効にする場合は、このチェックボックス 
+
+
+| OpenStack 管理 URL のポート | OpenStack 管理 URL のポート 
+
+
+| HTTPS を使用する | セキュア HTTP を使用する場合に選択します 
+
+
+| SSH ポート | SSH に使用するポート 
+
+
+| SSH プロセスの再試行回数 | インベントリの再試行回数 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 20 分です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 「 Configuration error 」と表示され、「 Policy does not allow 」または「 You are not authorized 」というエラーメッセージが表示されます。 | * IP アドレスを確認 * ユーザー名とパスワードを確認してください 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

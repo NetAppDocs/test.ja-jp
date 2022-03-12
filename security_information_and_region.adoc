@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: security_information_and_region.html 
+summary: Cloud Insights は、リリースライフサイクル全体を通じてセキュリティのベストプラクティスに従います。 
+keywords: security, risk, protection 
+---
+= 情報と地域
+
+
+[role="lead"]
+ネットアップでは、お客様の情報のセキュリティを非常に重視しています。ここでは、 Cloud Insights がお客様の情報をどこにどのように保存するかを示します
+
+
+
+== Cloud Insights にはどのような情報が保存されますか
+
+Cloud Insights は次の情報を保存します。
+
+* パフォーマンスデータ
++
+パフォーマンスデータは、監視対象のデバイス / ソースのパフォーマンスに関する情報を提供する時系列のデータです。たとえば、ストレージシステムによって配信される IOS の数、ファイバチャネルポートのスループット、 Web サーバによって配信されるページ数、データベースの応答時間などです。
+
+* インベントリデータ
++
+インベントリデータは、監視対象のデバイス / ソースを記述するメタデータと、その設定方法で構成されます。具体的には、インストールされているハードウェアとソフトウェアのバージョン、ストレージシステムのディスクと LUN 、 CPU コア、 RAM 、仮想マシンのディスク、データベースの表領域、 SAN スイッチのポートの数とタイプ、ディレクトリとファイルの名前（ Cloud Secure が有効な場合）などです
+
+* 設定データ
++
+これは、顧客のインベントリや操作を管理するために使用される、顧客から提供された構成データの要約です。たとえば、監視対象デバイスのホスト名や IP アドレス、ポーリング間隔、タイムアウト値などです
+
+* 秘密
++
+シークレットは、 Cloud Insights Acquisition Unit で顧客のデバイスやサービスにアクセスするために使用されるクレデンシャルで構成されます。これらのクレデンシャルは AES-256 を使用して暗号化され、秘密鍵は Acquisition Unit にのみ格納され、お客様の環境からは脱退しません。この設計により、 Privileged Cloud Insights SRE でもプレーンテキストで顧客シークレットにアクセスできません。
+
+* 機能データ
++
+このデータは、ネットアップがクラウドデータサービスを提供することで生成されます。このサービスは、クラウドデータサービスの開発、導入、運用、メンテナンス、セキュリティの各分野をネットアップに通知します。機能データには、顧客情報や個人情報は含まれません。
+
+* ユーザーアクセスデータ
++
+ユーザ許可に関連するデータなど、 NetApp Cloud Central が地域の Cloud Insights サイトと通信できるようにするための認証およびアクセスに関する情報。
+
+* Cloud Secure ユーザーディレクトリデータ
++
+Cloud Secure 機能が有効になっており、ユーザーがユーザーディレクトリコレクタを有効にすることを選択した場合、システムはユーザー表示名、企業の電子メールアドレス、および Active Directory から収集されたその他の情報を保存します。
+
+
+
+
+NOTE: ユーザディレクトリデータとは、 Cloud Secure ユーザディレクトリのデータコレクタによって収集されたユーザディレクトリ情報であり、 Cloud Insights / Cloud Secure 自体のユーザに関するデータではありません。
+
+* 明示的な個人データは一切ありません。 * インフラストラクチャとサービスのリソースから収集されます。収集される情報は、パフォーマンス指標、設定情報、インフラメタデータのみで構成され、ネットアップの自動サポートや ActiveIQ など、多くのベンダーの電話ホームと同様です。ただし、お客様の命名規則に応じて、共有、ボリューム、 VM 、 qtree のデータ アプリケーションなどには、個人を特定できる情報が含まれる場合があります。
+
+Cloud Secure が有効になっている場合、システムはさらに、個人を特定できる情報を含む SMB またはその他の共有上のファイル名とディレクトリ名を調べます。Cloud Secure ユーザーディレクトリコレクタを有効にすると (Windows SID を Active Directory 経由でユーザー名にマップする ) 、表示名、企業の電子メールアドレス、および選択したその他の属性が Cloud Insights によって収集および保存されます。
+
+また、 Cloud Insights へのアクセスログも維持され、サービスへのログインに使用するユーザの IP アドレスと E メールアドレスが記録されます。
+
+
+
+== 情報はどこに保存されますか？
+
+Cloud Insights では、環境が作成された地域に応じて情報が格納されます。
+
+ホスト領域には、次の情報が格納されます。
+
+* カウンタやパフォーマンス指標などの計測情報と資産 / オブジェクト情報
+* Acquisition Unit の情報
+* 機能データ
+* Cloud Insights 内のユーザアクティビティに関する監査情報
+* Cloud Secure Active Directory の情報
+* Cloud Secure 監査情報
+
+
+Cloud Insights 環境をホストしている地域に関係なく、次の情報は米国にあります。
+
+* サイト / アカウント所有者などの環境サイト（「テナント」とも呼ばれる）情報。
+* ネットアップクラウドセントラルが、地域の Cloud Insights サイト（ユーザ認証とのやり取りを含む）と通信できるようにするための情報。
+* Cloud Insights ユーザとテナントとの関係に関連する情報。
+
+
+
+
+== 詳細情報
+
+ネットアップのプライバシーとセキュリティの詳細については、次のリンクを参照してください。
+
+* link:https://www.netapp.com/us/company/trust-center/index.aspx["トラストセンター"]
+* link:https://www.netapp.com/us/company/trust-center/privacy/data-location-cross-border-transfers.aspx["クロスボーダーデータ転送"]
+* link:https://www.netapp.com/us/company/trust-center/privacy/bcr-binding-corporate-rules.aspx["企業規則の拘束"]
+* link:https://www.netapp.com/us/company/trust-center/transparency/third-party-data-requests.aspx["サードパーティのデータ要求への対応"]
+* link:https://www.netapp.com/us/company/trust-center/privacy/privacy-principles-security-safeguards.aspx["ネットアッププライバシーの原則"]
+

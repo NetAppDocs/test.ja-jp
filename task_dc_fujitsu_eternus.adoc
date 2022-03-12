@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: task_dc_fujitsu_eternus.html 
+keywords: data collector, Fujitsu, Eternus 
+summary: Fujitsu Eternus データコレクタの設定。 
+---
+= Fujitsu Eternus データコレクタ
+
+
+[role="lead"]
+Fujitsu Eternus データコレクタは、管理者レベルのストレージシステムアクセスを使用してインベントリデータを取得します。
+
+
+
+== 用語集
+
+Cloud Insights では、 Fujitsu ETERNUS ストレージから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ディスク | ディスク 
+
+
+| ストレージ | ストレージ 
+
+
+| シンプール、フレキシブル階層プール、 RAID グループ | ストレージプール 
+
+
+| 標準ボリューム、スナップデータボリューム（ SDV ）、スナップデータプールボリューム（ SDPV ）、シンプロビジョニングボリューム（ TPV ）、フレキシブル階層ボリューム（ FTV ）、ワイドストライピングボリューム（ WSV ） | ボリューム 
+
+
+| チャネルアダプタ | コントローラ 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータ照合のすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次のものが必要です。
+
+* Eternus ストレージの IP アドレス。カンマで区切って指定することはできません
+* SSH 管理レベルのユーザ名とパスワード
+* ポート 22
+* ページスクロールが無効になっていることを確認します（ clienv -show -more-scroll disable ）。
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| Eternus ストレージの IP アドレス | Eternus ストレージの IP アドレス 
+
+
+| ユーザ名 | Eternus ストレージのユーザ名 
+
+
+| パスワード | Eternus ストレージのパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 20 分です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 「 Error Retrieving data 」というエラーメッセージが表示され、「 Error Finding Prompt CLI 」または「 Error Finding prompt at the end of shell results 」が表示されます。 | 考えられる原因：ストレージシステムでページスクロールが有効になっています。考えられる解決策： * 次のコマンドを実行して、ページスクロールを無効にしてください。 set clienv -show -more-scroll disable 
+
+
+| 「 Connecting error 」とエラーメッセージ「 Failed to instantiate an SSH connection to storage 」または「 Failed to instantiate a connection to VirtualCenter 」が表示されます。 | 考えられる原因： * クレデンシャルが正しくありません。* IP アドレスが正しくありません。* ネットワークの問題。* ストレージが停止しているか、応答しない可能性があります解決策： * 入力された資格情報と IP アドレスを確認してください。* SSH クライアントを使用してストレージと通信してみてください。 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

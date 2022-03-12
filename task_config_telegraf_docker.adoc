@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_docker.html 
+keywords: telegraf, installation, install, docker 
+summary: Docker データコレクタの設定 
+---
+= Docker Data Collector
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して Docker から指標を収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services*] で [Docker を選択します。
++
+収集用にエージェントを設定していない場合は、にプロンプトが表示されます link:task_config_telegraf_agent.html["エージェントをインストールします"] お客様の環境で実現します。
+
++
+エージェントがすでに設定されている場合は、適切な OS またはプラットフォームを選択し、 [* Continue （続行） ] をクリックします。
+
+. Docker Configuration 画面の指示に従って、データコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:DockerDCConfigLinux.png["Docker 構成"]
+
+
+
+== セットアップ（ Setup ）
+
+Telegraf Docker 用入力プラグインは、指定された UNIX ソケットまたは TCP エンドポイントを介してメトリックを収集します。
+
+
+
+==== 互換性
+
+Docker バージョン 1.12.6 に対して構成が開発されました。
+
+
+
+==== セットアップ中です
+
+
+
+===== UNIX ソケット経由で Docker にアクセスする
+
+Tegraf エージェントが BareMetal 上で実行されている場合は、次のコマンドを実行して、テレグラフ UNIX ユーザを Docker UNIX グループに追加します。
+
+ sudo usermod -aG docker telegraf
+Telegraf エージェントが Kubernetes ポッド内で実行されている場合は、ソケットをポッドにボリュームとしてマッピングし、そのボリュームを /var/run/docker.sock にマウントすることで、 Docker Unix ソケットを公開します。たとえば、 PodSpec に次の情報を追加します。
+
+[listing]
+----
+volumes:
+...
+- name: docker-sock
+hostPath:
+path: /var/run/docker.sock
+type: File
+----
+次に、次の項目をコンテナに追加します。
+
+[listing]
+----
+volumeMounts:
+...
+- name: docker-sock
+mountPath: /var/run/docker.sock
+----
+Kubernetes プラットフォーム用に提供されている Cloud Insights インストーラは、このマッピングを自動的に処理します。
+
+
+
+===== TCP エンドポイントを介して Docker にアクセスする
+
+デフォルトでは、 Docker は暗号化されていないアクセスにポート 2375 を使用し、暗号化されたアクセスにポート 2376 を使用します。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| Docker Engine の略 | ネームスペース Docker Engine | ノード名ノード IP ノード UUID ノード OS Kubernetes クラスタ Docker バージョンユニット | メモリコンテナコンテナ一時停止コンテナコンテナ停止 CPU 実行ルーチンイメージリスナーイベント使用ファイル記述子データ使用可能データ合計データ使用メタデータ使用可能メタデータ使用プールブロックサイズ合計 
+
+
+| Docker コンテナ | 名前空間コンテナ名 Docker Engine | Kubernetes コンテナコンテナハッシュ Kubernetes コンテナポート Kubernetes コンテナ再起動カウント Kubernetes コンテナ終了メッセージパス Kubernetes コンテナ終了メッセージポリシー Kubernetes ポッド終了猶予期間コンテナイメージコンテナステータスコンテナバージョンノード名 Kubernetes コンテナログパス Kubernetes Kubernetes コンテナ Kubernetes Kubernetes Kubernetes Kubernetes Kubernetes タイプ Kubernetes ポッド名 Kubernetes ポッドネームスペース Kubernetes ポッド ポッド UID Kubernetes サンドボックス ID ノード IP ノード UUID Docker バージョン Kubernetes IO の確認 Kubernetes IO 構成ソース OpenShift IO SCC Kubernetes 概要 Kubernetes Kubernetes 表示名 OpenShift タグ Kompose サービスポッドテンプレートハッシュコントローラリビジョンハッシュポッドテンプレート生成ライセンススキーマ構築日スキーマネームスキーマ URL スキーマ VCS URL スキーマベンダースキーマバージョンスキーマスキーマバージョンメンテナ顧客ポッド Kubernetes 状態セットポッド名テナント WebConsole アーキテクチャ信頼できるソース URL ビルド日付 RH ビルドホスト RH コンポーネント配布範囲インストールリリース実行概要 VCS タイプベンダーバージョン健常性ステータスコンテナ ID | Memory Active Anonymous Memory アクティブな匿名メモリキャッシュメモリ階層制限メモリ非アクティブな匿名メモリ非アクティブメモリメモリメモリメモリメモリ最大使用メモリページフォールトメモリページメモリページメモリ内でページアウトされたメモリ常駐セットサイズメモリ常駐セット全体アクティブ 匿名メモリアクティブファイルメモリ合計キャッシュメモリ非アクティブ匿名メモリ合計非アクティブファイルメモリ合計マップファイルメモリ総ページフォールトメモリ総ページ主要エラーメモリ合計ページインメモリ総ページアウトメモリ総常駐セットサイズメモリ合計常駐セットサイズヒュージメモリ合計 Unevictable Memory Unevictable Memory Usage Memory Usage Percent Exit Code OOM killed PID Started at Failing Streak (Unevictable メモリ使用率終了コード OOM がエラー終了時に PID を終了しました 
+
+
+| Docker コンテナブロック IO | 名前空間コンテナ名 Device Docker Engine | Kubernetes コンテナコンテナハッシュ Kubernetes コンテナポート Kubernetes コンテナ再起動カウント Kubernetes コンテナ終了メッセージパス Kubernetes コンテナ終了メッセージポリシー Kubernetes ポッド終了猶予期間コンテナイメージコンテナステータスコンテナバージョンノード名 Kubernetes コンテナログパス Kubernetes Kubernetes コンテナ Kubernetes Kubernetes Kubernetes Kubernetes Kubernetes タイプ Kubernetes ポッド名 Kubernetes ポッドネームスペース Kubernetes ポッド ポッド UID Kubernetes サンドボックス ID ノード IP ノード UUID Docker バージョン Kubernetes 構成表示 Kubernetes 構成ソース OpenShift SCC Kubernetes 概要 Kubernetes Kubernetes 表示名 OpenShift タグスキーマバージョンポッドテンプレートハッシュコントローラリビジョンハッシュポッドテンプレート生成 Kompose Service Schema Build Date スキーマネームスキーマベンダーカスタマー ポッド Kubernetes 静的ステート設定ポッド名テナント WebConsole 構築日ライセンスベンダーアーキテクチャ信頼できるソース URL RH ビルドホスト RH コンポーネント配布範囲インストールメンテナリリース実行概要削除 VCS リファレンスバージョンスキーマ URL スキーマバージョンコンテナ ID | IO サービスバイト再帰的非同期 IO サービスバイト再帰的 IO サービスバイト再帰的 IO サービスバイト再帰的な総 IO サービスバイト再帰的 IO サービスバイト再帰的 IO サービス対象再帰的 IO サービス対象再帰的 IO サービス対象再帰的 IO サービス対象の再帰的な総 IO サービス対象 IO 
+
+
+| Docker コンテナネットワーク | 名前空間コンテナネットワーク Docker エンジン | コンテナイメージコンテナステータスコンテナノードバージョンノード名ノード IP ノード UUID ノード OS Kubernetes クラスタ Docker バージョンコンテナ ID | Rx dropped RX bytes RX Errors RX Packets TX dropped TX Bytes TX Errors TX パケット 
+
+
+| Docker コンテナの CPU | 名前空間コンテナ CPU Docker Engine | Kubernetes コンテナハッシュ Kubernetes コンテナポート Kubernetes コンテナの再起動カウント Kubernetes コンテナの終了メッセージパス Kubernetes コンテナの終了メッセージポリシー Kubernetes ポッドの終了猶予期間 Kubernetes 構成ソース OpenShift SCC コンテナイメージコンテナステータスコンテナバージョンノード名 Kubernetes コンテナログパス Kubernetes コンテナ名 Kubernetes コンテナ名 Docker 「 Kubernetes ポッド名 Kubernetes ポッドネームスペース Kubernetes ポッド UID Kubernetes サンドボックス ID ノード IP ノード UUID ノード OS Kubernetes クラスタ Docker バージョン Kubernetes 概要 Kubernetes 表示名 OpenShift タグスキーマバージョンポッドテンプレートハッシュコントローラリビジョンハッシュポッドテンプレート生成 Kompose Service Schema Build Date Schema License Schema Name 」と入力します スキーマベンダーカスタマーポッド Kubernetes ステータス設定ポッド名テナント WebConsole ビルド日ライセンスベンダーアーキテクチャ信頼できるソース URL RH ビルドホスト RH コンポーネント配布範囲インストールメンテナリリース概要アンインストール VCS リファレンスバージョンスキーマバージョンスキーマバージョンコンテナ ID | スロットル周期スロットルスロットルスロットルスロットルスロットルスロットルスロットルスロットルスロットルスロットルスロットルスロットル時間の使用率（ユーザーモード使用率）使用率システム使用率合計 
+|===
+
+
+== トラブルシューティング
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 設定ページの手順に従っても、 Cloud Insights に Docker 指標が表示されない。 | Tegraf エージェントログを調べて、次のエラーが報告されているかどうかを確認します。プラグインのエラー [input.docdocker ]: Docker デーモンソケットに接続しようとしたときに許可が拒否されました。接続されている場合は、事前に指定した Docker Unix ソケットへの Telegraf エージェントアクセスを提供するために必要な手順を実行してください。 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

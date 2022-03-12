@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: task_dc_na_cloud_volumes.html 
+summary: NetApp Cloud Volume Services for AWS データコレクタを設定します 
+keywords: data collector, NetApp, Cloud, AWS 
+---
+= NetApp Cloud Volume Services for AWS データコレクタ
+
+
+[role="lead"]
+このデータコレクタは、 NetApp Cloud Volume Services for AWS 構成からのインベントリ収集をサポートします。
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| Cloud Volume リージョン | NetApp Cloud Volume Services for AWS のリージョン 
+
+
+| API キー | Cloud Volume API キー 
+
+
+| シークレットキー | Cloud Volume シークレットキー 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 60 分です 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

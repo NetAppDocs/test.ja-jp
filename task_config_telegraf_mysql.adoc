@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_mysql.html 
+keywords: telegraf, installation, install, mysql 
+summary: MySQL データコレクタの設定 
+---
+= MySQL データコレクタ
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して MySQL からのメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services] で [MySQL ] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:MySQLDCConfigWindows.png["MySQL の設定"]
+
+
+
+== セットアップ（ Setup ）
+
+情報は、に記載されています link:https://dev.mysql.com/doc/["MySQL のドキュメント"]。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| MySQL | ネームスペース MySQL サーバ | ノード IP ノード名 | 中断されたクライアント（ 1 秒あたり）中止された接続（ 1 秒あたり） RX バイト（ 1 秒あたり） TX バイト（ 1 秒あたり）コマンド管理者（ 1 秒あたり） コマンド Alter Event コマンド Alter Function コマンド Alter Instance コマンド Alter 手順コマンド Alter 表コマンド Alter 表領域コマンド Alter User コマンド Alter User コマンド Alter To Keycache コマンド BEGIN コマンド Binlog コマンド手順コマンド Change Master コマンド Change Repl Filter コマンド Check コマンド チェックサムコマンドコミットコマンドデータベースの作成コマンド関数の作成コマンドインデックスの作成コマンド手順コマンドの作成トリガコマンドの作成トリガコマンドの作成 UDF コマンドユーザーコマンドの作成ビューコマンドの作成 SQL 接続エラー作成した tmp ディスクテーブル遅延エラーフラッシュコマンドの受け入れ ハンドラ Commit InnoDB Buffer Pool Bytes Data Key Blocks Not flushed Key Read Requests Key Write Requests Key Writes Max Execution Time Exceeded Max Used Connections Performance Schema Accounts Lost Prepared Stmt Count Qcache Free Blocks Queries 質問フル結合選択範囲選択範囲チェックを選択します [ テーブルロックを即時スキャン ] を選択します 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

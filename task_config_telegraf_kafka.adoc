@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_kafka.html 
+keywords: telegraf, installation, install, kafka 
+summary: Kafka データコレクタの設定 
+---
+= Kafka Data Collector の利用
+
+
+[role="lead"]
+Cloud Insights では、このデータコレクタを使用して Kafka から指標を収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。「 * Services 」で「 Kafka 」を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:KafkaDCConfigWindows.png["Kafka の構成です"]
+
+
+
+== セットアップ（ Setup ）
+
+Kafka プラグインは、テレグラムの Jolokia プラグインに基づいています。すべての Kafka ブローカーから情報を収集する必要があるため、 JMX はすべてのコンポーネントで Jolokia 経由で設定および公開する必要があります。
+
+
+
+==== 互換性
+
+Kafka バージョン 0.11.0.2 の構成向けに開発されました。
+
+
+
+==== セットアップ中です
+
+以下の手順はすべて、 Kafka のインストール場所が「 /opt/Kafka 」であることを前提としています。以下の手順を使用して、設置場所を変更できます。
+
+
+
+==== Jolokia エージェント JAR
+
+Jolokia エージェント jar ファイルのバージョン link:https://jolokia.org/download.html["ダウンロードしました"]。テスト対象のバージョンは Jolokia エージェント 1.6.0 でした。
+
+以下の手順では、ダウンロードした jar ファイル（ jolokia-jvm-1.6.0-agent.jar ）が「 /opt/Kafka/libs/' 」の下に配置されると想定しています。
+
+
+
+==== Kafka Brokers のようになります
+
+Kafka Brokers で Jolokia API を公開するように設定するには、「 Kafka -run-class.sh 」コールの直前に、 <Kafka_home>/bin/Kafka-server-start.sh に次の項目を追加します。
+
+[listing]
+----
+export JMX_PORT=9999
+export RMI_HOSTNAME=`hostname -I`
+export KAFKA_JMX_OPTS="-javaagent:/opt/kafka/libs/jolokia-jvm-1.6.0-agent.jar=port=8778,host=0.0.0.0  -Dcom.sun.management.jmxremote.password.file=/opt/kafka/config/jmxremote.password -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=$RMI_HOSTNAME -Dcom.sun.management.jmxremote.rmi.port=$JMX_PORT"
+----
+上記の例では 'hostname-i' を使用して 'RMI_HOSTNAME' 環境変数を設定しています。複数の IP マシンでは、 RMI 接続に使用する IP を収集するために、これを調整する必要があります。
+
+JMX (9999 以上 ) とジョロキア (8778) には別のポートを選択できますJolokia をロックする内部 IP を持っている場合は、「 catch all 」 0.0.0.0 を自分の IP で置き換えることができます。この IP には、テレグラムプラグインからアクセスできる必要があります。認証を行わない場合は、オプション「 -Dcom.sun.management.jmxremote.authenticate=false' 」を使用できます。自己責任で使用してください。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| Kafka Broker | クラスタネームスペースのブローカー | ノード名ノード IP | レプリカマネージャフェッチャーの最大遅延時クライアント接続 Zookeeper クライアント接続（ 15m レート） Zookeeper クライアント接続（ 5m レート） Zookeeper クライアント接続（平均レート） Zookeeper クライアント接続（ 1m レート） レプリカマネージャパーティション数スレッド数デーモンスレッド数ピークスレッド数現在のスレッド数開始オフラインパーティション数リクエスト合計時間（ 50 パーセンタイル値）生成リクエスト合計時間（ 75 パーセンタイル値）生成リクエスト合計時間（ 95 パーセンタイル値）生成リクエスト合計時間（ 98 ）生成リクエスト合計時間（ 99 パーセンタイル値） 生成要求合計時間（ 99 パーセンタイル）生成要求合計時間生成要求合計時間最大生成要求合計時間平均生成要求合計時間最小生成要求合計時間 stddev レプリカマネージャ ISR 縮小レプリカマネージャ ISR は縮小（ 15 m レート）レプリカマネージャ ISR は縮小（ 5 m レート）レプリカマネージャ ISR は縮小します （平均レート） Replica Manager ISR 縮小（ 1m レート） Request Handler Avg Idle Request Handler Avg Idle （ 15m レート） Request Handler Avg Idle （ 5m レート） Request Handler Avg Idle （平均レート） Request Handler Avg Idle （平均レート） Request Handler Avg Idle （ 1m レート） ガベージコレクション G1 古い生成カウントガーベッジコレクション G1 古い生成時間ガベージコレクション G1 ヤング生成時間ゾーキーパー読み取り専用接続（ 15m レート） Zookeeper 読み取り専用接続（ 5m レート） Zookeeper 読み取り専用接続（平均レート） Zookeeper 読み取り専用接続（ズームのみ接続 （ 1 分）ネットワークプロセッサの平均アイドルリクエスト取得追跡追跡追跡追跡総時間（ 50 パーセンタイル）リクエスト取得取得総時間（ 75 パーセンタイル）リクエスト取得追跡追跡追跡追跡追跡追跡総時間（ 95 パーセンタイル）リクエスト取得追跡追跡追跡追跡追跡総時間（ 99 パーセンタイル）リクエスト取得追跡追跡追跡総時間（ 99 パーセンタイル） リクエスト取得追跡追跡合計時間リクエスト取得合計時間最大リクエスト取得追跡追跡追跡合計時間平均リクエスト取得追跡追跡合計時間最小リクエスト取得追跡可能合計時間標準開発リクエスト作成中に待機中時間積込ネットワークリクエスト取得消費者ネットワークリクエスト取得利用者（ 5m レート）ネットワークリクエスト取得利用者（ 15m レート） ネットワークリクエスト取得消費者（平均レート）ネットワークリクエスト取得利用者（ 1 m レート）不クリーンリーダーの不選択（ 15 m レート）クリーンリーダーの不合格（ 5 m レート）クリーンリーダーの不合格（平均レート）リーダーの不明確化（ 1 m レート） アクティブコントローラヒープメモリのコミットヒープメモリの初期化ヒープメモリの最大使用量 Zookeeper セッションの期限が切れる（ 15m レート） Zookeeper セッションの期限が切れる（ 5m レート） Zookeeper セッションの期限が切れる（平均レート） Zookeeper セッションの期限が切れる（ 1m レート） Zookeeper 認証の失敗（ 15m レート） Zookeeper 認証の失敗（ 5m ） Zookeeper 認証エラー（平均レート） Zookeeper 認証エラー（ 1 分レート）リーダー選挙時間（ 50 パーセンタイル）リーダー選挙時間（ 75 パーセンタイル）リーダー選挙時間（ 95 パーセンタイル）リーダー選挙時間（ 9 パーセンタイル）リーダー選挙時間（ 99 パーセンタイル）リーダー選挙時間（ 15 m レート） リーダー選挙時間（ 5m ）リーダー選挙時間最大リーダー選挙時間平均リーダー選挙時間（平均レート）リーダー選挙時間（ 1m レート）リーダー選挙時間（ 1m レート）リーダー選挙時間（ stddev ）ネットワーク要求取得フォロワネットワーク要求フェッチフォロワ（ 15m レート）ネットワーク要求フェッチフォロワ（ 5m レート） Network Requests Fetch Follower （平均レート） Network Requests Fetch Follower （ 1 m レート） Broker Topic Messages Broker Topic Messages （ 15 m レート） Broker Topic Messages （ 5 m レート） Broker Topic Messages （平均レート） Broker Topic Messages （ 1 m レート） Broker Topic Bytes （ 15 m レート） Broker Topic Bytes のブローカートピックバイト （ 5m レート）ブローカートピックバイト（平均レート）ブローカートピックバイト（ 1m レート） Zookeeper 切断数（ 15m レート） Zookeeper 切断数（ 5m レート） Zookeeper 切断数（ 5m レート） Zookeeper 切断数（平均レート） Zookeeper 切断数（ 1m レート）ネットワーク要求 Fetch Consumer Total Time （ 50 パーセント） Network Requests Fetch Total Time （ 75 パーセンタイル値） ネットワーク要求利用者合計時間（ 95 パーセンタイル）ネットワーク要求取得消費者合計時間（ 98 パーセンタイル）ネットワーク要求取得消費者合計時間（ 99 パーセンタイル）ネットワーク要求取得消費者合計時間（ 99 パーセンタイル） ネットワーク要求消費者合計時間ネットワーク要求の取得消費者合計時間最大ネットワーク要求の取得消費者合計時間最小ネットワーク要求の取得消費者合計時間最小ネットワーク要求の取得消費者合計時間 stddev リードカウント要求の取得パージ時仲介業者トピックバイトアウト（ 15m レート） ブローカートピックバイトアウト（ 5m レート）ブローカートピックバイトアウト（平均レート）ブローカートピックバイトアウト（ 1m レート） Zookeeper 認証（ 15m レート） Zookeeper 認証（ 5m レート） Zookeeper 認証（ 5m レート） Zookeeper 認証（平均レート） Zookeeper 認証（ 1m レート）要求生成カウント（ 15m レート）要求 （平均レート）要求生成（ 1 m レート）レプリカマネージャ ISR がレプリカマネージャ ISR を拡張（ 15 m レート）レプリカマネージャ ISR が拡張（ 5 m レート）レプリカマネージャ ISR が拡張（平均レート）レプリカマネージャ ISR が拡張（ 1 m レート）レプリカパーティションの下でレプリカマネージャを拡張（ 1 m レート）します 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

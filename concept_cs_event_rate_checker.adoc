@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: concept_cs_event_rate_checker.html 
+summary: ONTAP SVM DSC をインストールする前に、このスクリプトを実行して SVM のイベントレートを確認できます 
+keywords: event, checker, rate, sizing 
+---
+= SVM イベントレートチェッカー
+
+
+[role="lead"]
+イベントレートチェッカーは、 ONTAP SVM データコレクタをインストールする前に、 SVM での NFS / SMB の組み合わせイベントレートを確認するために使用します。これにより、エージェントマシンで監視可能な SVM 1 の数が表示されます。
+
+要件
+
+* クラスタ IP
+* クラスタ管理者のユーザ名とパスワード
+
+
+
+NOTE: このスクリプトを実行するときは、イベント速度を確認する SVM で ONTAP SVM Data Collector を実行していない必要があります。
+
+手順
+
+. CloudSecure の指示に従って、 Agent をインストールします。
+. エージェントをインストールしたら、 sudo ユーザとして _server_data_rate_checker.sh_script を実行します。
++
+ /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
+. このスクリプトを使用するには、 Linux マシンに _sshpass_to をインストールする必要があります。インストール方法は 2 種類あります。
++
+.. 次のコマンドを実行します。
++
+ linux_prompt> yum install sshpass
+.. 表示されない場合は、 Web から Linux マシンに sshpass_to をダウンロードし、次のコマンドを実行します。
++
+ linux_prompt> rpm -i sshpass
+
+
+. プロンプトが表示されたら、正しい値を指定します。例については、以下を参照してください。
+. スクリプトの実行には約 5 分かかります。
+. 実行が完了すると、 SVM からイベントレートが出力されます。コンソールの出力では、 SVM ごとのイベントレートを確認できます。
++
+ “Svm svm_rate is generating 100 events/sec”.
+
+
+. 各 ONTAP SVM データコレクタを 1 つの SVM に関連付けることができます。つまり、各データコレクタは、 1 つの SVM が生成するイベント数を受け取ることができます。
+
+
+次の事項に注意してください。
+
+a) 単一のエージェントマシンでは、以下を処理できます。
+
+|===
+
+
+| Agent Machine Configuration の略 | SVM データコレクタの数 | エージェントマシンが処理できる最大イベントレート 
+
+
+| 4 コア、 16GB | 10 個のデータコレクタ | 20K イベント / 秒 
+
+
+| 4 コア、 32GB | データコレクタ 20 個 | 20K イベント / 秒 
+|===
+b ）合計イベント数を計算するには、そのエージェントのすべての SVM に対して生成されたイベントを追加します。
+
+c) スクリプトがピーク時に実行されない場合、またはピークトラフィックが予測しにくい場合は、 30% のイベントレートバッファを維持します。
+
+B+C は A 未満でなければなりません。そうしないと、 Agent マシンはモニタできません。
+
+つまり、 1 台のエージェントマシンに追加できるデータコレクタの数は、次の式に準拠する必要があります。
+
+ Sum of all Event rate of all Data Source Collectors + Buffer Event rate of 30% < 20000 events/second
+
+
+=== 例
+
+ここでは、 1 秒あたり 100 、 200 、および 300 のイベントレートを生成する SMS が 3 つあるとします。
+
+式を適用します。
+
+....
+ (100+200+300) + [(100+200+300)*30%] = 600+180 = 780events/sec
+780 events/second is < 20000 events/second, so the 3 SVMs can be monitored via one agent box.
+....
+コンソール出力は、エージェントマシンの現在の作業ディレクトリにあるファイル名 __fpolicy_stat_<SVM 名 > .log__ で確認できます。
+
+次の場合、スクリプトから間違った結果が返されることがあります。
+
+* クレデンシャル、 IP 、または SVM 名が正しくない。
+* 同じ名前、シーケンス番号などの既存の FPolicy にはエラーが発生します。
+* 実行中はスクリプトは突然停止します。
+
+
+スクリプトの実行例を次に示します。
+
+ [root@ci-cs-data agent]# /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
+....
+Enter the cluster ip: 10.192.139.166
+Enter the username to SSH: admin
+Enter the password:
+Getting event rate for NFS and SMB events.
+Available SVMs in the Cluster
+-----------------------------
+QA_SVM
+Stage_SVM
+Qa-fas8020
+Qa-fas8020-01
+Qa-fas8020-02
+audit_svm
+svm_rate
+vs_new
+vs_new2
+....
+....
+-----------------------------
+Enter [1/5] SVM name to check (press enter to skip): svm_rate
+Enter [2/5] SVM name to check (press enter to skip): audit_svm
+Enter [3/5] SVM name to check (press enter to skip):
+Enter [4/5] SVM name to check (press enter to skip):
+Enter [5/5] SVM name to check (press enter to skip):
+Running check for svm svm_rate...
+Running check for svm audit_svm...
+Waiting 5 minutes for stat collection
+Stopping sample svm_rate_sample
+Stopping sample audit_svm_sample
+fpolicy stats of svm svm_rate is saved in fpolicy_stat_svm_rate.log
+Svm svm_rate is generating 100 SMB events/sec and 100 NFS events/sec
+Overall svm svm_rate is generating 200 events/sec
+fpolicy stats of svm audit_svm is saved in fpolicy_stat_audit_svm.log
+Svm audit_svm is generating 200 SMB events/sec and 100 NFS events/sec
+Overall svm audit_svm is generating 300 events/sec
+....
+ [root@ci-cs-data agent]#
+
+
+== トラブルシューティング
+
+|===
+
+
+| 質問：すでに Cloud Secure 用に設定されている SVM でこのスクリプトを実行する場合、その SVM で既存の fpolicy config を使用するか、一時的に FPolicy を設定してプロセスを実行しますか。 
+
+
+| 回答： Cloud Secure 用にすでに設定されている SVM でも、イベントレートチェッカーを実行できます。影響はありません。 
+
+
+| 質問：スクリプトを実行できる SVM の数を増やすことはできますか。 
+
+
+| 回答：はい。スクリプトを編集して、 SVM の最大数を 5 から任意の数に変更するだけです。 
+
+
+| 質問： SVM の数を増やすと、スクリプトの実行時間は長くなりますか。 
+
+
+| 回答：いいえSVM の数を増やした場合でも、スクリプトは最大 5 分間実行されます。 
+
+
+| 質問：スクリプトを実行できる SVM の数を増やすことはできますか。 
+
+
+| 回答：はい。スクリプトを編集して、 SVM の最大数を 5 から任意の望ましい数に変更する必要があります。 
+
+
+| 質問： SVM の数を増やすと、スクリプトの実行時間は長くなりますか。 
+
+
+| 回答：いいえSVM の数を増やした場合でも、スクリプトは最大 5 分間実行されます。 
+|===

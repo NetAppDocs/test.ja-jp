@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_haproxy.html 
+keywords: telegraf, installation, install, haproxy 
+summary: HAProxy データコレクタの設定 
+---
+= HAProxy Data Collector
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して HAProxy からのメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services] で、 [HAProxy] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:HAProxyDCConfigLinux.png["HAProxy の設定"]
+
+
+
+== セットアップ（ Setup ）
+
+Telegraf の HAProxy 用プラグインは、 HAProxy Stats の有効化に依存しています。これは HAProxy に組み込まれている構成ですが、すぐに有効にすることはできません。有効にすると 'HAProxy はブラウザで表示できる HTML エンドポイントを公開したり ' すべての HAProxy 構成のステータスを抽出するためにスクレイピングしたりできます
+
+
+
+==== 互換性：
+
+構成は HAProxy バージョン 1.9.4 に対して開発されました。
+
+
+
+==== 設定：
+
+統計情報を有効にするには、 haproxy 設定ファイルを編集し、「金庫」セクションの後に次の行を追加します。この行には、ユーザー自身のユーザー名とパスワード、および / または haproxy URL を使用します。
+
+[listing]
+----
+stats enable
+stats auth myuser:mypassword
+stats uri  /haproxy?stats
+----
+次に、 stats を有効にした単純な構成ファイルの例を示します。
+
+[listing]
+----
+global
+  daemon
+  maxconn 256
+
+defaults
+  mode http
+  stats enable
+  stats uri /haproxy?stats
+  stats auth myuser:mypassword
+  timeout connect 5000ms
+  timeout client 50000ms
+  timeout server 50000ms
+
+frontend http-in
+  bind *:80
+  default_backend servers
+
+frontend http-in9080
+  bind *:9080
+  default_backend servers_2
+
+backend servers
+  server server1 10.128.0.55:8080 check ssl verify none
+  server server2 10.128.0.56:8080 check ssl verify none
+
+backend servers_2
+  server server3 10.128.0.57:8080 check ssl verify none
+  server server4 10.128.0.58:8080 check ssl verify none
+----
+最新の手順の詳細については、を参照してください link:https://cbonte.github.io/haproxy-dconv/1.8/configuration.html#4-stats%20enable["HAProxy のドキュメント"]。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| HAProxy フロントエンド | ネームスペースアドレスプロキシ | ノード IP ノード名プロキシ ID モードプロセス ID セッションレート制限サーバ ID セッション制限ステータス | バイト数キャッシュヒットキャッシュ参照キャッシュルックアップ圧縮バイトをバイパス圧縮バイトをバイパス圧縮した圧縮バイトをアウト圧縮応答を転送接続レート接続レート最大接続数セキュリティから拒否された接続ルール要求による拒否された総接続数セキュリティの懸念による拒否された応答セッションルール要求エラー応答 1xx 応答 2xx 応答 3xx 応答 4xx 応答 5xx 応答その他の要求代行受信セッションレート最大要求レート最大要求数最大要求数最大セッション総セッション数合計要求の書き換え 
+
+
+| HAProxy サーバ | ネームスペースアドレスプロキシサーバ | ノード IP ノード名のチェック終了時間のチェック構成のチェック健全性のチェック構成のチェック構成のチェックステータスのチェックプロキシ ID の最終変更時刻最終セッションタイムモードプロセス ID サーバー ID のステータスの重み | アクティブサーババックアップサーババイト数 ( バイト ) チェックアウトダウンクライアント接続の失敗平均ダウンタイム合計拒否応答接続エラー応答 1xx 応答応答 2xx 応答 4xx 応答 4xx 応答その他サーバ選択キュー現在キュー最大キュー平均セッション数 / 1 秒あたりの 2 番目のセッション最大接続再使用応答時間平均セッション最大サーバ転送セッションの中止合計セッション時間平均要求再ディスパッチ要求再書き込み要求の再実行 
+
+
+| HAProxy バックエンド | ネームスペースアドレスプロキシ | ノード IP ノード名プロキシ ID 最終変更時刻最終セッション時間モードプロセス ID サーバー ID セッション制限ステータス重み | アクティブサーババックアップサーババイト数キャッシュヒットキャッシュ検索数キャッシュ検索数チェックダウンクライアントが圧縮バイトをバイパス圧縮バイト数をバイパス圧縮バイト数を無視圧縮応答をアウト接続接続平均ダウンタイム時間セキュリティの懸念応答拒否された応答接続エラー応答 1xx 応答 2xx 応答 3xx 応答 4xx 応答 5xx 応答その他のサーバ選択キュー現在キュー最大キュー 1 秒あたりのセッション最大キュー平均時間セッション 1 秒あたりの最大要求接続再使用応答時間平均セッション最大サーバ転送総セッション数総セッション時間平均要求再ディスパッチ要求再試行要求 書き換え 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

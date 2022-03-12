@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: task_troubleshooting_general_problems.html 
+summary: Cloud Insights の一般的なトラブルシューティングのヒント。 
+keywords: troubleshooting, problems, browser, login, log in, accessing, access to 
+---
+= Cloud Insights の一般的な問題のトラブルシューティング
+
+
+[role="lead"]
+ここでは、 Cloud Insights のトラブルシューティングに関する推奨事項を示します。
+
+も参照してください link:task_troubleshooting_linux_acquisition_unit_problems.html["Linux Acquisition Unit の問題のトラブルシューティング"] および 。
+
+
+
+==== ログインの問題：
+
+|===
+
+
+| * 問題： * | * これを試みなさい : * 
+
+
+| Cloud Insights は 5 分ごとにログアウトします | ブラウザの設定で、 _ [* 。 ] auth0.com からサードパーティのクッキーの受け入れを有効にします。たとえば、 Chrome の incognito モードでは、デフォルトのブラウザ設定によってサードパーティのクッキーがブロックされます。次のコマンドを実行してみます。ブラウザの URL に「 chrome ： //settings/cookies 」と入力します。「すべての Cookie を許可」オプションを選択します。 
+
+
+| Cloud Central アカウントを持っていますが、 Cloud Central にログインできません。 | saas.support@netapp.com にお問い合わせください。これは、 Cloud Central の問題や質問に特化したものです。その他の Cloud Insights の問題については、にお問い合わせください link:concept_requesting_support.html["ネットアップサポート"]。 
+
+
+| Cloud Insights に招待されましたが、「認証されていません」というメッセージが表示されます。 | Cloud Central アカウントに登録していること、または組織が Cloud Central で SSO ログインを使用していることを確認します。Cloud Central のプロファイルの E メールアドレスが Cloud Insights のウェルカム E メールに記載された E メールアドレスと一致していることを確認してください。E メールが一致しない場合は、正しい E メールアドレスで新しい招待状をリクエストします。 
+
+
+| Cloud Central または Cloud Secure からログアウトし、 Cloud Insights から自動的にログアウトされました。 | ネットアップクラウド全体でシングルサインオン（ SSO ）が行われ、 Cloud Insights 、 Cloud Secure 、レポートのすべてのセッションがログアウトされます。複数の Cloud Insights アカウントへのアクセス権がある場合、いずれかのアカウントからログアウトすると、アクティブなセッションがすべてログアウトされます。ログインし直して、アカウントにアクセスします。 
+
+
+| 数日後に自動的にログアウトされました。 | ネットアップクラウドアカウントの再認証は数日おきに行う必要があります（現在の Cloud Central 設定は 7 日間）。ログインし直して、アカウントにアクセスします。 
+
+
+| 「ログインを許可されていません」というエラーメッセージが表示されます。 | アカウント管理者に連絡して、 Cloud Insights へのアクセスを確認してください。Cloud Central のプロファイルの E メールアドレスが Cloud Insights のウェルカム E メールに記載された E メールアドレスと一致していることを確認してください 
+
+
+| その他のログインエラーです | Chrome で incognito モードを試すか、ブラウザの履歴、クッキー、およびキャッシュをクリアします。別のブラウザプロファイル（例 Chrome - ユーザーを追加します）。 
+|===
+アクティブな Cloud Insights サブスクリプションがある場合は、次のサポートオプションを使用できます。
+
+link:https://www.netapp.com/us/contact-us/support.aspx["電話"]
+
+
+詳細については、を参照してください https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html["Cloud Insights サポートドキュメント"]。

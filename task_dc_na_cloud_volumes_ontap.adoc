@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: task_dc_na_cloud_volumes_ontap.html 
+summary: NetApp Cloud Volumes ONTAP のデータコレクタを設定する 
+keywords: data collector, NetApp, Cloud, ONTAP 
+---
+= NetApp Cloud Volumes ONTAP データコレクタ
+
+
+[role="lead"]
+このデータコレクタは、 Cloud Volumes ONTAP 構成からのインベントリ収集をサポートします。
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| ネットアップ管理 IP アドレス | クラウドボリューム ONTAP の IP アドレス 
+
+
+| ユーザ名 | Cloud Volumes ONTAP のユーザ名 
+
+
+| パスワード | 上記のユーザのパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 接続タイプ | HTTPS を推奨。にはデフォルトのポートも表示されます。 
+
+
+| 通信ポートをオーバーライドします | デフォルト以外の場合に使用するポート。 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 60 分です。 
+
+
+| インベントリの同時スレッド数 | 同時スレッド数。 
+
+
+| HTTPS に TLS を強制します | HTTPS 経由で TLS を強制します 
+
+
+| ネットグループを自動的に検索する | ネットグループを自動的に検索する 
+
+
+| ネットグループの拡張 | シェルまたはファイルを選択します 
+
+
+| HTTP 読み取りタイムアウト秒数 | デフォルトは 30 秒です 
+
+
+| 応答を UTF-8 として強制実行します | 応答を UTF-8 として強制実行します 
+
+
+| パフォーマンスポーリング間隔（分） | デフォルト値は 900 秒です。 
+
+
+| パフォーマンス同時スレッド数 | 同時スレッド数。 
+
+
+| 高度なカウンタデータ収集 | Cloud Insights が以下のリストから詳細な指標を収集するように設定するには、このチェックボックスをオンにします。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

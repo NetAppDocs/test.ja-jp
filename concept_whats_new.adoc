@@ -1,0 +1,1678 @@
+---
+sidebar: sidebar 
+permalink: concept_whats_new.html 
+summary: Cloud Insights で利用できる新機能と特徴。 
+keywords: features 
+---
+= Cloud Insights の新機能
+
+
+ネットアップは、製品やサービスの改善と強化を継続的に行っています。ここでは、 Cloud Insights で利用できる最新の機能をいくつか紹介します。
+
+
+
+=== 2022 年 2 月
+
+
+
+==== Cloud Insights は Apache log4j の脆弱性を解決します
+
+お客様のセキュリティは、ネットアップの最優先事項です。Cloud Insights には、最新の Apache log4j の脆弱性に対処するためのソフトウェアライブラリの更新が含まれています。
+
+ネットアップの Product Security Advisory Web サイトに掲載されている次の資料を参照してください。
+
+link:https://security.netapp.com/advisory/ntap-20211210-0007/["CVE-20121-44228"]
+
+
+
+これらの脆弱性の詳細と、ネットアップの対応については、を参照してください link:https://www.netapp.com/newsroom/netapp-apache-log4j-response/["ネットアップのニュースルーム"]。
+
+
+
+==== Kubernetes のネームスペースの詳細ページ
+
+Kubernetes 環境の探索は、クラスタの名前空間の情報詳細ページにより、かつてないほど優れています。ネームスペースの詳細ページには、ネームスペースに使用されているすべてのアセットの概要が表示されます。これには、バックエンドのすべてのストレージリソースとその容量利用率が含まれます。
+
+image:Kubernetes_Namespace_Detail_Example_2.png["Kubernetes のネームスペースの詳細ページ"]
+
+
+
+==== フィーチャーのプレビュー（ Preview Features
+
+Cloud Insights は、いくつかの新しいプレビュー機能を強調しています。これらの機能をプレビューする場合は、にお問い合わせください link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx["ネットアップの営業チーム"] を参照してください。
+
+|===
+
+
+| * 特徴 * | * 概要 * 
+
+
+| ユーザーアクセスの自動応答を制限します | 攻撃が検出されると、 Cloud Secure は、ファイルシステムへのユーザーアクセスを制限する（フルブロック、または読み取り専用アクセスに設定する）ことで攻撃を停止できます。自動応答ポリシーを使用するか、アラートまたはユーザの詳細ページから手動でアクセスを制限できます。link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html["詳細はこちら"] 
+
+
+| データ破壊–ファイル削除攻撃の検出 | 異常な大規模なファイル削除アクティビティを検出し、悪意のあるユーザによる悪意のあるファイルアクセスをブロックし、自動応答ポリシーを使用してスナップショットを自動的に作成します。 
+
+
+| 応力の下の共有リソース | ストレス状態の共有リソースでは、次の項目を特定できます。 - 共有リソース上のワークロードの負荷が高く、影響を受けるワークロードが個々に存在するために負荷が高い共有ストレージリソースlink:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html["詳細はこちら"] 
+|===
+'''
+
+
+=== 2021 年 12 月
+
+
+
+==== ONTAP システムをさらに緊密に統合
+
+ネットアップの Event Management System （ EMS ；イベント管理システム）との新たな統合により、 ONTAP ハードウェア障害に対するアラート生成を簡易化できます。link:task_system_monitors.html["調査とアラート"] Cloud Insights の下位レベルの ONTAP メッセージを使用して、トラブルシューティングのワークフローを通知および改善し、 ONTAP 要素管理ツールへの依存をさらに軽減します。
+
+
+
+==== ログを照会しています
+
+ONTAP システムの場合、 Cloud Insights クエリには強力な機能が搭載されています link:concept_log_explorer.html["ログエクスプローラ"]を使用すると、 EMS ログエントリの調査とトラブルシューティングを簡単に行うことができます。
+
+image:LogQueryExplorer.png["ログクエリ"]
+
+
+
+==== Data Collector レベルの通知。
+
+システム定義のアラート用モニタとカスタム作成のモニタに加えて、 ONTAP データコレクタのアラート通知も設定できます。これにより、他のモニタアラートとは無関係に、コレクタレベルのアラートの受信者を指定できます。
+
+
+
+==== Cloud Secure ロールの柔軟性が向上します
+
+に基づいて、ユーザに Cloud Secure 機能へのアクセスを許可できます link:concept_user_roles.html#permission-levels["ロール"] 管理者が設定します。
+
+|===
+
+
+| ロール | Cloud Secure アクセス 
+
+
+| 管理者 | アラート、フォレンジック、データコレクタ、自動応答ポリシー、 Cloud Secure 用 API など、すべての Cloud Secure 機能を実行できます。管理者は、他のユーザを招待することもできますが、割り当てることができるのは Cloud Secure ロールのみです。 
+
+
+| ユーザ | アラートを表示および管理し、フォレンジックを表示できます。ユーザーロールは、アラートステータスの変更、メモの追加、スナップショットの手動作成、ユーザーアクセスの制限を行うことができます。 
+
+
+| ゲスト | アラートおよびフォレンジックを表示できます。ゲストロールは、アラートステータスの変更、メモの追加、スナップショットの手動作成、ユーザーアクセスの制限を行うことはできません。 
+|===
+
+
+==== オペレーティングシステムのサポート
+
+CentOS 8.x のサポートは、現在 * CentOS 8 Stream * のサポートに置き換えられています。CentOS 8.x は、 2021 年 12 月 31 日にサポート終了となります。
+
+
+
+==== Data Collector のアップデート
+
+ベンダーの変更を反映した Cloud Insights データコレクタ名がいくつか追加されています。
+
+|===
+
+
+| ベンダー / モデル | 前の名前 
+
+
+| Dell EMC PowerScale | Isilon 
+
+
+| HPE Alletra 9000/Primera | 3PAR 
+
+
+| HPE Alletra 6000 | Nimble 
+|===
+'''
+
+
+=== 2021年11月
+
+
+
+==== Adaptive Dashboards （アダプティブダッシュボード
+
+_ 属性の新しい変数と、ウィジェットで変数を使用する機能 _ 。
+
+ダッシュボードは、かつてないほど強力で柔軟性に優れています。属性変数を使用してアダプティブダッシュボードを構築することで、ダッシュボードを即座にフィルタリングできます。これらと既存の他のものを使用する link:concept_dashboard_features.html#variables["変数（ variables ）"] 環境全体の指標を確認するためのダッシュボードを 1 つ作成し、リソース名、タイプ、場所などでシームレスにフィルタリングダウンできるようになりました。ウィジェットの数値変数を使用して、ストレージサービスの GB あたりのコストなど、物理指標をコストに関連付けます。
+
+image:Variables_Drop_Down_Showing_Annotations.png[""]
+image:Variables_Attribute_Filtering.png[""]
+
+
+
+==== API 経由で Reporting Database にアクセスします
+
+サードパーティのレポート作成ツール、 ITSM ツール、自動化ツールとの統合機能が強化されました。 Cloud Insights の強力な機能です link:API_Overview.html["API"] Cognos Reporting 環境を使用せずに、 Cloud Insights Reporting データベースを直接照会できます。
+
+
+
+==== VM ランディングページのポッドテーブル
+
+VM と Kubernetes ポッド間のシームレスなナビゲーション：トラブルシューティングとパフォーマンスヘッドルーム管理を向上させるために、関連する Kubernetes ポッドの表が VM ランディングページに表示されるようになりました。
+
+image:Kubernetes_Pod_Table_on_VM_Page.png["VM ランディングページの Kubernetes ポッドの表"]
+
+
+
+==== Data Collector のアップデート
+
+* ECS で、ストレージとノードのファームウェアが報告されるようになりました
+* Isilon のプロンプト検出機能が向上しました
+* Azure NetApp Files は、パフォーマンスデータをより迅速に収集します
+* StorageGRID でシングルサインオン (SSO) がサポートされるようになりました。
+* Brocade CLI は、 X--4 のモデルを適切に報告します
+
+
+
+
+==== サポートされているその他のオペレーティングシステム
+
+Cloud Insights Acquisition Unit では、すでにサポートされている OS に加え、次のオペレーティングシステムがサポートされます。
+
+* CentOS （ 64 ビット） 8.4
+* Oracle Enterprise Linux （ 64 ビット） 8.4
+* Red Hat Enterprise Linux （ 64 ビット） 8.4
+
+
+'''
+
+
+=== 2021年10月
+
+
+
+==== K8S Explorer ページのフィルター
+
+link:kubernetes_landing_page.html["Kubernetes エクスプローラ"] ページフィルタを使用すると、 Kubernetes クラスタ、ノード、およびポッドの探索に表示されるデータを集中的に制御できます。
+
+image:Filter_Kubernetes_Explorer.png["Kubernetes Explorer のフィルタリングの例"]
+
+
+
+==== レポート用の K8s データ
+
+Reporting で Kubernetes データを使用できるようになりました。チャージバックやその他のレポートを作成できます。Kubernetes チャージバックデータを Reporting に渡すには、 Kubernetes クラスタとそのバックエンドストレージへのアクティブな接続が必要です。また、 Cloud Insights が Kubernetes クラスタとの間でデータを受信している必要があります。バックエンドストレージからデータを受信していない場合、 Cloud Insights は Kubernetes オブジェクトデータを Reporting に送信できません。
+
+image:Kubernetes_ETL_Example.png["チャージバックレポートに Kubernetes データが表示されます"]
+
+
+
+==== ダークテーマが到着しました
+
+あなたの多くは暗い主題を求め、 Cloud Insights は答えた。ライトテーマとダークテーマを切り替えるには、ユーザー名の横にあるドロップダウンをクリックします。image:DarkModeSwitch.png["[ ダークテーマに切り替える ] は、 [ ユーザー ] ドロップダウンから選択できます"]
+image:DarkModeDashboard.png["ダークテーマで表示される一般的なダッシュボードの画像"]
+
+
+
+==== Data Collector のサポート
+
+Cloud Insights データコレクタにいくつかの改善を加えました。主な特長は次のとおりです。
+
+* Amazon FSX for ONTAP の新しいコレクタ
+
+
+'''
+
+
+=== 2021年9月
+
+
+
+==== パフォーマンスポリシーが監視対象になりました
+
+監視とアラートは、 Cloud Insights 全体でパフォーマンスポリシーと違反に取って代わるものです。 link:task_create_monitor.html["モニタとのアラート"] 環境内の潜在的な問題や傾向をより柔軟に把握できます。
+
+
+
+==== モニタでのオートコンプリートの推奨事項、ワイルドカード、および式
+
+アラートを監視するモニタを作成する際に、フィルタを入力すると予測が可能になり、モニタのメトリックや属性を簡単に検索して見つけることができます。また、入力したテキストに基づいてワイルドカードフィルタを作成することもできます。
+
+image:Type-Ahead_Monitor_1.png["モニターのタイプアヘッドフィルター"]
+
+
+
+==== Telegraf Agent を更新
+
+テレグラム統合データの取り込みのためのエージェントがバージョン * 1.19.3* に更新され、性能とセキュリティが向上しました。更新を希望するユーザーは、の適切なアップグレードセクションを参照できます link:task_config_telegraf_agent.html["エージェントのインストール"] ドキュメント以前のバージョンのエージェントは、ユーザの操作を必要とせずに引き続き機能します。
+
+
+
+==== Data Collector のサポート
+
+Cloud Insights データコレクタにいくつかの改善を加えました。主な特長は次のとおりです。
+
+* Microsoft Hyper-V コレクタで、 WMI ではなく PowerShell が使用されるようになりました
+* 並行呼び出しのため、 Azure VM と VHD コレクタの処理速度が最大 10 倍になりました
+* HPE Nimble は、フェデレーテッド構成と iSCSI 構成をサポートしています
+
+
+また、常にデータ収集を改善しているため、次のような最近の変更点があります。
+
+* EMC Powerstore の新しいコレクタ
+* Hitachi Ops Center の新しいコレクタです
+* Hitachi Content Platform の新しいコレクタ
+* ONTAP コレクタを拡張して、ファブリックプールをレポートします
+* ストレージプールとボリュームのパフォーマンスで ANF を強化
+* EMC ECS で、ストレージノードとストレージパフォーマンス、およびバケット内のオブジェクト数が強化されました
+* ストレージノードと qtree の指標で EMC Isilon が強化されました
+* EMC Symetrix のボリューム QoS 制限メトリックが強化されました
+* ストレージノードの親シリアル番号を持つ強化された IBM SVC および EMC PowerStore
+
+
+'''
+
+
+=== 2021年8月
+
+
+
+==== 新しい監査ページのユーザーインターフェイス
+
+。 link:concept_audit.html["監査ページ"] よりシンプルなインターフェイスを提供し、監査イベントを .csv ファイルにエクスポートできるようになりました。
+
+
+
+==== ユーザロール管理の強化
+
+Cloud Insights では、ユーザロールとアクセス制御をより自由に割り当てることができるようになりました。ユーザに、監視、レポート、および Cloud Secure に対する詳細な権限を個別に割り当てることができるようになりました。
+
+つまり、監視、最適化、レポート機能への管理アクセスをより多くのユーザに許可しながら、機密性の高い Cloud Secure 監査およびアクティビティデータへのアクセスを必要なユーザだけに制限できます。
+
+link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html["詳細はこちら"] Cloud Insights のドキュメントに記載されている各アクセスレベルについて
+
+'''
+
+
+=== 2021年6月
+
+
+
+==== [ フィルタ ] での推奨事項、ワイルドカード、および式のオートコンプリート
+
+このリリースの Cloud Insights では、クエリやウィジェットでフィルタリングする名前と値をすべて把握している必要はありません。フィルタリングを行う場合は、入力を開始 Cloud Insights するだけで、テキストに基づいて値が提示されます。ウィジェットに表示するアプリケーション名や Kubernetes 属性を検索する必要はありません。
+
+フィルタを入力すると、選択可能な結果のスマートリストが表示されます。また、現在のテキストに基づいて * ワイルドカードフィルタ * を作成するオプションも表示されます。このオプションを選択すると、ワイルドカード式に一致するすべての結果が返されます。もちろん、フィルタに追加する値を個別に複数選択することもできます。
+
+image:Type-Ahead-Example-ingest.png["ワイルドカードフィルタ"]
+
+また、 NOT または OR を使用して、フィルタに * 式 * を作成したり、「 None 」オプションを選択してフィールドで null 値をフィルタリングしたりすることもできます。
+
+詳細については、をご覧ください link:task_create_query.html#more-on-filtering["フィルタリングオプション"] クエリおよびウィジェットで使用できます。
+
+
+
+==== Edition で使用可能な API
+
+Cloud Insights の強力な API にはこれまで以上にアクセス可能であり、 Alerts API が Standard Edition および Premium Edition で利用可能になりました。各エディションで使用できる API は次のとおりです。
+
+[cols="<,^s,^s,^s"]
+|===
+| API カテゴリ | 基本 | 標準 | Premium サービス 
+
+
+| Acquisition Unit の略 | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| データ収集 | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| アラート |  | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| 資産 |  | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| データの取り込み |  | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+|===
+
+
+==== Kubernetes の PV とポッドの可視化
+
+Cloud Insights を使用すると、 Kubernetes 環境のバックエンドストレージを可視化し、 Kubernetes ポッドと永続的ボリューム（ PVS ）を把握できます。IOPS 、レイテンシ、スループットなどの PV カウンタを、 1 台のポッドで使用されている PV カウンターから PV まで、そしてバックエンドのストレージデバイスまでのすべての方法で追跡できるようになりました。
+
+ボリュームまたは内部ボリュームのランディングページに、次の 2 つの新しいテーブルが表示される。
+
+image:Kubernetes_PV_Table.png["Kubernetes PV テーブル"]
+image:Kubernetes_Pod_Table.png["Kubernetes ポッドテーブル"]
+
+これらの新しいテーブルを利用するには、現在の Kubernetes エージェントをアンインストールして新規にインストールすることをお勧めします。Kbe State-Metrics バージョン 2.1.0 以降もインストールする必要があります。
+
+
+
+==== Kubernetes ノードから VM リンク
+
+Kubernetes Node ページで、をクリックしてノードの VM ページを開くことができます。VM ページには、ノード自体へのリンクも表示されます。
+
+image:Kubernetes_Node_Page_with_VM_Link.png["VM リンクが表示された Kubernetes ノードページ"]
+image:Kubernetes_VM_Page_with_Node_Link.png["ノードリンクを示す Kubernetes VM ページ"]
+
+
+
+==== パフォーマンスポリシーの置き換えをアラート監視します
+
+Cloud Insights は、複数のしきい値、 webhook 、 E メールによるアラート送信、単一のインターフェイスを使用したすべての指標のアラート送信などの利点を追加するために、 2021 年 7 月から 8 月までの間、 Standard Edition および Premium Edition のお客様を * Performance Policies * から * Monitor * に変換します。の詳細を確認してください link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html["アラートと監視"]では、このエキサイティングな変化に合わせて調整してください。
+
+
+
+==== Cloud Secure は NFS をサポートしています
+
+Cloud Secure で ONTAP データ収集用の NFS がサポートされるようになりました。SMB および NFS ユーザアクセスを監視し、ランサムウェア攻撃からデータを保護また、 Cloud Secure は、 NFS ユーザ属性を収集するための Active Directory および LDAP ユーザディレクトリもサポートしています。
+
+
+
+==== Cloud Secure スナップショットのパージ
+
+Cloud Secure では、スナップショットパージ設定に基づいてスナップショットが自動的に削除されるため、ストレージスペースが節約され、手動でスナップショットを削除する必要がなくなります。
+
+image:CloudSecure_SnapshotPurgeSettings.png["消去設定"]
+
+
+
+==== Cloud Secure のデータ収集速度
+
+1 つのデータコレクタエージェントシステムで、 Cloud Secure に 1 秒あたり最大 20,000 のイベントをポストできるようになりました。
+
+'''
+
+
+=== 2021年5月
+
+4 月に行った変更の一部を以下に示します。
+
+
+
+==== Telegraf Agent を更新
+
+テレグラム統合データの取り込み用エージェントは、パフォーマンスとセキュリティが向上し、バージョン 1.17.3 に更新されました。更新を希望するユーザーは、の適切なアップグレードセクションを参照できます link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html["エージェントのインストール"] ドキュメント以前のバージョンのエージェントは、ユーザの操作を必要とせずに引き続き機能します。
+
+
+
+==== アラートに対処方法を追加します
+
+オプションの概要を追加し、 [ アラート概要の追加 ] セクションに入力して、モニタの作成または変更時に追加のインサイトや修正アクションを追加できるようになりました。概要がアラートとともに送信されます。Insights と対処方法のフィールドには、アラートに対処するための詳細な手順とガイダンスが表示され、アラートのランディングページの概要セクションに表示されます。
+
+image:Monitors_Alert_Description.png["アラートの対処方法と概要"]
+
+
+
+==== すべてのエディションの Cloud Insights API
+
+API アクセスがすべてのエディションの Cloud Insights で利用できるようになりました。Basic エディションのユーザは、 Acquisition Unit と Data Collector のアクションを自動化できるようになりました。また、 Standard Edition ユーザは、メトリックを照会してカスタムメトリックを取り込むことができます。Premium Edition では、引き続きすべての API カテゴリをフルに使用できます。
+
+[cols="<,^s,^s,^s"]
+|===
+| API カテゴリ | 基本 | 標準 | Premium サービス 
+
+
+| Acquisition Unit の略 | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| データ収集 | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| 資産 |  | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| データの取り込み |  | image:SmallCheckMark.png[""] | image:SmallCheckMark.png[""] 
+
+
+| Data Warehouse |  |  | image:SmallCheckMark.png[""] 
+|===
+API の使用方法の詳細については、を参照してください link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger["API のドキュメント"]。
+
+'''
+
+
+=== 2021年4月
+
+
+
+==== モニタの管理が容易になります
+
+link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html#monitor-grouping["グループ化を監視します"] 環境内のモニタの管理を簡易化します。複数のモニタをグループ化して、 1 つのモニタとして一時停止できるようになりました。たとえば、インフラストラクチャのスタックで更新が発生している場合は、それらのすべてのデバイスからのアラートを 1 回のクリックで一時停止できます。
+
+モニタグループは、 ONTAP デバイスの管理を Cloud Insights に向上させる、画期的な新機能の最初の部分です。
+
+image:Monitors_GroupList.png["グループ化を監視します"]
+
+
+
+==== webhook を使用した拡張アラートオプション
+
+多くの商用アプリケーションをサポートしています link:task_create_webhook.html["ウェブフック"] 標準入力インターフェイスとして使用します。Cloud Insights では、このような配信チャネルの多くがサポートされるようになりました。 Slack 、 PagerDuty 、 Teams 、および Discord 用のデフォルトテンプレートが用意されています。また、カスタマイズ可能な汎用 Web フックを使用して、他の多くのアプリケーションをサポート
+
+image:Webhooks_Notifications_sm.png["Webhook 通知"]
+
+
+
+==== デバイス識別機能の向上
+
+監視とトラブルシューティングを改善し、正確なレポートを作成するためには、 IP アドレスやその他の ID ではなく、デバイス名を理解しておくと役立ちます。Cloud Insights では、というルールベースのアプローチを使用して、環境内のストレージデバイスと物理ホストデバイスの名前を自動的に識別できるようになりました link:concept_device_resolution_overview.html["* デバイス解決 *"]（ * Manage * メニューで使用できます）。
+
+
+
+==== もっと情報を求められました！
+
+お客様からの一般的な質問では、データの範囲を視覚化するためのデフォルトオプションが用意されています。そのため、サービス全体で次の 5 つの新しい選択肢が時間範囲ピッカーで利用できるようになりました。
+
+* 過去 30 分
+* 過去 2 時間
+* 過去 6 時間
+* 過去 12 時間
+* 過去 2 日間
+
+
+
+
+==== 1 つの Cloud Insights 環境で複数のサブスクリプションを登録できます
+
+4 月 2 日より、 Cloud Insights は、 1 つの Cloud Insights インスタンスで 1 つの顧客に対して同じエディションタイプの複数のサブスクリプションをサポートします。これにより、お客様は、 Cloud Insights サブスクリプションの一部をインフラ購入と共存させることができます。複数のサブスクリプションについては、ネットアップの営業にお問い合わせください。
+
+
+
+==== パスを選択します
+
+Cloud Insights のセットアップ中に、監視とアラートの開始方法と、ランサムウェアと内部の脅威の検出方法を選択できるようになりました。Cloud Insights は、選択したパスに基づいて開始環境を設定します。他のパスはあとでいつでも設定できます。
+
+
+
+==== 簡単な Cloud Secure オンボーディング
+
+また、 Cloud Secure の使用を今まで以上に簡単に開始でき、セットアップのための新しいチェックリストも追加されています。
+
+image:CloudSecure_SetupChecklist.png["Cloud Secure チェックリスト"]
+
+いつものように、お客様のご提案をお待ちしております。ng-cloudinsights-customerfeedback@netapp.com に送信します。
+
+'''
+
+
+=== 2021年2月
+
+
+
+==== Telegraf Agent を更新
+
+テレグラム統合データの取り込み用エージェントは、脆弱性およびバグ修正を含むバージョン 1.17.0 に更新されました。
+
+
+
+==== Cloud Cost Analyzer
+
+詳細について解説したクラウドコストで、ネットアップの Spot by NetApp のパワーを体験してください link:http://docs.netapp.com/us-en/cloudinsights/task_getting_started_with_cloud_cost.html["コスト分析"] 過去、現在、推定された支出のうち、環境内のクラウドの使用状況を可視化します。クラウドコストダッシュボードでは、クラウドのコストを明確に把握し、個々のワークロード、アカウント、サービスを詳細に把握できます。
+
+クラウドコストは、次のような大きな課題に役立ちます。
+
+* クラウドコストの追跡と監視
+* 廃棄物と潜在的な最適化領域を特定する
+* 実行可能アクションアイテムを配信しています
+
+
+クラウドコストは監視に重点を置いています。ネットアップのアカウントで Full Spot by NetApp にアップグレードすると、コストを自動削減し、環境を最適化できます。
+
+
+
+==== フィルタを使用した null 値を持つオブジェクトのクエリ
+
+Cloud Insights では、フィルタを使用して、値が NULL / なしの属性とメトリックを検索できるようになりました。このフィルタリングは、次の場所で任意の属性や指標に対して実行できます。
+
+* をクリックします
+* ダッシュボードウィジェットおよびページ変数で使用できます
+* をクリックします
+* モニターを作成するとき
+
+
+NULL / なしの値をフィルタリングするには ' 該当するフィルタのドロップダウンに _None_ オプションが表示されたら ' そのオプションを選択します
+
+image:Filter_Null_Example.png["ドロップダウンに NULL フィルタがあります"]
+
+
+
+==== 複数リージョンのサポート
+
+本日より、世界中のさまざまな地域で Cloud Insights サービスを提供します。これにより、米国外のお客様のパフォーマンスが向上し、セキュリティが強化されます。Cloud Insights / Cloud Secure は、環境を作成したリージョンに応じて情報を格納します。
+
+をクリックします link:http://docs.netapp.com/us-en/cloudinsights/security_information_and_region.html["こちらをご覧ください"] を参照してください。
+
+'''
+
+
+=== 2021年1月
+
+
+
+==== その他の ONTAP メトリックの名前変更
+
+ONTAP システムからのデータ収集の効率化に向けて継続的に取り組んでいる一環として、以下の ONTAP 指標の名前が変更されました。
+
+既存のダッシュボードウィジェットやこれらのいずれかの指標を使用するクエリがある場合は、新しい指標名を使用するようにそれらのウィジェットを編集または再作成する必要があります。
+
+[cols="1,1"]
+|===
+| 前のメトリック名 | 新しいメトリック名 
+
+
+| NetApp_ONTAP.DISK_constituent.total_transfers | NetApp_ONTAP.disk_constituent.total_iops 
+
+
+| NetApp_ONTAP.disk.total_transfers | NetApp_ONTAP.disk.total_iops 
+
+
+| NetApp_ONTAP.FCP_LIF.READ_DATA | NetApp_ONTAP.FCP_LIF.READ_Throughput 
+
+
+| NetApp_ONTAP.fcp_lif.write_data | NetApp_ONTAP.fcp_lif.write_throughput 
+
+
+| NetApp_ONTAP.iscsi_lif.read_data | NetAppONTAP.iscsi_lif.read_throughput 
+
+
+| NetApp_ONTAP.iscsi_lif.write_data | NetAppONTAP.iscsi_lif.write_throughput 
+
+
+| NetApp_ONTAP.LIF.recv_data | NetAppONTAP.LIF.recv_throughput 
+
+
+| netapp_ontap.lif.sent_data | netapp_ontap.lif.sent_throughput 
+
+
+| NetApp_ONTAP.LUN.READ_DATA | NetApp_ONTAP.LUN.READ_Throughput 
+
+
+| NetApp_ONTAP.LUN.write_data | NetApp_ONTAP.LUN.write_throughput 
+
+
+| NetApp_ONTAP.nic_common_rx_bytes | NetApp_ONTAP.nic_common_rx_throughput 
+
+
+| NetApp_ONTAP.nic_common.tx_bytes | NetApp_ONTAP.nic_common.tx_throughput 
+
+
+| NetApp_ontap .path.read_data | NetApp_ontap 。 path.read_throughput 
+
+
+| NetApp_ontap .path.write_data | NetApp_ontap 。 path.write_throughput 
+
+
+| NetApp_ontap .path.total_data | NetApp_ontap 。 path.total_throughput 
+
+
+| NetApp_ONTAP.policy_group.read_data | NetAppONTAP.policy_group.read_throughput 
+
+
+| NetApp_ONTAP.policy_group.write_data | NetAppONTAP.policy_group.write_throughput 
+
+
+| NetApp_ONTAP.policy_group.other_data | NetAppONTAP.policy_group.other_throughput 
+
+
+| NetApp_ONTAP.policy_group.total_data | NetAppONTAP.policy_group.total_throughput 
+
+
+| NetAppONTAP.system_node.disk_data_read | NetAppONTAP.SYSTEM_NODE.DISK_Throughput 読み取り 
+
+
+| NetApp_ONTAP.system_node.disk_data_written に書き込まれている | NetApp_ONTAP.SYSTEM_NODE.DISK_Throughput _ Written 
+
+
+| NetApp_ONTAP.SYSTEM_NODE.HDD_DATA 読み取り | NetAppONTAP.SYSTEM_NODE.HDD_Throughput 読み取り 
+
+
+| NetApp_ONTAP.system_node.HDD_data_written に作成されている必要があります | NetApp_ONTAP.SYSTEM_NODE.HDD_Throughput _ Written 
+
+
+| NetApp_ONTAP.SYSTEM_NODE.SSD_DATA 読み取り | NetAppONTAP.SYSTEM_NODE.SSD_Throughput 読み取り 
+
+
+| NetApp_ONTAP.system_node.ssd_data_written | NetAppONTAP.SYSTEM_NODE.SSD_Throughput _ Written 
+
+
+| netapp_ontap.system_node.net_data_recv | netapp_ontap.system_node.net_throughput_recv 
+
+
+| netapp_ontap.system_node.net_data_sent | netapp_ontap.system_node.net_throughput_sent 
+
+
+| NetApp_ONTAP.SYSTEM_NODE.FCP_DATA _ recv | NetApp_ONTAP.SYSTEM_NODE.FCP_Throughput _ recv 
+
+
+| NetApp_ONTAP.SYSTEM_NODE.FCP_DATA _ 送信されました | NetApp_ONTAP.SYSTEM_NODE.FCP_Throughput 送信 
+
+
+| NetApp_ONTAP.volume_node.cifs_read_data | NetAppONTAP.volume_node.cifs_read_throughput 
+
+
+| NetAppONTAP.volume_node.cifs_write_data | NetAppONTAP.volume_node.cifs_write_throughput 
+
+
+| NetAppONTAP.volume_node.nfs_read_data | NetAppONTAP.volume_node.nfs_read_throughput 
+
+
+| NetAppONTAP.volume_node.nfs_write_data | NetAppONTAP.volume_node.nfs_write_throughput 
+
+
+| NetAppONTAP.volume_node.iscsi_data | NetAppONTAP.volume_node.iscsi_throughput 
+
+
+| NetAppONTAP.volume_node.iscsi_write_data | NetAppONTAP.volume_node.iscsi_write_throughput 
+
+
+| NetAppONTAP.volume_node.fcp_read_data | NetAppONTAP.volume_node.fcp_read_throughput 
+
+
+| NetAppONTAP.volume_node.fcp_write_data | NetAppONTAP.volume_node.fcp_write_throughput 
+
+
+| NetApp_ONTAP.volume_read_data を選択します | NetAppONTAP.volume_read_throughput 
+
+
+| NetAppONTAP.volume_write_data | NetAppONTAP.volume_write_throughput 
+
+
+| NetApp_ONTAP.workload .read_data | NetAppONTAP.workload .read_throughput 
+
+
+| NetApp_ONTAP.workload .write_data | NetAppONTAP.workload .write_throughput 
+
+
+| NetAppONTAP.workload _volume. read_data | NetAppONTAP.workload _volume. read_throughput 
+
+
+| NetApp_ONTAP.workload _volume_write_data | NetAppONTAP.workload _volume. write_throughput 
+|===
+
+
+==== 新しい Kubernetes エクスプローラ
+
+。 link:kubernetes_landing_page.html["Kubernetes エクスプローラ"] Kubernetes クラスタのトポロジをわかりやすく表示できるため、エキスパートでなくても、クラスタレベルからコンテナやストレージまで、問題や依存関係をすばやく特定できます。
+
+Kubernetes 環境内のクラスタ、ノード、ポッド、コンテナ、ストレージのステータス、使用状況、健全性に関する Kubernetes Explorer のドリルダウンの詳細を使用して、さまざまな情報を調べることができます。
+
+image:Kubernetes_Cluster_Detail_Example.png["Kubernetes エクスプローラを使用します"]
+
+'''
+
+
+=== 2020年12月
+
+
+
+==== Kubernetes のインストールを簡易化
+
+Kubernetes Agent のインストールは合理化され、ユーザの操作が少なくて済みます。 link:task_config_telegraf_agent.html#kubernetes["Kubernetes Agent をインストールします"] Kubernetes のデータ収集機能が追加されました。
+
+'''
+
+
+=== 2020年11月
+
+
+
+==== その他のダッシュボード
+
+ONTAP に焦点を当てた次のダッシュボードがギャラリーに追加され、インポート可能になりました。
+
+* ONTAP ：アグリゲートのパフォーマンスと容量
+* ONTAP FAS / AFF - 容量利用率
+* ONTAP FAS/AFF - クラスタ容量
+* ONTAP FAS / AFF - 効率性
+* ONTAP FAS / AFF - FlexVol のパフォーマンス
+* ONTAP FAS / AFF ノードの運用 / 最適ポイント
+* ONTAP FAS / AFF - ポスト前の容量削減
+* ONTAP ：ネットワークポートのアクティビティ
+* ONTAP ：ノードプロトコルのパフォーマンス
+* ONTAP ：ノードワークロードのパフォーマンス（フロントエンド）
+* ONTAP ：プロセッサ
+* ONTAP ： SVM ワークロードのパフォーマンス（フロントエンド）
+* ONTAP ：ボリュームワークロードのパフォーマンス（フロントエンド）
+
+
+
+
+==== 表ウィジェットの列名を変更します
+
+表ウィジェットの _Metrics および Attributes_ セクションで列の名前を変更するには、編集モードでウィジェットを開き、列の上部にあるメニューをクリックします。新しい名前を入力して、 _Save_( 保存 ) をクリックするか、 _Reset_ ( リセット ) をクリックして列を元の名前に戻します。
+
+これは、表ウィジェットでの列の表示名にのみ影響します。指標 / 属性名は、基になるデータ自体では変更されません。
+
+image:Table_Widget_Column_Rename.png["表ウィジェットの名前変更列"]
+
+'''
+
+
+=== 2020年10月
+
+
+
+==== 統合データのデフォルトの拡張
+
+表ウィジェットのグループ化により、 Kubernetes 、 ONTAP Advanced Data 、およびエージェントノードのデフォルトの拡張が可能になりました。たとえば、 Kubernetes Nodes _by_Cluster_ をグループ化すると、クラスタごとの表に行が表示されます。そのあと、各クラスタの行を展開すると、ノードオブジェクトのリストが表示されます。
+
+
+
+==== Basic Edition テクニカルサポート
+
+Standard Edition および Premium Edition に加えて、 Cloud Insights Basic Edition をご利用のお客様にもテクニカルサポートをご利用いただけるようになりました。また、 Cloud Insights を使用すると、ネットアップサポートチケットを作成するためのワークフローが簡易化されています。
+
+
+
+==== Cloud Secure 公開 API
+
+Cloud Secure はをサポートします link:concept_cs_api.html["REST API"] アクティビティおよびアラート情報へのアクセス用。これは、 Cloud Secure 管理 UI で作成された API アクセストークンを使用して実行されます。 API アクセストークンは、 REST API にアクセスするために使用されます。Swagger の REST API のドキュメントは Cloud Secure と統合されています。
+
+'''
+
+
+=== 2020年9月
+
+
+
+==== 統合データを含むクエリーページ
+
+Cloud Insights クエリページでは、統合データ（ Kubernetes 、 ONTAP Advanced Metrics など）をサポートしています。統合データを使用している場合、クエリ結果の表には「分割画面」ビューが表示され、左側にオブジェクト / グループ化が、右側にオブジェクトデータ（属性 / 指標）が表示されます。統合データをグループ化するための属性を複数選択することもできます。
+
+image:QueryPageIntegrationData.png["統合データを示すクエリ"]
+
+
+
+==== 表ウィジェットでの単位表示形式
+
+表ウィジェットで、指標 / カウンタデータを表示する列（ギガバイト、 MB/ 秒など）を単位で表示できるようになりました。メトリックの表示単位を変更するには、列ヘッダーの「 3 つのドット」メニューをクリックし、「単位表示」を選択します。使用可能な任意の単位から選択できます。使用可能な単位は、表示列の指標データのタイプによって異なります。
+
+image:TableWidgetUnitManagement1.png["表ウィジェットのユニット管理"]
+
+
+
+==== Acquisition Unit の詳細ページ
+
+Acquisition Unit に専用のランディングページが追加されました。このページでは、 AU ごとに役立つ詳細情報やトラブルシューティングに役立つ情報を確認できます。。 link:task_configure_acquisition_unit.html#viewing-au-details["AU 詳細ページ"] AU のデータコレクタおよび有用なステータス情報へのリンクを示します。
+
+
+
+==== Cloud Secure Docker 依存関係が削除されました
+
+Cloud Secure による Docker への依存は解消されました。Cloud Secure エージェントのインストールに Docker は不要になりました。
+
+
+
+==== Reporting User Roles の場合
+
+Cloud Insights Premium Edition と Reporting を使用している場合は、環境内のすべての Cloud Insights ユーザに、 Reporting アプリケーションへのシングルサインオン（ SSO ）ログイン（など）が付与されます Cognos ）。メニューの * Reports * リンクをクリックすると、レポートに自動的にログインします。
+
+Cloud Insights でのユーザロールによって、の割り当てが決まります link:reporting_user_roles.html["Reporting ユーザのロール"]：
+
+|===
+
+
+| Cloud Insights ロール | Reporting ロール | レポート権限 
+
+
+| ゲスト | 消費者 | レポートの表示、スケジュール設定、実行、および言語やタイムゾーンなどの個人設定を行うことができます。消費者は、レポートの作成や管理タスクの実行はできません。 
+
+
+| ユーザ | 作成者 | すべてのコンシューマ機能を実行できるだけでなく、レポートやダッシュボードの作成と管理も可能です。 
+
+
+| 管理者 | 管理者 | レポートの構成やレポートタスクのシャットダウンおよび再起動など、すべての管理タスクだけでなく、作成者のすべての機能も実行できます。 
+|===
+
+NOTE: Cloud Insights レポートは 500 MU 以上の環境で使用できます。
+
+
+IMPORTANT: 現在の Premium Edition のお客様で、レポートを保持したい場合は、こちらをお読みください link:reporting_user_roles.html#important-note-for-existing-customers["既存のお客様にとって重要な注意事項です"]。
+
+
+
+==== データ取り込み用の新しい API カテゴリ
+
+Cloud Insights では、 * データの取り込み * API カテゴリが追加され、カスタムデータとエージェントをより詳細に制御できるようになりました。この API カテゴリおよびその他の API カテゴリの詳細なドキュメントは、 Cloud Insights で * Admin > API Access * に移動し、 _API Documentation_link をクリックすると参照できます。AU 詳細ページおよび AU リストページに表示される Note フィールドの AU にコメントを追加することもできます。
+
+'''
+
+
+=== 2020年8月
+
+
+
+==== 監視とアラート生成
+
+Cloud Insights Standard Edition には、ストレージオブジェクト、 VM 、 EC2 、およびポートのパフォーマンスポリシーを設定できるようになったほか、次の機能が追加されました link:task_create_monitor.html["モニタを設定します"] Kubernetes 、 ONTAP の高度な指標、 Telegraf プラグインの統合データのしきい値用。アラートをトリガーするオブジェクト指標ごとに監視を作成し、警告レベルまたは重大レベルのしきい値の条件を設定し、各レベルに必要な E メール受信者を指定するだけです。そのあとで、を実行できます  傾向を追跡したり、問題をトラブルシューティングしたりできます。
+
+image:define_monitor_conditions_2.png["モニター条件"]
+
+'''
+
+
+=== 2020 年 7 月
+
+
+
+==== Cloud Secure がスナップショットアクションを実行します
+
+Cloud Secure は、悪意のあるアクティビティが検出されたときにスナップショットを自動的に取得することでデータを保護し、データを安全にバックアップします。
+
+ランサムウェア攻撃やその他の異常なユーザアクティビティが検出されたときにスナップショットを取る自動応答ポリシーを定義できます。アラートページから手動で Snapshot を作成することもできます。
+
+自動 Snapshot の作成：image:AlertActionsAutomaticExample.png["アラート処置画面、 1000"]
+
+手動スナップショット：image:AlertActionsExample.png["アラート処置画面、 1000"]
+
+
+
+==== メトリック / カウンタの更新
+
+Cloud Insights UI および REST API で使用できる容量カウンタを次に示します。これまでは、これらのカウンタは Data Warehouse / Reporting でのみ使用できていました。
+
+[cols="2*"]
+|===
+| オブジェクトタイプ（ Object Type ） | カウンタ 
+
+
+| ストレージ | 容量 - スペアの物理容量 - 物理エラー 
+
+
+| ストレージプール | データ容量 - 使用済みデータ容量 - その他の合計容量 - 使用済み容量 - 合計容量 - 物理容量 - ソフトリミット 
+
+
+| 内部ボリューム | データ容量 - 使用済みデータ容量 - その他の合計容量 - 使用済みその他の容量 - クローンの合計削減容量 - 合計 
+|===
+
+
+==== Cloud Secure の潜在的な攻撃検出
+
+Cloud Secure はランサムウェアなどの潜在的な攻撃を検出するようになりました[Alerts] リストページでアラートをクリックすると ' 次のような詳細ページが開きます
+
+* 攻撃の時間
+* 関連付けられているユーザおよびファイルアクティビティ
+* 実行されたアクション
+* 追加情報は、潜在的なセキュリティ違反の追跡を支援します
+
+
+ランサムウェア攻撃の可能性を示すアラートページ：image:RansomwareAlertExample.png["ランサムウェアアラートの例"]
+
+ランサムウェア攻撃の詳細ページ：image:RansomwareDetailPageExample.png["Ransomware Detail Page の例"]
+
+
+
+==== AWS で Premium Edition に登録
+
+Cloud Insights の試用期間中は、次の操作を実行できます link:concept_subscribing_to_cloud_insights.html["セルフサブスクライブ"] AWS Marketplace から Cloud Insights Standard Edition または Premium Edition に移動する。これまでは、 AWS Marketplace でのみ Standard Edition に自分で登録することができました。
+
+
+
+==== 拡張テーブルウィジェット
+
+ダッシュボード / アセットページの表ウィジェットには、次の拡張機能が含まれています。
+
+* 「分割画面」ビュー：表ウィジェットの左側にはオブジェクト / グループ化、右側にはオブジェクトデータ（属性 / 指標）が表示されます。
++
+image:TableWidgetLeftRightPanes.png["左右のペインを示す表ウィジェット"]
+
+* 複数の属性のグループ化：統合データ（ Kubernetes 、 ONTAP Advanced Metrics 、 Docker など）については、グループ化の対象として複数の属性を選択できます。選択したグループ化属性に従ってデータが表示されます。
++
+統合データによるグループ化（編集モードで表示）：image:TableWidgetIntegrationEditMode.png["表ウィジェットでの統合データのグループ化"]
+
+* インフラデータ（ストレージ、 EC2 、 VM 、ポートなど）をグループ化することは、従来と同様に単一の属性によって行われます。オブジェクトではない属性によってグループ化する場合、テーブルでグループ行を展開すると、グループ内のすべてのオブジェクトが表示されます。
++
+インフラストラクチャデータによるグループ化（表示モードで表示）：image:TableWidgetPerformanceData.png["表ウィジェットでのインフラストラクチャデータのグループ化"]
+
+
+
+
+
+==== メトリックフィルタリング
+
+ウィジェット内のオブジェクトの属性でフィルタリングできるだけでなく、指標もフィルタリングできるようになりました。
+
+image:MetricsFiltering.png["メトリックフィルタリング"]
+
+統合データ（ Kubernetes 、 ONTAP 高度なデータなど）を使用する場合、指標フィルタリングを使用すると、データ系列の集計値でフィルタが機能し、グラフからオブジェクト全体が削除されるのとは異なり、プロットされたデータ系列から個々のデータポイントや一致しないデータポイントが削除されます。
+
+image:IntegrationMetricFilterExample.png["統合メトリックフィルタリング"]
+
+
+
+==== ONTAP 詳細カウンタデータ
+
+Cloud Insights は、 ONTAP デバイスから収集された多数のカウンタと指標を提供する NetApp ONTAP 固有の * Advanced Counter Data * を利用しています。ONTAP の Advanced Counter データは、ネットアップのすべてのお客様がご利用になれます。 ONTAPこれらの指標を使用して、 Cloud Insights のウィジェットやダッシュボードで、カスタマイズした幅広いデータを視覚化できます。
+
+ONTAP の高度なカウンタを確認するには、ウィジェットのクエリで「 NetApp_ONTAP 」を検索し、カウンタから選択します。
+
+image:netapp_ontap counters.png["ONTAP Advanced Counters を検索しています"]
+
+カウンタ名の一部を入力することで、検索条件を絞り込むことができます。例：
+
+* LIF _
+* _ アグリゲート _
+* _ 外付け _ VScan サーバ _
+* その他
+
+
+image:ONTAP_Widget_Example2.png["ONTAP ウィジェットの例 - WAFL"]
+image:ONTAP_Widget_Example1.png["ONTAP ウィジェットの例 - CP の読み取り"]
+
+次の点に注意してください。
+
+* 新しい ONTAP データコレクタでは、高度なデータ収集がデフォルトで有効になります。既存の ONTAP データコレクタに対して高度なデータ収集を有効にするには、データコレクタを編集し、 _Advanced Configuration_Section を展開します。
+* 7-Mode の ONTAP では高度なデータ収集を使用できません。
+
+
+
+
+===== Advanced Counter Dashboards のことです
+
+Cloud Insights には、 ONTAP アドバンストカウンタの可視化を開始するのに役立つ、さまざまな設計済みダッシュボードが用意されています。これらのダッシュボードでは、 _ アグリゲートパフォーマンス _ 、 _ ボリュームワークロード _ 、 _ プロセッサアクティビティ _ などのトピックを確認できます。ONTAP データコレクタが 1 つ以上設定されている場合は、ダッシュボード一覧ページのダッシュボードギャラリーからインポートできます。
+
+
+
+===== 詳細はこちら。
+
+ONTAP 詳細データの詳細については、次のリンクを参照してください。
+
+* https://mysupport.netapp.com/site/tools/tool-eula/netapp-harvest[] （注：ネットアップサポートにサインインする必要があります）。
+* https://nabox.org/faq/[]
+
+
+
+
+==== ポリシーと違反メニュー
+
+パフォーマンスポリシーと違反が [* アラート ] メニューに表示されるようになりました。ポリシーと違反機能は変更されません。
+
+image:PoliciesMenuChange.png["ポリシーと違反メニュー"]
+
+
+
+==== Telegraf Agent を更新
+
+テレグラム統合データの取り込み用エージェントがに更新されました link:https://docs.influxdata.com/telegraf/v1.14/["バージョン 1.14"]には、バグ修正、セキュリティ修正、および新しいプラグインが含まれています。
+
+注： Kubernetes プラットフォームで Kubernetes データコレクタを設定する際、「 clusterrole 」属性に必要な権限がないため、ログに「 HTTP status 403 Forbidden 」エラーが表示されることがあります。
+
+この問題を回避するには、エンドポイントアクセスクラスタロールの _rules に以下の強調表示された行を追加し、 Tegraf ポッドを再起動します。
+
+[listing]
+----
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - extensions
+  - policy
+  - rbac.authorization.k8s.io
+  attributeRestrictions: null
+  resources:
+  - nodes/metrics
+  - nodes/proxy     <== Add this line
+  - nodes/stats
+  - pods            <== Add this line
+  verbs:
+  - get
+  - list            <== Add this line
+----
+'''
+
+
+=== 2020 年 6 月
+
+
+
+==== Data Collector エラーレポートの簡易化
+
+データコレクタページの _Send Error Report_ ボタンを使用すると、データコレクタエラーのレポートが簡単になります。ボタンをクリックすると、エラーに関する基本情報がネットアップに送信され、問題の調査が求められます。Cloud Insights を押すと、ネットアップに通知されたことを示すメッセージが表示され、 Error Report ボタンが無効になります。このボタンをクリックすると、データコレクタについてのエラーレポートが送信されたことを示します。このボタンは、ブラウザページが更新されるまで無効のままです。
+
+image:DCErrorReportButton.png["[ エラーレポート ] ボタン"]
+
+
+
+==== ウィジェットの改良
+
+ダッシュボードウィジェットでは、次の点が強化されています。これらの機能強化はプレビュー機能とみなされ、すべての Cloud Insights 環境で利用できるわけではありません。
+
+* 新しいオブジェクト / 指標選択機能：オブジェクト（ストレージ、ディスク、ポート、ノードなど）と関連する指標（ IOPS 、レイテンシ、 CPU 数など）を、強力な検索機能を備えた 1 つの包括的なドロップダウンウィジェットで使用できるようになりました。ドロップダウンに複数の条件を部分的に入力すると、それらの条件を満たすすべてのオブジェクト指標が Cloud Insights に表示されます。
+
+
+image:Object_Metric_Chooser.png["オブジェクト / メトリックセレクタ"]
+
+* 複数のタグのグループ化：統合データ（ Kubernetes など）を操作する場合、複数のタグ / 属性でデータをグループ化できます。たとえば、 Kubernetes のネームスペースとコンテナ名別のメモリ使用量の合計です。
+
+
+image:MultipleGroupsIntegrationLineChart.png["統合データを表示する際の複数のグループ化"]
+
+'''
+
+
+=== 2020年5月
+
+
+
+==== Reporting User Roles の場合
+
+Reporting に追加されたロールは次のとおりです。
+
+* Cloud Insights コンシューマ：レポートの実行と表示が可能です
+* Cloud Insights Author ： Consumer 機能を実行できるほか、レポートやダッシュボードを作成、管理することもできます
+* Cloud Insights 管理者：作成者機能およびすべての管理タスクを実行できます
+
+
+
+
+==== Cloud Secure アップデート
+
+Cloud Insights では、 Cloud Secure に関する次の最近の変更が行われています
+
+Forensics > Activity Forensics ページでは、ユーザーアクティビティを分析および調査するための 2 つのビューを提供しています。
+
+* ユーザアクティビティに重点を置いたアクティビティビュー（操作は何か？どこで実施したか？）
+* ユーザーがアクセスしたファイルに焦点を合わせたエンティティビュー。
+
+
+image:CSActivityForensicsExample.png["エンティティページの例"]
+
+また、アラート E メール通知にアラートページへの直接リンクが追加されました。
+
+
+
+==== ダッシュボードのグループ化
+
+ダッシュボードのグループ化により、パフォーマンスが向上します link:concept_dashboard_features.html#dashboard-groups["ダッシュボードの管理"] あなたに関係があります。関連するダッシュボードをグループに追加して、ストレージや仮想マシンなどを「ワンストップ」で管理できます。
+
+グループはユーザごとにカスタマイズされるため、 1 人のグループが他のユーザと異なる場合があります。グループは必要な数だけ作成でき、各グループにダッシュボードをいくつでも配置できます。
+
+image:DashboardGroupNoPin.png["ダッシュボードグループ"]
+
+
+
+==== ダッシュボードのピン留め
+
+お気に入りが常にリストの先頭に表示されるように、ダッシュボードを固定することができます。
+
+image:DashboardPin.png["ダッシュボードピン"]
+
+
+
+==== TV モードと自動更新
+
+link:concept_dashboard_features.html#tv-mode-and-auto-refresh["TV モードと自動更新"] ダッシュボードやアセットページにほぼリアルタイムでデータを表示できます。
+
+* *TV モード * は、すっきりとしたディスプレイを提供します。ナビゲーションメニューは非表示になっており、データ表示用の画面のスペースが増えます。
+* ダッシュボードとアセットランディングページのウィジェットのデータ * 自動更新 * 選択したダッシュボードの期間（ダッシュボードの時間を上書きするように設定されている場合は、ウィジェットの時間範囲）で設定された更新間隔（ 10 秒ごと）に基づいてデータが表示されます。
+
+
+TV モードと自動更新機能を組み合わせることで、 Cloud Insights データのライブビューが提供され、シームレスなデモンストレーションや社内モニタリングに最適です。
+
+'''
+
+
+=== 2020年4月
+
+
+
+==== ダッシュボードの新しい時間範囲の選択肢
+
+ダッシュボードおよびその他の Cloud Insights ページの時間範囲の選択に _Last 1 Hour_Last 15 Minutes_ が含まれるようになりました。
+
+
+
+==== Cloud Secure アップデート
+
+Cloud Insights では、 Cloud Secure に関する次の最近の変更が行われています
+
+* ファイルおよびフォルダのメタデータの変更が認識され、ユーザが権限、所有者、またはグループ所有権を変更したかどうかを確認できるようになりました。
+* ユーザアクティビティレポートを CSV にエクスポートします。
+
+
+Cloud Secure は、ファイルおよびフォルダに対するすべてのユーザアクセス操作を監視して監査します。アクティビティ監査では、内部セキュリティポリシーへの準拠、 PCI 、 GDPR 、 HIPAA などの外部コンプライアンス要件への準拠、データ侵害やセキュリティインシデント調査を実施できます。
+
+
+
+==== デフォルトのダッシュボード時間
+
+ダッシュボードのデフォルトの期間は、 24 時間ではなく 3 時間に変更されました。
+
+
+
+==== 集約時間の最適化
+
+最適化 link:concept_dashboard_features.html#aggregating-data["時間の集約"] タイムシリーズウィジェット（ライン、スプライン、エリア、積み上げ面グラフ）の間隔は、ダッシュボード / ウィジェットの 3 時間および 24 時間の時間範囲でより頻繁になり、データをより迅速にグラフ化できます。
+
+* 3 時間の時間範囲は、 1 分の集約間隔に最適化されます。これまでは 5 分でした。
+* 24 時間の時間範囲は、 30 分の集約間隔に最適化されます。以前は 1 時間でしたが、
+
+
+カスタムインターバルを設定して、最適化された集計を上書きすることもできます。
+
+
+
+==== 単位の自動フォーマットを表示します
+
+ほとんどのウィジェットでは、 Cloud Insights は値を表示するベースユニットを認識しています。たとえば、 _mabm_,_unse_,_percent_,_milliseconds(ms) _ 、 など link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data["自動的にフォーマットします"] 最も読み取り可能な単位のウィジェット。たとえば、データ値が 1 、 234 、 5678 、 890 バイトの場合、自動的に 1.23 ギビバイトにフォーマットされます。多くの場合、 Cloud Insights は取得するデータの最適な形式を認識しています。最適な形式がわからない場合や、自動書式設定を上書きするウィジェットの場合は、目的の形式を選択できます。
+
+image:used_memory_in_bytes_gb.png["ウィジェットの自動フォーマット、幅 =480"]
+
+
+
+==== API を使用してアノテーションをインポート
+
+Cloud Insights Premium Edition の強力な API を使用して、次のことが可能になりました link:task_annotation_import.html["アノテーションをインポートする"] をクリックし、 .csv ファイルを使用してオブジェクトに割り当てます。アプリケーションをインポートし、ビジネスエンティティを同じように割り当てることもできます。
+
+image:api_assets_import.png["アノテーションのインポート"]
+
+
+
+==== ウィジェットセレクタの簡易化
+
+すべてのウィジェットタイプを 1 つの一度に表示する新しいウィジェットセレクタでは、ダッシュボードやアセットランディングページにウィジェットを簡単に追加できます。追加するウィジェットタイプを特定するために、ウィジェットタイプのリストをスクロールする必要がなくなりました。関連ウィジェットは、新しいセレクタの近くで色分けされ、グループ化されます。
+
+image:NewWidgetPicker.png["新しいウィジェットセレクタ"]
+
+'''
+
+
+=== 2020年2月
+
+
+
+==== Premium Edition の API
+
+Cloud Insights Premium Edition には、が付属しています link:API_Overview.html["強力な API"] これを使用して、 Cloud Insights を CMDB や他のチケットシステムなどの他のアプリケーションと統合できます。
+
+Swagger ベースの詳細情報は、 * Admin > API Acccess * の * API Documentation リンクから参照できます。Swagger では、 API の簡単な概要情報と使用状況の情報を提供しており、環境内の各 API を試すことができます。
+
+Cloud Insights API では、アクセストークンを使用して、資産や収集などのカテゴリの API にアクセスする権限ベースのアクセスを提供します。
+
+image:API_Documentation.png["API のドキュメント"]
+
+
+
+==== Data Collector を追加した後の初期ポーリング
+
+以前は、新しいデータコレクタを設定すると、 Cloud Insights はデータコレクタをただちにポーリングして collector_inventory_data を収集しましたが、設定されたパフォーマンスポーリング間隔（通常は 15 分）まで待機して initial_performion_data が収集されます。そのあと、別の間隔を待ってから 2 回目のパフォーマンスポーリングを開始します。つまり、新しいデータコレクタから有意義なデータが取得されるまでに、最大 30 分 _ かかることになります。
+
+データコレクタ link:task_configure_data_collectors.html["ポーリング"] は、インベントリのポーリング直後に最初のパフォーマンスポーリングが行われるように大幅に改善され、最初のパフォーマンスポーリングが完了してから数秒以内に 2 番目のパフォーマンスポーリングが実行されるようになりました。これにより、 Cloud Insights は、非常に短時間でダッシュボードやグラフに有用なデータの表示を開始できます。
+
+このポーリング動作は、既存のデータコレクタの設定を編集したあとにも発生します。
+
+
+
+==== ウィジェットの重複を容易にします
+
+ダッシュボードやランディングページにウィジェットのコピーを簡単に作成できるようになりました。ダッシュボード編集モードで、ウィジェットのメニューをクリックし、 * 複製 * を選択します。ウィジェットエディタが起動し、元のウィジェットの設定とウィジェット名に「 copy 」というサフィックスが付きます。必要な変更を簡単に加えて、新しいウィジェットを保存することができます。ウィジェットはダッシュボードの下部に配置され、必要に応じて配置することができます。すべての変更が完了したら、必ずダッシュボードを保存してください。
+
+image:DuplicateWidget.png["ウィジェットを複製します"]
+
+
+
+==== シングルサインオン（ SSO ）
+
+Cloud Insights Premium Edition では、管理者は * を有効にできますlink:concept_user_roles.html#single-sign-on-sso-accounts["単一 Sign-On"]* （ SSO ）は、企業ドメイン内のすべてのユーザの Cloud Insights へのアクセスを個別に招待する必要がありません。SSO が有効になっている場合、同じドメインの E メールアドレスを持つすべてのユーザは、各自の企業クレデンシャルを使用して Cloud Insights にログインできます。
+
+
+NOTE: SSO は Cloud Insights Premium Edition でのみ使用可能で、 Cloud Insights で有効にする前に設定する必要があります。SSO 設定にはが含まれます link:https://services.cloud.netapp.com/misc/federation-support["アイデンティティフェデレーション"] NetApp Cloud Central を使用フェデレーションを使用すると、シングルサインオンユーザが、社内ディレクトリのクレデンシャルを使用して NetApp Cloud Central アカウントにアクセスできます。
+
+'''
+
+
+=== 2020年1月
+
+
+
+==== Swagger REST API のドキュメント
+
+Swagger では、 Cloud Insights で使用可能な REST API のほか、その用途や構文についても説明しています。Cloud Insights API の詳細については、を参照してください link:http://docs.netapp.com/us-en/cloudinsights/API_Overview.html["ドキュメント"]。
+
+
+
+==== Feature Tutorials Progress Bar ( 機能チュートリアルの進行状況
+
+機能チュートリアルのチェックリストは上部のバナーに移動され、進行状況を示すインジケータが表示されます。チュートリアルは、閉じるまで各ユーザーに提供され、 Cloud Insights では常に利用できます link:concept_feature_tutorials.html["ドキュメント"]。
+
+image:TutorialProgress.png["チュートリアルチェックリストの進行状況"]
+
+
+
+==== Acquisition Unit の変更
+
+Acquisition Unit （ AU ）をインストール済みの AU と同じ名前のホストまたは VM にインストールする場合、 Cloud Insights では、 AU 名に「 _1 」、「 _2 」を追加して一意の名前が保証されます。 など。これは、最初に Cloud Insights から AU を削除せずに、同じ VM から AU をアンインストールして再インストールする場合にも当てはまります。別の AU 名を使用したい場合は、問題ありません。インストール後に AU の名前を変更できます。
+
+
+
+==== ウィジェットの時間集約を最適化
+
+ウィジェットでは、設定した _Optimised _ time 集計間隔または _Custom_interval のいずれかを選択できます。最適化された集計では、ダッシュボードで選択した時間範囲（ダッシュボードの時間を上書きする場合はウィジェットの時間範囲）に基づいて、適切な時間間隔が自動的に選択されます。間隔は、ダッシュボードまたはウィジェットの時間範囲が変更されると動的に変わります。
+
+
+
+==== 「 Getting Started with Cloud Insights 」プロセスがシンプルになりました
+
+Cloud Insights の使用を開始するプロセスが簡易化され、初回セットアップがスムーズになり、簡単になりました。最初のデータコレクタを選択し、指示に従います。Cloud Insights では、データコレクタと、必要なエージェントまたは Acquisition Unit の設定手順を説明します。ほとんどの場合、最初のダッシュボードも 1 つ以上インポートするため、環境に関する分析情報を短時間で取得できます（ Cloud Insights で意味のあるデータを収集するには最大 30 分かかります）。
+
+その他の改善点：
+
+* Acquisition Unit のインストールはシンプルで、処理も高速です。
+* [ アルファベット順のデータコレクタ ] を選択すると、探しているデータコレクタを簡単に見つけることができます。
+* Data Collector のセットアップ手順の改善がより簡単になりました。
+* 経験豊富なユーザーは、ボタンをクリックするだけで、開始プロセスを省略できます。
+* 新しい進行状況バーには、進行中の状態が表示されます。
++
+image:Onboarding_Progress.png["進捗バー"]
+
+
+
+'''
+
+
+=== 2019年12月
+
+
+
+==== ビジネスエンティティはフィルタで使用できます
+
+ビジネスエンティティのアノテーションは、クエリ、ウィジェット、パフォーマンスポリシー、およびランディングページのフィルタで使用できます。
+
+
+
+==== ドリルダウンは、単一値ウィジェットとゲージウィジェット、および「すべて」でロールされたウィジェットで使用できます。
+
+単一値ウィジェットまたはゲージウィジェットの値をクリックすると、ウィジェットで最初に使用されたクエリの結果を示すクエリページが開きます。また、データが「すべて」で集計されているウィジェットの凡例をクリックすると、ウィジェットで最初に使用したクエリの結果を示すクエリページも開きます。
+
+
+
+==== 試用期間が延長されました
+
+Cloud Insights の無償トライアルに登録された新規ユーザは、製品を評価するために 30 日間の期間を用意しています。これは、過去 14 日間の試用期間からの増加です。
+
+
+
+==== 管理ユニットの計算
+
+Cloud Insights の管理ユニット（ MU ）の計算が次のように変更されました。
+
+* 1 台の管理対象ユニット = 2 台のホスト（任意の仮想マシンまたは物理マシン）
+* 1 管理ユニット = 物理ディスクまたは仮想ディスクのフォーマットされていない容量の 4TB
+
+
+この変更により、既存の Cloud Insights サブスクリプションを使用して監視できる環境容量が 2 倍になります。
+
+'''
+
+
+=== 2019年11月
+
+
+
+==== エディション機能比較表
+
+[*Admin] > [Subscription*] ページ link:concept_subscribing_to_cloud_insights.html#key-features["比較表"] Cloud Insights の Basic 、 Standard 、および Premium Edition で使用できる機能セットのリストが更新されました。ネットアップでは常にクラウドサービスの改善に取り組んでいますので、このページを頻繁にチェックして、進化するビジネスニーズに最適なエディションをお探しください。
+
+'''
+
+
+=== 2019年10月
+
+
+
+==== レポート作成
+
+link:reporting_overview.html["* Cloud Insights Reporting*"] は、事前定義済みのレポートを表示したりカスタムレポートを作成したりできる、ビジネスインテリジェンスツールです。Reporting を使用すると、次のタスクを実行できます。
+
+* 事前定義済みのレポートを実行します
+* カスタムレポートを作成する
+* レポートの形式と配信方法をカスタマイズする
+* レポートが自動的に実行されるようにスケジュールを設定する
+* レポートを E メールで送信
+* データのしきい値を色で表します
+
+
+Cloud Insights レポートでは、チャージバック、消費分析、予測などの領域用のカスタムレポートを生成できます。また、回答に関する次のような質問にも対応できます。
+
+* 所有しているインベントリ
+* インベントリの場所
+* アセットの使用者
+* ビジネスユニットに割り当てられているストレージのチャージバック
+* ストレージ容量の追加購入が必要になるまでの期間
+* ビジネスユニットが適切なストレージ階層に配置されているか。
+* 1 カ月、 1 四半期、 1 年のストレージ割り当ての変化
+
+
+Cloud Insights * Premium Edition * ではレポート作成が可能です。
+
+
+
+==== Active IQ の機能拡張
+
+link:concept_activeiq.html["Active IQ のリスク"] ダッシュボードテーブルのウィジェットで使用するだけでなく、照会できるオブジェクトとしても使用できるようになりました。リスクオブジェクトには次の属性が含まれます。 * カテゴリ * 軽減カテゴリ * 潜在的影響 * リスクの詳細 * 重大度 * ソース * ストレージ * ストレージノード * UI カテゴリ
+
+'''
+
+
+=== 2019 年 9 月
+
+
+
+==== 新しいゲージウィジェット
+
+ダッシュボードに単一値のデータを表示するウィジェットが、指定したしきい値に基づいて人目を引く色で 2 つ追加されました。値は、 * ソリッドゲージ * または * Bullet Gauge * のいずれかを使用して表示できます。警告範囲内にある値はオレンジで表示されます。Critical 範囲の値は赤で表示されます。警告しきい値を下回る値は緑で表示されます。
+
+image:Gauge-Solid.png["固体 / 従来型ゲージ"]
+image:Gauge-Bullet.png["ブレットゲージ"]
+
+
+
+==== 単一値ウィジェットの条件付きカラーフォーマット
+
+設定したしきい値に基づいて、背景色の単一値ウィジェットを表示できるようになりました。
+
+image:Single-Value Widgets - Formatted.png["書式設定された単一値ウィジェット"]
+
+
+
+==== オンボーディング中にユーザーを招待する
+
+オンボーディングプロセスの任意の時点で、 [ 管理 ] 、 [ ユーザー管理 ] 、 [ ユーザー ] の順にクリックして、 Cloud Insights 環境に他のユーザーを招待できます。オンボーディングが完了してデータが収集されると、 _Guest_or_User_roles を持つユーザにはより大きなメリットがもたらされることに注意してください。
+
+
+
+==== Data Collector 詳細ページの改善
+
+データコレクタの詳細ページが改善され、読み取り可能な形式でエラーが表示されるようになりました。エラーがページ上の別のテーブルに表示されるようになりました。データコレクタで複数のエラーが発生した場合は、エラーがそれぞれ別の行に表示されます。
+
+'''
+
+
+=== 2019年8月
+
+
+
+==== すべて対使用可能なデータコレクタ
+
+データコレクタを環境に追加するときに、サブスクリプションレベルまたはすべてのデータコレクタに基づいて使用可能なデータコレクタのみを表示するようにフィルタを設定できます。
+
+
+
+==== Active IQ 統合
+
+Cloud Insights は、ネットアップのお客様とそのハードウェア / ソフトウェアシステムに対し、可視化、分析、その他のサポート関連サービスを提供するネットアップ ActiveIQ からデータを収集します。Cloud Insights は、 ONTAP データ管理システムと統合されます。を参照してください link:concept_activeiq.html["Active IQ"] を参照してください。
+
+'''
+
+
+=== 2019 年 7 月
+
+
+
+==== ダッシュボードの機能強化
+
+ダッシュボードとウィジェットが次のように改善されました。
+
+* 合計、最小、最大、平均に加えて、 * カウント * は単一値ウィジェットでの集計オプションになりました。「カウント」でロールアップする場合、 Cloud Insights はオブジェクトがアクティブであるかどうかをチェックし、アクティブなオブジェクトだけをカウントに追加します。結果の番号は、集約およびフィルタの対象となります。
+* 単一値ウィジェットでは、 0 、 1 、 2 、 3 、または 4 桁の小数桁数を表示するように選択できるようになりました。
+* 折れ線グラフには、 1 つのカウンタをプロットするときの軸ラベルと単位が表示されます。
+* * Transform * オプションは、すべての指標の時系列ウィジェットでサービス統合データに使用できるようになりました。タイムシリーズウィジェット（ Line 、 Spline 、 Area 、 Stacked Area ）のサービス統合（ Telegraf ）カウンタまたはメトリックの場合、任意の方法を選択できます link:concept_telegraf_display_options.html["値を変換します"]。なし（表示値はそのまま）、合計、デルタ、累積など
+
+
+
+
+==== Basic Edition へのダウングレード
+
+過去 7 日間にポーリングを正常に完了した設定済みのネットアップデバイスがない場合、 Basic Edition へのダウングレードが失敗してエラーメッセージが表示されます。
+
+
+
+==== 収集 Kue-State-Metrics
+
+。 link:task_config_telegraf_kubernetes.html["Kubernetes Data Collector を実行します"] kube-state-metrics プラグインからオブジェクトとカウンタを収集し、 Cloud Insights で監視できる指標の数と範囲を大幅に拡大します。
+
+'''
+
+
+=== 2019 年 6 月
+
+
+
+==== Cloud Insights エディション
+
+Cloud Insights には、予算とビジネスニーズに合わせて、さまざまなエディションが用意されています。ネットアップサポートアカウントをお持ちの既存のお客様は、 7 日間のデータ保持期間をご利用いただけます。また、無料の * Basic Edition * をご利用いただくことで、ネットアップのデータ収集ツールへのアクセス、専門的なテクニカルサポートなどのデータ保持期間を延長できます。 * Standard Edition * をご利用ください。使用可能な機能の詳細については、ネットアップのを参照してください link:https://cloud.netapp.com/cloud-insights["Cloud Insights の機能です"] サイト
+
+
+
+==== 新しいインフラストラクチャデータコレクタ： NetApp HCI
+
+* link:task_dc_na_hci.html["NetApp HCI 仮想センター"] は、インフラストラクチャデータコレクタとして追加されました。HCI Virtual Center データコレクタは、 NetApp HCI ホスト情報を収集します。 Virtual Center 内のすべてのオブジェクトに対する読み取り専用の権限が必要です。
+
+
+HCI のデータコレクタが取得するのは HCI Virtual Center のみです。ストレージシステムからデータを収集するには、ネットアップも設定する必要があります link:task_dc_na_solidfire["SolidFire"] データコレクタ：
+
+'''
+
+
+=== 2019 年 5 月
+
+
+
+==== 新しいサービスデータコレクター： Kapacitor
+
+* link:task_config_telegraf_kapacitor.html["カパトール"] は、サービスのデータコレクタとして追加されています。
+
+
+
+
+==== Telegraf によるサービスとの統合
+
+Cloud Insights では、スイッチやストレージなどのインフラデバイスからデータを取得するだけでなく、を使用してさまざまなオペレーティングシステムやサービスからデータを収集できるようになりました link:task_config_telegraf_agent.html["Tegraf の代理店"] 統合データの収集用。Telegraf はプラグインベースのエージェントで、メトリックの収集とレポートに使用できます。入力プラグインは、システム /OS に直接アクセスするか、サードパーティ API を呼び出すか、または設定されたストリームをリスニングすることによって、エージェントに必要な情報を収集するために使用されます。
+
+現在サポートされているインテグレーションのドキュメントは、左側のメニューの「 * Reference and Support * 」の下にあります。
+
+
+
+==== Storage Virtual Machine のアセット
+
+* Storage Virtual Machine （ SVM ）は、 Cloud Insights でアセットとして使用できます。SVM には独自のアセットランディングページがあり、検索、クエリ、フィルタで表示および使用できます。SVM は、ダッシュボードウィジェットやアノテーションに関連付けることもできます。
+
+
+
+
+==== Acquisition Unit のシステム要件の削減
+
+* Acquisition Unit （ AU ）ソフトウェアのシステム CPU およびメモリの要件が削減されました。新しい要件は次のとおりです。
+
+
+|===
+
+
+| * コンポーネント * | * 旧要件 * | * 新しい要件 * 
+
+
+| CPU コア | 4. | 2. 
+
+
+| メモリ | 16 GB | 8 GB 
+|===
+
+
+==== サポートされているその他のプラットフォーム
+
+* 現在、これらのプラットフォームには次のプラットフォームが追加されています link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html["Cloud Insights でサポートされます"]：
+
+
+|===
+
+
+| Linux の場合 | Windows の場合 
+
+
+| CentOS 7.3 64 ビット CentOS 7.4 64 ビット CentOS 7.6 64 ビット Debian 9 64 ビット Red Hat Enterprise Linux 7.3 64 ビット Red Hat Enterprise Linux 7.4 64 ビット Red Hat Enterprise Linux 7.6 64 ビット Ubuntu Server 18.04 LTS | Microsoft Windows 10 64 ビット Microsoft Windows Server 2008 R2 Microsoft Windows Server 2019 
+|===
+'''
+
+
+=== 2019年4月
+
+
+
+==== タグで仮想マシンをフィルタリングします
+
+次のデータコレクタを設定するときに、タグまたはラベルに従って、データ収集に仮想マシンを含めるか除外するかをフィルタリングできます。
+
+* link:task_dc_amazon_ec2.html#advanced-configuration["Amazon EC2"]
+* link:task_dc_ms_azure.html#advanced-configuration["Azure"]
+* link:task_dc_google_cloud.html#advanced_configuration["Google Cloud Platform の 1 つです"]
+
+
+'''
+
+
+=== 2019 年 3 月
+
+
+
+==== サブスクリプション関連イベントの E メール通知
+
+* E メールの受信者を選択できます link:concept_notifications_email.html["通知"] サブスクリプション関連のイベントが発生した場合（トライアルの有効期限が近づいている、またはアカウントを登録しているなど）。これらの通知の受信者は、次のいずれかから選択できます。
++
+** すべてのアカウント所有者
+** すべての管理者
+** 指定する追加の E メールアドレス
+
+
+
+
+
+
+==== その他のダッシュボード
+
+* AWS を中心とした新しい機能 link:concept_import_from_dashboard_gallery.html["ダッシュボード"] ギャラリーに追加されており、インポート可能です：
++
+** AWS Admin - どの EC2 が需要の高いか
+** AWS EC2 Instance Performance by Region 』を参照してください
+
+
+
+
+'''
+
+
+=== 2019年2月
+
+
+
+==== AWS の子アカウントから収集しています
+
+* Cloud Insights はをサポートします link:task_dc_amazon_ec2.html#collecting_from_aws_child_accounts["AWS の子アカウントから収集します"] 単一のデータコレクタ内。Cloud Insights が子アカウントから収集できるように AWS 環境を設定する必要があります。
+
+
+
+
+==== Data Collector の命名
+
+* Data Collector 名に、英字、数字、およびアンダースコアのほかに、ピリオド（ . ）、ハイフン（ - ）、およびスペース（）を含めることができるようになりました。名前の先頭と末尾にスペース、ピリオド、ハイフンを使用することはできません。
+
+
+
+
+==== Acquisition Unit for Windows の略
+
+* Cloud Insights Acquisition Unit は Windows サーバ / VM に設定できます。ウィンドウを確認します link:concept_acquisition_unit_requirements.html["前提条件"] をインストールする前に 。
+
+
+'''
+
+
+=== 2019年1月
+
+
+
+==== 「 Owner 」フィールドは読み取りやすくなっています
+
+* ダッシュボードリストとクエリリストでは、「所有者」フィールドのデータは、以前はわかりやすい所有者名ではなく、認証 ID 文字列でした。「 Owner 」フィールドに、よりシンプルでわかりやすい所有者名が表示されるようになりました。
+
+
+
+
+==== サブスクリプションページでの管理ユニットの内訳
+
+* [*Admin] > [Subscription*] ページにリストされている各データコレクタについて、ホストとストレージの管理ユニット (MU) カウントの内訳と合計が表示されるようになりました。
+
+
+'''
+
+
+=== 2018年12月
+
+
+
+==== UI ロード時間の改善
+
+* Cloud Insights のユーザインターフェイス（ UI ）の初回ロード時間が大幅に短縮されました。また、メタデータがロードされている環境では、更新時間を短縮することもできます。
+
+
+
+
+==== データコレクタを一括編集します
+
+* 複数のデータコレクタの情報を同時に編集できます。[*Admin] > [Data Collectors] ページで、変更するデータコレクタをそれぞれの左側にあるチェックボックスをオンにして、 [*Bulk Actions] ボタンをクリックします。「 * 編集」を選択し、必要なフィールドを変更します。
++
+同じベンダーとモデルのデータコレクタを選択し、同じ Acquisition Unit に配置する必要があります。
+
+
+
+
+
+==== サポートページとサブスクリプションページはオンボーディング中に利用できます
+
+* オンボーディングワークフロー中に、ヘルプ > サポート * ページと * 管理者 > サブスクリプション * ページに移動できます。このページから戻るとオンボーディングワークフローに戻りますが、ブラウザのタブを閉じていないことが条件です。
+
+
+'''
+
+
+=== 2018年11月
+
+
+
+==== ネットアップの営業担当者または AWS Marketplace で登録
+
+* Cloud Insights への登録と請求がネットアップから直接可能になりました。このサービスは、 AWS Marketplace で提供されるセルフサービスサブスクリプションに加えて提供されます。新しい * Contact Sales * リンクが、 * Admin > Subscription * ページに表示されます。環境内の管理対象ユニット（ MU ）が 1 、 000 以上であることが予想される場合は、 Contact Sales リンクからネットアップの営業担当者に問い合わせることを推奨します。
+
+
+
+
+==== テキスト注釈ハイパーリンク
+
+* テキスト型注釈にハイパーリンクを含めることができるようになりました。
+
+
+
+
+==== チュートリアル
+
+* Cloud Insights では、最初のユーザ（管理者またはアカウント所有者）が新しい環境にログインする際のオンボーディング手順が追加されました。このチュートリアルでは、 Acquisition Unit のインストール、初期データコレクタの設定、および有用なダッシュボードの選択を行います。
+
+
+
+
+==== Gallery からダッシュボードをインポートします
+
+* オンボーディング中にダッシュボードを選択するだけでなく、 [ ダッシュボード（ * Dashboards ） ] > [ すべてのダッシュボードを表示（ Show All Dashboards ） ] * を使用してダッシュボードをインポートし、 [ ギャラリーから * + （ * + from Gallery *
+
+
+
+
+==== ダッシュボードの複製
+
+* ダッシュボードを複製する機能が、ダッシュボードリストページに各ダッシュボードのオプションメニューの選択肢として追加されました。また、ダッシュボードのメインページ自体については、 _Save_menu から選択できます。
+
+
+
+
+==== Cloud Central の製品メニュー
+
+* 他の NetApp Cloud Central 製品に切り替えるメニューは、画面の右上に移動しました。
+

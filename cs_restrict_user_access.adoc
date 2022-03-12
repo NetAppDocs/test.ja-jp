@@ -1,0 +1,171 @@
+---
+sidebar: sidebar 
+permalink: cs_restrict_user_access.html 
+keywords: alert, snapshot,  attack 
+summary: Cloud Secure を使用すると、破壊の疑いがある場合にユーザアクセスを制限できます 
+---
+= ユーザアクセスの制限
+
+
+[role="lead"]
+攻撃が検出されると、 Cloud Secure はファイルシステムへのユーザーアクセスを制限することで攻撃を停止できます。自動応答ポリシーを使用するか、アラートまたはユーザの詳細ページから手動でアクセスを制限できます。
+
+ユーザアクセスを制限する場合は、アクセス制限のタイプ（ブロックまたは読み取り専用）と期間を定義する必要があります。選択した期間が終了すると、ユーザアクセスが自動的にリストアされます。
+
+アクセス制限は、 SMB プロトコルと NFS プロトコルの両方でサポートされています。
+
+制限はホストマシンの IP アドレスによって行われます。ホストマシンとは、ユーザがストレージにアクセスしたマシンを意味します。これらのマシンの IP アドレスは、 Cloud Secure で監視されているいずれかの Storage Virtual Machine （ SVM ）へのアクセスがブロックされます。
+
+たとえば、 Cloud Secure が 10 個の SVM を管理し、そのうち 4 つに対して自動応答ポリシーが設定されているとします。4 つの SVM のいずれかで攻撃が発生した場合、 10 個すべての SVM でユーザのアクセスが制限されます。元の SVM では引き続き Snapshot が作成されます。
+
+4 つの SVM に CIFS 用に設定し、 1 つを NFS 用に設定し、残りの 2 つを NFS と CIFS 用に設定した場合、 4 つの SVM のいずれかで攻撃が発生すると、すべての SVM がブロックされます。
+
+
+
+=== ユーザーアクセス制限の前提条件
+
+この機能を使用するには、 SMB と NFS のエクスポートポリシーを設定する必要があります。NFS および SMB がデータソースコレクタで設定されている場合は、次の手順に従います。
+
+NFS の場合、エクスポートポリシーはデフォルトで設定されます。デフォルトでは、 SVM で NFS サービスが作成されるとエクスポートポリシーが作成されます。
+
+SMB の場合は、エクスポートポリシーが設定されている必要があります。
+
+クラスタ / SVM クレデンシャルを使用しておらず、 csuser を使用している場合は、最初に次の手順を実行して、 Cloud Secure にカスタムエクスポートポリシールールを作成させます。
+
+クラスタクレデンシャルを持つ csuser の場合、 ONTAP コマンドラインから次の手順を実行します。
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+SVM のクレデンシャルを持つ csuser の場合、 ONTAP コマンドラインから次のコマンドを実行し、正しい <vservername> を挿入します。
+
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all
+デフォルトのエクスポートポリシーを設定するコマンドは次のとおりです。コマンドをテキストエディタにコピーし、 <vserver> 名を SVM の名前に置き換えます。次に、各行を 1 つずつコピーし、 ONTAP コンソールで実行します。コマンドを実行する前に、 advanced モードに切り替える必要があります。
+
+
+TIP: これは特に PoC の実行に役立ちます。テストするマシンでは、 SMB を次のように構成できます。PoC の実行中、データソースコレクタで、 SMB / CIFS プロトコルのみを有効にし、 NFS プロトコルを無効にします。
+
+ set -privilege advanced
+ cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
+ export-policy rule create -vserver <vserver> -policyname default -protocol cifs -clientmatch 0.0.0.0/0 -rorule any -rwrule any
+
+NOTE: clientmatch は、特定のアドレスまたはサブネット（例： 10.0.3.212 または 192.168.5.0/24 ）、ホスト名、または @ ネットグループなどのネットグループです。エクスポートポリシーを使用して可能なすべての IP4 アドレスに適用する場合は、 clientmatch を 0.0.0.0/0 に設定します。
+
+_exportpolicy-rule_exportpolicy-が 正しく設定されているかどうかを確認するには、上記のコマンドを実行した後で次のコマンドを実行します。
+
+ cifs options show  -fields is-exportpolicy-enabled -vserver <vserver>
+ export-policy show -vserver <vserver>
+ export-policy rule show -policyname default -vserver <vserver>
+
+
+=== 機能を有効にする方法
+
+* Cloud Secure で、 [*Admin] > [Automated Response Policies] > [Response Policy Settings] > [Access Limitation*] の順に選択します。
+* 「ユーザーアクセスの制限を有効にする」を「有効にする」に設定します。
+
+
+
+
+=== 自動ユーザアクセス制限の設定方法
+
+* 新しい攻撃ポリシーを作成するか、既存の攻撃ポリシーを編集します。
+* 攻撃ポリシーを監視する SVM を選択します。
+* [Restrict User IP File Access] チェックボックスをオンにします。この機能は、このオプションを選択すると有効になります。
+* [ ユーザーアクセスの制限 ] で、適用する制限のモードを選択します。
+* [Time Period] で、制限を適用する時間を選択します。
+* 自動制限をテストするには、を使用して攻撃をシミュレートします link:concept_cs_attack_simulator.html["シミュレートされたスクリプト"]。
+
+
+
+
+=== システム内に制限されたユーザーがいるかどうかを確認する方法
+
+* アラートリストページでは、ユーザが制限されている場合に、画面上部のバナーが表示されます。
+* バナーをクリックすると、 [Users] ページが表示されます。このリストには、制限されたユーザーが表示されます。
+* [Users] ページに、 [IP Access] という列が表示されます。この列には、ユーザー制限の現在の状態が表示されます。
+
+
+
+
+=== ユーザアクセスを手動で制限および管理します
+
+* アラートの詳細画面またはユーザーの詳細画面に移動して、これらの画面からユーザーを手動で制限または制限解除できます。
+
+
+
+
+=== ユーザアクセス履歴の制限
+
+［ アラートの詳細とユーザーの詳細 ］ ページのユーザーパネルで、ユーザーの制限アクセス制限履歴（時間、アクション（ブロック、読み取り専用、復元）、期間）の監査を表示できます。 手動 / 自動、および影響を受ける IP が実行するアクション。
+
+
+
+=== 機能を無効にする方法
+
+この機能はいつでも無効にできます。システム内に制限のあるユーザがいる場合は、アクセスを先にリストアする必要があります。
+
+* Cloud Secure で、 [*Admin] > [Automated Response Policies] > [Response Policy Settings] > [Access Limitation*] の順に選択します
+* [ ユーザーアクセスの制限を有効にする ] をオフにして無効にします。
+
+
+この機能はすべてのページで非表示になります。
+
+
+
+=== IP を手動で復元します
+
+Cloud Secure トライアルの期限が切れた場合、またはエージェント / コレクタがダウンした場合に、 ONTAP から IP を手動でリストアするには、次の手順を実行します。
+
+. SVM のすべてのエクスポートポリシーをリストします。
++
+....
+contrail-qa-fas8020::> export-policy rule show -vserver <svm name>
+             Policy          Rule    Access   Client                RO
+Vserver      Name            Index   Protocol Match                 Rule
+------------ --------------- ------  -------- --------------------- ---------
+svm_s_____a default         1       nfs3,    cloudsecure_rule,     never
+                                     nfs4,    10.19.12.216
+                                     cifs
+svm_s_____a default         4       cifs,    0.0.0.0/0             any
+                                     nfs
+svm_s_____a test            1       nfs3,    cloudsecure_rule,     never
+                                     nfs4,    10.19.12.216
+                                     cifs
+svm_s_____a test            3       cifs,    0.0.0.0/0             any
+                                     nfs,
+                                     flexcache
+4 entries were displayed.
+....
+. 「 cloudsecure_rule 」をクライアント一致に設定している SVM 上のすべてのポリシーで、該当する RuleIndex を指定してすべてのルールを削除します。通常、 CloudSecure ルールは 1 になります。
++
+ contrail-qa-fas8020::*> export-policy rule delete -vserver <svm name> -policyname * -ruleindex 1
+. CloudSecure ルールが削除されていることを確認します（確認のための手順はオプション）。
++
+....
+contrail-qa-fas8020::*> export-policy rule show -vserver <svm name>
+             Policy          Rule    Access   Client                RO
+Vserver      Name            Index   Protocol Match                 Rule
+------------ --------------- ------  -------- --------------------- ---------
+svm_suchitra default         4       cifs,    0.0.0.0/0             any
+                                     nfs
+svm_suchitra test            3       cifs,    0.0.0.0/0             any
+                                     nfs,
+                                     flexcache
+2 entries were displayed.
+....
+
+
+
+
+== トラブルシューティング
+
+|===
+| 問題 | 試してみてください 
+
+
+| 一部のユーザーは制限されていませんが、攻撃があります。 | 1. SVM の Data Collector と Agent が _RUNNING であることを確認します。Data Collector と Agent が停止している場合、 Cloud Secure はコマンドを送信できません。2. これは、ユーザが以前に使用されていない新しい IP を持つマシンからストレージにアクセスした可能性があるためです。制限は、ユーザがストレージにアクセスする際に使用するホストの IP アドレスを介して行われます。UI （ Alert Details > Access Limitation History for this User > Affected IP ）で、制限されている IP アドレスのリストを確認します。IP が制限された IP と異なるホストからストレージにアクセスしている場合、ユーザは制限されていない IP を介してストレージにアクセスできます。IP が制限されているホストからアクセスしようとすると、ストレージにアクセスできなくなります。 
+
+
+| [Restrict Access] を手動でクリックすると、「このユーザの IP アドレスはすでに制限されています」というメッセージが表示されます。 | 制限する IP はすでに別のユーザから制限されています。 
+
+
+| 「 SVM で SMB プロトコルのエクスポートポリシーの使用が無効になっています」という警告が表示されてアクセスの制限に失敗します。restrictuser access 機能を使用するには、 export-policy の使用を有効にします。 | 「前提条件」に記載されているように、 SVM の -is-exportpolicy-enabled オプションが true であることを確認します。 
+|===

@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: task_cs_add_collector_ontap.html 
+keywords: data collector, ONTAP, SVM 
+summary: データコレクタの追加 
+---
+= NetApp ONTAP Data Collector の設定
+
+
+[role="lead"]
+Cloud Secure では、データコレクタを使用して、デバイスからファイルとユーザのアクセスデータを収集します。データは Cloud Secure に提供され、分析されます。
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* データを収集するようにエージェントを設定する必要があります
+* SVM 管理 IP アドレス
+* SVM にアクセスするためのユーザ名
+* SVM にアクセスするためのパスワード
+
+
+.設定の手順
+. Cloud Secure 環境に管理者またはアカウント所有者としてログインします。
+. [*Admin] > [Data Collectors] > [+ [Data Collectors] をクリックします
++
+使用可能なデータコレクタが表示されます。
+
+. NetApp ONTAP のタイルで、 * + Monitor * をクリックします。
++
+Data Collector の追加： ONTAP SVM 設定ページが表示されます。
+
+. コレクタの一意の名前を入力します
+. データを収集するエージェントを選択します
+. SVM 管理 IP アドレスを入力します
+. SVM にアクセスするためのユーザ名を入力します
+. SVM にアクセスするためのパスワードを入力します
+. + Add Collector * をクリックします
+
+
+.完了後
+* [*Admin] > [Data Collectors] をクリックして、設定したコレクタのステータスを確認します。
++
+通常、コレクタのステータスが表示されるまでに遅延が発生します。
+
+

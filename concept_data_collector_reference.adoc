@@ -1,0 +1,13 @@
+---
+sidebar: sidebar 
+permalink: concept_data_collector_reference.html 
+summary: ベンダー固有のデータコレクタリファレンス情報。 
+keywords: data collector, vendor, AWS, BROADCOM, Cisco, Dell, EMC, Hitachi, IBM, NetApp, OceanStor, OpenStack, Oracle, Pure Storage, Red Hat, redhat, VMWare 
+---
+= Vendor-Specific Reference 』を参照してください
+
+
+[role="lead"]
+このセクションのトピックでは、ベンダー別のリファレンス情報を提供します。ほとんどの場合、データコレクタの設定は簡単です。場合によっては、データコレクタを適切に設定するために追加情報またはコマンドが必要になることがあります。
+
+左側のメニューで * VENDOR * をクリックすると、そのデータコレクタの情報が表示されます。

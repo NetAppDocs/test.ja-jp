@@ -1,0 +1,85 @@
+---
+sidebar: sidebar 
+permalink: task_dc_hds_hcp.html 
+keywords: data collector, Hitachi HDS, HCP 
+summary: HDS データコレクタを構成しています。 
+---
+= Hitachi HCP データコレクタ
+
+
+[role="lead"]
+このデータコレクタは、 HCP 管理 API を使用して、 Hitachi Content Platform （ HCP ）をサポートします。
+
+
+
+== 用語集
+
+Cloud Insights は、 Hitachi HCP データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| HCP クラスタです | ストレージ 
+
+
+| テナント | ストレージプール 
+
+
+|  | ネームスペース 
+
+
+| 内部ボリューム | ノード 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== インベントリの要件
+
+インベントリデータを収集するには、次の情報が必要です。
+
+* HCP サーバの IP アドレス
+* HCP ソフトウェアおよびピア権限の読み取り専用のユーザ名およびパスワード
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| HCP ホスト | HCP ホストの IP アドレスまたは完全修飾ドメイン名 
+
+
+| HCP ポート | デフォルトは 9090 です 
+
+
+| HCP ユーザー ID | HCP ホストのユーザ名。 
+
+
+| HCP パスワード | HCP ホストに使用するパスワード。 
+
+
+| HCP 認証タイプ | HCP_LOCAL または active_directory を選択してください 
+|===
+
+
+== 高度な設定
+
+|===
+
+
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 60. です。 
+
+
+| パフォーマンスポーリング間隔（秒） | パフォーマンスのポーリング間隔デフォルトは 900. です。 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

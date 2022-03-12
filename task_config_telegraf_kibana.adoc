@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_kibana.html 
+keywords: telegraf, installation, install, kibana 
+summary: Kibana データコレクタの設定 
+---
+= Kibana データコレクタ
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して Kibana から指標を収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services*]( サービス ) で '[Kibana]( カイバナ ) を選択します
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:KibanaDCConfigLinux.png["Kibana の構成"]
+
+
+
+== セットアップ（ Setup ）
+
+情報は、に記載されています link:https://www.elastic.co/guide/index.html["Kibana のドキュメンテーション"]。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| キバナ | ネームスペースアドレス | ノード IP ノード名バージョンステータス | 同時接続ヒープ最大ヒープ使用要求 / 秒応答時間平均応答時間最大アップタイム 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

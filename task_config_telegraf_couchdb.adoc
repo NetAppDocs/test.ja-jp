@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_couchdb.html 
+keywords: telegraf, installation, install, couchdb 
+summary: CouchDB データコレクタの設定 
+---
+= CouchDB データコレクタ
+
+
+[role="lead"]
+Cloud Insights では、このデータコレクタを使用して CouchDB から指標を収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[* サービス *] で、 [CouchDB] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:CouchDBDCConfigLinux.png["CouchDB の設定"]
+
+
+
+== セットアップ（ Setup ）
+
+情報は、に記載されています link:http://docs.couchdb.org/en/stable/["CouchDB のドキュメント"]。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| CouchDB | ネームスペースサーバ | ノード名ノード IP | 認証キャッシュヒット認証キャッシュミスデータベースの読み取りデータベース書き込みデータベースオープン OS ファイル最大要求時間最小要求時間 httpd 要求メソッドのコピー httpd 要求メソッドの削除 httpd 要求メソッドの削除 httpd 要求メソッドの取得 httpd 要求メソッドのヘッド httpd 要求メソッドの POST httpd 要求メソッドのステータスコード 200 201 ステータスコード 202 ステータスコード 301 ステータスコード 304 ステータスコード 400 ステータスコード 401 ステータスコード 403 ステータスコード 404 ステータスコード 405 ステータスコード 409 ステータスコード 412 ステータスコード 500 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

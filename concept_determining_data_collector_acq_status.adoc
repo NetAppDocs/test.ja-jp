@@ -1,0 +1,15 @@
+---
+sidebar: sidebar 
+permalink: concept_determining_data_collector_acq_status.html 
+summary: Data Collector の取得ステータス 
+keywords: collector, acquisition, status 
+---
+= データコレクタの収集ステータスの確認
+
+
+[role="lead"]
+データコレクタは Cloud Insights の主要な情報源であるため、実行状態を維持することが不可欠です。
+
+データコレクタのステータスは、アセットページの右上に「 Acquired N minutes ago 」というメッセージとして表示されます。 N はアセットのデータコレクタの最新の取得時間を示します。取得日時も表示されます。
+
+メッセージをクリックすると、データコレクタの名前、ステータス、および前回成功した収集時間を示すテーブルが表示されます。管理者としてサインインしている場合は、テーブルのデータコレクタ名のリンクをクリックすると、そのデータコレクタの詳細ページが表示されます。

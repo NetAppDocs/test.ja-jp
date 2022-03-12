@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: task_cs_user_management.html 
+keywords: Cloud Secure, User, Login, account 
+summary: Cloud Secure ユーザアカウントは、 Cloud Insights ユーザ管理を介して管理されます 
+---
+= ユーザ管理
+
+
+[role="lead"]
+Cloud Secure ユーザアカウントは、 Cloud Insights を使用して管理します。
+
+Cloud Insights には、アカウント所有者、管理者、ユーザ、ゲストの 4 つのユーザアカウントレベルがあります。各アカウントには、特定の権限レベルが割り当てられます。管理者権限を持つユーザアカウントは、ユーザを作成または変更し、各ユーザに次の Cloud Secure ロールのいずれかを割り当てることができます。
+
+|===
+
+
+| ロール | Cloud Secure アクセス 
+
+
+| 管理者 | アラート、フォレンジック、データコレクタ、自動応答ポリシー、 Cloud Secure 用 API など、すべての Cloud Secure 機能を実行できます。管理者は、他のユーザを招待することもできますが、割り当てることができるのは Cloud Secure ロールのみです。 
+
+
+| ユーザ | アラートを表示および管理し、フォレンジックを表示できます。ユーザーロールは、アラートステータスの変更、メモの追加、スナップショットの手動作成、ユーザーアクセスの制限を行うことができます。 
+
+
+| ゲスト | アラートおよびフォレンジックを表示できます。ゲストロールは、アラートステータスの変更、メモの追加、スナップショットの手動作成、ユーザーアクセスの制限を行うことはできません。 
+|===
+.手順
+. Cloud Secure にログインします
+. メニューで、 [*Admin] > [User Management] をクリックします
++
+Cloud Insights の User Management ページに転送されます。
+
+. 各ユーザに必要なロールを選択します。
+
+
+新しいユーザを追加する際には、目的のロール（通常はユーザまたはゲスト）を選択します。
+
+ユーザアカウントとロールの詳細については、 Cloud Insights を参照してください link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html["ユーザロール"] ドキュメント

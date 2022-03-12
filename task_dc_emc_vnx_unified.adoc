@@ -1,0 +1,102 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_vnx_unified.html 
+keywords: data collector, VNX, EMC, Dell 
+summary: VNX データコレクタの構成。 
+---
+= Dell EMC VNX Unified データコレクタの設定
+
+
+[role="lead"]
+Dell EMC VNX Unified （ SSH ）データコレクタを設定するには、 Control Station の IP アドレス、および読み取り専用のユーザ名とパスワードが必要です。
+
+
+
+== 用語集
+
+Cloud Insights では、このデータコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ディスク | ディスク 
+
+
+| ディスクフォルダ | ディスクグループ 
+
+
+| ファイルシステム | 内部ボリューム 
+
+
+| ストレージ | ストレージ 
+
+
+| ストレージプロセッサ | ストレージノード 
+
+
+| ストレージプール、 RAID グループ | ストレージプール 
+
+
+| LUN | ボリューム 
+
+
+| データムーバー | コントローラ 
+
+
+| データムーバーにマウントされたファイルシステム | ファイル共有 
+
+
+| CIFS および NFS エクスポート | 共有 
+
+
+| ディスクボリューム | バックエンド LUN 
+|===
+
+
+== 要件
+
+VNX （ SSH ）データコレクタを構成するには、次のものが必要です。
+
+* VNX IP アドレスと資格情報を Celerra Control Station に追加します。
+* 読み取り専用のユーザ名とパスワード
+* データコレクタは 'DART OS NAS ヘッドを使用して ' バックエンド・アレイに対して NaviCLI/naviseccli コマンドを実行できます
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| VNX IP アドレス | VNX Control Station の IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | VNX Control Station のユーザー名 
+
+
+| パスワード | VNX Control Station のパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 40 分です。 
+
+
+| パフォーマンスポーリング間隔（秒）。 | パフォーマンスのポーリング間隔デフォルトは 300 秒です。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

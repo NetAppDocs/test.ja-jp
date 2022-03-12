@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: task_webhook_example_pagerduty.html 
+keywords: webhook, notification, PagerDuty, integration 
+summary: Pagerduty のパフォーマンスまたは在庫のしきい値を警告するためのウェブフックを作成します 
+---
+= PagerDuty の webhook の例
+
+
+[role="lead"]
+Webhook を使用すると、ユーザーはカスタマイズされた webhook チャネルを使用して、さまざまなアプリケーションにアラート通知を送信できます。このページでは、 PagerDuty のウェブフックの設定例を示します。
+
+
+NOTE: このページでは、変更される可能性があるサードパーティの手順について説明します。を参照してください link:https://support.pagerduty.com/docs/services-and-integrations["PagerDuty のドキュメント"] 最新の情報については、を参照してください。
+
+
+
+=== PagerDuty 設定：
+
+. PagerDuty で、 [*Services] > [Service Directory] に移動し、 [*+New Service*] ボタンをクリックします
+. 「 A_Name_ 」と入力し、「 _ 」を選択して API を直接使用します _ 。[ サービスの追加 ] をクリックします。
++
+image:Webhooks_PagerDutyScreen1.png["PagerDuty 画面"]
+
+. [Integrations_] タブをクリックして、 * 統合キー * を表示します。このキーは、次の Cloud Insights ウェブフックを作成するときに必要になります。
+
+
+. [ インシデント *] または [ サービス *] に移動して、アラートを表示します。
++
+image:Webhooks_PagerDutyScreen2.png["PagerDuty スクリーン"]
+
+
+
+
+
+=== Cloud Insights Webhook を作成します。
+
+. Cloud Insights で、 [*Admin] > [Notifications] に移動し、 [*webhook *] タブを選択します。[*+Webhook* ] をクリックして、新しい Web フックを作成します。
+. Webhook に "PagerDuty Trigger" などのわかりやすい名前を付けます。このウェブフックは、クリティカルレベルおよび警告レベルのイベントに使用します。
+. _ テンプレートタイプ _ ドロップダウンで * PagerDuty * を選択します。
+
+
+. _routingKe_ という名前のカスタムパラメータシークレットを作成し、値を上記の PagerDute_Integration Key_value に設定します。
++
+image:Webhooks_Custom_Secret_Routing_Key.png["ルーティングキーの設定"]
+
+
+
+この手順を繰り返して、解決済みイベントの "PagerDuty Resolve" ウェブフックを作成します。
+
+
+
+=== PagerDuty から Cloud Insights へのフィールドマッピング
+
+次の表と画像は、 PagerDuty と Cloud Insights の間のフィールドのマッピングを示しています。
+
+[cols="<,<"]
+|===
+| PagerDuty | Cloud Insights の機能です 
+
+
+| アラートキー | アラート ID 
+
+
+| ソース | でトリガされます 
+
+
+| コンポーネント | メトリック名 
+
+
+| グループ | オブジェクトタイプ（ Object Type ） 
+
+
+| クラス | モニタ名 
+|===
+image:Webhooks-PagerDuty_Fields.png["CI の PagerDuty フィールド"]
+
+
+
+=== Webhook で通知します
+
+webhook を使用してイベントを通知するには、 Cloud Insights で [*Alerts] > [Monitors *] の順に選択し、 [*+ Monitor*] をクリックして新しいイベントを作成します link:task_create_monitor.html["モニタ"]。
+
+* メトリックを選択し、モニタの条件を定義します。
+* チーム通知の設定（ _Set up team notification(s) ）で、 * Webhook * 配信方法を選択します。
+* クリティカルレベルおよび警告レベルのイベントには、 "PagerDuty Trigger" Web フックを選択します。
+* 解決されたイベントの「 PagerDuty Resolve 」を選択します。
++
+image:Webhooks_Notifications.png["Webhook 通知"]
+
+
+
+
+NOTE: PagerDuty ではトリガーイベントが解決済みイベントとは異なる方法で処理されるため、トリガーイベントと解決済みイベントに別々の通知を設定することをお勧めします。

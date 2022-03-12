@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: task_dc_brocade_bna.html 
+keywords: data collector, Brocade, BNA 
+summary: Brocade BNA コレクタの設定 
+---
+= Brocade Network Advisor データコレクタ
+
+
+[role="lead"]
+Cloud Insights では、 Brocade Network Advisor データコレクタを使用して、 Brocade スイッチからインベントリとパフォーマンスのデータを取得します。
+
+
+
+== 用語集
+
+Cloud Insights では、 Brocade Network Advisor データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| スイッチ | スイッチ 
+
+
+| ポート | ポート 
+
+
+| 仮想ファブリック、物理ファブリック | ファブリック 
+
+
+| Logical Switch の略 | Logical Switch の略 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次のものが必要です。
+
+* Cloud Insights Acquisition Unit は、 BNA サーバの TCP ポート 443 への接続を初期化します。BNA サーバはバージョン 14.2.1 以降を実行している必要があります。
+* Brocade Network Advisor サーバの IP アドレス
+* 管理者アカウントのユーザ名とパスワード
+* ポート要件： HTTP / HTTPS 443
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| Brocade Network Advisor サーバ IP | Network Advisor サーバの IP アドレス 
+
+
+| ユーザ名 | スイッチのユーザ名 
+
+
+| ユーザ名 | 管理者のユーザ名 
+
+
+| パスワード | 管理者パスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 接続タイプ | HTTPS （デフォルトポート 443 ）または HTTP （デフォルトポート 80 ） 
+
+
+| 接続ポートを上書きします | 空白の場合は、 [Connection Type] フィールドでデフォルトのポートを使用します。それ以外の場合は、使用する接続ポートを入力します 
+
+
+| パスワード | スイッチのパスワード 
+
+
+| インベントリのポーリング間隔（分） | デフォルトは 40 です。 
+
+
+| Report Access Gateway の略 | Access Gateway モードにデバイスを含める場合にオンにします 
+
+
+| パフォーマンスポーリング間隔（秒） | デフォルトは 1800 です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 複数のノードが Access Gateway ポートにログインしているというメッセージを受信するか、データコレクタが Access Gateway デバイスを検出できません。 | NPV デバイスが正しく動作していること、および接続されているすべての WWN が必要であることを確認します。NPV デバイスを直接取得しないでください。代わりに、コアファブリックスイッチを取得すると NPV デバイスデータが収集されます。 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_memcached.html 
+keywords: telegraf, installation, install, memcached 
+summary: Memcached データコレクタの設定 
+---
+= Memcached Data Collector
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して Memcached からメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services] で、 [Memcached （メモキャッシュ） ] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:MemcachedDCConfigWindows.png["Memcached 設定"]
+
+
+
+== セットアップ（ Setup ）
+
+情報は、に記載されています link:https://github.com/memcached/memcached/wiki["Memcached Wiki"]。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| Memcached | ネームスペースサーバ | ノード IP ノード名 | 接続処理認証要求の受け入れ失敗した認証バイト読み取り (1 秒あたり ) バイト書き込み (1 秒あたり ) CAS Badval CAS Hits CAS Mises Flush Reqs (1 秒あたり ) GET Reqs (1 秒あたり ) Touch Reqs (1 秒あたり ) Touch Reqs (1 秒あたり ) Connection Wrqs (1 秒あたり ) 接続構造未完了接続現在の保存済みアイテムの数減少リクエストヒット数 (1 秒あたり ) 削除リクエストヒット数 (1 秒あたり ) 削除リクエストミス回数 (1 秒あたり ) 削除リクエスト期限削除有効な削除アイテム期限切れアイテム取得ヒット数 (1 秒あたり ) 取得ミス回数 (1 秒あたり ) Used Hash Bytes Hash （使用済みハッシュバイトハッシュ）が拡張されています。要求ヒット（ 1 秒あたり）が含まれています。サーバ要求ミス（ 1 秒あたり）サーバ最大バイトリッスン無効な再要求されたワーカースレッド数再要求された数再要求されたワーカースレッド数合計開かれた接続数保存された 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

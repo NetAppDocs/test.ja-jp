@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: forensic_entity_detail.html 
+keywords: Forensic, entity, entity overview, entity behavior, entities 
+summary: フォレンジックエンティティページ 
+---
+= フォレンジックエンティティページ
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+フォレンジックエンティティページには、環境内のエンティティアクティビティに関する詳細情報が表示されます。
+
+
+
+== エンティティ情報の検査
+
+* Forensics > Activity Forensics * をクリックし、 _Entities_ タブをクリックして Entities ページにアクセスします。
+
+このページでは、環境内のエンティティのアクティビティの概要を示し、次の情報を強調表示します。 * 1 分間に _ 一意のエンティティ _ アクセスされた状態を示すグラフ * _ エンティティタイプアクセスされた状態のグラフ _ * 共通パスの内訳 _ * エンティティ総数の _ 上位 50 エンティティ _ のリスト
+
+image:CS-Entities-Page.png["エンティティページ（ Entities Page ）"]
+
+リスト内のエンティティをクリックすると、エンティティの概要ページが開き、エンティティのプロファイルに名前、タイプ、デバイス名、最もアクセスされる場所の IP 、パスなどの詳細、およびユーザ、 IP 、 エンティティが最後にアクセスされた時刻です。
+
+image:CS-entity-detail-page.png["エンティティの概要ページ"]

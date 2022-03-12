@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_nginx.html 
+keywords: telegraf, installation, install, nginx 
+summary: nginx のデータコレクタ設定 
+---
+= nginx データコレクタ
+
+
+[role="lead"]
+Cloud Insights は、このデータコレクタを使用して Nginx からメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、 [*+[Data Collectors] をクリックします。[*Services*] で、 [Ngingin] を選択します。
++
+Tegraf エージェントがインストールされているオペレーティングシステムまたはプラットフォームを選択します。
+
+. Agent for Collection をまだインストールしていない場合、または別のオペレーティングシステムまたはプラットフォームに Agent をインストールする場合は、 _Show Instructions_ をクリックしてを展開します link:task_config_telegraf_agent.html["エージェントのインストール"] 手順
+. このデータコレクタで使用するエージェントアクセスキーを選択します。[*+Agent Access Key*] ボタンをクリックすると、新しいエージェントアクセスキーを追加できます。ベストプラクティス：別のエージェントアクセスキーを使用するのは、たとえば OS/ プラットフォーム別にデータコレクタをグループ化する場合だけです。
+. 設定手順に従ってデータコレクタを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+image:NginxDCConfigLinux-1.png["Linux Nginx の構成"]
+image:NginxDCConfigLinux-2.png["Linux Nginx の構成"]
+
+
+
+== セットアップ（ Setup ）
+
+nginx メトリックの収集では、 Nginx が必要です link:http://nginx.org/en/docs/http/ngx_http_stub_status_module.html["HTTP_STUB_STATE_MODULE"] を有効にします。
+
+追加情報は、にあります link:http://nginx.org/en/docs/["nginx のドキュメント"]。
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタが収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| nginx | ネームスペースサーバ | ノード IP ノード名ポート | アクティブな処理済み読み取り要求の書き込み待機を受け入れます 
+|===
+
+
+== トラブルシューティング
+
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページ

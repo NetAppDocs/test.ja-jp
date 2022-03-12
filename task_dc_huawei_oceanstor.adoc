@@ -1,0 +1,102 @@
+---
+sidebar: sidebar 
+permalink: task_dc_huawei_oceanstor.html 
+keywords: data collector, Huawei, OceanStor, Dorado 
+summary: HUAWEI OceanStor （ REST / HTTPS ）データコレクタの設定 
+---
+= Huawei OceanStor データコレクタ
+
+
+[role="lead"]
+Cloud Insights では、 Huawei OceanStor （ REST/HTTPS ）データコレクタを使用して、 Huawei OceanStor および OceanStor Dorado ストレージのインベントリとパフォーマンスを検出します。
+
+
+
+== 用語集
+
+Cloud Insights は、 Huawei OceanStor から次のインベントリ情報とパフォーマンス情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ストレージプール | ストレージプール 
+
+
+| File System の略 | 内部ボリューム 
+
+
+| コントローラ | ストレージノード 
+
+
+| FC ポート（マッピング済み） | ボリュームマップ 
+
+
+| ホスト FC イニシエータ（マッピング済み） | ボリュームマスク 
+
+
+| NFS / CIFS 共有 | 共有 
+
+
+| iSCSI リンクターゲット | iSCSI ターゲットノード 
+
+
+| iSCSI リンクイニシエータ | iSCSI イニシエータノード 
+
+
+| ディスク | ディスク 
+
+
+| LUN | ボリューム 
+|===
+
+
+== 要件
+
+このデータコレクタを設定するには、次の要件が必要です。
+
+* デバイスの IP アドレス
+* OceanStor デバイスマネージャにアクセスするためのクレデンシャル
+* ポート 8088 が使用可能であることが必要です
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| OceanStor Host IP アドレス | OceanStor Device Manager の IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | OceanStor Device Manager へのログインに使用するユーザ名 
+
+
+| パスワード | OceanStor Device Manager へのログインに使用するパスワード 
+|===
+
+
+== 詳細設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| TCP ポート | OceanStor Device Manager への接続に使用する TCP ポート。デフォルトは 8088. です。 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 60 分です。 
+
+
+| パフォーマンスのポーリング間隔（秒）。 | デフォルトは 300 秒です。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

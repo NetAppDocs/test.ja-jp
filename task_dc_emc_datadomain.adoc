@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_datadomain.html 
+keywords: data collector, Data Domain, EMC, DELL 
+summary: Dell EMC Data Domain データコレクタの設定。 
+---
+= Dell EMC Data Domain データコレクタ
+
+
+[role="lead"]
+このデータコレクタは、 Dell EMC Data Domain 重複排除ストレージシステムからインベントリとパフォーマンスの情報を収集します。このデータコレクタを設定するには、特定の設定手順と使用に関する推奨事項に従う必要があります。
+
+
+
+== 用語集
+
+Cloud Insights では、 Data Domain データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ディスク | ディスク 
+
+
+| 配列 | ストレージ 
+
+
+| FC ポート | ポート 
+
+
+| File System の略 | 内部ボリューム 
+
+
+| クォータ | クォータ 
+
+
+| NFS 共有および CIFS 共有 | ファイル共有 
+|===
+注意：これらは一般的な用語のマッピングのみであり、このデータ照合のすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* Data Domain デバイスの IP アドレス
+* Data Domain ストレージに対する読み取り専用のユーザ名とパスワード
+* SSH ポート 22
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| IP アドレス | Data Domain ストレージアレイの IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | Data Domain ストレージアレイのユーザ名 
+
+
+| パスワード | Data Domain ストレージアレイのパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 20. です。 
+
+
+| SSH ポート | SSH サービスポート 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

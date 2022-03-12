@@ -1,0 +1,13 @@
+---
+sidebar: sidebar 
+permalink: reference_object_icons.html 
+summary: Cloud Insights オブジェクトアイコンリファレンスです。 
+keywords: icons, assets, objects, reference 
+---
+= オブジェクトアイコンリファレンス
+
+
+[role="lead"]
+Cloud Insights で使用されるオブジェクトアイコンのクイックリファレンスです。
+
+image:Icon_Glossary.png["アイコンのリファレンス"]

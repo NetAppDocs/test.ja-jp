@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: task_config_telegraf_node.html 
+keywords: telegraf, installation, install, node, host 
+summary: Flink データコレクタの設定 
+---
+= ノードデータ収集
+
+
+[role="lead"]
+Cloud Insights は、エージェントをインストールするノードからメトリックを収集します。
+
+
+
+== インストール
+
+. [*Admin] > [Data Collectors] で、オペレーティングシステム / プラットフォームを選択します。統合データコレクタ（ Kubernetes 、 Docker 、 Apache など）をインストールすると、ノードのデータ収集も設定されることに注意してください。
+. 指示に従って、エージェントを設定します。手順は、データの収集に使用するオペレーティングシステムまたはプラットフォームのタイプによって異なります。
+
+
+
+
+== オブジェクトとカウンタ
+
+次のオブジェクトとそのカウンタがノードの指標として収集されます。
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+| オブジェクト： | 識別子： | 属性： | 「 dataPoints 」： 
+
+
+| ノードファイルシステム | ノード UUID デバイスのパスタイプ | ノード IP ノード名ノード OS モード | 空き inode 空き inode 使用済み合計使用済み合計 inode 数 
+
+
+| ノードディスク | ノード UUID ディスク | ノード IP ノード名ノード OS | IO 時間進行中の合計 IOPS 読み取りバイト数（ 1 秒あたり）読み取り時間合計読み取り数（ 1 秒あたり）加重 IO 時間合計書き込みバイト数（ 1 秒あたり）書き込み時間合計書き込み時間（ 1 秒あたり）現在のディスクキュー長書き込み時間読み取り時間（ I/O 時間） 
+
+
+| ノード CPU | ノード UUID CPU | ノード IP ノード名ノード OS | システム CPU 使用率ユーザー CPU 使用率アイドル CPU 使用率プロセッサー CPU 使用率割り込み CPU 使用率 DPC CPU 使用率 
+
+
+| ノード | ノード UUID | ノード IP ノード名ノード OS | カーネル起動時間カーネルコンテキストスイッチ (1 秒あたり ) カーネルエントロピー利用可能なカーネル割り込み (1 秒あたり ) カーネルプロセスの分岐 (1 秒あたり ) Memory Active Memory Available Total Memory Buffered Memory Buffered Memory Cached Memory Commit Limit Memory Committed as Memory Dirty Memory Free Memory High Free Memory High Total Memory ヒュージメモリヒュージメモリヒュージメモリヒュージメモリヒュージメモリヒュージメモリメモリヒュージメモリメモリメモリメモリローメモリマッピングメモリページテーブル メモリ共有メモリスラブメモリスワップキャッシュメモリスワップフリーメモリスワップ合計メモリ使用メモリ合計メモリ使用メモリ vmalloc 合計メモリ使用メモリ vmalloc 合計メモリ使用メモリメモリ使用メモリメモリメモリメモリメモリメモリ書き込み回数合計メモリ書き込みキャッシュエラーメモリゼロエラーメモリページエラーメモリページメモリページエラー 非ページメモリページングメモリキャッシュコアメモリスタンバイメモリスタンバイキャッシュ通常メモリ予約メモリの遷移障害プロセスブロックプロセス停止プロセス呼び出しプロセス実行プロセス停止プロセス停止プロセス実行プロセス停止プロセス合計スレッドプロセス不明プロセスプロセッサキュー長スワップフリースワップ使用合計 Swap In Swap In Swap Out System Uptime System Num CPU System Num Users System Calls の略 
+
+
+| ノードネットワーク | ネットワークインターフェイスのノード UUID | ノード名ノード IP ノード OS | 送信された受信バイト数パケットを送信送信パケットを破棄しました送信エラーパケット受信破棄されたパケット受信エラーパケット受信したパケット送信しました 
+|===
+
+
+== セットアップ（ Setup ）
+
+セットアップおよびトラブルシューティングの情報は、にあります link:task_config_telegraf_agent.html["エージェントの設定"] ページ
+
+
+
+== MacOS のメモリ使用量
+
+Cloud Insights (Telegraf 経由 ) と macOS は、メモリ使用量の異なる数値を報告します。Telegraf と Mac のアクティビティモニタはどちらも、 _vm_stat_ から収集したメトリックを使用しますが、メモリ全体の使用量はそれぞれで計算が異なります。
+
+* Telegraf * は、次のようにして使用されているメモリーの合計 _ を計算します。
+
+ Memory Used Total = Memory Total - Memory Available Total
+ここで、 _Memory Available Total_ は、 _VM_stat_ の「空きページ数」と「非アクティブページ数」の合計から算出されます。
+
+* Mac アクティビティモニタ * では、次のようにメモリ使用量が計算されます。
+
+ Memory Used = App Memory + Wired Memory + Compressed
+ここで、
+
+* _ アプリケーションメモリ _ は、 _vm_stat_ の「匿名ページ」と「パージ可能ページ」の違いから派生します。
+* 有線メモリ _ は、 _VM_stat_ 、およびの「有線でダウンしたページ」から取得されます
+* _Compressed_is は、 _VM_stat_ の「コンプレッサが占有するページ」から派生します。
+

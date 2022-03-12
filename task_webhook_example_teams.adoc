@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: task_webhook_example_teams.html 
+keywords: webhook, notification, Microsoft, Teams, integration 
+summary: Microsoft チームのパフォーマンスやインベントリのしきい値を通知するためのウェブフックを作成します 
+---
+= Microsoft チームの Web フックの例
+
+
+[role="lead lead"]
+Webhook を使用すると、ユーザーはカスタマイズされた webhook チャネルを使用して、さまざまなアプリケーションにアラート通知を送信できます。このページでは、チームの Web フックを設定する例を示します。
+
+
+NOTE: このページでは、変更される可能性があるサードパーティの手順について説明します。を参照してください link:https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook["チームのドキュメント"] 最新の情報については、を参照してください。
+
+
+
+=== チームの設定：
+
+. チームで、 kebab を選択し、着信 Webhook を検索します。
++
+image:Webhooks_Teams_Create_Webhook.png["チーム内の着信 Webhook"]
+
+. [ チームに追加（ Add to a Team ） ] > [ チームを選択（ Select a Team ） ] > [ コネクタのセットアップ（ Setup a Connector ） ]
+. Webhook URL をコピーします。これを Cloud Insights webhook 設定に貼り付ける必要があります。
+
+
+
+
+=== Cloud Insights Webhook を作成します。
+
+. Cloud Insights で、 [*Admin] > [Notifications] に移動し、 [*webhook *] タブを選択します。[*+Webhook* ] をクリックして、新しい Web フックを作成します。
+. Web フックに「 Teams Webhook 」などのわかりやすい名前を付けます。
+. [_Template Type_] ドロップダウンで、 [*Teams] を選択します。
+
+
+image:Webhooks-Teams_example.png["チームの Web フックテンプレート"]
+
+. 上の URL を _url_field に貼り付けます。
+
+
+
+
+=== Webhook で通知します
+
+webhook を使用してイベントを通知するには、 Cloud Insights で [*Alerts] > [Monitors *] の順に選択し、 [*+ Monitor*] をクリックして新しいイベントを作成します link:task_create_monitor.html["モニタ"]。
+
+* メトリックを選択し、モニタの条件を定義します。
+* チーム通知の設定（ _Set up team notification(s) ）で、 * Webhook * 配信方法を選択します。
+* 目的のイベント（重要、警告、解決済み）の「チーム」ウェブフックを選択します。
++
+image:Webhooks_Teams_Notifications.png["Webhook 通知"]
+
+

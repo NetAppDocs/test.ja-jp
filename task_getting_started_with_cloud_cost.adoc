@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: task_getting_started_with_cloud_cost.html 
+summary: クラウドコストの導入を開始します。 
+keywords: analysis, cost, analyzer 
+---
+= クラウドコストの導入を開始します
+
+
+[role="lead"]
+クラウドコストは、過去、現在、推定された支出の詳細なコスト分析を提供し、環境内のクラウド使用量を可視化します。クラウドコストダッシュボードは、組織のクラウドコストを明確に表示し、個々のワークロード、アカウント、サービスを詳細に把握することができます。
+
+クラウドコストは、次のような大きな課題に役立ちます。
+
+* クラウドコストの追跡と監視
+* 廃棄物と潜在的な最適化領域を特定する
+* 実行可能アクションアイテムを配信しています
+
+
+クラウドコストを設定または表示するには、 Cloud Insights の Administrator 権限または Account Owner 権限が必要です。設定が完了すると、その権限を持つ Cloud Insights ユーザはクラウドコストにアクセスできます。
+
+Cloud Cost を、 _AWS Organizations_account にリンクして設定します。これは、と呼ばれることもあります link:https://docs.spot.io/cloud-analyzer/getting-started/connect-your-aws-master-payer-account-existing-customer["_ 管理 _"] アカウント：
+
+
+NOTE: Cloud Cost は、 US リージョンの Cloud Insights 環境でのみ使用でき、設定できる AWS 組織アカウントは 1 つだけです。クラウドコストは、 Cloud Insights で所有しているすべての AWS コレクタとは別に設定する必要があります。
+
+
+
+==== クラウドコストを設定しています
+
+Cloud Insights にログインして、 [ クラウドコスト *] メニュー項目を初めてクリックすると、クラウドコストの設定を開始するためのようこそ画面とプロンプトが表示されます。
+
+image:Cloud_Cost_Welcome.png["クラウドコスト"]
+
+* 「 Add AWS Credentials to Start * 」ボタンをクリックして開始します。AWS Connection 画面が表示されます。この画面の指示に従って、お客様の * AWS Organizations] アカウント * をクラウドコストにリンクします。
++
+image:Cloud_Cost_Setup_1.png["AWS 接続"]
+
+* アカウントの設定が完了すると、「 Welcome 」というメッセージが表示されます。
++
+image:Cloud_Cost_Welcome_Wait.png["クラウドコストへようこそ！"]
+
++
+
+NOTE: クラウドコストを完全に構成するには、最大 24 時間かかる場合があります。設定が完了すると、 E メール通知が送信されます。問題が発生した場合は、チャットアイコンをクリックするか、にアクセスして、ネットアップサポートにお問い合わせください link:https://spot.io/support["NetApp スポットサポート"]。
+
+* セットアップが完了したら、 * クラウドコスト * メニュー項目をクリックすると、次の例のようなコスト分析ダッシュボードが表示されます。
++
+image:Cloud_Cost_Example_Dashboard.png["クラウドコストのダッシュボードの例"]
+
+
+
+
+
+=== クラウドコストの詳細
+
+Cloud Cost は、 Cloud Insights 環境との Cloud Analyzer 機能を接続します link:https://docs.spot.io/cloud-analyzer/["ネットアップのソリューションで実現"]Cloud Insights では、クラウドのコストデータに最も関連性の高いビューを提供します。クラウドコストダッシュボードの右上隅にある _Get Full Analysis_link をクリックすると、 Spot で Cloud Analyzer ダッシュボード全体を開くことができます。詳細な分析によって追加のデータとドリルダウンが提供され、クラウド関連の支出に関する詳細な情報が得られる場合があります。
+
+
+
+=== トラブルシューティング
+
+問題が発生した場合に試すべきこと：
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 設定を確認する電子メールを Spot から受信しましたが、リンクは Cloud Insights に関連していないようです | スポット E メール内のリンクは、 Cloud Insights クラウドコストとは関係ありません。スポットからの電子メールのリンクを無視します。 
+
+
+| クラウドコストが表示され、スポットログインプロンプトが表示されています。 | クラウドコストセッションの期限が切れている可能性があります。Cloud Insights ホーム画面に移動し、クラウドコストに戻ってクラウドコストセッションを再開します。 
+
+
+| 「 Cloud Cost session conflict detected 」というメッセージが表示されました。 | 複数のアカウントで開いた Cloud Cost セッションは、同じブラウザではサポートされません。Cloud Insights からログアウトしてログインし直すと、アカウントのクラウドコスト情報を確認できます。 
+
+
+| ログインしようとすると、「 Unauthorized 」というエラーが表示されます。無効なクレデンシャルです。 " | 正しいクレデンシャルでログインしていることを確認します。問題が解決しない場合は、 NetApp Spot サポートにお問い合わせください。 
+|===

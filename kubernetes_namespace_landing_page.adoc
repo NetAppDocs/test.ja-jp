@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: kubernetes_namespace_landing_page.html 
+keywords: telegraf, installation, install, kubernetes, pods, clusters, filters, filtering, k8s, namespace 
+summary: Kubernetes のネームスペースランディングページについて説明しました 
+---
+= Kubernetes のネームスペースの詳細ページ
+
+
+[role="lead"]
+Kubernetes のネームスペースの詳細ページには、ネームスペースに使用されているすべてのアセットの概要が表示されます。これには、バックエンドのすべてのストレージリソースとその容量利用率が含まれます。
+
+Kubernetes Explorer ページでネームスペースのリンクをクリックすると、そのネームスペースの詳細ページが開きます。
+
+image:Kubernetes_Namespace_Detail_Example_2.png["ネームスペースの詳細ページ"]
+
+他の Kubernetes Excplorer ページと同様に、特定のノードまたは他のオブジェクトに焦点を当てるようにフィルタを設定できます。また、ポッドの正常性とネームスペースのステータスの概要を確認できます。また、 CPU とメモリの需要と永続的ボリュームの容量がある場合は、グラフも表示されます。
+
+最後に、ネームスペースに関連付けられているワークロードがページに表示されます。
+
+ページのいずれかのリンクをクリックして、 Kubernetes 環境の詳細を確認またはトラブルシューティングします。

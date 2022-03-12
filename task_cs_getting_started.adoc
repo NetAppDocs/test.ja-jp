@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: task_cs_getting_started.html 
+keywords: collectors, data collectors, configure, introduction, browsers 
+summary: 簡単な手順で Cloud Secure を使い始めることができます 
+---
+= Cloud Secure の使用を開始する
+
+
+Cloud Secure を使用してユーザアクティビティを監視する前に、設定タスクを完了しておく必要があります。
+
+Cloud Secure システムでは、エージェントを使用してストレージシステムからアクセスデータとユーザ情報をディレクトリサービスサーバから収集します。
+
+データの収集を開始する前に、次の項目を設定する必要があります。
+
+[cols="2*"]
+|===
+
+
+| タスク | 関連情報 
+
+
+| エージェントを設定します  a| 
+link:concept_cs_agent_requirements.html["エージェントの要件"]
+
+link:task_cs_add_agent.html["エージェントを追加します"]
+
+link:https://netapp.hubs.vidyard.com/watch/Lce7EaGg7NZfvCUw4Jwy5P?["* ビデオ * ：エージェントの配備"]
+
+
+
+| ユーザディレクトリコネクタを設定します | link:task_config_user_dir_connect.html["ユーザーディレクトリコネクターを追加します"]
+
+link:https://netapp.hubs.vidyard.com/watch/NEmbmYrFjCHvPps7QMy8me?["* ビデオ * ： Active Directory 接続"] 
+
+
+| データコレクタを設定する | [*Admin] > [Data Collectors] をクリックし、設定するデータコレクタをクリックします。ドキュメントの Data Collector Vendor Reference セクションを参照してください。link:https://netapp.hubs.vidyard.com/watch/YSQrcYA7DKXbj1UGeLYnSF?["* ビデオ * ： ONTAP SVM 接続"] 
+
+
+| ユーザーアカウントを作成します | link:concept_user_roles.html["ユーザアカウントを管理する"] 
+
+
+| トラブルシューティング | link:https://netapp.hubs.vidyard.com/watch/Fs8N2w9wBtsFGrhRH9X85U?["* ビデオ * ：トラブルシューティング"] 
+|===

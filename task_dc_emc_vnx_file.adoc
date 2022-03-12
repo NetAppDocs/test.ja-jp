@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_vnx_file.html 
+keywords: data collector, Celerra, EMC, DELL, VNX File 
+summary: Dell EMC Celerra データコレクタの設定 
+---
+= Dell EMC VNX File （旧 Celerra Unified Storage System ）データコレクタ
+
+
+[role="lead"]
+このデータコレクタは、 VNX File Storage System からインベントリ情報を取得します。このデータコレクタを設定するには、ストレージプロセッサの IP アドレス、および読み取り専用のユーザ名とパスワードが必要です。
+
+
+
+== 用語集
+
+Cloud Insights は、 VNX File データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| Celerra Network Server/Celerra ストレージ・プール | ストレージプール 
+
+
+| File System の略 | 内部ボリューム 
+
+
+| データムーバー | コントローラ 
+
+
+| データムーバーにマウントされたファイルシステム | ファイル共有 
+
+
+| CIFS および NFS エクスポート | 共有 
+
+
+| ディスクボリューム | バックエンド LUN 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* ストレージプロセッサの IP アドレス
+* 読み取り専用のユーザ名とパスワード
+* SSH ポート 22
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| VNX ファイルの IP アドレス | VNX File デバイスの IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | VNX File デバイスへのログインに使用する名前 
+
+
+| パスワード | VNX File デバイスへのログインに使用するパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 20 分です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| エラー： DART の更新の実行中は処理を続行できません | Possible 解決策：データコレクタを一時停止し、 DART のアップグレードが完了するのを待ってから、別の取得要求を実行します。 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

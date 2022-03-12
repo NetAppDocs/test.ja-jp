@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_xio.html 
+keywords: data collector, XtremeIO, EMC 
+summary: XtremeIO データコレクタを構成しています。 
+---
+= Dell EMC XtremeIO データコレクタ
+
+
+[role="lead"]
+EMC XtremIO データコレクタは、 EMC XtremIO ストレージシステムからインベントリとパフォーマンスのデータを取得します。
+
+
+
+== 要件
+
+EMC XtremIO （ HTTP ）データコレクタを設定するには、次のものが必要です。
+
+* XtremIO Management Server （ XMS ）ホストのアドレス
+* 管理者権限を持つアカウント
+* ポート 443 へのアクセス（ HTTPS ）
+
+
+
+
+== 用語集
+
+Cloud Insights は、 EMC XtremIO データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータソースを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ディスク（ SSD ） | ディスク 
+
+
+| クラスタ | ストレージ 
+
+
+| コントローラ | ストレージノード 
+
+
+| ボリューム | ボリューム 
+
+
+| LUN マップ | ボリュームマップ 
+
+
+| ターゲット FC イニシエータ | ボリュームマスク 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータソースのすべてのケースを表しているとは限りません。
+
+
+
+== 要件
+
+* XtremIO Management Server （ XMS ）ホストの IP アドレス
+* XtremIO の管理者のユーザ名とパスワード
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| XMS ホスト | XtremIO Management Server の IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | XtremIO Management Server のユーザ名 
+
+
+| パスワード | XtremIO Management Server のパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| TCP ポート | XtremIO Management Server への接続に使用する TCP ポート。デフォルトは 443. です。 
+
+
+| インベントリのポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 60 分です。 
+
+
+| パフォーマンスのポーリング間隔（秒） | パフォーマンスのポーリング間隔デフォルトは 300 秒です。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

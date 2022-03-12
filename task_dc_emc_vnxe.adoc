@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_vnxe.html 
+keywords: data collector, VNXe, EMC 
+summary: VNXe データコレクタを構成しています。 
+---
+= EMC VNXe データコレクタの設定
+
+
+[role="lead"]
+Dell EMC VNXe データコレクタは、 VNXe ユニファイドストレージアレイのインベントリサポートを提供します。Cloud Insights は現在、 iSCSI プロトコルと NAS プロトコルをサポートしています。
+
+
+
+== 要件
+
+* VNXe データコレクタは CLI ベースです。 VNXe データコレクタが存在する Acquisition Unit に Unisphere for VNXe CLI （ uemcli.exe ）をインストールする必要があります。
+* uemcli.exe は HTTPS を転送プロトコルとして使用するため、 VNXe への HTTPS 接続を Acquisition Unit から開始できる必要があります。
+* VNXe デバイスの IP アドレスまたは完全修飾ドメイン名
+* データコレクタで使用するためには、読み取り専用ユーザが少なくとも 1 人必要です。
+* 管理用 Solutions Enabler サーバの IP アドレス
+* ポート 443 での HTTPS が必要です
+* EMC VNXe データコレクタは、 NAS と iSCSI でインベントリをサポートしています。ファイバチャネルボリュームは検出されますが、 Cloud Insights では FC マッピング、マスキング、ストレージポートについてはレポートされません。
+
+
+
+
+== 用語集
+
+Cloud Insights は、 VNXe データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ディスク | ディスク 
+
+
+| ストレージアレイ | ストレージ 
+
+
+| プロセッサ | ストレージノード 
+
+
+| ストレージプール | ストレージプール 
+
+
+| 一般的な iSCSI ブロック情報、 VMware VMFS | 共有 
+
+
+| Replication Remote System の略 | 同期 
+
+
+| iSCSI ノード | iSCSI ターゲットノード 
+
+
+| iSCSI イニシエータ | iSCSI ターゲットイニシエータ 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータソースのすべてのケースを表しているとは限りません。
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| VNXe ストレージ | VNXe デバイスの IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | VNXe デバイスのユーザ名 
+
+
+| パスワード | VNXe デバイスのパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 40 分です。 
+
+
+| CLI ポート | VNXe CLI に使用するポート 
+
+
+| パフォーマンスのポーリング間隔（秒） | デフォルトは 300. です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 「 Failed to execute external utility 」というエラーメッセージが表示され、「 Failed to find Unisphere executable uemcli 」 | * 正しい IP アドレス、ユーザー名、パスワードを確認する * Unisphere CLI が Cloud Insights Acquisition Unit にインストールされていることを確認 * Unisphere CLI インストールディレクトリがデータソース構成で正しいことを確認します * VNXe の IP がデータソース構成で正しいことを確認します。Cloud Insights Acquisition Unit から CMD を開き、設定したインストールディレクトリに移動します。 $ ｛ INSTALLDIR.次のように入力して、 VNXe デバイスとの接続を試みます。 uemcli -d <your ip>-u <your ID>/sys/general show 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: concept_requesting_support.html 
+summary: サポートをリクエストする方法については、技術情報アーティクルの表示、ネットアップコミュニティとの接続、ビデオの表示、チケットの発行があります。 
+keywords: support, knowledgebase, documentation, community, chat, videos, help, contact 
+---
+= サポートをリクエストしています
+
+
+
+toc::[]
+Cloud Insights でサポートオプションにアクセスするには、 [ ヘルプ ] 、 [ サポート ] の順にクリックします。利用可能なサポートオプションは、トライアルモードとサブスクリプションモードのどちらであるかによって異なります。
+
+image:SupportPageExample-NA.png["サポートページ"]
+
+
+
+== サポート資格をアクティブ化しています
+
+Cloud Insights は、試用モードで実行する場合にセルフサービスと E メールのサポートを提供します。サービスに登録したら、サポート資格をアクティブ化することを強くお勧めします。サポートエンタイトルメントをアクティブにすると、オンラインチャット、 Web チケット発行システム、および電話でテクニカルサポートにアクセスできます。登録が完了するまで、デフォルトのサポートモードはセルフサービスです。を参照してください link:#obtaining-support-information["詳細"] 下。
+
+Cloud Insights インスタンスは、初回のサブスクリプションプロセスで「 950 」以降の 20 桁のネットアップシリアル番号を生成します。このネットアップシリアル番号は、お客様のアカウントに関連付けられた Cloud Insights サブスクリプションを表します。サポート利用資格を有効にするには、ネットアップのシリアル番号を登録する必要があります。サポート登録には、次の 2 つのオプションがあります。
+
+. ネットアップサポートサイト（ NSS ）の SSO アカウントをすでにお持ちのユーザ（現在ネットアップのお客様など）
+. ネットアップサポートサイト（ NSS ）の SSO アカウントがない新しいネットアップのお客様
+
+
+
+
+==== オプション 1 ：ネットアップサポートサイト（ NSS ）の SSO アカウントを事前にお持ちのユーザ向けの手順
+
+.手順
+. ネットアップ登録用 Web サイトにアクセスします https://register.netapp.com[]
+. 「 I am already registered as NetApp Customer 」を選択し、製品ラインとして _ Cloud Insights _ を選択します。請求先のプロバイダ（ネットアップまたは AWS ）を選択し、 Cloud Insights のユーザインターフェイスで「 Help > Support 」メニューを参照して、シリアル番号とネットアップサブスクリプション名または AWS カスタマー ID を入力します。
++
+image:SupportPage_SN_Section-NA.png["SN_Screen"]
+
+. 既存の顧客登録フォームに入力し、 *Submit * をクリックします。
++
+image:ExistingCustomerRegExample.png["既存の顧客フォーム"]
+
+. エラーが発生しない場合は、「登録が正常に送信されました」ページが表示されます。登録に使用された NSS SSO ユーザ名に関連付けられた電子メールアドレスには、数分以内に「お使いの製品は現在サポート対象です」という電子メールが送信されます。
+. これは、 Cloud Insights ネットアップシリアル番号の一時登録です。
+
+
+
+
+==== オプション 2 ：ネットアップサポートサイト（ NSS ）の SSO アカウントがない新しいネットアップのお客様向けの手順
+
+.手順
+. ネットアップ登録用 Web サイトにアクセスします https://register.netapp.com[]
+. 「 I am not a registered NetApp Customer 」を選択し、以下の例のフォームに必要な情報を入力します。
+
+
+image:NewCustomerRegExample.png["新しい顧客フォーム"]
+
+. プロダクトラインとして _ Cloud Insights _ を選択します。請求先のプロバイダ（ネットアップまたは AWS ）を選択し、 Cloud Insights のユーザインターフェイスで「 Help > Support 」メニューを参照して、シリアル番号とネットアップサブスクリプション名または AWS カスタマー ID を入力します。
++
+image:SupportPage_SN_Section-NA.png["SN_Screen"]
+
+. エラーが発生しない場合は、「登録が正常に送信されました」ページが表示されます。登録に使用された NSS SSO ユーザ名に関連付けられた電子メールアドレスには、「お使いの製品はサポート対象です」という電子メールが数時間以内に送信されます。
+. ネットアップの新規のお客様の場合は、ネットアップサポートサイト（ NSS ）のユーザアカウントを作成して、今後の登録や、テクニカルサポートチャットや Web チケット発行用のサポートポータルにアクセスする必要があります。このリンクはにあります https://mysupport.netapp.com/eservice/public/now.do[]。新しく登録した Cloud Insights のシリアル番号を入力しておくと、プロセスを迅速に進めることができます。
+. これは、 Cloud Insights ネットアップのシリアル番号への登録を 1 回だけ行うものです。
+
+
+
+
+== サポート情報の入手方法
+
+ネットアップでは、さまざまな方法で Cloud Insights をサポートしています。ナレッジベース（ KB ）記事やネットアップコミュニティなど、幅広いセルフサポートオプションを 24 時間 365 日ご利用いただけます。Cloud Insights Edition （ Basic 、 Standard 、 Premium ）のいずれかに登録されているユーザの場合、電話または Web でチケットを発行してテクニカルサポートを受けることができます。Web チケットとケース管理には、ネットアップサポートサイト（ NSS ）の SSO アカウントが必要です。
+
+
+
+=== セルフサービスサポート：
+
+これらのサポートオプションはトライアルモードで利用でき、 24 時間 365 日無料でご利用いただけます。
+
+* *link:https://kb.netapp.com["ナレッジベース"]*
++
+このセクション内のリンクをクリックすると、ネットアップナレッジベースに移動し、そこで記事を検索できます。 link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/HOW_TO/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse["操作方法"]、 または  Cloud Insights に関連する情報。
+
+* *link:https://docs.netapp.com/us-en/cloudinsights/["ドキュメント"]*
++
+[Documentation] リンクをクリックすると、このドキュメントセンターに移動します。
+
+* *link:https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS["コミュニティ"]*
++
+コミュニティのリンクをクリックすると、ネットアップの Cloud Insights コミュニティに移動し、他のユーザやエキスパートと交流できます。
+
+
+
+また、提供するリンクもあります link:mailto:ng-cloudinsights-customerfeedback@netapp.com["* フィードバック *"] Cloud Insights の改善にお役立てください。
+
+
+
+=== サブスクリプションサポート
+
+上記のセルフサポートオプションに加え、監視対象のネットアップの製品またはサービスに対する Cloud Insights サブスクリプションまたは有料サポートがある場合は、ネットアップサポートエンジニアと協力して問題を解決できます。
+
+
+NOTE: に登録する必要があります <<Activating support entitlement and accessing support,サポートを有効にします>> ネットアップのクラウド製品の場合：登録は、ネットアップのにアクセスしてください link:https://register.netapp.com["クラウドデータサービスサポート登録"]。
+
+チェックボックスをオンにして、サポートセッション中にネットアップサポートエンジニアが Cloud Insights 環境にアクセスできるようにすることを強く推奨します。これにより、エンジニアが問題のトラブルシューティングを行い、問題を迅速に解決できるようになります。問題が解決されるか、サポートセッションが終了したら、チェックボックスをオフにできます。
+
+サポートは次のいずれかの方法でリクエストできます。次のサポートオプションを使用するには、アクティブな Cloud Insights サブスクリプションが必要です。
+
+* link:https://www.netapp.com/us/contact-us/support.aspx["* 電話 *"]
+* link:https://mysupport.netapp.com/portal?_nfpb=true&_st=initialPage=true&_pageLabel=submitcase["* サポートチケット *"]
+
+
+をクリックして、セールスサポートをリクエストすることもできます link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx["* 販売担当者 * にお問い合わせください"] リンク
+
+Cloud Insights のシリアル番号は、サービス内で * Help > Support * メニューから確認できます。サービスへのアクセスで問題が発生し、ネットアップにシリアル番号を登録している場合は、ネットアップサポートサイトで次の番号の Cloud Insights シリアル番号の一覧を確認することもできます。
+
+* mysupport.netapp.com にログインします
+* [ 製品 ]>[ マイ製品 ] メニュータブで、製品ファミリー「 SaaS Cloud Insights 」を使用して、登録済みのシリアル番号をすべて検索します。
+
+
+image:Support_View_SN.png["サポート SN を確認します"]
+
+
+
+== Cloud Insights データコレクタのサポートマトリックス
+
+では、サポートされているデータコレクタに関する情報や詳細を表示またはダウンロードできます link:CloudInsightsDataCollectorSupportMatrix.pdf["* Cloud Insights データ・コレクタ・サポート・マトリックス * 、 role="external""]。

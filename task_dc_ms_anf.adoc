@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: task_dc_ms_anf.html 
+keywords: data collector, azure, Netapp files, anf 
+summary: Azure NetApp Files データコレクタの設定 
+---
+= Azure NetApp Files データコレクタの設定
+
+
+[role="lead"]
+Cloud Insights は、 Azure NetApp Files データコレクタを使用してインベントリとパフォーマンスのデータを収集します。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* ポート要件： 443 HTTPS
+* Azure Management Rest IP （ management.azure.com ）
+* Azure サービスプリンシパルクライアント ID （ユーザアカウント）
+* Azure サービスプリンシパルの認証キー（ユーザパスワード）
+* Cloud Insights 検出用の Azure アカウントを設定する必要があります。
++
+アカウントを適切に設定し、アプリケーションを Azure に登録すると、 Cloud Insights で Azure インスタンスを検出するために必要なクレデンシャルが付与されます。次のリンクでは、検出用のアカウントを設定する方法について説明します。
+
+
+
+https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal[]
+
+
+
+== 設定
+
+次の表に従って、データコレクタフィールドにデータを入力します。
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| Azure サービスプリンシパルクライアント ID | Azure へのサインイン ID 
+
+
+| Azure テナント ID | Azure テナント ID 
+
+
+| Azure サービスプリンシパルの認証キー | ログイン認証キー 
+
+
+| Microsoft が API リクエストを請求することを理解しています | これをチェックして、 Insight のポーリングで作成された API 要求を Microsoft から課金することを理解していることを確認します。 
+|===
+
+
+== 詳細設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 60 です。 
+|===
+
+
+== トラブルシューティング
+
+* ANF データコレクタで使用するクレデンシャルに、 ANF ボリュームを含む Azure サブスクリプションへのアクセス権がないことを確認してください。
+* Reader へのアクセスによってパフォーマンス収集が失敗する場合は、リソースグループレベルで貢献者アクセスを許可してみてください。
+
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

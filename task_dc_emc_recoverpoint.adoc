@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_recoverpoint.html 
+keywords: data collector, RecoverPoint, EMC, DELL 
+summary: Dell EMC RecoverPoint データコレクタの構成 
+---
+= Dell EMC RecoverPoint データコレクタ
+
+
+[role="lead"]
+EMC RecoverPoint データコレクタは、 EMC RecoverPoint ストレージからインベントリ情報を収集します。データコレクタを設定するには、ストレージプロセッサの IP アドレス、および読み取り専用のユーザ名とパスワードが必要です。
+
+EMC RecoverPoint データコレクタは、 RecoverPoint が他のストレージアレイ間で調整するボリューム間レプリケーション関係を収集します。Cloud Insights は各 RecoverPoint クラスタのストレージアレイを表示し、そのクラスタ上のノードとストレージポートのインベントリデータを収集します。ストレージプールまたはボリュームのデータは収集されません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* ストレージプロセッサの IP アドレスまたは完全修飾ドメイン名
+* 読み取り専用のユーザ名とパスワード
+* ポート 443 経由での REST API へのアクセス
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| RecoverPoint のアドレス | RecoverPoint クラスタの IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | RecoverPoint クラスタのユーザ名 
+
+
+| パスワード | RecoverPoint クラスタのパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| TCP ポート | RecoverPoint クラスタへの接続に使用する TCP ポート 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 20 分です。 
+
+
+| 除外クラスタ | ポーリング時に対象から除外するクラスタの ID または名前をカンマで区切ったリスト。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

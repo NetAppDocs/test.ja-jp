@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: concept_querying_assets.html 
+summary: 概要の照会 
+keywords: query, queries, Application, Datastore, Disk, Fabric, Generic Device, Host, Internal Volume, iSCSI, Network, Portal, Path, Port, Qtree, Quota, Share, Storage, Node, Pool, SVM, Switch, Tape, VMDK, Virtual Machine, VM, Volume, Zone, Member 
+---
+= クエリで使用するアセット
+
+
+[role="lead"]
+クエリを使用すると、ネットワークの監視やトラブルシューティングで環境内のアセットや指標を、ユーザが選択した条件（アノテーションなど）に基づいて細かいレベルで検索することができます。
+
+アセットにアノテーションを自動的に割り当てるアノテーションルール _require_a クエリに注意してください。
+
+環境内の物理または仮想インベントリアセット（および関連する指標）、または Kubernetes や ONTAP の高度なデータなどと統合されている指標を照会することができます。
+
+
+
+=== 在庫資産
+
+クエリ、ダッシュボードウィジェット、およびカスタムのアセットランディングページで使用できるアセットタイプは次のとおりです。フィルタ、式、表示に使用できるフィールドとカウンタは、アセットのタイプによって異なります。すべてのアセットをすべてのウィジェットタイプで使用できるわけではありません。
+
+* アプリケーション
+* データストア
+* ディスク
+* ファブリック
+* 汎用デバイス
+* ホスト
+* 内部ボリューム
+* iSCSI セッション
+* iSCSI ネットワークポータル
+* パス
+* ポート
+* qtree
+* クォータ
+* 共有
+* ストレージ
+* ストレージノード
+* ストレージプール
+* Storage Virtual Machine （ SVM ）
+* スイッチ
+* テープ
+* VMDK です
+* 仮想マシン
+* ボリューム
+* ゾーン
+* ゾーンメンバー
+
+
+
+
+=== 統合メトリック
+
+インベントリ資産とその関連するパフォーマンス指標のクエリに加えて、 Kubernetes や Docker で生成された指標や ONTAP Advanced Metrics で提供された指標など、 * 統合データ * の指標も照会できます。
+
+image:QueryPageFilter.png["Integration Query Filter の例"]

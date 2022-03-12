@@ -1,0 +1,13 @@
+---
+sidebar: sidebar 
+permalink: TBD.html 
+summary: このトピックはまだ準備ができていません。 
+keywords: coming soon 
+---
+= このトピックは構築中です
+
+
+[role="lead"]
+Cloud Insights プレビュー期間中に外観を変更します。多くのトピックはまだ工事中であり、その中の 1 つと思われます。弊社にご連絡ください。また、ドキュメントの更新については、頻繁にご確認ください。
+
+image::new-home-construction-1500990976ZLv.jpg[建設中]

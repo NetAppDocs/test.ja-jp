@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: task_dc_pure_flasharray.html 
+keywords: data collector, Pure Storage, pure 
+summary: Pure Storage データコレクタの設定 
+---
+= Pure Storage FlashArray データコレクタ
+
+
+[role="lead"]
+Cloud Insights は、 Pure Storage FlashArray データコレクタを使用してインベントリデータとパフォーマンスデータを収集します。
+
+
+
+== 用語集
+
+Cloud Insights では、アセットのタイプごとに、アセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ドライブ（ SSD ） | ディスク 
+
+
+| 配列 | ストレージ 
+
+
+| コントローラ | ストレージノード 
+
+
+| ボリューム | ボリューム 
+
+
+| LUN マップ | ボリュームマップ 
+
+
+| イニシエータ、ターゲット | ボリュームマスク 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+* ストレージシステムの IP アドレス
+* Pure ストレージシステムの Administrator アカウントのユーザ名とパスワード。
+* ポート要件： HTTP / HTTPS / 443
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| FlashArray ホストの IP アドレス | ストレージシステムの IP アドレス 
+
+
+| ユーザ名 | admin 権限があるユーザ名 
+
+
+| admin 権限があるアカウントのパスワード | パスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 接続タイプ | HTTP または HTTPS を選択します。デフォルトのポートも表示されます。 
+
+
+| TCP ポートを上書きします | 空白の場合は、 [Connection Type] フィールドでデフォルトのポートを使用します。それ以外の場合は、使用する接続ポートを入力します 
+
+
+| インベントリのポーリング間隔（分） | デフォルトは 60 分です 
+
+
+| パフォーマンスポーリング間隔（秒） | デフォルトは 300 です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 「 Invalid login credentials 」というエラーメッセージが表示され、「 Policy does not allow 」または「 you are not authorized 」が表示されます。 | Pure http インターフェイスで Pure のユーザアカウントとパスワードを検証します 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: task_dc_na_storagegrid.html 
+summary: NetApp StorageGRID のデータコレクタを設定する 
+keywords: data collector, queries, create, storagegrid 
+---
+= NetApp StorageGRID データコレクタ
+
+
+[role="lead"]
+NetApp StorageGRID データコレクタでは、 StorageGRID 構成からのインベントリやパフォーマンスの収集がサポートされます。
+
+
+NOTE: StorageGRID は、 raw TB から管理対象ユニットへのレートが異なる場合に測定されます。フォーマットされていない StorageGRID の容量が 40TB 個になると、 1 個のスペースが請求されます link:concept_subscribing_to_cloud_insights.html#pricing["管理ユニット (MU)"]。
+
+
+
+== 要件
+
+このデータソースの設定に関する要件は次のとおりです。
+
+* StorageGRID ホストの IP アドレス
+* Metric Query ロールとテナントアクセスロールが割り当てられているユーザのユーザ名とパスワード
+* ポート 443
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| StorageGRID ホストの IP アドレス | StorageGRID アプライアンスの管理仮想 IP アドレス 
+
+
+| ユーザ名 | StorageGRID アプライアンスへのログインに使用する名前 
+
+
+| パスワード | StorageGRID アプライアンスへのログインに使用するパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | デフォルトは 60 分です 
+
+
+| パフォーマンスポーリング間隔（秒） | デフォルト値は 900 秒です 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

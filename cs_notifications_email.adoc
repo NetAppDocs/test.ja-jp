@@ -1,0 +1,16 @@
+---
+sidebar: sidebar 
+permalink: cs_notifications_email.html 
+summary: Cloud Secure アラートの通知用の E メールアドレスの追加 
+keywords: email, notifications, alerts, warnings, attacks 
+---
+= アラート E メール通知の設定
+
+
+[role="lead"]
+アラートの E メール通知は、アラートに対するすべての対処方法についてアラート受信者リストに送信されます。
+
+アラート受信者を設定するには、 [*Admin] > [Notifications] をクリックし、受信者ごとに電子メールアドレスを入力します。
+
+[role="thumb"]
+image:CS-Alert-Notification-List.png["アラート E メール通知の受信者リスト"]

@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: task_dc_brocade_sphereon_intrepid.html 
+keywords: data collector, Brocade, Sphereon Intrepid, 
+summary: Brocade Sphereon/Intrepid Switch データコレクタの設定 
+---
+= Brocade Sphereon/Intrepid Switch データコレクタの設定
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:toc: 
+:toclevels: 2
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Cloud Insights では、 Brocade Sphereon/Intrepid Switch （ SNMP ）データコレクタを使用して、 Brocade Sphereon または Intrepid スイッチのインベントリを検出します。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の要件を満たしている必要があります。
+
+* ファブリック内のすべてのスイッチへの IP 接続が必要です。[Discover all switches in the fabric] チェックボックスをオンにすると、 Cloud Insights はファブリック内のすべてのスイッチを識別しますが、これらの追加のスイッチを検出するには、これらのスイッチへの IP 接続が必要です。
+* SNMP V1 または SNMP V2 を使用している場合は、読み取り専用コミュニティストリングが必要です。
+* ゾーニング情報を取得するには、スイッチへの HTTP アクセスが必要です。
+* このスイッチに snmpwalk ユーティリティを実行してアクセスを検証します（ _ <install_path>\bin\_ を参照）。
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| 球スイッチ | スイッチの IP アドレスまたは完全修飾ドメイン名 
+
+
+| SNMP バージョン | SNMP バージョン 
+
+
+| SNMP コミュニティストリング | スイッチへのアクセスに使用する SNMP の読み取り専用コミュニティストリング 
+
+
+| SNMP ユーザ名 | スイッチの SMI-S のユーザ名（ SNMP v3 のみ） 
+
+
+| SNMP パスワード | スイッチの SMI-S のパスワード（ SNMP v3 のみ） 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 15 分です。 
+
+
+| SNMP 認証プロトコル | SNMP 認証プロトコル（ SNMP v3 のみ） 
+
+
+| SNMP プライバシーパスワード | SNMP プライバシーパスワード（ SNMP v3 のみ） 
+
+
+| SNMP 再試行回数 | SNMP の再試行回数 
+
+
+| ファブリック名 | データコレクタによって報告されるファブリック名。ファブリック名を WWN としてレポートする場合は、空白のままにします。 
+
+
+| トラッピングを有効にします | デバイスからの SNMP トラップの受信時にデータ収集を有効にする場合に選択します。トラップを有効にするを選択した場合は、 SNMP も有効にする必要があります。 
+
+
+| トラップ間の最小時間（秒） | トラップでデータ収集を試行する最小間隔。デフォルトは 10 秒です。 
+
+
+| パフォーマンスポーリング間隔（秒） | パフォーマンスのポーリング間隔デフォルトは 300 秒です。 
+|===
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

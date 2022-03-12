@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: concept_activeiq.html 
+keywords: Active IQ, risks, svm 
+summary: Cloud Insights は、 NetApp Active IQ からリスクデータを収集します 
+---
+= Active IQ
+
+
+[role="lead"]
+ネットアップ link:https://www.netapp.com/us/products/data-infrastructure-management/active-iq.aspx["Active IQ"] ハードウェア / ソフトウェアシステム向けに、ネットアップのお客様に一連の視覚化機能、分析機能、サポート関連サービスを提供します。Active IQ が報告するデータは、システム問題のトラブルシューティングを強化するとともに、デバイスに関する最適化と予測分析の情報も提供します。
+
+Cloud Insights は、 Active IQ によって監視および報告されるすべての NetApp clustered Data ONTAP ストレージシステムについて、 * リスク * を収集します。ストレージシステムについて報告されたリスクは、 Cloud Insights によってそれらのデバイスから収集されたデータの一部として自動的に収集されます。Active IQ のリスク情報を収集するには、適切なデータコレクタを Cloud Insights に追加する必要があります。
+
+Cloud Insights には、 Active IQ によって監視およびレポートされない ONTAP システムのリスクデータは表示されません。
+
+報告されたリスクは、 Cloud Insights の _storage_or_storage の node_A_1 のランディングページの「リスク」の表に表示されます。この表には、リスクの詳細、リスクのカテゴリ、潜在的な影響が表示されます。また、ストレージノードのすべてのリスクをまとめた Active IQ ページへのリンクも表示されます（ネットアップサポートアカウントのサインインが必要です）。
+
+image:AIQ_Risks_Table_Example.png["Active IQ Risks テーブル"]
+
+ランディングページの概要ウィジェットにも報告されたリスクの数が表示され、該当する Active IQ ページへのリンクが表示されます。a_storage_landing ページの数は、基盤となるすべてのストレージノードのリスクの合計です。
+
+image:AIQ_Summary_Example.png["ストレージページの概要"]
+
+
+
+=== Active IQ ページを開きます
+
+Active IQ ページへのリンクをクリックして、現在 Active IQ アカウントにサインインしていない場合は、次の手順を実行してストレージノードの Active IQ ページを表示する必要があります。
+
+. Cloud Insights サマリウィジェットまたはリスク表で、「 Active IQ 」リンクをクリックします。
+. ネットアップサポートアカウントにサインインします。Active IQ のストレージノードのページに直接移動します。
+
+
+
+
+=== リスクを照会しています
+
+Cloud Insights では、ストレージノードやストレージノードのクエリに「 * オブジェクトリスク * 」列を追加できます。返される結果に Active IQ 監視対象のストレージシステムが含まれている場合は、オブジェクトリスク列にストレージシステムまたはノードのリスク数が表示されます。
+
+
+
+=== ダッシュボード
+
+ウィジェット（円グラフ、表ウィジェット、棒グラフ、列、散布図、 および単一価値ウィジェット）： Active IQ によって監視される NetApp clustered Data ONTAP システムのストレージノードとストレージノードのオブジェクトリスクを可視化します。これらのウィジェットでは、「オブジェクトリスク」を列または指標として選択できます。各ウィジェットでは、ストレージノードまたはストレージノードがオブジェクトとなります。
+
+image:ObjectRiskWidgets.png["ウィジェットのオブジェクトリスク"]

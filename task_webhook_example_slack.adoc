@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: task_webhook_example_slack.html 
+keywords: webhook, notification, Slack, integration 
+summary: Slack のパフォーマンスやインベントリのしきい値を通知するためのウェブフックを作成します 
+---
+= Slack の Web フックの例
+
+
+[role="lead"]
+Webhook を使用すると、ユーザーはカスタマイズされた webhook チャネルを使用して、さまざまなアプリケーションにアラート通知を送信できます。このページでは、 Slack 用の Web フックを設定する例を示します。
+
+
+NOTE: このページでは、変更される可能性があるサードパーティの手順について説明します。を参照してください link:https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack["ドキュメントのたるみ"] 最新の情報については、を参照してください。
+
+
+
+=== たわみ率の例：
+
+* に進みます https://api.slack.com/apps[] 新しいアプリケーションを作成しますわかりやすい名前を付けて、 [ たわみ率（ Slack ） ] ワークスペースを選択する。
++
+image:Webhooks_Slack_Create_Webhook.png["Slack Webhook を作成します"]
+
+* 受信したウェブフックに移動し、 [on_Activate incoming webhooks] 、 [Request to _Add New Webhook_] の順にクリックして、投稿するチャネルを選択します。
+* Webhook URL をコピーします。これを Cloud Insights webhook 設定に貼り付ける必要があります。
++
+image:Webhook_Slack_Config.jpg["Slack Webhook の URL"]
+
+
+
+
+
+=== Cloud Insights Webhook を作成します。
+
+. Cloud Insights で、 [*Admin] > [Notifications] に移動し、 [*webhook *] タブを選択します。[*+Webhook* ] をクリックして、新しい Web フックを作成します。
+. Web フックに「 Slack Webhook 」などのわかりやすい名前を付けます。
+. [ テンプレートタイプ _ （ _Template Type_） ] ドロップダウンで、 [ * Slack * （ * Slack * ） ] を選択する。
+. 上の URL を _url_field に貼り付けます。
+
+
+image:Webhooks-Slack_example.png["Slack webhook テンプレート"]
+
+
+
+=== Webhook で通知します
+
+webhook を使用してイベントを通知するには、 Cloud Insights で [*Alerts] > [Monitors *] の順に選択し、 [*+ Monitor*] をクリックして新しいイベントを作成します link:task_create_monitor.html["モニタ"]。
+
+* メトリックを選択し、モニタの条件を定義します。
+* チーム通知の設定（ _Set up team notification(s) ）で、 * Webhook * 配信方法を選択します。
+* 目的のイベントに対応する「 Slack 」 Web フックを選択します（ Critical 、 Warning 、 Resolved ）
++
+image:Webhooks_Slack_Notifications.png["Webhook 通知"]
+
+
+
+
+
+==== 詳細情報
+
+* メッセージの形式とレイアウトを変更するには、を参照してください https://api.slack.com/messaging/composing[]
+* エラー処理： https://api.slack.com/messaging/webhooks#handling_errors[]
+

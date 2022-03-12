@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: concept_acquisition_unit_requirements.html 
+summary: Acquisition Unit として使用するサーバまたは VM が最小要件を満たしている必要があります 
+keywords: AU, acquisition unit, RAU, requirements, sizing 
+---
+= Acquisition Unit の要件
+
+
+[role="lead"]
+インフラのデータコレクタ（ストレージ、 VM 、ポート、 EC2 など）から情報を取得するには、 Acquisition Unit （ AU ）をインストールする必要があります。Acquisition Unit をインストールする前に、オペレーティングシステム、 CPU 、メモリ、およびディスクスペースが要件を満たしていることを確認してください。
+
+
+
+=== 要件
+
+|===
+
+
+| コンポーネント | Linux 要件 | Windows 要件 
+
+
+| オペレーティングシステム | ライセンス版の次のいずれかを実行しているコンピュータ： * CentOS （ 64 ビット）： 7.2 から 7.9 、 8.1 から 8.4 * Debian （ 64 ビット）： 9 および 10 * Oracle Enterprise Linux （ 64 ビット）： 7.5 から 7.9 、 8.1 から 8.4 * Red Hat Enterprise Linux （ 64 ビット）： 7.2 ~ 7.9 、 8.1 ~ 8.4 * Ubuntu Server ： 18.04 および 20.04 LTS このコンピュータでは、他のアプリケーションレベルのソフトウェアは実行しないでください。専用のサーバを使用することを推奨します。 | ライセンス版の次のいずれかを実行しているコンピュータ： * Microsoft Windows 10 64 ビット * Microsoft Windows Server 2012 * Microsoft Windows Server 2012 R2 * Microsoft Windows Server 2016 * Microsoft Windows Server 2019 このコンピュータでは、他のアプリケーションレベルのソフトウェアを実行していません。専用のサーバを使用することを推奨します。 
+
+
+| CPU | 2 個の CPU コア | 同じ 
+
+
+| メモリ | 8GB の RAM | 同じ 
+
+
+| 使用可能なディスクスペース | Linux の場合、ディスクスペースは /opt/NetApp 10 GB /var/log/NetApp 40 GB のように割り当てます | 50 GB 
+
+
+| ネットワーク | 100Mbps または 1Gbps のイーサネット接続、静的 IP アドレス、すべての FC デバイスへの IP 接続、 Cloud Insights インスタンスへの必要なポート（ 80 または 443 ） | 同じ 
+
+
+| 権限 | Acquisition Unit サーバに対する sudo 権限/tmp は EXEC 機能でマウントする必要があります。 | Acquisition Unit サーバに対する管理者権限が必要です 
+
+
+| ウィルススキャン |  | インストール時に、すべてのウィルススキャンソフトウェアを完全に無効にする必要があります。インストール後に、 Acquisition Unit ソフトウェアで使用するパスをウィルススキャンから除外する必要があります。 
+|===
+
+
+=== その他の推奨事項
+
+* 正確な監査およびデータレポートを作成するためには、 * Network Time Protocol （ NTP ；ネットワークタイムプロトコル） * または * Simple Network Time Protocol （ SNTP ） * を使用して Acquisition Unit マシンの時間を同期することを強く推奨します。
+
+
+
+
+=== サイジングについて
+
+Cloud Insights Acquisition Unit は 8GB のメモリと 50GB のディスクスペースしかないので、まずは大規模な環境に備えるために次の項目を確認してください。
+
+次のことを期待していますか？
+
+* この Acquisition Unit 上で、 2500 台を超える仮想マシン、または 10 台の大規模（ 2 ノード以上）の ONTAP クラスタ、 Symmetrix 、 HDS / HPE VSP/XP アレイを検出できるか？
+* この Acquisition Unit に合計 75 個以上のデータコレクタを導入しますか？
+
+
+上記の「はい」回答ごとに、 8 GB のメモリと 50 GB のディスク容量を AU に追加することをお勧めします。たとえば、「はい」と答えた場合、 150GB 以上のディスクスペースを備えた 24GB のメモリシステムを導入する必要があります。Linux の場合、ログの場所に追加するディスクスペース。
+
+サイジングに関するその他の情報については、ネットアップサポートにお問い合わせください。

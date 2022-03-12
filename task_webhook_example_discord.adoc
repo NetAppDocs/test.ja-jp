@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: task_webhook_example_discord.html 
+keywords: webhook, notification, Discord, integration 
+summary: Discord のパフォーマンスや在庫のしきい値を警告するためのウェブフックを作成します 
+---
+= Discord のウェブフックの例
+
+
+[role="lead"]
+Webhook を使用すると、ユーザーはカスタマイズされた webhook チャネルを使用して、さまざまなアプリケーションにアラート通知を送信できます。このページでは、 Discord 用のウェブフックを設定する例を示します。
+
+
+NOTE: このページでは、変更される可能性があるサードパーティの手順について説明します。を参照してください link:https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks["ディスコードの説明"] 最新の情報については、を参照してください。
+
+
+
+=== ディスコード設定：
+
+* Discord （コード解除）でサーバーを選択し、 Text Channels （テキストチャンネル）で Edit Channel （チャネルの編集）（歯車アイコン）を選択します。
+* 「統合」＞「 Web フックの表示」と選択し、「新規 Webhook 」をクリックします
+* Webhook URL をコピーします。これを Cloud Insights webhook 設定に貼り付ける必要があります。
+
+
+
+
+=== Cloud Insights Webhook を作成します。
+
+. Cloud Insights で、 [*Admin] > [Notifications] に移動し、 [*webhook *] タブを選択します。[*+Webhook* ] をクリックして、新しい Web フックを作成します。
+. Web フックに「 Discord 」などのわかりやすい名前を付けます。
+. [_Template Type_] ドロップダウンで、 [* Discore] を選択します。
+. 上の URL を _url_field に貼り付けます。
+
+
+image:Webhooks-Discord_example.png["ウェブフックテンプレートを外します"]
+
+
+NOTE: webhook をテストするには、メッセージ本文の URL 値を任意の有効な URL （ _https://netapp.com_ など）に一時的に置き換え、 _Test Webhook_ ボタンをクリックします。テストが完了したら、必ずメッセージの本文を元に戻してください。
+
+
+
+=== Webhook で通知します
+
+webhook を使用してイベントを通知するには、 Cloud Insights で [*Alerts] > [Monitors *] の順に選択し、 [*+ Monitor*] をクリックして新しいイベントを作成します link:task_create_monitor.html["モニタ"]。
+
+* メトリックを選択し、モニタの条件を定義します。
+* チーム通知の設定（ _Set up team notification(s) ）で、 * Webhook * 配信方法を選択します。
+* 目的のイベント（クリティカル、警告、解決済み）の「コード解除」ウェブフックを選択します。
++
+image:Webhooks_Discord_Notifications.png["Webhook 通知"]
+
+

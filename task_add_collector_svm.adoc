@@ -1,0 +1,237 @@
+---
+sidebar: sidebar 
+permalink: task_add_collector_svm.html 
+keywords: data collector, ONTAP, NetApp, SVM, cloud ontap, firewall 
+summary: データコレクタの追加 
+---
+= ONTAP SVM Data Collector の設定
+
+
+[role="lead"]
+Cloud Secure では、データコレクタを使用して、デバイスからファイルとユーザのアクセスデータを収集します。
+
+
+
+=== 作業を開始する前に
+
+* このデータコレクタは、次の機能でサポートされています。
++
+** Data ONTAP 9.2 以降のバージョン最高のパフォーマンスを得るには、 Data ONTAP バージョンを使用します link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994["この問題"] が固定されています
+** SMB プロトコルバージョン 3.1 以前
+** NFS プロトコルバージョン 4.0 以前
+** FlexGroup は ONTAP 9.4 以降のバージョンでサポートされます
+
+
+* サポートされるのはデータタイプの SVM のみです。Infinite Volume を備えた SVM はサポートされません。
+* SVM には複数のサブタイプがあります。このうち、サポートされているのは _DEFAULT_ と _SYNC_SOURE__ のみです。
+* エージェント link:task_cs_add_agent.html["を設定する必要があります"] データコレクタを設定する前に、
+* ユーザディレクトリコネクタが正しく設定されていることを確認します。正しく設定されていないと、イベントはエンコードされたユーザ名で表示され、 Active Directory に保存されているユーザの実際の名前ではなく、 [Activity Forensics] ページに表示されます。
+* 最適なパフォーマンスを実現するには、 FPolicy サーバをストレージシステムと同じサブネットに設定する必要があります。
+
+
+* 次のどちらかの方法で SVM を追加する必要があります。
++
+** クラスタ IP 、 SVM 名、およびクラスタ管理のユーザ名とパスワードを使用する。_ これは推奨される方法です。 _
++
+*** SVM 名は ONTAP に表示されるとおりに指定する必要があり、大文字と小文字が区別されます。
+
+
+** SVM SVM 管理 IP 、ユーザ名、およびパスワードを使用する
+** フル管理者のクラスタ / SVM 管理ユーザ名とパスワードを使用できない場合は、に記載されている権限よりも少ないカスタムユーザを作成できます link:#a-note-about-permissions["「権限に関する注意事項」"] セクションを参照してください。このカスタムユーザは、 SVM アクセスまたはクラスタアクセス用に作成できます。
++
+*** o 以下の「権限に関するメモ」セクションに記載されているように、少なくとも csrole の権限を持つ役割を持つ AD ユーザを使用することもできます。も参照してください link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.pow-adm-auth-rbac%2FGUID-0DB65B04-71DB-43F4-9A0F-850C93C4896C.html["ONTAP のドキュメント"]。
+
+
+
+
+* 次のコマンドを実行して、 SVM に正しいアプリケーションが設定されていることを確認します。
++
+ clustershell::> security login show -vserver <vservername> -user-or-group-name <username>
+
+
+出力例：image:cs_svm_sample_output.png["SVM コマンドの出力例"]
+
+* SVM で CIFS サーバが設定されていることを確認します。 clustershell ： > vserver cifs show
++
+Vserver 名、 CIFS サーバ名、およびその他のフィールドが返されます。
+
+* SVM の vsadmin ユーザのパスワードを設定します。カスタムユーザまたはクラスタ管理者ユーザを使用する場合は、この手順を省略します。クラスタシェル：： > 「 security login password - username vsadmin -vserver svmname
+* SVM の vsadmin ユーザの外部アクセスのロックを解除します。カスタムユーザまたはクラスタ管理者ユーザを使用する場合は、この手順を省略します。クラスタシェル：： > 「 securitylogin unlock -username vsadmin -vserver svmname 」
+* データ LIF のファイアウォールポリシーが「 GMT 」（「 data 」ではない）に設定されていることを確認します。専用の管理 LIF を使用して SVM を追加する場合は、この手順を省略してください。clustershell ：： > network interface modify -lif <svm_data_lif_name> -firewall-policy mgmt
+* ファイアウォールが有効になっている場合は、 Data ONTAP データコレクタを使用してポートの TCP トラフィックを許可する例外を定義する必要があります。
++
+を参照してください link:concept_cs_agent_requirements.html["エージェントの要件"] を参照してください。この環境オンプレミスエージェントおよびクラウドにインストールされたエージェント。
+
+* Cloud ONTAP SVM を監視するために AWS EC2 インスタンスにエージェントがインストールされている場合は、そのエージェントとストレージが同じ VPC 内に存在する必要があります。これらの VPC が個別の VPC 内にある場合は、 VPC 間に有効なルートが必要です。
+
+
+
+
+=== アクセス権に関する注意事項
+
+
+
+==== クラスタ管理 IP を使用して追加する場合の権限：
+
+クラスタ管理者ユーザを使用して Cloud Secure による ONTAP SVM データコレクタへのアクセスを許可できない場合は、次のコマンドに示すロールを持つ「 csuser 」という新しいユーザを作成できます。Cloud Secure データコレクタでクラスタ管理 IP を使用するように設定する場合は、「 csuser 」のユーザ名とパスワードを使用します。
+
+新しいユーザを作成するには、クラスタ管理者のユーザ名とパスワードを使用して ONTAP にログインし、 ONTAP サーバで次のコマンドを実行します。
+
+....
+security login role create -role csrole -cmddirname DEFAULT -access none
+security login role create -role csrole -cmddirname "network interface" -access readonly
+security login role create -role csrole -cmddirname version -access readonly
+security login role create -role csrole -cmddirname volume -access readonly
+security login role create -role csrole -cmddirname vserver -access readonly
+security login role create -role csrole -cmddirname "vserver fpolicy" -access all
+security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
+security login role create -role csrole -cmddirname "event catalog" -access all
+security login role create -role csrole -cmddirname "event filter" -access all
+security login role create -role csrole -cmddirname "event notification destination" -access all
+security login role create -role csrole -cmddirname "event notification" -access all
+security login role create -role csrole -cmddirname "security certificate" -access all
+security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*"
+....
+
+
+==== SVM 管理 IP を使用して追加する場合の権限：
+
+クラスタ管理者ユーザを使用して Cloud Secure による ONTAP SVM データコレクタへのアクセスを許可できない場合は、次のコマンドに示すロールを持つ「 csuser 」という新しいユーザを作成できます。Cloud Secure データコレクタで SVM 管理 IP を使用するように設定する場合は、「 csuser 」のユーザ名とパスワードを使用します。
+
+新しいユーザを作成するには、クラスタ管理者のユーザ名とパスワードを使用して ONTAP にログインし、 ONTAP サーバで次のコマンドを実行します。これらのコマンドをテキストエディタにコピーし、 <vservername> を SVM 名に置き換えてから、 ONTAP で次のコマンドを実行します。
+
+....
+security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
+security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
+security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
+security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
+security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
+security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
+security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
+security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
+security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*"
+....
+
+
+=== データコレクタを設定します
+
+.設定の手順
+. Cloud Insights 環境に管理者またはアカウント所有者としてログインします。
+. [*Admin] > [Data Collectors] > [+ [Data Collectors] をクリックします
++
+使用可能なデータコレクタが表示されます。
+
+. NetApp SVM のタイルにカーソルを合わせ、 * + Monitor * をクリックします。
++
+ONTAP SVM の設定ページが表示されます。各フィールドに必要なデータを入力します。
+
+
+
+[cols="2*"]
+|===
+
+
+| フィールド | 説明 
+
+
+| 名前 | Data Collector の一意の名前 
+
+
+| エージェント | リストから設定済みエージェントを選択します。 
+
+
+| 管理 IP 経由で接続： | クラスタ IP または SVM 管理 IP を選択します 
+
+
+| クラスタ / SVM 管理 IP アドレス | 上記の選択に応じて、クラスタまたは SVM の IP アドレス。 
+
+
+| SVM 名 | SVM の名前（このフィールドはクラスタ IP 経由で接続する場合は必須です） 
+
+
+| ユーザ名 | クラスタ IP を介して追加する場合に SVM / クラスタにアクセスするためのユーザ名。オプションは 1 です。cluster-admin 2.「 csuser 」 3.csuser と同様のロールを持つ ad-user 。SVM IP を介して追加する場合は、次のオプションを選択します。 4.vsadmin 5 ：「 csuser 」 6.csuser と同様のロールを持つ ad-username 。 
+
+
+| パスワード | 上記のユーザ名のパスワード 
+
+
+| 共有 / ボリュームをフィルタリングします | イベントコレクションに共有 / ボリュームを含めるか除外するかを選択します 
+
+
+| 除外または対象に含める共有名を入力します | イベント収集の対象から除外または対象に含める（必要に応じて）共有をカンマで区切ったリスト 
+
+
+| 除外または対象に含めるボリュームの完全な名前を入力します | イベント収集の対象から除外または対象に含めるボリュームをカンマで区切ったリスト 
+
+
+| フォルダアクセスを監視します | オンにすると、フォルダアクセス監視のイベントが有効になります。このオプションを選択しなくても、フォルダの作成 / 名前変更および削除が監視されることに注意してください。これを有効にすると、監視されるイベントの数が増えます。 
+
+
+| ONTAP 送信バッファサイズを設定します | ONTAP FPolicy 送信バッファのサイズを設定します。9.8p7 より前のバージョンの ONTAP を使用していて、 Performance 問題が表示された場合、 ONTAP 送信バッファサイズを変更して ONTAP のパフォーマンスを向上させることができます。このオプションが表示されない場合は、ネットアップサポートにお問い合わせください。 
+
+
+| ONTAP 送信バッファサイズを設定します | ONTAP FPolicy 送信バッファのサイズを設定します。9.8p7 より前のバージョンの ONTAP を使用していて、 ONTAP パフォーマンス問題にヒットした場合は、 ONTAP 送信バッファサイズを変更して ONTAP のパフォーマンスを向上させることができます。これは非表示の機能であり、お客様の要求に応じて有効にします。 
+|===
+.完了後
+* Installed Data Collectors ページで、各コレクタの右側にあるオプションメニューを使用してデータコレクタを編集します。データコレクタを再起動したり、データコレクタ設定の属性を編集したりできます。
+
+
+
+
+=== トラブルシューティング
+
+既知の問題とその解決策を次の表に示します。
+
+エラーの場合は、 _Status_column で _more detail_ をクリックしてエラーの詳細を確認します。
+
+image:CS_Data_Collector_Error.png[""]
+
+[cols="2*"]
+|===
+| 問題 | 解決策： 
+
+
+| Data Collector はしばらくの間実行され、ランダムな時刻の後に停止します。 "Error message: connector is in error state" というエラーメッセージが表示されます。サービス名： audit 。エラーの理由：外部 FPolicy サーバが過負荷状態です。」 | ONTAP からのイベントレートは、 [ エージェント ] ボックスで処理できるイベントレートよりもはるかに高くなっています。そのため、接続が終了しました。切断が発生したときに、 CloudSecure でピークトラフィックを確認します。これは、 * CloudSecure > Activity Forensics > All Activity * ページで確認できます。集約されたトラフィックのピークが [ エージェント ] ボックスで処理できるトラフィックよりも大きい場合は、 [ エージェント ] ボックスでのコレクタ展開のサイズ設定方法に関する [ イベントレートチェッカー ] ページを参照してください。2021 年 3 月 4 日より前に Agent ボックスに Agent がインストールされた場合は、 Agent ボックスで次のコマンドを実行します。 echo 'net.core.rmem_max=8388608'>> /etc/sysctl.conf echo 'net.ipv4_rmem=4096 2097152 8388608'>> /etc/sysctl.conf コレクタ UI のサイズ変更後に再起動してください。 
+
+
+| コレクタから「 No local IP address found on the Connector that can reach the data interfaces of the SVM 」というエラーメッセージが報告されます。 | その理由としては、 ONTAP 側のネットワーク問題が考えられます。以下の手順に従ってください。 1.SVM のデータ LIF または SVM からの接続をブロックしている管理 LIF にファイアウォールがないことを確認します。2. クラスタ管理 IP を使用して SVM を追加する場合、 Agent VM から SVM のデータ LIF と管理 LIF に ping できることを確認します。問題が発生した場合は、 LIF のゲートウェイ、ネットマスク、およびルートを確認してください。また、クラスタ管理 IP を使用して SSH 経由でクラスタにログインし、エージェント IP に ping を実行することもできます。エージェントの IP が ping 可能であることを確認します。 _network ping -vserver <vserver name> -destination <Agent ip> -lif <LIF Name> -show-detail_ping 不可能な場合は、 ONTAP のネットワーク設定が正しいことを確認して、エージェントマシンが ping 可能であることを確認します。3. クラスタ IP 経由で接続しようとしたが動作しない場合は、 SVM IP 経由で直接接続してみます。SVM IP を使用して接続する手順については、上記を参照してください。4. SVM の IP と vsadmin のクレデンシャルを使用してコレクタを追加するときに、 SVM の LIF で Data plus Mgmt ロールが有効になっていることを確認します。この場合、 SVM LIF に ping することは可能ですが、 SVM LIF への SSH は機能しません。「はい」の場合は、 SVM 管理のみの LIF を作成し、この SVM 管理のみの LIF を使用して接続してみてください。5. まだ機能しない場合は、新しい SVM LIF を作成し、その LIF を介して接続します。サブネットマスクが正しく設定されていることを確認します。6. 高度なデバッグ :a) ONTAP でパケットトレースを開始しますb ） CloudSecure UI から、データコレクタを SVM に接続します。c) エラーが表示されるまで待ちます。ONTAP でパケットトレースを停止します。d ） ONTAP からパケットトレースを開きます。これは、次の場所で利用できます。 \\ https://<cluster_mgmt_ip>/spi/<clustername>/etc/log/packet_traces/_ e ） ONTAP からエージェントボックスへの SYN があることを確認してください。f) ONTAP からの SYN がない場合、問題にファイアウォールを持つ ONTAP である。g) ONTAP でファイアウォールを開き、 ONTAP がエージェントボックスに接続できるようにします。7. まだ動作していない場合は、ネットワーキングチームに問い合わせて、 ONTAP からエージェントボックスへの接続が外部ファイアウォールによってブロックされていないことを確認してください。8. 上記のどれでも問題を解決できない場合は、でケースをオープンします link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html["ネットアップサポート"] を参照してください。 
+
+
+| メッセージ： "[hostname:<IP Address>] の ONTAP タイプを特定できませんでした。理由：ストレージシステム <IP アドレス > への接続エラー：ホストに到達できません（ホストに到達できません） " | 1. 正しい SVM IP 管理アドレスまたはクラスタ管理 IP が指定されていることを確認します。2. 接続する SVM またはクラスタに SSH で接続します。接続が完了したら、 SVM またはクラスタ名が正しいことを確認してください。 
+
+
+| エラーメッセージ：「コネクタにエラーがあります。service.name ：監査。失敗の理由：外部 FPolicy サーバが終了しました。」 | 1. 多くの場合、ファイアウォールがエージェントマシンの必要なポートをブロックしています。エージェントマシンが SVM から接続するために、ポート範囲 35000-55000/TCP を開いていることを確認します。また、 ONTAP 側からエージェントマシンへの通信をブロックするファイアウォールが有効になっていないことを確認します。2. [ エージェント ] ボックスに次のコマンドを入力し、ポート範囲が開いていることを確認します。_sudo iptables -save | grep 3500 * _ Sample 出力は次のようになります。 _a in_public_allow -p tcp -m tcp - dport 35000 -m conntrack -ctstate new-j accept_3 。SVM にログインし、次のコマンドを入力して、 ONTAP との通信をブロックするファイアウォールが設定されていないことを確認します。_system services firewall show __ system services firewall policy show_link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html["ファイアウォールコマンドをチェックしてください"] を選択します。 ONTAP4. 監視する SVM / クラスタに SSH で接続します。SVM のデータ LIF から Agent ボックスに ping を送信し（ CIFS 、 NFS プロトコルのサポートあり）、 ping が動作していることを確認します。 network ping -vserver <vserver name> -destination <Agent ip> -lif <lif Name> -show-detail_ping 不可能な場合は、 ONTAP のネットワーク設定が正しいことを確認して、エージェントマシンから ping を実行できるようにします。5. 1 つの SVM を 2 つのデータコレクタを使用してテナントに 2 回追加すると、このエラーが表示されます。UI を使用して、いずれかのデータコレクタを削除します。次に、 UI を使用して他のデータコレクタを再起動します。次に、データコレクタのステータスが「 running 」と表示され、 SVM からのイベントの受信が開始されます。基本的に、テナントでは、 1 つのデータコレクタで 1 つの SVM を追加します。1 つの SVM を 2 つのデータコレクタを使用して 2 回追加しないで6. 同じ SVM が 2 つの異なる Cloud Secure 環境（テナント）に追加された場合は、常に最後の 1 つが成功します。2 つ目のコレクタは、独自の IP アドレスで FPolicy を設定し、最初の IP アドレスから開始します。そのため、最初のデータ収集ツールはイベントの受信を停止し、その「監査」サービスはエラー状態になります。これを回避するには、各 SVM を 1 つの環境に設定します。 
+
+
+| アクティビティページにイベントは表示されません。 | 1. ONTAP コレクタが「実行中」の状態かどうかを確認します。「はい」の場合は、一部のファイルを開いて、 CIFS クライアント VM 上で一部の CIFS イベントが生成されていることを確認します。2. アクティビティが表示されない場合は、 SVM にログインして次のコマンドを入力してください。_<svm> event log show -source fpolicy_fpolicy に関連するエラーがないことを確認してください。3. アクティビティが表示されない場合は、 SVM にログインしてください。次の command_<svm> fpolicy show_Check を入力して、「 cloudsecure_」 というプレフィックスの付いた FPolicy ポリシーが設定され、ステータスが「 on 」になっていることを確認します。設定されていないと、 Agent が SVM でコマンドを実行できない可能性が高くなります。ページの先頭に記載されているすべての前提条件を満たしていることを確認してください。 
+
+
+| SVM Data Collector がエラー状態で、エラーメッセージ「 Agent failed to connect to the collector 」 | 1. エージェントが過負荷になっており、データソースコレクタに接続できない可能性が高い。2. エージェントに接続されているデータソースコレクタの数を確認します。3. UI の ［ All Activity ］ ページでデータフローレートを確認します。4. 1 秒あたりのアクティビティ数が非常に多い場合は、別のエージェントをインストールし、一部のデータソースコレクタを新しいエージェントに移動します。 
+
+
+| SVM Data Collector で、「 fpolicy.server.connectError: Node failed to establish a connection with the FPolicy server "12.195.15.146" （ reason ： Select Timed Out" ）」というエラーメッセージが表示される | SVM / クラスタでファイアウォールが有効になっています。そのため、 FPolicy エンジンは FPolicy サーバに接続できません。ONTAP の CLI で詳細情報を取得できます。 event log show -source fpolicy ：エラーイベントログ show -source fpolicy-fields event 、 action 、 description の詳細を表示できます。link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html["ファイアウォールコマンドをチェックしてください"] を選択します。 ONTAP 
+
+
+| エラーメッセージ : 「コネクタはエラー状態です。サービス名： audit 。失敗の理由： SVM で有効なデータインターフェイスが見つかりません（ロール：データ、データプロトコル： NFS か CIFS か、両方、ステータス：稼働）。」 | 動作インターフェイス（データプロトコルおよびデータプロトコルとして CIFS / NFS が設定されている）があることを確認してください。 
+
+
+| データコレクタが Error 状態になり、しばらくしてから running 状態になり、 Error に戻ります。このサイクルが繰り返されます。 | これは通常、次のシナリオで発生します。 1.データコレクタが複数追加されています。2. このような動作を示すデータコレクタには、これらのデータコレクタに SVM が 1 つ追加されます。つまり、 2 つ以上のデータコレクタが 1 つの SVM に接続されます。3. データコレクタが 1 つだけの SVM に接続されていることを確認します。4. 同じ SVM に接続されている他のデータコレクタを削除します。 
+
+
+| コネクタでエラーが発生しています。サービス名： audit 。失敗の理由：（ SVM SVM 名のポリシー）を設定できませんでした。理由： 'fpolicy.scope-modify ： "federy" 内の 'shares-to-include' 要素に無効な値が指定されています | 共有名は、引用符を付けずに指定する必要があります。ONTAP SVM DSC 設定を編集して共有名を修正します。Include および exclude shares _ は、長い共有名のリストを対象としたものではありません。対象に含める共有や除外する共有が大量にある場合は、ボリュームでフィルタリングします。 
+
+
+| クラスタに未使用の既存のポリシーがあります。Cloud Secure をインストールする前に、これらのツールを使用して何を行う必要がありますか？ | 切断状態の場合でも、既存の未使用の FPolicy 設定をすべて削除することを推奨します。Cloud Secure は、「 cloudsecure_ 」というプレフィックスを付けて FPolicy を作成します。その他の未使用の FPolicy 設定はすべて削除できます。fpolicy list ： _fpolicy show_steps を表示して FPolicy 設定を削除する場合の CLI コマンド： _fpolicy disable -vserver <svmname> -policy -name <policy_name> _fpolicy policy scope delete -vserver <svmname> -policy name <policy_name> _fpolicy policy delete -vserver <svmname > -policy_name <policy_name> -policy_name>fpolicy_fpolicy_name> 
+
+
+| Cloud Secure を有効にすると、 ONTAP のパフォーマンスに影響が出る：レイテンシが時々高くなり、 IOPS がスポーティに低い。 | Data ONTAP バージョンを使用していることを確認します link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152["この問題"] が固定されていますONTAP の最小バージョンは 9.8P7 です。9.8p7 より前のバージョンの ONTAP を使用していて、このパフォーマンス問題が検出された場合、 ONTAP 送信バッファサイズを変更して ONTAP のパフォーマンスを向上させることができます。このオプションについて確認し、新しいデータコレクタの追加時や既存のデータコレクタの編集時にこの設定が表示されないようにする場合は、ネットアップサポートにお問い合わせください。 
+
+
+| データコレクタでエラーが発生し、次のエラーメッセージが表示されます。「エラー：コネクタがエラー状態です。サービス名： audit 。失敗の理由： SVM svm_backup でポリシーを設定できませんでした。理由： ZAPI フィールド：イベントに対して値が指定されていません。「 | NFS サービスのみが設定された新しい SVM から開始します。Cloud Secure に ONTAP SVM データコレクタを追加します。Cloud Secure に ONTAP SVM データコレクタを追加する際に、 CIFS が SVM で許可されるプロトコルとして設定されている。Cloud Secure のデータコレクタでエラーが表示されるまで待ちます。SVM で CIFS サーバが設定されていないため、左側にあるエラーは Cloud Secure で表示されます。ONTAP SVM データコレクタを編集し、許可されたプロトコルとして CIFS のチェックを解除します。データコレクタを保存します。NFS プロトコルのみが有効な状態で実行が開始されます。 
+
+
+| Data Collector に、「 Error: Failed to Determine the collector within 2 retries 、 try restarting the collector again (Error Code: AGENT008) 」というエラーメッセージが表示されます。 | [ データコレクタ ] ページで、エラーが表示されているデータコレクタの右にスクロールし、 3 つのドットメニューをクリックします。選択した編集 _ 。データコレクタのパスワードをもう一度入力します。[Save] ボタンを押して、データコレクタを保存します。Data Collector が再起動し、エラーが解決されます。 
+|===
+それでも問題が解決しない場合は、 [ ヘルプ ]>[ サポート *] ページに記載されているサポートリンクにアクセスしてください。

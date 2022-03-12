@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: task_dc_hds_nas.html 
+keywords: data collector, HDS HNAS, HDS NAS 
+summary: HDS NAS （ HNAS ）データコレクタの設定。 
+---
+= Hitachi Vantara NAS データコレクタの設定
+
+
+[role="lead"]
+Hitachi Vantara NAS データコレクタは、 HDS NAS クラスタの検出をサポートするインベントリおよび設定データコレクタです。Cloud Insights では、 NFS 共有と CIFS 共有、ファイルシステム（内部ボリューム）、 SPAN （ストレージプール）の検出がサポートされます。
+
+
+
+== 用語集
+
+Cloud Insights では、 HNAS データコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| 階層 | ディスクグループ 
+
+
+| クラスタ | ストレージ 
+
+
+| ノード | ストレージノード 
+
+
+| スパン（ Span ） | ストレージプール 
+
+
+| システムドライブ | バックエンド LUN 
+
+
+| ファイルシステム | 内部ボリューム 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+* デバイスの IP アドレス
+* ポート 22 、 SSH プロトコル
+* ユーザ名とパスワードの権限レベル： Supervisor
+* 注：このデータコレクタは SSH ベースであるため、ホストが HNAS 自体またはクラスタの接続先のシステム管理ユニット（ SMU ）の TCP 22 への SSH セッションを開始できるようにする必要があります。
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| HNAS ホスト | HNAS 管理ホストの IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | HNAS CLI のユーザ名 
+
+
+| パスワード | HNAS CLI のパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 30 分です。 
+|===
+
+
+== トラブルシューティング
+
+このデータコレクタで問題が発生した場合の対処方法を次に示します。
+
+
+
+==== 在庫
+
+[cols="2*"]
+|===
+| 問題 | 次の操作を実行します 
+
+
+| 「 Error connecting 」 with error messages 「 Error setting up shell channel ：」または「 Error opening shell channel 」というエラーメッセージが表示されます。 | ネットワーク接続に問題があるか、 SSH の設定ミスが原因である可能性があります。代替 SSH クライアントとの接続を確認します 
+
+
+| 「 Command ： XXX has timed out 」というエラーメッセージが表示され、「 Timeout 」または「 Error Retrieving data 」というエラーが表示されます。 | * 代替 SSH クライアントでコマンドを実行してください * タイムアウトが増加します 
+
+
+| " 接続エラー " または " 無効なログイン認証情報 " のエラーメッセージ " デバイスと通信できませんでした： " | * IP アドレスの確認 * ユーザ名とパスワードの確認 * 代替 SSH クライアントとの接続を確認してください 
+|===
+追加情報はから入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

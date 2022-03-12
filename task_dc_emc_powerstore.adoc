@@ -1,0 +1,101 @@
+---
+sidebar: sidebar 
+permalink: task_dc_emc_powerstore.html 
+keywords: data collector, PowerStore, EMC, DELL 
+summary: Dell EMC PowerStore データコレクタの設定 
+---
+= Dell EMC PowerStore データコレクタ
+
+
+[role="lead"]
+EMC PowerStore データ・コレクタは 'EMC PowerStore ストレージからインベントリ情報を収集しますデータコレクタを設定するには、ストレージプロセッサの IP アドレス、および読み取り専用のユーザ名とパスワードが必要です。
+
+EMC PowerStore データ・コレクタは 'PowerStore が他のストレージ・アレイ間で調整するボリューム間レプリケーション関係を収集しますCloud Insights は各 PowerStore クラスタのストレージアレイを表示し、そのクラスタ上のノードとストレージポートのインベントリデータを収集します。ストレージプールまたはボリュームのデータは収集されません。
+
+
+
+== 用語集
+
+Cloud Insights では、このデータコレクタから次のインベントリ情報を取得します。Cloud Insights では、取得したアセットのタイプごとに、そのアセットに使用される最も一般的な用語が表示されます。このデータコレクタを表示またはトラブルシューティングするときは、次の用語に注意してください。
+
+[cols="2*"]
+|===
+| ベンダー / モデルの用語 | Cloud Insights の用語 
+
+
+| ホスト | ホスト 
+
+
+| host_volume_mapping | host_volume_mapping 
+
+
+| ハードウェア（「 extra_details 」オブジェクトにドライブが含まれています）：ドライブ | ディスク 
+
+
+| アプライアンス | ストレージプール 
+
+
+| クラスタ | ストレージアレイ 
+
+
+| ノード | ストレージノード 
+
+
+| FC ポート | ポート 
+
+
+| ボリューム | ボリューム 
+
+
+| 内部ボリューム | ファイルシステム 
+|===
+注：これらは一般的な用語の対応のみを示したものであり、このデータコレクタのすべてのケースを表しているわけではありません。
+
+
+
+== 要件
+
+このデータコレクタを設定するには、次の情報が必要です。
+
+* ストレージプロセッサの IP アドレスまたは完全修飾ドメイン名
+* 読み取り専用のユーザ名とパスワード
+
+
+
+
+== 設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| PowerStore ゲートウェイ | PowerStore ストレージの IP アドレスまたは完全修飾ドメイン名 
+
+
+| ユーザ名 | PowerStore のユーザー名 
+
+
+| パスワード | PowerStore のパスワード 
+|===
+
+
+== 高度な設定
+
+[cols="2*"]
+|===
+| フィールド | 説明 
+
+
+| HTTPS ポート | デフォルトは 443 です 
+
+
+| インベントリポーリング間隔（分） | インベントリのポーリング間隔。デフォルトは 60 分です。 
+|===
+Cloud Insight の PowerStore パフォーマンスコレクションは、 PowerStore の 5 分間のきめ細かいソースデータを利用しています。そのため、 Cloud Insights は 5 分ごとにそのデータをポーリングし、設定はできません。
+
+
+
+== トラブルシューティング
+
+この Data Collector の追加情報は、から入手できます link:concept_requesting_support.html["サポート"] ページまたはを参照してください link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf["Data Collector サポートマトリックス"]。

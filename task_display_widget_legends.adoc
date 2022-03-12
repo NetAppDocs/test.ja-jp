@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: task_display_widget_legends.html 
+summary: ダッシュボードウィジェットでの凡例の表示 
+keywords: dashboard, widget, legends 
+---
+= ウィジェット凡例を表示します
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:toc: 
+:toclevels: 2
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+ダッシュボードのウィジェットでは、凡例を表示または非表示にできます。
+
+ダッシュボードを表示するときは、ウィジェットの * オプション * ボタンをクリックし、メニューから * 凡例を表示 * を選択することで、ウィジェットの凡例のオン / オフを切り替えることができます。
+
+ウィジェットに表示されるデータが変わると、そのウィジェットの凡例が動的に更新されます。
+
+凡例が表示されているときに、凡例が示すアセットのランディングページにアクセス可能な場合は、凡例がそのアセットページへのリンクとして表示されます。

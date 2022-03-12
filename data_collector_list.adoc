@@ -1,0 +1,294 @@
+---
+sidebar: sidebar 
+permalink: data_collector_list.html 
+summary: サポートされているデータコレクタのリスト。 
+keywords: data collector, vendor, infrastructure, integration, service 
+---
+= Cloud Insights データコレクタリスト
+
+
+[role="lead"]
+Cloud Insights は、多くのベンダーやサービスからのさまざまなデータコレクタをサポートしています。
+
+データコレクタは、次のタイプによって分類されます。
+
+* インフラ：ストレージアレイ、スイッチ、ハイパーバイザー、バックアップデバイスなどのベンダーのデバイスから購入
+* サービス： Kubernetes や Docker などのサービスから購入_ 連動 _ とも呼ばれます。
+
+
+Cloud Insights でサポートされているデータコレクタの ABC 順リスト：
+
+[cols="<,<"]
+|===
+| Data Collector | を入力します 
+
+
+| link:task_config_telegraf_activemq.html["ActiveMQ"] | サービス 
+
+
+| link:task_dc_amazon_ec2.html["Amazon EC2 および EBS"] | インフラ 
+
+
+| link:task_dc_na_amazon_fsx.html["NetApp ONTAP 対応の Amazon FSX"] | インフラ 
+
+
+| link:task_config_telegraf_apache.html["Apache"] | サービス 
+
+
+| link:task_dc_ms_anf.html["Azure NetApp Files の特長"] | インフラ 
+
+
+| link:task_dc_ms_azure.html["Azure VM および VHD"] | インフラ 
+
+
+| link:task_dc_brocade_bna.html["Brocade Network Advisor （ BNA ）"] | インフラ 
+
+
+| link:task_dc_brocade_fc_switch.html["Brocade ファイバチャネルスイッチ"] | インフラ 
+
+
+| link:task_dc_cisco_fc_switch.html["Cisco MDS ファブリックスイッチ"] | インフラ 
+
+
+| link:task_config_telegraf_consul.html["総領事"] | サービス 
+
+
+| link:task_config_telegraf_couchbase.html["Couchbase"] | サービス 
+
+
+| link:task_config_telegraf_couchdb.html["CouchDB"] | サービス 
+
+
+| link:task_dc_emc_datadomain.html["Dell EMC Data Domain の略"] | インフラ 
+
+
+| link:task_dc_emc_ecs.html["Dell EMC ECS の場合"] | インフラ 
+
+
+| link:task_dc_emc_isilon.html["Dell EMC PowerScale （旧 Isilon ）"] | インフラ 
+
+
+| link:task_dc_emc_powerstore.html["Dell EMC PowerStore"] | インフラ 
+
+
+| link:task_dc_emc_recoverpoint.html["Dell EMC RecoverPoint"] | インフラ 
+
+
+| link:task_dc_emc_scaleio.html["Dell EMC ScaleIO のインストールを実行します"] | インフラ 
+
+
+| link:task_dc_emc_unity.html["Dell EMC Unity"] | インフラ 
+
+
+| link:task_dc_emc_vmax_powermax.html["Dell EMC VMAX/PowerMax ファミリのデバイス"] | インフラ 
+
+
+| link:task_dc_emc_vnx_block.html["Dell EMC VNX Block Storage の略"] | インフラ 
+
+
+| link:task_dc_emc_vnx_file.html["Dell EMC VNX ファイル"] | インフラ 
+
+
+| link:task_dc_emc_vnx_unified.html["Dell EMC VNX ユニファイド"] | インフラ 
+
+
+| link:task_dc_emc_vplex.html["Dell EMC VPLEX"] | インフラ 
+
+
+| link:task_dc_emc_xio.html["Dell EMC XtremIO のインストール"] | インフラ 
+
+
+| link:task_dc_dell_xc_series.html["Dell XC シリーズ"] | インフラ 
+
+
+| link:task_config_telegraf_docker.html["Docker です"] | サービス 
+
+
+| link:task_config_telegraf_elasticsearch.html["Elasticsearch を指定します"] | サービス 
+
+
+| link:task_config_telegraf_flink.html["フリップ"] | サービス 
+
+
+| link:task_dc_fujitsu_eternus.html["Fujitsu ETERNUS DX"] | インフラ 
+
+
+| link:task_dc_google_cloud.html["Google コンピューティングとストレージ"] | インフラ 
+
+
+| link:task_config_telegraf_hadoop.html["Hadoop"] | サービス 
+
+
+| link:task_config_telegraf_haproxy.html["HAProxy"] | サービス 
+
+
+| link:task_dc_hds_hcp.html["日立コンテンツプラットフォーム（ HCP ）"] | インフラ 
+
+
+| link:task_dc_hds_commandsuite.html["Hitachi Vantara Command Suite の略"] | インフラ 
+
+
+| link:task_dc_hds_nas.html["Hitachi Vantara NAS Platform の略"] | インフラ 
+
+
+| link:task_dc_hds_ops_center.html["Hitachi Ops Center の略"] | インフラ 
+
+
+| link:task_dc_hpe_nimble.html["HP Enterprise Alletra 6000 （旧 Nimble ）ストレージ"] | インフラ 
+
+
+| link:task_dc_hp_3par.html["HP Enterprise Alletra 9000/Primera （旧 3PAR ）ストレージ"] | インフラ 
+
+
+| link:task_dc_hpe_commandview.html["HP Enterprise Command View の順にクリックします"] | インフラ 
+
+
+| link:task_dc_huawei_oceanstor.html["Huawei OceanStor および Dorado Devices"] | インフラ 
+
+
+| link:task_dc_ibm_cleversafe.html["IBM Cleversafe"] | インフラ 
+
+
+| link:task_dc_ibm_cs.html["IBM CS シリーズ"] | インフラ 
+
+
+| link:task_dc_ibm_powervm.html["IBM PowerVM"] | インフラ 
+
+
+| link:task_dc_ibm_svc.html["IBM SAN Volume Controller （ SVC ）"] | インフラ 
+
+
+| link:task_dc_ibm_ds.html["IBM System Storage DS8000 シリーズ"] | インフラ 
+
+
+| link:task_dc_ibm_xiv.html["IBM XIV および A9000 ストレージ"] | インフラ 
+
+
+| link:task_dc_infinidat_infinibox.html["Infinidat InfiniBox"] | インフラ 
+
+
+| link:task_config_telegraf_jvm.html["Java"] | サービス 
+
+
+| link:task_config_telegraf_kafka.html["カフカ"] | サービス 
+
+
+| link:task_config_telegraf_kapacitor.html["カパトール"] | サービス 
+
+
+| link:task_config_telegraf_kibana.html["キバナ"] | サービス 
+
+
+| link:https:task_config_telegraf_agent.html#kubernetes["Kubernetes"] | サービス 
+
+
+| link:task_dc_lenovo.html["Lenovo HX シリーズ"] | インフラ 
+
+
+| link:task_config_telegraf_agent.html#macos["MacOS"] | サービス 
+
+
+| link:task_config_telegraf_memcached.html["Memcached"] | サービス 
+
+
+| link:task_dc_ms_anf.html["Microsoft Azure NetApp Files の略"] | インフラ 
+
+
+| link:task_dc_ms_hyperv.html["Microsoft Hyper-V"] | インフラ 
+
+
+| link:task_config_telegraf_mongodb.html["MongoDB"] | サービス 
+
+
+| link:task_config_telegraf_mysql.html["MySQL"] | サービス 
+
+
+| link:task_dc_na_astra_data_store.html["ネットアップアストラデータストア"] | インフラ 
+
+
+| link:task_dc_na_cloud_volumes_ontap.html["NetApp Cloud Volumes ONTAP の略"] | インフラ 
+
+
+| link:task_dc_na_cloud_volumes.html["ネットアップの AWS 向け Cloud Volume サービス"] | インフラ 
+
+
+| link:task_dc_na_cloud_connection.html["ONTAP 9.9 以降でのネットアップクラウド接続"] | インフラ 
+
+
+| link:task_dc_na_7mode.html["NetApp Data ONTAP 7-Mode"] | インフラ 
+
+
+| link:task_dc_na_eseries.html["NetApp E-Series"] | インフラ 
+
+
+| link:task_dc_na_fsx-netapp.html["FSx - ネットアップ"] | インフラ 
+
+
+| link:task_dc_na_hci.html["NetApp HCI 仮想センター"] | インフラ 
+
+
+| link:task_dc_na_cdot.html["NetApp ONTAP データ管理ソフトウェア"] | インフラ 
+
+
+| link:task_dc_na_cdot.html["NetApp ONTAP Select の略"] | インフラ 
+
+
+| link:task_dc_na_solidfire.html["NetApp SolidFire オールフラッシュアレイ"] | インフラ 
+
+
+| link:task_dc_na_storagegrid.html["NetApp StorageGRID"] | インフラ 
+
+
+| link:task_config_telegraf_netstat.html["netstat"] | サービス 
+
+
+| link:task_config_telegraf_nginx.html["nginx"] | サービス 
+
+
+| link:task_config_telegraf_node.html["ノード"] | サービス 
+
+
+| link:task_dc_nutanix.html["Nutanix NX シリーズ"] | インフラ 
+
+
+| link:task_dc_openstack.html["OpenStack の機能を使用"] | インフラ 
+
+
+| link:task_config_telegraf_openzfs.html["OpenZFS の場合"] | サービス 
+
+
+| link:task_dc_oracle_zfs.html["Oracle ZFS Storage Appliance の略"] | インフラ 
+
+
+| link:task_config_telegraf_postgresql.html["PostgreSQL"] | サービス 
+
+
+| link:task_config_telegraf_puppetagent.html["Puppet Agent"] | サービス 
+
+
+| link:task_dc_pure_flasharray.html["Pure Storage FlashArray"] | インフラ 
+
+
+| link:task_dc_redhat_virtualization.html["Red Hat 仮想化"] | インフラ 
+
+
+| link:task_config_telegraf_redis.html["Redis"] | サービス 
+
+
+| link:task_config_telegraf_rethinkdb.html["RethinkDB"] | サービス 
+
+
+| link:task_config_telegraf_agent.html#rhel-and-centos["RHEL および CentOS"] | サービス 
+
+
+| link:task_config_telegraf_agent.html#ubuntu-and-debian["Ubuntu & Debian"] | サービス 
+
+
+| link:task_dc_vmware.html["VMware vSphere の場合"] | インフラ 
+
+
+| link:task_config_telegraf_agent.html#windows["Windows の場合"] | サービス 
+
+
+| link:task_config_telegraf_zookeeper.html["Zookeeper の追加"] | サービス 
+|===
