@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>システムモニタ</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="システムモニタ" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/test/task_system_monitors.html" />
+	<meta property="og:description" content="パフォーマンスやインベントリのしきい値、およびメトリックやログの条件に関するアラートを生成するモニタを作成します。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/test/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="パフォーマンスやインベントリのしきい値、およびメトリックやログの条件に関するアラートを生成するモニタを作成します。">
+  <meta name="keywords" content=" monitors, alerts, log, metric"><meta name="robots" content="noindex" /><!-- Icons -->
+  <link rel="icon" href="/ja-jp/test/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ja-jp/test/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ja-jp/test/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ja-jp/test/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ja-jp/test/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/test/css/tabbed-blocks.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/test/js/na-search.js'></script><script src='/ja-jp/test/js/na-pagenav.js'></script><link rel='stylesheet' href='/ja-jp/test/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ja-jp/test/js/na-utility.js'></script>
+  <script src='/ja-jp/test/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ja-jp/test/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/test/js/toc.js'></script>
+  <script src='/ja-jp/test/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ja-jp/test/js/version-dropdown.js'></script>
+  <script src='/ja-jp/test/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/test/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/test/js/jszip.min.js'></script>
+  <script src='/ja-jp/test/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/test/issues/new?body=Page%3A%20[システムモニタ](https://docs.netapp.com/ja-jp/test/task_system_monitors.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/test/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/test/blob/main/task_system_monitors.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/test/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/test/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/test/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/test/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/test/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/test/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索" 
+          data-no-results-found="{query}に該当する結果はありません" 
+          data-did-you-mean="{suggestion} を検索" 
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
+          data-results-found="{hitCount} 件見つかりました"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">日本語</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/test/task_system_monitors.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/test/task_system_monitors.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/test/task_system_monitors.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/test/task_system_monitors.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/index.html">
+        Cloud Insights のドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_whats_new.html">
+        新機能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cloud_insights_onboarding_1.html">
+        Cloud Insights にサインアップします
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セキュリティ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/security_overview.html">
+        セキュリティプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/security_information_and_region.html">
+        当社が保存するものと場所
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_feature_tutorials.html">
+        機能チュートリアル
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> データの収集中</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_getting_started_with_cloud_insights.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_acquisition_unit_requirements.html">
+        Acquisition Unit の要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_configure_acquisition_unit.html">
+        Acquisition Unit の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_agent.html">
+        エージェントの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_configure_data_collectors.html">
+        データコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_determining_data_collector_acq_status.html">
+        Data Collector の取得ステータスを確認しています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_configured_data_collectors.html">
+        設定済みデータコレクタを管理します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_research_failed_collector.html">
+        データコレクタエラーを調査します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_import_from_dashboard_gallery.html">
+        推奨されるダッシュボードのインポート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_user_roles.html">
+        ユーザアカウントとロール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_other_cloud_products.html">
+        他の Cloud Central 製品に切り替える
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/data_collector_list.html">
+        Data Collector リスト
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_subscribing_to_cloud_insights.html">
+        Cloud Insights に登録しています
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 自動デバイス解決</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_device_resolution_overview.html">
+        デバイス解決の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_rules.html">
+        デバイス解決ルール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_fibre_channel.html">
+        ファイバチャネルのデバイス解決
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_ip.html">
+        IP デバイス解決
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_preferences.html">
+        デバイス解決のプリファレンスの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_device_resolution_regex_examples.html">
+        正規表現の例
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ダッシュボードの作成</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboards_overview.html">
+        ダッシュボードの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboard_features.html">
+        ダッシュボードの機能
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ダッシュボードの例</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dashboard_example_VM_performance.html">
+        仮想マシンのパフォーマンス
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboard_best_practices.html">
+        ダッシュボードのベストプラクティス
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Kubernetes エクスプローラ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/kubernetes_landing_page.html">
+        Kubernetes の概要ページ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/kubernetes_cluster_detail.html">
+        Kubernetes クラスタページ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> クエリを使用した作業</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_querying_assets.html">
+        アセットのクエリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_query.html">
+        クエリーの作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_queries.html">
+        使用可能なクエリを表示する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_export_query_results.html">
+        クエリ結果を .csv にエクスポートしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_modify_delete_query.html">
+        クエリの変更または削除
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_query_assign_multiple_applicationss.html">
+        オブジェクトへの複数のアプリケーション / 注釈の割り当て
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_query_copy_table_values.html">
+        表の値をクリップボードにコピーしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_log_explorer.html">
+        ログを照会しています
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アノテーションの使用</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_defining_annotations.html">
+        アノテーションの定義
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_annotation.html">
+        アノテーションの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_annotation_rules.html">
+        アノテーションルールの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_annotation_import.html">
+        API を使用したアノテーションのインポート
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アプリケーションの操作</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_about_applications.html">
+        アプリケーションの概念
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_application.html">
+        アプリケーションの設定
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 監視とアラート</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_monitor.html">
+        モニタの作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_and_manage_alerts.html">
+        アラートの表示と管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_notifications_email.html">
+        通知受信者の設定
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/test/task_system_monitors.html">
+        システム定義のモニター
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/API_Overview.html">
+        API の使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_webhook.html">
+        Webhook 通知
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 環境の監視</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_audit.html">
+        イベントの監査
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_ttl_and_downsampling.html">
+        TTL およびダウンサンプリング
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アセットページ情報</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_page_overview.html">
+        アセットページの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_in_context_filters.html">
+        オブジェクトのコンテキスト内フィルタリング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_summary_section.html">
+        Summary Topology セクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_expert_view_section.html">
+        Expert View セクシヨン
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_user_data_section.html">
+        User Data セクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_alerts_section.html">
+        関連アラートセクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_searching_assets.html">
+        資産を検索するためのヒントとヒント
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> レポート作成</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_overview.html">
+        レポート概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_user_roles.html">
+        Reporting User Roles の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_predefined_reports.html">
+        事前定義済みレポートの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_storage_manager_dashboard.html">
+        Storage Manager のダッシュボード
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_create_example.html">
+        レポートの例の作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_managing_reports.html">
+        レポートの管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_creating_custom_reports.html">
+        カスタムレポート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_creating_custom_reports.html#reporting-data-models">
+        データモデル
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_querying_database.html">
+        Reporting Database API の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_data_retention.html">
+        データ保持
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_schema_diagrams.html">
+        スキーマ図
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_schemas.html">
+        スキーマテーブル
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Secure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_intro.html">
+        Cloud Secure について
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_getting_started.html">
+        Cloud Secure の使用を開始する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_agent_requirements.html">
+        Cloud Secure エージェントの要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_add_agent.html">
+        Cloud Secure エージェントの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_delete_agent.html">
+        Cloud Secure エージェントの削除
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_user_dir_connect.html">
+        AD Directory Collector の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_user_dir_connect_ldap.html">
+        LDAP ディレクトリコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_cs_amazon_fsx.html">
+        NetApp ONTAP コレクタ用の Amazon FSX の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_add_collector_svm.html">
+        ONTAP SVM Data Collector の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_cs_incloud.html">
+        Cloud ONTAP データコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_user_management.html">
+        Cloud Secure ユーザー管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_event_rate_checker.html">
+        イベントレートチェッカー
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_alert_data.html">
+        アラート
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> フォレンジック</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_activity_history.html">
+        アクティビティフォレンジック - すべてのアクティビティ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_entity_detail.html">
+        アクティビティフォレンジック - エンティティ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_user_overview.html">
+        ユーザ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_automated_response_policies.html">
+        自動応答ポリシー
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_restrict_user_access.html">
+        ユーザアクセスの制限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_attack_simulator.html">
+        ランサムウェア攻撃のシミュレーション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_notifications_email.html">
+        通知
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_api.html">
+        Cloud Secure API の略
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_activeiq.html">
+        Active IQ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> トラブルシューティング</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_general_problems.html">
+        全般的なトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_linux_acquisition_unit_problems.html">
+        Linux Acquisition Unit の問題のトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_windows_acquisition_unit_problems.html">
+        Windows Acquisition Unit の問題のトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_research_failed_collector.html">
+        Data Collector エラーの調査
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> リファレンスサポート</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_requesting_support.html">
+        サポートをリクエストしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_data_collector_support_matrix.html">
+        Data Collector サポートマトリックス
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Infrastructure （データコレクターリファレンス - インフラストラクチャ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_data_collector_reference.html">
+        ベンダーリファレンスの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_amazon_ec2.html">
+        AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_azure.html">
+        Azure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Broadcom</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_brocade_bna.html">
+        Brocade Network Advisor の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_brocade_fc_switch.html">
+        Fibre Channel スイッチ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_cisco_fc_switch.html">
+        シスコ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> デル</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_dell_xc_series.html">
+        XC シリーズ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell EMC</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_datadomain.html">
+        Data Domain の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_ecs.html">
+        ECS の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_isilon.html">
+        PowerScale
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_powerstore.html">
+        PowerStore の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_recoverpoint.html">
+        RecoverPoint
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_scaleio.html">
+        ScaleIO
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_unity.html">
+        Unity （ VNXe ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vmax_powermax.html">
+        VMAX/PowerMax
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_block.html">
+        VNX ブロック（ Clariion ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_file.html">
+        VNX ファイル（ Celerra ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_unified.html">
+        VNX ユニファイド
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vplex.html">
+        VPLEX
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_xio.html">
+        XtremIO
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_fujitsu_eternus.html">
+        富士通
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_google_cloud.html">
+        Google
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP エンタープライズ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hp_3par.html">
+        HP Alletra 9000 および Primera
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hpe_commandview.html">
+        HP Command View AE
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hpe_nimble.html">
+        HPE Alletra 6000
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Hitachi Data Systems の略</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_commandsuite.html">
+        HDS コマンドスイート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_nas.html">
+        HDS HNAS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_ops_center.html">
+        HDS Ops Center の略
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_infinidat_infinibox.html">
+        インフィダト
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_huawei_oceanstor.html">
+        Huawei （ファー
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> IBM 社</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_cleversafe.html">
+        Cleversafe
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_cs.html">
+        CS シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_ds.html">
+        システムストレージ DS8000 シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_powervm.html">
+        PowerVM
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_svc.html">
+        SAN ボリュームコントローラ（ SVC ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_xiv.html">
+        XIV / A9000
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_lenovo.html">
+        Lenovo 社
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Microsoft 社</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_anf.html">
+        Azure NetApp Files の特長
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_hyperv.html">
+        Hyper-V
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ネットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_astra_data_store.html">
+        Astra データストア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_connection.html">
+        ONTAP 9.9 以降のクラウド接続
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_volumes_ontap.html">
+        Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_volumes.html">
+        AWS 向け Cloud Volume サービス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cdot.html">
+        ONTAP データ管理ソフトウェア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_7mode.html">
+        Data ONTAP 7-mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_eseries.html">
+        E シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_hci.html">
+        NetApp HCI 管理サーバ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_solidfire.html">
+        SolidFire
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_storagegrid.html">
+        StorageGRID
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_nutanix.html">
+        Nutanix
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_openstack.html">
+        OpenStack の機能を使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_oracle_zfs.html">
+        Oracle の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_pure_flasharray.html">
+        純粋
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_redhat_virtualization.html">
+        Red Hat の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_vmware.html">
+        VMware
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - サービス</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_node.html">
+        ホスト / ノード
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_activemq.html">
+        ActiveMQ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_apache.html">
+        Apache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_consul.html">
+        総領事
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_couchbase.html">
+        Couchbase
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_couchdb.html">
+        CouchDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_docker.html">
+        Docker です
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_elasticsearch.html">
+        Elasticsearch を指定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_flink.html">
+        フリップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_hadoop.html">
+        Hadoop
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_haproxy.html">
+        HAProxy
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_jvm.html">
+        Java
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kafka.html">
+        カフカ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kapacitor.html">
+        カパトール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kibana.html">
+        キバナ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_agent.html#kubernetes">
+        Kubernetes
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_memcached.html">
+        Memcached
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_mongodb.html">
+        MongoDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_mysql.html">
+        MySQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_netstat.html">
+        netstat
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_nginx.html">
+        nginx
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_openzfs.html">
+        OpenZFS の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_postgresql.html">
+        PostgreSQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_puppetagent.html">
+        パペット
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_redis.html">
+        Redis
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_rethinkdb.html">
+        RethinkDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_zookeeper.html">
+        Zookeeper の追加
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_object_icons.html">
+        オブジェクトアイコンリファレンス
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_legal_notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/test/">Cloud&nbsp;Insights</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/test/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">システムモニタ</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-03-12 06:08:57 +0000">03/12/2022</time>
+    
+  
+
+<span>寄稿者
+</span>
+
+
+</p>
+
+<div id="toc" class="toc">
+<div id="toctitle">目次</div>
+<ul class="sectlevel1">
+<li><a href="#グループを監視します">グループを監視します</a>
+<ul class="sectlevel2">
+<li><a href="#カスタムモニタグループ">カスタムモニタグループ</a></li>
+</ul>
+</li>
+<li><a href="#モニタの説明">モニタの説明</a>
+<ul class="sectlevel2">
+<li><a href="#メトリックモニタ">メトリックモニタ</a></li>
+<li><a href="#ログモニタ時刻解決なし">ログモニタ（時刻解決なし）</a></li>
+<li><a href="#時刻で解決されたログモニタ">時刻で解決されたログモニタ</a></li>
+<li><a href="#ランサムウェア対策ログモニタ">ランサムウェア対策ログモニタ</a></li>
+<li><a href="#astra-データストア-ads-モニタ">Astra データストア（ ADS ）モニタ</a></li>
+</ul>
+</li>
+<li><a href="#詳細情報">詳細情報</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Cloud Insights には、指標とログの両方を監視するシステム定義のモニタが多数含まれています。モニタインタフェースには、これらのシステムモニタに対応するためのいくつかの変更が含まれます。これらについては、このセクションで説明します。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+システムモニタのデフォルトの状態は <em>Paused です。モニタを再開する前に、 Data Collector で _Advanced Counter Data Collection_and _Enable ONTAP EMS log collection_が 有効になっていることを確認する必要があります。これらのオプションは、 ONTAP データコレクタの _Advanced Configuration</em> にあります。<span class="image"><img src="./media/Enable_Log_Monitor_Collection.png" alt="ONTAP の Advanced Counter および EMS Log Collection を有効にします"></span>
+</td>
+</tr>
+</table>
+</div>
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+<h2 id="グループを監視します">グループを監視します</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>グループ化により、関連するモニタを表示および管理できます。たとえば、環境内のストレージ専用の監視グループを使用したり、特定の受信者リストに関連する監視を使用したりできます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Monitors_GroupList.png" alt="グループ化を監視します"></span></p>
+</div>
+<div class="paragraph">
+<p>グループ名の横には、グループに含まれるモニタの数が表示されます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+カスタムモニタは、一時停止、再開、削除、または別のグループへの移動が可能です。システム定義のモニタは一時停止および再開できますが、削除または移動することはできません。
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="カスタムモニタグループ">カスタムモニタグループ</h3>
+<div class="paragraph">
+<p>新しいカスタムモニタグループを作成するには、「 + 」「新規モニタグループの作成 * 」ボタンをクリックします。グループの名前を入力し、 * グループの作成 * をクリックします。空のグループがその名前で作成されます。</p>
+</div>
+<div class="paragraph">
+<p>モニタをグループに追加するには、 _all Monitors グループ（推奨）に移動し、次のいずれかの操作を行います。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>単一のモニタを追加するには、モニタの右側にあるメニューをクリックし、 _ グループに追加 _ を選択します。モニタを追加するグループを選択します。</p>
+</li>
+<li>
+<p>モニタ名をクリックしてモニタの編集ビューを開き '<em>Associate to a monitor group</em> セクションでグループを選択します</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Monitors_AssociateToGroup.png" alt="グループに関連付けます"></span></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>モニタを削除するには、グループをクリックし、メニューから「 _ グループから削除」を選択します。モニタを _all Monitors _ または _Custom Monitors _ グループから削除することはできませんこれらのグループからモニタを削除するには、モニタ自体を削除する必要があります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+グループからモニタを削除しても、モニタは Cloud Insights から削除されません。モニタを完全に削除するには、モニタを選択し、 <em>Delete</em>( 削除 ) をクリックします。これにより、その所有者であるグループからも削除され、どのユーザからも使用できなくなります。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>同様にモニタを別のグループに移動するには '<em>Move to Group</em> を選択します</p>
+</div>
+<div class="paragraph">
+<p>グループ内のすべてのモニタを一度に一時停止または再開するには、グループのメニューを選択し、 _Pause_or_Resume_を クリックします。</p>
+</div>
+<div class="paragraph">
+<p>同じメニューを使用して、グループの名前変更または削除を行います。グループを削除しても、 Cloud Insights からモニタは削除されません。これらのモニタは、 _ALL Monitors で使用できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Monitors_PauseGroup.png" alt="グループを一時停止します"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="モニタの説明">モニタの説明</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>システム定義のモニタは、事前に定義されたメトリックと条件に加えて、デフォルトの説明と修正アクションで構成されています。これらは変更できません。システム定義モニタの通知受信者リストを変更できます。メトリック、条件、概要、および修正アクションを表示したり、受信者リストを変更したりするには、システム定義のモニタグループを開き、リスト内のモニタ名をクリックします。</p>
+</div>
+<div class="paragraph">
+<p>システム定義のモニタグループは変更または削除できません。</p>
+</div>
+<div class="paragraph">
+<p>以下のシステム定義モニタは、記載されたグループで使用できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>* ONTAP インフラストラクチャ * は、 ONTAP クラスタのインフラストラクチャ関連の問題を監視します。</p>
+</li>
+<li>
+<p>* ONTAP ワークロードの例 * には、ワークロード関連の問題のモニターが含まれています。</p>
+</li>
+<li>
+<p>両方のグループのモニタのデフォルトは _Paused _ state です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cloud Insights に現在搭載されているシステムモニタは次のとおりです。</p>
+</div>
+<div class="sect2">
+<h3 id="メトリックモニタ">メトリックモニタ</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">モニタ名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大度</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">説明</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ファイバチャネルポートの高利用率</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ファイバチャネルプロトコルポートは、お客様のホストシステムと ONTAP LUN の間で SAN トラフィックを送受信するために使用されます。ポート利用率が高いとボトルネックになり、ファイバチャネルプロトコルの影響を受けやすいワークロードのパフォーマンスに最終的に影響します。警告アラートは、ネットワークトラフィックを分散するために計画的なアクションを実行する必要があることを示します。重大アラートは、サービスの中断が差し迫っていることを示しており、サービスの継続性を確保するために、ネットワークトラフィックのバランスを取るために緊急措置を講じる必要があることを示しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。利用率の低い別の FCP ポート 2 にワークロードを移動します。ONTAP またはホスト側の設定で QoS ポリシーを使用し、 FCP ポートの利用率を向上させることによって、特定の LUN のトラフィックを重要な機能のみに制限します。 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.ポート利用率がより多くのポート 2 に分散されるように、データトラフィックを処理する FCP ポートを追加で設定することを検討してください。利用率の低い別の FCP ポート 3 にワークロードを移動します。特定の LUN のトラフィックを、 ONTAP またはホスト側の設定で QoS ポリシーを使用した場合にのみ重要な動作に制限し、 FCP ポートの利用率を高めます</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LUN の高レイテンシ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LUN は、 I/O トラフィックを処理するオブジェクトで、データベースなどのパフォーマンス重視のアプリケーションによって頻繁に駆動されます。LUN のレイテンシが高いと、アプリケーション自体に影響を及ぼし、タスクを実行できなくなる可能性があります。警告アラートは、 LUN を適切なノードまたはアグリゲートに移動するための計画的なアクションが必要であることを示しています。重大アラートは、サービスの停止が差し迫っていることを示しており、サービスの継続性を確保するために緊急措置を講じる必要があることを示しています。メディアタイプに基づく想定レイテンシは、最大 1 ～ 2 ミリ秒、 SAS は最大 8 ～ 10 ミリ秒、 SATA HDD は 17 ～ 20 ミリ秒です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。LUN またはそのボリュームに QoS ポリシーが関連付けられている場合、しきい値の制限を評価して、 LUN のワークロードが調整されているかどうかを検証します。 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.アグリゲートの利用率も高い場合は、 LUN を別のアグリゲート 2 に移動してください。ノードの利用率も高い場合は、ボリュームを別のノードに移動するか、ノード 3 のワークロードの合計を減らしてください。LUN またはそのボリュームに QoS ポリシーが関連付けられている場合、しきい値の制限を評価して、 LUN ワークロードの調整の原因になっていないかどうかを確認します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ネットワークポートの高利用率</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ネットワークポートは、 NFS 、 CIFS 、および iSCSI のプロトコルトラフィックを受信して、お客様のホストシステムと ONTAP の間で転送するために使用されます。ポート利用率が高いとボトルネックになり、最終的には NFS 、 CIFS 、 iSCSI のワークロードのパフォーマンスに影響します。警告アラートは、ネットワークトラフィックを分散するために計画的なアクションを実行する必要があることを示します。重大アラートは、サービスの中断が差し迫っていることを示しており、サービスの継続性を確保するために、ネットワークトラフィックのバランスを取るために緊急措置を講じる必要があることを示しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。ONTAP の QoS ポリシーまたはホスト側の分析によってのみ、特定のボリュームのトラフィックを重要な動作に制限し、ネットワークポート 2 の使用率を高めます。利用率の低い別のネットワークポートを使用するように 1 つ以上のボリュームを設定 &#8230;&#8203; 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.データトラフィックを処理するネットワークポートを増やして、ポート利用率をより多くのポート 2 に分散させることを検討してください。利用率の低い別のネットワークポートを使用するように 1 つ以上のボリュームを設定します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMe ネームスペースの高レイテンシ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMe ネームスペースは、 I/O トラフィックを処理するオブジェクトで、多くの場合、データベースなどのパフォーマンス重視のアプリケーションによって駆動されます。NVMe ネームスペースのレイテンシが高いと、アプリケーション自体が影響を受け、タスクを実行できなくなる可能性があります。警告アラートは、 LUN を適切なノードまたはアグリゲートに移動するための計画的なアクションが必要であることを示しています。重大アラートは、サービスの停止が差し迫っていることを示しており、サービスの継続性を確保するために緊急措置を講じる必要があることを示しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。NVMe ネームスペースまたはそのボリュームに QoS ポリシーが割り当てられている場合、 NVMe ネームスペースのワークロードが抑制された場合に備えて、制限のしきい値を評価します。 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.アグリゲートの利用率も高い場合は、 LUN を別のアグリゲート 2 に移動してください。ノードの利用率も高い場合は、ボリュームを別のノードに移動するか、ノード 3 のワークロードの合計を減らしてください。NVMe ネームスペースまたはそのボリュームに QoS ポリシーが割り当てられている場合、それらが NVMe ネームスペースのワークロードを調整でき原因となった場合に備えて、制限のしきい値を評価します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree 容量ハードリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree とは、論理的に定義されたファイルシステムで、ボリューム内のルートディレクトリに特別なサブディレクトリとして作成できます。各 qtree には、ボリューム内のユーザデータの増加を制御し、合計容量を超えないようにするために、データの格納に使用できる容量クォータ（ KB ）が設定されています。qtree は、ストレージのソフト容量クォータを維持します。これにより、 qtree の合計容量クォータ制限に達する前にユーザにプロアクティブにアラートを送信し、データを格納できなくなります。qtree に格納されているデータ量を監視することで、ユーザに中断のないデータサービスを確実に提供できます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。増加に対応するために、ツリースペースクォータを増やすことを検討してください 2 。スペースを解放するために不要になった不要なデータをツリーから削除するようにユーザーに指示することを検討してください</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree 容量がフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree とは、論理的に定義されたファイルシステムで、ボリューム内のルートディレクトリに特別なサブディレクトリとして作成できます。各 qtree には、ボリュームの容量内でツリーに格納されるデータの量を制限するために、クォータポリシーによって定義されるデフォルトのスペースクォータまたはクォータがあります。警告アラートは、スペースを増やすために計画的な対処が必要であることを示します。重大アラートは、サービスの停止が差し迫っていることを示しており、サービスの継続性を確保するためにスペースを解放するために緊急措置を講じる必要があることを示しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。増加に対応するために、 qtree のスペースを増やすことを検討してください。 2.スペースを解放するために不要になったデータを削除することを検討してください &#8230;&#8203; 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.増加に対応するために、 qtree のスペースを増やすことを検討してください。 2.スペースを解放するために、不要になったデータを削除することを検討してください</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree 容量のソフトリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree とは、論理的に定義されたファイルシステムで、ボリューム内のルートディレクトリに特別なサブディレクトリとして作成できます。各 qtree には、ボリューム内のユーザデータの増加を制御し、合計容量を超えないようにするために、データの格納に使用できる容量クォータ（ KB ）が設定されています。qtree は、ストレージのソフト容量クォータを維持します。これにより、 qtree の合計容量クォータ制限に達する前にユーザにプロアクティブにアラートを送信し、データを格納できなくなります。qtree に格納されているデータ量を監視することで、ユーザに中断のないデータサービスを確実に提供できます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.増加に対応するために、ツリースペースクォータを増やすことを検討してください 2 。スペースを解放するために不要になった不要なデータをツリーから削除するようにユーザーに指示することを検討してください</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree のファイル数のハードリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree とは、論理的に定義されたファイルシステムで、ボリューム内のルートディレクトリに特別なサブディレクトリとして作成できます。各 qtree には、ボリューム内の管理可能なファイルシステムサイズを維持するために、格納可能なファイル数のクォータがあります。qtree は、ハードファイル番号のクォータを維持します。このクォータを超えると、ツリー内の新しいファイルは拒否されます。qtree 内のファイル数を監視すると、ユーザには中断のないデータサービスが確実に提供されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。qtree 2 のファイル数クォータを増やすことを検討してください。これ以上使用していないファイルは qtree ファイルシステムから削除します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree のファイル数がソフトリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qtree とは、論理的に定義されたファイルシステムで、ボリューム内のルートディレクトリに特別なサブディレクトリとして作成できます。各 qtree には、ボリューム内の管理可能なファイルシステムサイズを維持するために、格納可能なファイル数のクォータがあります。qtree では、ソフトファイル番号クォータが維持されます。これにより、 qtree 内のファイル数の上限に達する前にユーザにプロアクティブにアラートを送信し、追加のファイルを格納できなくなります。qtree 内のファイル数を監視すると、ユーザには中断のないデータサービスが確実に提供されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.qtree 2 のファイル数クォータを増やすことを検討してください。これ以上使用していないファイルは qtree ファイルシステムから削除します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Snapshot リザーブスペースがフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アプリケーションとお客様のデータを格納するには、ボリュームのストレージ容量が必要です。スナップショット予約領域と呼ばれる領域の一部はスナップショットの保存に使用され、データをローカルで保護できます。ONTAP ボリュームに格納される新規データや更新データが多いほど、使用される Snapshot 容量は増えますが、今後追加または更新されるデータに使用できる Snapshot ストレージ容量は少なくなります。ボリューム内の Snapshot データ容量が Snapshot リザーブの合計スペースに達すると、新しい Snapshot データを格納できなくなり、ボリューム内のデータの保護レベルが低下する可能性があります。ボリュームの使用済み Snapshot 容量を監視して、データサービスの継続性を確保します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。Snapshot リザーブがフルの状態でボリューム内のデータスペースを使用するように Snapshot を設定することを検討してください。 2.スペースを解放するために必要でなくなった古いスナップショットをいくつか削除することを検討してください &#8230;&#8203; 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.この増加に対応するために、ボリューム内の Snapshot リザーブスペースを増やすことを検討してください。 2.Snapshot リザーブがフルになったときにボリューム内のデータスペースを使用するように Snapshot を設定することを検討してください</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージ容量の制限</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージプール（アグリゲート）がいっぱいになると、 I/O 処理が低速化し、最後にストレージ停止インシデントの原因となって I/O 処理が停止します。警告アラートは、最小限の空きスペースをリストアするために計画的な対処が必要であることを示しています。重大アラートは、サービスの停止が差し迫っていることを示しており、サービスの継続性を確保するためにスペースを解放するために緊急措置を講じる必要があることを示しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。重要でないボリューム 2 の Snapshot を削除します。重要でないワークロードであり、ストレージコピーからリストア可能なボリュームまたは LUN を削除 &#8230;&#8203; 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.1 つ以上のボリュームを別のストレージに移動します。 2.ストレージ容量を追加 3.ストレージ効率の設定を変更するか、アクセス頻度の低いデータをクラウドストレージに階層化してください</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージパフォーマンスの制限</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージシステムのパフォーマンスが上限に達すると、処理速度が低下し、レイテンシが増大し、ワークロードやアプリケーションで障害が発生する可能性があります。ONTAP は、ワークロードに起因するストレージプール利用率を評価して、パフォーマンスの消費率を推定します。警告アラートは、ストレージプールの負荷をに減らすために計画的なアクションを実行する必要があることを示しています。ワークロードのピークに対応するのに十分なストレージプールのパフォーマンスが残っていない可能性があります。重大アラートは ' パフォーマンス低下が差し迫っていることを示し ' サービスの継続性を確保するためにストレージ・プールの負荷を軽減するために緊急措置を講じる必要があることを示します</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。Snapshot や SnapMirror レプリケーション 2 などのスケジュールされたタスクを一時停止不要なワークロードをアイドル状態にしています &#8230;&#8203; 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.1 つ以上のワークロードを別のストレージに移動します。 2.ストレージノード（ AFF ）またはディスクシェルフ（ FAS ）を追加し、ワークロードを再配分します 3 。ワークロード特性（ブロックサイズ、アプリケーションキャッシングなど）の変更</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザクォータ容量のハードリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP は、ボリューム内のボリューム、ファイル、またはディレクトリにアクセスできる権限を持つ UNIX または Windows システムのユーザを認識します。その結果、ユーザやユーザグループが使用する Linux または Windows システムのストレージ容量を ONTAP で設定できるようになります。ユーザまたはグループのポリシークォータによって、ユーザが自身のデータに使用できるスペース量が制限されます。このクォータのハードリミットによって、ボリューム内の使用済み容量が合計容量クォータに達する直前にユーザに通知できます。ユーザクォータまたはグループクォータに保存されているデータ量を監視することで、ユーザに中断のないデータサービスを確実に提供できます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。増加に対応するために、ユーザクォータまたはグループクォータのスペースを増やすことを検討してください 2 。スペースを解放するために必要なくなったデータを削除するようにユーザまたはグループに指示することを検討してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザクォータ容量のソフトリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP は、ボリューム内のボリューム、ファイル、またはディレクトリにアクセスできる権限を持つ UNIX または Windows システムのユーザを認識します。その結果、ユーザやユーザグループが使用する Linux または Windows システムのストレージ容量を ONTAP で設定できるようになります。ユーザまたはグループのポリシークォータによって、ユーザが自身のデータに使用できるスペース量が制限されます。このクォータのソフトリミットを使用すると、ボリュームの使用済み容量が合計容量クォータに達したときにユーザにプロアクティブに通知できます。ユーザクォータまたはグループクォータに保存されているデータ量を監視することで、ユーザに中断のないデータサービスを確実に提供できます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.増加に対応するために、ユーザクォータまたはグループクォータのスペースを増やすことを検討してください 2 。スペースを解放するために、不要になったデータを削除することを検討してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリューム容量がフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アプリケーションとお客様のデータを格納するには、ボリュームのストレージ容量が必要です。ONTAP ボリュームに格納されるデータが多いほど、以降のデータで使用できるストレージ容量は少なくなります。ボリューム内のデータストレージ容量が合計ストレージ容量に達すると、ストレージ容量の不足によりデータを格納できなくなる可能性があります。ボリュームの使用済みストレージ容量を監視して、データサービスの継続性を確保します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。この拡張に対応するために、ボリュームのスペースを増やすことを検討してください。 2.スペースを解放するために不要になったデータを削除することを検討してください &#8230;&#8203; 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.拡張に対応するために、ボリュームのスペースを増やすことを検討してください</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームの高レイテンシ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームとは、多くの場合、 DevOps アプリケーション、ホームディレクトリ、データベースなどのパフォーマンス重視のアプリケーションによって I/O トラフィックを処理するオブジェクトです。ボリュームのレイテンシが高いと、アプリケーション自体に影響を及ぼし、タスクを実行できなくなる可能性があります。ボリュームのレイテンシを監視することは、アプリケーションの整合性を維持するうえで非常に重要です。メディアタイプに基づく想定レイテンシは、最大 1 ～ 2 ミリ秒、 SAS は最大 8 ～ 10 ミリ秒、 SATA HDD は 17 ～ 20 ミリ秒です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。ボリュームに QoS ポリシーが割り当てられている場合、ボリュームのワークロードが調整される原因になったときに制限しきい値を評価します。 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.アグリゲートの利用率も高い場合は、ボリュームを別のアグリゲートに移動します。2. ボリュームに QoS ポリシーが割り当てられている場合、ボリュームワークロードが調整される原因となった場合に備えて、制限しきい値を評価します。3. ノードの利用率が高い場合は、ボリュームを別のノードに移動するか、ノードの合計ワークロードを減らします</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームの inode 制限</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ファイルを格納するボリュームでは、インデックスノード（ inode ）を使用してファイルメタデータが格納されます。ボリュームが inode の割り当てを使用しなくなると、そのボリュームにはこれ以上ファイルを追加できません。警告アラートは、使用可能な inode の数を増やすために計画的な処理が必要であることを示しています。重大アラートは、ファイル制限の枯渇が差し迫っていることを示し、サービスの継続性を確保するために inode を解放するための緊急対策を講じる必要があることを示しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、すぐに対処する必要があります： 1 。ボリュームの inode の値を増やすことを検討してください。inode の値がすでに最大値に達している場合は、ファイルシステムが最大サイズ 2 を超えて拡張されたため、ボリュームを 2 つ以上のボリュームにスプリットすることを検討してください。大規模なファイルシステムに対応できるため、 FlexGroup の使用を検討してください。 警告のしきい値を超えた場合は、すぐに次の処理を実行するように計画してください。 1.ボリュームの inode の値を増やすことを検討してください。inode の値がすでに最大値に達している場合は、ファイルシステムが最大サイズ 2 を超えて拡張されたため、ボリュームを 2 つ以上のボリュームにスプリットすることを検討してください。大容量のファイルシステムに対応できるため、 FlexGroup の使用を検討してください</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">モニタ名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CI の重大度</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">概要を監視します</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ノードの高レイテンシ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 / 重大</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ノードのレイテンシが、ノード上のアプリケーションのパフォーマンスに影響する可能性があるレベルに達しました。ノードのレイテンシが低いため、アプリケーションのパフォーマンスが安定します。メディアタイプに基づく想定レイテンシは次のとおりです。 SSD は最大 1 ～ 2 ミリ秒、 SAS は最大 8 ～ 10 ミリ秒、 SATA HDD は 17 ～ 20 ミリ秒。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大しきい値を超える場合は、サービスの中断を最小限に抑えるためにただちに対処する必要があります： 1 。スケジュールされたタスク、 Snapshot 、または SnapMirror レプリケーション 2 を一時停止QoS 制限により、優先度の低いワークロードの需要を低減します。 3.重要でないワークロードを非アクティブ化すると、警告しきい値を超えた場合の即時対処が考慮されます： 1 。1 つ以上のワークロードを別のストレージに移動します。 2.QoS 制限により、優先度の低いワークロードの需要を低減します。 3.ストレージノード（ AFF ）またはディスクシェルフ（ FAS ）を追加し、ワークロードを再配分します。 4.ワークロード特性（ブロックサイズ、アプリケーションキャッシングなど）の変更</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ノードのパフォーマンス制限</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 / 重大</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ノードのパフォーマンス使用率が、 IOS およびノードでサポートされているアプリケーションのパフォーマンスに影響する可能性があるレベルに達しました。ノードのパフォーマンス利用率が低いため、アプリケーションのパフォーマンスが安定します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるために、ただちに対処する必要があります： 1 。スケジュールされたタスク、 Snapshot 、または SnapMirror レプリケーション 2 を一時停止QoS 制限により、優先度の低いワークロードの需要を低減します。 3.重要でないワークロードを非アクティブ化すると、警告しきい値を超えた場合に次の処理が実行されることが考慮されます。 1.1 つ以上のワークロードを別のストレージに移動します。 2.QoS 制限により、優先度の低いワークロードの需要を低減します。 3.ストレージノード（ AFF ）またはディスクシェルフ（ FAS ）を追加し、ワークロードを再配分します。 4.ワークロード特性（ブロックサイズ、アプリケーションキャッシングなど）の変更</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage VM のレイテンシが高くなっています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 / 重大</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage VM （ SVM ）のレイテンシが Storage VM のアプリケーションのパフォーマンスに影響する可能性があるレベルに達しました。Storage VM のレイテンシが低いため、アプリケーションのパフォーマンスが安定します。メディアタイプに基づく想定レイテンシは次のとおりです。 SSD は最大 1 ～ 2 ミリ秒、 SAS は最大 8 ～ 10 ミリ秒、 SATA HDD は 17 ～ 20 ミリ秒。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大しきい値を超えた場合は、 QoS ポリシーが割り当てられた Storage VM のボリュームについてすぐにしきい値を評価して、ボリュームワークロードの負荷が調整されているかどうかを確認し、警告しきい値を超えた場合の即時対処方法として次の点を考慮します： 1 。アグリゲートの利用率も高い場合は、 Storage VM の一部のボリュームを別のアグリゲートに移動します。2. QoS ポリシーが割り当てられている Storage VM のボリュームで、ボリュームワークロードが調整されている場合にしきい値の制限を評価します。 3.ノードの利用率が高い場合は、 Storage VM の一部のボリュームを別のノードに移動するか、ノードの合計ワークロードを減らします</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザクォータのファイル数のハードリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリューム内に作成されたファイル数が重大な制限に達したため、追加ファイルを作成できません。保存されたファイル数を監視することで、ユーザに中断のないデータサービスを確実に提供できます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、即時アクションが必要です。次のアクションを実行することを検討してください。 1.特定のユーザのファイル数クォータを増やします 2.不要なファイルを削除して、特定のユーザのファイルクォータに対する圧力を軽減します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザクォータのファイル数がソフトリミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリューム内に作成されたファイル数がクォータのしきい値に達し、重大な制限に近づいています。クォータが重大の上限に達した場合、追加のファイルを作成できません。ユーザが保存するファイル数を監視することで、ユーザに中断のないデータサービスが確実に提供されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告しきい値を超えた場合は、ただちに対処することを検討してください。 1.特定のユーザクォータ 2 のファイル数クォータを増やします。不要なファイルを削除して、特定のユーザのファイルクォータに対する圧力を軽減します</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームキャッシュミス率</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 / 重大</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームキャッシュミス率は、クライアントアプリケーションからの読み取り要求に対してキャッシュからではなくディスクからデータが返される割合です。これは、ボリュームが設定されたしきい値に達したことを意味します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大しきい値を超える場合は、サービスの中断を最小限に抑えるためにただちに対処する必要があります： 1 。ボリュームのノードから一部のワークロードを移動して、 IO 負荷を軽減してください 2 。ボリュームのノードに Flash Cache 3 がない場合は、 Flash Cache 3 を購入して追加し、 WAFL キャッシュを拡張します。QoS 制限を使用して同じノードに対する優先度の低いワークロードの要求を下げ、警告しきい値を超えた場合の即時対処を検討します。 1.ボリュームのノードから一部のワークロードを移動して、 IO 負荷を軽減してください 2 。ボリュームのノードに Flash Cache 3 がない場合は、 Flash Cache 3 を購入して追加し、 WAFL キャッシュを拡張します。QoS 制限により、同じノードでの優先度の低いワークロードの要求を軽減します。 4ワークロード特性（ブロックサイズ、アプリケーションキャッシングなど）の変更</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームの qtree クォータオーバーコミット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 / 重大</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームの qtree クォータオーバーコミットは、ボリュームが qtree クォータによってオーバーコミットされているとみなす割合を示します。ボリュームの qtree クォータの設定しきい値に達しました。ボリューム qtree クォータオーバーコミットを監視することで、ユーザに中断のないデータサービスが確実に提供されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大しきい値を超える場合は、サービスの中断を最小限に抑えるためにただちに対処する必要があります： 1 。ボリューム 2 のスペースを増やします。警告しきい値を超えたときに不要なデータを削除してから、ボリュームのスペースを増やすことを検討してください。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="ログモニタ時刻解決なし">ログモニタ（時刻解決なし）</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">モニタ名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大度</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">説明</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS クレデンシャルが初期化されて</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">このイベントは、モジュールが初期化される前に、クラウドクレデンシャルスレッドから Amazon Web Services （ AWS ）の Identity and Access Management （ IAM ）ロールベースクレデンシャルにアクセスしようとした場合に発生します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">" クラウドクレデンシャルのスレッドとシステムの初期化が完了するまで待ちます。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クラウド階層に到達不能です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージノードからクラウド階層のオブジェクトストア API に接続することはできません。一部のデータにアクセスできません。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オンプレミス製品を使用している場合は、次の対処策を実施します。 …「 network interface show 」コマンドを使用して、クラスタ間 LIF がオンラインで機能していることを確認します。…デスティネーションノードのクラスタ間 LIF で「 ping 」コマンドを使用して、オブジェクトストアサーバへのネットワーク接続を確認します。…オブジェクトストアの設定が変更されていないことを確認します。ログインおよび接続の情報はです それでも有効です。問題が解決しない場合は、ネットアップのテクニカルサポートにお問い合わせください。Cloud Volumes ONTAP を使用する場合は、次の対処方法を実行します。…オブジェクトストアの設定が変更されていないことを確認します。 ログイン情報と接続情報がまだ有効であることを確認してください。問題が有効でない場合は、ネットアップのテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ディスクがサービスを停止しています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「このイベントは、ディスクが障害としてマークされているか、完全消去中であるか、 Maintenance Center に入力されたためにサービスから削除された場合に発生します。」</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FlexGroup 構成要素がフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 FlexGroup ボリューム内のコンスティチュエントがいっぱいになっているため、原因がサービスを停止する可能性があります。この場合も、 FlexGroup ボリュームでファイルを作成または拡張できます。ただし、コンスティチュエントに格納されているファイルを変更することはできません。その結果、 FlexGroup ボリュームに対して書き込み処理を実行しようとしたときに、ランダムなスペース不足エラーが発生することがあります。」</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 volume modify -files + X 」コマンドを使用して、 FlexGroup ボリュームに容量を追加することを推奨します。または、 FlexGroup ボリュームからファイルを削除することもできます。しかし、どのファイルがコンスティチュエントに置かれているかを特定するのは難しい」</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FlexGroup コンスティチュエントがほぼフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 FlexGroup ボリューム内のコンスティチュエントのスペースがほとんどなくなると、原因によってサービスが停止する可能性があります。ファイルを作成して展開できます。ただし、コンスティチュエントのスペースが不足すると、コンスティチュエントにファイルを追加したり変更したりできなくなる可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 volume modify -files + X 」コマンドを使用して、 FlexGroup ボリュームに容量を追加することを推奨します。または、 FlexGroup ボリュームからファイルを削除することもできます。しかし、どのファイルがコンスティチュエントに置かれているかを特定するのは難しい」</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FlexGroup コンスティチュエントの inode がほぼなくなっています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 FlexGroup ボリューム内のコンスティチュエントは inode がほとんどなくなっており、原因がサービスの停止を招く可能性があります。コンスティチュエントに平均よりも少ない作成要求が送信されます。FlexGroup ボリュームの全体的なパフォーマンスに影響することがあります。これは、 inode が多いコンスティチュエントに要求がルーティングされるためです。」</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 volume modify -files + X 」コマンドを使用して、 FlexGroup ボリュームに容量を追加することを推奨します。または、 FlexGroup ボリュームからファイルを削除することもできます。しかし、どのファイルがコンスティチュエントに置かれているかを特定するのは難しい」</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FlexGroup コンスティチュエントの inode が不明です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 FlexGroup ボリュームのコンスティチュエントの inode が不足しており、原因によってサービスが停止する可能性があります。この構成要素には新しいファイルを作成できません。これにより、 FlexGroup ボリューム間でコンテンツが全体的に不均衡な状態に分散される可能性があります。」</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 volume modify -files + X 」コマンドを使用して、 FlexGroup ボリュームに容量を追加することを推奨します。または、 FlexGroup ボリュームからファイルを削除することもできます。しかし、どのファイルがコンスティチュエントに置かれているかを特定するのは難しい」</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LUN はオフラインです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">このイベントは、 LUN が手動でオフラインになった場合に発生します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LUN をオンラインに戻します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">メインユニットファンに障害が発生しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 つ以上のメインユニットファンで障害が発生しました。システムは動作し続けます。しかし、状態が長く続くと、過熱によって自動シャットダウンがトリガーされることがあります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">" 障害が発生したファンを取り付け直します。エラーが解消されない場合は、交換します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告状態のメインユニットファン</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">このイベントは、 1 つまたは複数のメインユニットファンが警告状態のときに発生します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">過熱を防ぐため、示されたファンを交換してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVRAM バッテリ低下</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVRAM バッテリ容量が非常に少なくなっています。バッテリの電力が不足すると、データが失われる可能性があります。 &#8230;&#8203;NetApp テクニカルサポートと設定済みの送信先（該当する場合）に、 AutoSupport または「 call home 」というメッセージが生成されて送信されます。AutoSupport メッセージが正常に配信されると、問題の特定と解決方法が大幅に改善されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 system node environment sensors show 」コマンドを使用して、バッテリの現在のステータス、容量、および充電状態を表示します。バッテリを最近交換した場合や、システムが長時間にわたって動作していない場合は、次の対処方法を実行します。 バッテリを監視して、適切に充電されていることを確認してください。…バッテリの稼働時間が引き続きクリティカルなレベルを下回ると、ストレージシステムが自動的にシャットダウンする場合は、ネットアップテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">サービスプロセッサが設定されていません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「このイベントは毎週発生し、サービスプロセッサ（ SP ）の設定を通知するために使用されます。SP は、システムに組み込まれている物理デバイスであり、リモートアクセス機能とリモート管理機能を提供します。すべての機能を使用できるように SP を設定する必要があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…「 system service-processor network modify 」コマンドを使用して SP を設定します。オプションで、 「 system service-processor network show 」コマンドを使用して、 SP の MAC アドレスを取得します。…「 system service-processor network show 」コマンドを使用して、 SP ネットワーク設定を確認します。「 system service-processor AutoSupport invoke 」コマンドを使用して、 SP から AutoSupport E メールを送信できることを確認します。注 AutoSupport ：このコマンドを実行する前に、 ONTAP E メールホストと受信者を問題で設定する必要があります。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">サービスプロセッサはオフラインです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「すべての SP リカバリアクションが実行されていても、 ONTAP はサービスプロセッサ（ SP ）からハートビートを受信しなくなりました。ONTAP は、 SP なしでハードウェアの状態を監視できません。システムはシャットダウンして、ハードウェアの損傷やデータの損失を防ぎます。SP がオフラインになった場合にすぐに通知されるようにパニック・アラートを設定する</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の操作を実行して、システムの電源を再投入します。…コントローラをシャーシから引き出します。…コントローラをもう一度押し込みます。…コントローラをオンに戻します。問題が解決しない場合は、コントローラモジュールを交換します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">シェルフのファンに障害があります</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">" シェルフの冷却ファンまたはファンモジュールに障害が発生しました。シェルフ内のディスクに十分な通気による冷却が確保されないと、ディスク障害が発生する可能性があります。」</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。ファンモジュールが完全に装着され、固定されていることを確認します。メモ：一部のディスクシェルフの電源装置モジュールにファンが内蔵されています。問題が解決しない場合は、ファンモジュールを交換してください。それでも問題が解決しない場合は、ネットアップのテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">メインユニットファンの障害により、システムは動作できません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 1 つまたは複数のメインユニットファンで障害が発生し、システムの動作が中断しました。これにより、データが失われる可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">障害が発生したファンを交換します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">未割り当てディスク</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">システムに未割り当てのディスクがあります - 容量が無駄になっており、構成の設定ミスや部分的な変更がシステムに適用されている可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。「 disk show -n 」コマンドを使用して、どのディスクが割り当てられていないかを確認します。「 disk assign 」コマンドを使用して、ディスクをシステムに割り当てます。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="時刻で解決されたログモニタ">時刻で解決されたログモニタ</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">モニタ名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大度</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">説明</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アンチウイルスサーバビジー</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ウィルス対策サーバがビジーのため、新しいスキャン要求を受け入れることができません。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">このメッセージが頻繁に表示される場合は、 SVM で生成されるウィルススキャンの負荷を処理できるだけの十分なウィルス対策サーバがあることを確認してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IAM ロールの AWS クレデンシャルの期限が切れました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Volume ONTAP にアクセスできなくなりました。ID およびアクセス管理（ IAM ）ロールベースのクレデンシャルの期限が切れている。クレデンシャルは、 IAM ロールを使用して Amazon Web Services （ AWS ）メタデータサーバから取得され、 Amazon Simple Storage Service （ Amazon S3 ）への API 要求に署名するために使用されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の手順を実行します。… AWS EC2 管理コンソールにログインします。…インスタンスページに移動します。… Cloud Volumes ONTAP 導入のインスタンスを探してその健常性を確認します。…インスタンスに関連付けられている AWS IAM ロールが有効であり、インスタンスに適切な権限が付与されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IAM ロールの AWS クレデンシャルが見つかりません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クラウドクレデンシャルスレッドで、 Amazon Web Services （ AWS ）の Identity and Access Management （ IAM ）ロールベースのクレデンシャルを AWS メタデータサーバから取得することはできません。クレデンシャルは、 Amazon Simple Storage Service （ Amazon S3 ）への API 要求への署名に使用されます。Cloud Volume ONTAP にアクセスできなくなりました。…</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の手順を実行します。… AWS EC2 管理コンソールにログインします。…インスタンスページに移動します。… Cloud Volumes ONTAP 導入のインスタンスを探してその健常性を確認します。…インスタンスに関連付けられている AWS IAM ロールが有効であり、インスタンスに適切な権限が付与されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IAM ロールの AWS クレデンシャルが無効です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID およびアクセス管理（ IAM ）ロールベースのクレデンシャルが無効です。クレデンシャルは、 IAM ロールを使用して Amazon Web Services （ AWS ）メタデータサーバから取得され、 Amazon Simple Storage Service （ Amazon S3 ）への API 要求に署名するために使用されます。Cloud Volume ONTAP にアクセスできなくなりました。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の手順を実行します。… AWS EC2 管理コンソールにログインします。…インスタンスページに移動します。… Cloud Volumes ONTAP 導入のインスタンスを探してその健常性を確認します。…インスタンスに関連付けられている AWS IAM ロールが有効であり、インスタンスに適切な権限が付与されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS IAM ロールが見つかりません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identity and Access Management （ IAM ）ロールスレッドで、 AWS メタデータサーバに Amazon Web Services （ AWS ） IAM ロールが見つかりません。IAM ロールは、 Amazon Simple Storage Service （ Amazon S3 ）への API 要求の署名に使用するロールベースのクレデンシャルを取得する必要があります。Cloud Volume ONTAP にアクセスできなくなりました。…</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の手順を実行します。… AWS EC2 管理コンソールにログインします。…インスタンスページに移動します。… Cloud Volumes ONTAP 導入のインスタンスを探してその健常性を確認します。…インスタンスに関連付けられている AWS IAM ロールが有効であることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS IAM ロールが無効です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS メタデータサーバの Amazon Web Services （ AWS ） Identity and Access Management （ IAM ）ロールが無効です。Cloud Volume ONTAP にアクセスできなくなりました。…</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の手順を実行します。… AWS EC2 管理コンソールにログインします。…インスタンスページに移動します。… Cloud Volumes ONTAP 導入のインスタンスを探してその健常性を確認します。…インスタンスに関連付けられている AWS IAM ロールが有効であり、インスタンスに適切な権限が付与されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS メタデータサーバに接続できませんでした</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identity and Access Management （ IAM ）役割スレッドで、 Amazon Web Services （ AWS ）メタデータサーバとの通信リンクを確立できません。Amazon Simple Storage Service （ Amazon S3 ）への API 要求の署名に使用する AWS IAM ロールベースの必要なクレデンシャルを取得するために通信を確立する必要があります。Cloud Volume ONTAP にアクセスできなくなりました。…</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の手順を実行します。… AWS EC2 管理コンソールにログインします。…インスタンスページに移動します。… Cloud Volumes ONTAP 導入のインスタンスを探してその健全性を確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FabricPool のスペース使用制限にほぼ達しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容量ライセンスのあるプロバイダが提供するオブジェクトストアでのクラスタ全体の FabricPool スペースの使用量が、ライセンスで許可された上限にほぼ達しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…「 storage aggregate object-store show-space 」コマンドを使用して、各 FabricPool ストレージ階層で使用されているライセンス容量の割合を確認します。…「 volume snapshot delete 」コマンドを使用して、階層化ポリシー「 snapshot 」または「 backup 」が設定されたボリュームから Snapshot コピーを削除します。…新しいライセンスをインストールします クラスタ上でライセンス容量を拡張します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FabricPool のスペース使用制限に達しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容量ライセンスプロバイダが提供するオブジェクトストアでのクラスタ全体の FabricPool スペースの使用量がライセンスの上限に達しました。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…「 storage aggregate object-store show-space 」コマンドを使用して、各 FabricPool ストレージ階層で使用されているライセンス容量の割合を確認します。…「 volume snapshot delete 」コマンドを使用して、階層化ポリシー「 snapshot 」または「 backup 」が設定されたボリュームから Snapshot コピーを削除します。…新しいライセンスをインストールします クラスタ上でライセンス容量を拡張します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アグリゲートのギブバックに失敗しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージフェイルオーバー（ SFO ）ギブバックの一環としてアグリゲートを移行したときに、デスティネーションノードがオブジェクトストアに到達できない場合に発生します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…「 network interface show 」コマンドを使用して、インタークラスタ LIF がオンラインで機能していることを確認します。…デスティネーションノードのクラスタ間 LIF で「 ping 」コマンドを使用して、オブジェクトストアサーバへのネットワーク接続を確認します。…「 aggregate object-store config show 」コマンドを使用して、オブジェクトストアの設定が変更されておらず、ログインおよび接続の情報が正確であることを確認してください。または、 このエラーを無効にするには、 giveback コマンドの「 require-partner-waiting 」パラメータに false を指定します。詳細やサポートについては、ネットアップテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HA インターコネクトが停止しています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ハイアベイラビリティ（ HA ）インターコネクトが停止しています。フェイルオーバーを利用できない場合、サービスが停止するリスクがあります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法は、プラットフォームでサポートされている HA インターコネクトリンクの数と種類、およびインターコネクトが停止している理由によって異なります。…リンクがダウンしている場合 : … HA ペアの両方のコントローラが動作していることを確認します。外部接続リンクの場合は、相互接続ケーブルが正しく接続されていること、および小型フォームファクタプラガブル（ SFP ）が両方のコントローラに正しく装着されていることを確認します。内部接続されているリンクの場合は、リンクを無効にし、リンクを有効にします。 一方は、「 IC LINK OFF 」コマンドと「 IC LINK ON 」コマンドを使用して行います。…リンクが無効になっている場合は、「 ic link on 」コマンドを使用してリンクを有効にします。…ピアが接続されていない場合は、「 ic link off 」コマンドと「 ic link on 」コマンドを使用して、一方のリンクを無効にし、再度有効にします。…問題が解決しない場合は、ネットアップのテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザあたりの最大セッション数を超えました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP 接続でのユーザあたりの最大許容セッション数を超えました。セッションを確立する要求は、一部のセッションが解放されるまで拒否されます。…</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処策を実行します。 …クライアントで実行されているすべてのアプリケーションを検査し、正常に動作していないアプリケーションを終了します。…クライアントを再起動します。…問題が新規または既存のアプリケーションによって発生しているかどうかを確認します。アプリケーションが新規の場合は、「 cifs option modify -max-opense-opense-file-per-tree 」コマンドを使用して、クライアントのしきい値を大きく設定します。クライアントが想定どおりに動作していても、しきい値の上昇が必要となる場合があります。クライアントのしきい値を高く設定するには、 advanced 権限が必要です。…問題が既存のアプリケーションに起因している場合は、クライアントに問題が存在する可能性があります。詳細またはサポートについては、ネットアップテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ファイルあたりの最大オープン回数を超えました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP 接続でファイルを開くことができる最大回数を超えました。このファイルを開く要求は、ファイルの開いているインスタンスをいくつか閉じるまでは拒否されます。これは通常、異常なアプリケーション動作を示します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の修正アクションを実行します。この TCP 接続を使用してクライアントで実行されているアプリケーションを検査します。クライアントが正しく動作していない可能性があります。クライアントを再起動します。クライアントが新規または既存のアプリケーションによって問題が発生しているかどうかを確認します。アプリケーションが新規である場合は、「 cifs option modify -max-opense-opense-file-per-tree 」コマンドを使用して、クライアントのしきい値を大きく設定します。クライアントが想定どおりに動作していても、しきい値の上昇が必要となる場合があります。クライアントのしきい値を高く設定するには、 advanced 権限が必要です。…問題が既存のアプリケーションに起因している場合は、クライアントに問題が存在する可能性があります。詳細またはサポートについては、ネットアップテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetBIOS 名が競合しています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetBIOS ネームサービスが、リモートマシンから名前登録要求に対して否定的な応答を受信しました。これは通常、 NetBIOS 名またはエイリアスの競合が原因です。その結果、クライアントがデータにアクセスできなくなったり、クラスタ内の適切なデータを提供しているノードに接続できなくなったりすることがあります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次のいずれかの修正処置を実行します。… NetBIOS 名またはエイリアスに競合がある場合、 次のいずれかを実行します。…「 vserver cifs delete -aliases alias -vserver vserver 」コマンドを使用して、重複する NetBIOS エイリアスを削除します。…「 vserver cifs create -aliases alias -vserver vserver 」コマンドを使用して、重複する名前を削除し、新しい名前のエイリアスを追加して、 NetBIOS エイリアスの名前を変更します。… NetBIOS 名にエイリアスが設定されておらず、競合がある場合は、「 vserver cifs delete -vserver vserver 」コマンドと「 vserver cifs create -cifs -server netbiosname 」コマンドを使用して CIFS サーバの名前を変更します。メモ： CIFS サーバを削除すると、データにアクセスできなくなる可能性があります。…リモートマシンの NetBIOS 名を削除するか、 NetBIOS 名を変更します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NFSv4 ストアプールを使い果たしました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NFSv4 ストアプールを使い果たしました。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NFS サーバが応答しなくなってから 10 分以上が経過した場合は、ネットアップテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">登録済みのスキャンエンジンがありません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Antivirus Connector は、スキャンエンジンが登録されていないことを ONTAP に通知しました。「 scan-mandatory 」オプションを有効にすると、原因データを使用できなくなることがあります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…アンチウイルスサーバーにインストールされているスキャンエンジンソフトウェアが ONTAP と互換性があることを確認します。スキャンエンジンソフトウェアが実行中で、ローカルループバックを介してアンチウイルスコネクタに接続するように設定されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vscan 接続なし</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP では、ウィルススキャン要求への対応に関する Vscan 接続はありません。「 scan-mandatory 」オプションを有効にすると、原因データを使用できなくなることがあります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">スキャナプールが正しく設定され、ウィルス対策サーバがアクティブで ONTAP に接続されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ノードのルートボリュームのスペースが不足しています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ルートボリュームのスペースが危険なほど少なくなっていることが検出されました。ノードが完全には動作していません。ノードで NFS アクセスと CIFS アクセスが制限されているため、クラスタ内でデータ LIF がフェイルオーバーされる可能性があります。管理機能は、ノードがルートボリューム上のスペースをクリアするためのローカルリカバリ手順に限定されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…古い Snapshot コピーを削除してルートボリュームのスペースをクリアする、 /mrootDirectory から不要になったファイルを削除する、またはルートボリュームの容量を拡張する。…コントローラをリブートする…詳細やサポートについては、ネットアップのテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">存在しない管理共有です</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">vscan 問題：クライアントが、存在しない ONTAP_ADMIN$ 共有に接続しようとしました。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">指定した SVM ID で Vscan が有効になっていることを確認してください。SVM で Vscan を有効にすると、 SVM 用に ONTAP_ADMIN$ 共有が自動的に作成されます。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMe ネームスペースのスペースが不足しています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">スペース不足が原因の書き込みエラーが原因で NVMe ネームスペースがオフラインになりました。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームにスペースを追加し、「 vserver nvme namespace modify 」コマンドを使用して NVMe ネームスペースをオンラインにします。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMF の猶予期間 - アクティブ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">このイベントは、 NVMe over Fabrics （ NVMe-oF ）プロトコルを使用していてライセンスの猶予期間がアクティブになっている場合に毎日発生します。NVMe-oF 機能には、ライセンスの猶予期間が終了したあとにライセンスが必要です。ライセンスの猶予期間が終了すると、 NVMe-oF 機能は無効になります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">営業担当者に連絡して NVMe-oF ライセンスを取得し、クラスタに追加するか、 NVMe-oF 構成のすべてのインスタンスをクラスタから削除してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMF の猶予期間 - 終了</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMe over Fabrics （ NVMe-oF ）ライセンスの猶予期間が終了し、 NVMe-oF 機能は無効になります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">営業担当者に連絡して NVMe-oF ライセンスを取得し、クラスタに追加してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NVMF の猶予期間 - 開始</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ONTAP 9.5 ソフトウェアへのアップグレード中に NVMe over Fabrics （ NVMe-oF ）設定が検出されました。NVMe-oF 機能を使用するには、ライセンスの猶予期間が終了したあとにライセンスが必要です。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">営業担当者に連絡して NVMe-oF ライセンスを取得し、クラスタに追加してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オブジェクトストアのホスト解決不可</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オブジェクトストアサーバのホスト名を IP アドレスに解決できません。オブジェクトストアクライアントが IP アドレスに解決しないとオブジェクトストアサーバと通信できません。その結果、データにアクセスできなくなる可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS 設定を調べて、ホスト名が IP アドレスで正しく設定されていることを確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オブジェクトストアのクラスタ間 LIF が停止しています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オブジェクトストアクライアントが、オブジェクトストアサーバと通信するための稼働している LIF を見つけることができません。クラスタ間 LIF が動作可能になるまで、このノードはオブジェクトストアクライアントトラフィックを許可しません。その結果、データにアクセスできなくなる可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…「 network interface show -role intercluster 」コマンドを使用して、クラスタ間 LIF のステータスを確認します。…クラスタ間 LIF が正しく設定されていて動作していることを確認します。…クラスタ間 LIF が設定されていない場合は、「 network interface create -role intercluster 」コマンドを使用して追加します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オブジェクトストアシグネチャの不一致</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オブジェクトストアサーバに送信された要求の署名が、クライアントで計算された署名と一致しません。その結果、データにアクセスできなくなる可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">シークレットアクセスキーが正しく設定されていることを確認します。正しく設定されている場合は、ネットアップテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">READDIR タイムアウト</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">READDIR ファイル処理が、 WAFL で実行が許可されているタイムアウトを超えました。これは、ディレクトリが非常に大きく、スパースであるためです。対処方法を推奨します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。 &#8230;&#8203;READDIR ファイル操作が期限切れになった最近のディレクトリに関する情報を検索するには、次の 'diag ' 特権ノードシェル CLI コマンドを使用します。 WAFL readdir notice show&#8230;&#8203; ディレクトリが sparse または not: として示されているかどうかを確認します。ディレクトリが sparse として示されている場合は、ディレクトリの内容を新しいディレクトリにコピーしてディレクトリファイルの sparsess を削除することをお勧めします。…ディレクトリがスパースとして示されておらず、ディレクトリが大きい場合は、ディレクトリ内のファイルエントリの数を減らすことでディレクトリファイルのサイズを小さくすることをお勧めします。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アグリゲートの再配置に失敗しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">このイベントは、アグリゲートの再配置時にデスティネーションノードがオブジェクトストアに到達できない場合に発生します。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…「 network interface show 」コマンドを使用して、インタークラスタ LIF がオンラインで機能していることを確認します。…デスティネーションノードのクラスタ間 LIF で「 ping 」コマンドを使用して、オブジェクトストアサーバへのネットワーク接続を確認します。…「 aggregate object-store config show 」コマンドを使用して、オブジェクトストアの設定が変更されておらず、ログインおよび接続の情報が正確であることを確認してください。または、再配置コマンドの「 override-destination-checks 」パラメータを使用してエラーを無効にすることもできます。詳細やサポートについては、ネットアップのテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">シャドウコピーに失敗しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームシャドウコピーサービス（ VSS ）の実行に失敗しました。 VSS は、 Microsoft Server のバックアップおよびリストアサービス処理です。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">イベントメッセージに表示される情報を使用して、次の項目を確認します。… Is shadow copy configuration enabled? …適切なライセンスがインストールされているか ? …どの共有でシャドウコピー操作が実行されますか ? 共有名は正しいですか ? 共有パスは存在しますか ? シャドウコピーセットとそのシャドウコピーの状態はどうなっていますか ?</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージスイッチの電源装置に障害が発生しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クラスタスイッチに電源装置がありません。冗長性が低下し、停電が発生するリスクが高まります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。クラスタスイッチに電力を供給する電源装置の電源がオンになっていることを確認します。電源コードが電源装置に接続されていることを確認します。問題が解決しない場合は、ネットアップのテクニカルサポートにお問い合わせください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIFS 認証が多すぎます</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">多数の認証ネゴシエーションが同時に行われています。このクライアントからの新規セッション要求は 256 個あります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クライアントが新しい接続要求を 256 個以上作成した理由を調べます。エラーの原因を特定するために、クライアントまたはアプリケーションのベンダーに問い合わせなければならない場合があります。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">管理共有への権限のないユーザアクセス</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クライアントが ONTAP_ADMIN$ 共有に接続しようとしましたが、ログインしているユーザが許可されていません。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次の対処方法を実行します。…指定したユーザ名と IP アドレスがアクティブな Vscan スキャナプールの 1 つに設定されていることを確認します。… vserver vscan scanner pool show-active コマンドを使用して、現在アクティブなスキャナプールの設定を確認します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ウイルスを検出しました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vscan サーバからストレージシステムにエラーが報告されました。通常は、ウイルスが検出されたことを示します。ただし、 Vscan サーバでその他のエラーが発生すると、このイベントを原因できます。ファイルへのクライアントアクセスは拒否されます。Vscan サーバは、設定に応じて、ファイルをクリーンアップするか、ファイルを隔離するか、または削除する可能性があります。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「 syslog 」イベントで報告された Vscan サーバのログを調べて、感染ファイルのクリーンアップ、隔離、削除が正常に完了したかどうかを確認します。削除できなかった場合は、システム管理者が手動でファイルを削除しなければならないことがあります。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="ランサムウェア対策ログモニタ">ランサムウェア対策ログモニタ</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">モニタ名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大度</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">説明</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage VM ランサムウェア対策監視が無効になっています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage VM のランサムウェア対策監視は無効になっています。Storage VM を保護するには、ランサムウェア対策を有効にしてください。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage VM ランサムウェア対策監視有効（ラーニングモード）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Storage VM のランサムウェア対策監視は、学習モードで有効になっています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume Anti-Ransomware Monitoring を有効にしました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのランサムウェア対策監視が有効になっている。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのアンチランサムウェア監視が無効になっています</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのランサムウェア対策監視は無効になっています。ランサムウェア対策を有効にしてボリュームを保護</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームでのランサムウェア対策監視の有効化（ラーニングモード）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのランサムウェア対策監視は、学習モードで有効になっています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのアンチランサムウェア監視が一時停止されました（ラーニングモード）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのアンチランサムウェアモニタリングが学習モードで一時停止しています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのアンチランサムウェアモニタリングが一時停止されました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのランサムウェア対策監視が一時停止されています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume Anti-Ransomware Monitoring Disabling の略</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのアンチランサムウェア監視が無効になっています。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ランサムウェアのアクティビティが検出され</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重要</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">検出されたランサムウェアからデータを保護するために、元のデータをリストアするために使用できる Snapshot コピーが作成されました。システムによって AutoSupport または「コールホーム」メッセージが生成され、ネットアップテクニカルサポートおよび設定された宛先に送信されます。AutoSupport メッセージを使用すると、問題の特定と解決方法が向上します</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ランサムウェアの活動を修復する方法については、「 final-document-name 」を参照してください。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="astra-データストア-ads-モニタ">Astra データストア（ ADS ）モニタ</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">モニタ名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CI の重大度</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">概要を監視します</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対処方法</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クラスタ容量がフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 @&gt;85% 重大 @&gt;95%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ADS クラスタのストレージ容量は、アプリケーションデータと顧客データの格納に使用されます。クラスタに格納されたデータが多いほど、将来のデータに使用できるストレージ容量は少なくなります。クラスタ内のストレージ容量が合計クラスタ容量に達すると、クラスタはこれ以上のデータを格納できなくなります。クラスタの物理容量を監視することで、データサービスの継続性が確保されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、即時アクションが必要です。 1.増加に対応するために、クラスタに割り当てられる容量を増やすことを検討してください。 2.容量を解放するために不要になったデータを削除することを検討してください。警告しきい値に違反した場合は、すぐに次のアクションを実行するよう計画してください。 &#8230;&#8203;1.この増加に対応するために、クラスタに割り当てられるスペースを増やすことを検討してください。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームの容量がフルです</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">警告 @&lt;15% 重大 @&lt;5%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ボリュームのストレージ容量は、アプリケーションデータと顧客データの格納に使用されます。クラスタボリュームに格納されているデータが多いほど、将来のデータに使用できるストレージ容量は少なくなります。ボリューム内で使用されているデータストレージ容量が合計ストレージ容量に達すると、 使用可能なストレージ容量が不足しているため、ボリュームはこれ以上データを格納できません。…ボリュームの使用済みストレージ容量を監視することで、データサービスの継続性が確保されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">重大のしきい値を超えた場合にサービスの中断を最小限に抑えるには、即時アクションが必要です。 1.増加に対応するために、ボリュームのスペースを増やすことを検討してください。 2.容量を解放するために不要になったデータを削除することを検討してください。警告しきい値に違反した場合は、すぐに次のアクションを実行するよう計画してください。 &#8230;&#8203;1.拡張に対応するために、ボリュームのスペースを増やすことを検討してください。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="詳細情報">詳細情報</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task_view_and_manage_alerts.html">"アラートの表示と非表示"</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Web サイトについてのフィードバックを<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">お寄せください</a>
+  <a href="https://docs.netapp.com/ja-jp/announcements/" class="n-footer__copyright">お知らせ</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/test/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/test/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/test/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/test/js/www-ntap.js'></script>
+    <script src='/ja-jp/test/js/tabbed-blocks.js'></script>
+  </body></html>

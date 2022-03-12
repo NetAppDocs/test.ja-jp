@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>データを収集するエージェントの設定</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="データを収集するエージェントの設定" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/test/task_config_telegraf_agent.html" />
+	<meta property="og:description" content="Cloud Insights は統合データの収集エージェントとして Telegraf をサポートしており、 Windows 、 Linux 、 macOS 、および Kubernetes で設定できます。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/test/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Cloud Insights は統合データの収集エージェントとして Telegraf をサポートしており、 Windows 、 Linux 、 macOS 、および Kubernetes で設定できます。">
+  <meta name="keywords" content=" telegraf, installation, install, agent, telegraf agent"><meta name="robots" content="noindex" /><!-- Icons -->
+  <link rel="icon" href="/ja-jp/test/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ja-jp/test/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ja-jp/test/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ja-jp/test/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ja-jp/test/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/test/css/tabbed-blocks.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/test/js/na-search.js'></script><script src='/ja-jp/test/js/na-pagenav.js'></script><link rel='stylesheet' href='/ja-jp/test/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ja-jp/test/js/na-utility.js'></script>
+  <script src='/ja-jp/test/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ja-jp/test/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/test/js/toc.js'></script>
+  <script src='/ja-jp/test/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ja-jp/test/js/version-dropdown.js'></script>
+  <script src='/ja-jp/test/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/test/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/test/js/jszip.min.js'></script>
+  <script src='/ja-jp/test/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/test/issues/new?body=Page%3A%20[データを収集するエージェントの設定](https://docs.netapp.com/ja-jp/test/task_config_telegraf_agent.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/test/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/test/blob/main/task_config_telegraf_agent.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/test/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/test/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/test/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/test/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/test/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/test/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索" 
+          data-no-results-found="{query}に該当する結果はありません" 
+          data-did-you-mean="{suggestion} を検索" 
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
+          data-results-found="{hitCount} 件見つかりました"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">日本語</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/test/task_config_telegraf_agent.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/test/task_config_telegraf_agent.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/test/task_config_telegraf_agent.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/test/task_config_telegraf_agent.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/index.html">
+        Cloud Insights のドキュメント
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_whats_new.html">
+        新機能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cloud_insights_onboarding_1.html">
+        Cloud Insights にサインアップします
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セキュリティ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/security_overview.html">
+        セキュリティプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/security_information_and_region.html">
+        当社が保存するものと場所
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_feature_tutorials.html">
+        機能チュートリアル
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> データの収集中</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_getting_started_with_cloud_insights.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_acquisition_unit_requirements.html">
+        Acquisition Unit の要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_configure_acquisition_unit.html">
+        Acquisition Unit の設定
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_agent.html">
+        エージェントの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_configure_data_collectors.html">
+        データコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_determining_data_collector_acq_status.html">
+        Data Collector の取得ステータスを確認しています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_configured_data_collectors.html">
+        設定済みデータコレクタを管理します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_research_failed_collector.html">
+        データコレクタエラーを調査します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_import_from_dashboard_gallery.html">
+        推奨されるダッシュボードのインポート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_user_roles.html">
+        ユーザアカウントとロール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_other_cloud_products.html">
+        他の Cloud Central 製品に切り替える
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/data_collector_list.html">
+        Data Collector リスト
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_subscribing_to_cloud_insights.html">
+        Cloud Insights に登録しています
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 自動デバイス解決</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_device_resolution_overview.html">
+        デバイス解決の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_rules.html">
+        デバイス解決ルール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_fibre_channel.html">
+        ファイバチャネルのデバイス解決
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_ip.html">
+        IP デバイス解決
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_preferences.html">
+        デバイス解決のプリファレンスの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_device_resolution_regex_examples.html">
+        正規表現の例
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ダッシュボードの作成</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboards_overview.html">
+        ダッシュボードの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboard_features.html">
+        ダッシュボードの機能
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ダッシュボードの例</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dashboard_example_VM_performance.html">
+        仮想マシンのパフォーマンス
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboard_best_practices.html">
+        ダッシュボードのベストプラクティス
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Kubernetes エクスプローラ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/kubernetes_landing_page.html">
+        Kubernetes の概要ページ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/kubernetes_cluster_detail.html">
+        Kubernetes クラスタページ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> クエリを使用した作業</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_querying_assets.html">
+        アセットのクエリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_query.html">
+        クエリーの作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_queries.html">
+        使用可能なクエリを表示する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_export_query_results.html">
+        クエリ結果を .csv にエクスポートしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_modify_delete_query.html">
+        クエリの変更または削除
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_query_assign_multiple_applicationss.html">
+        オブジェクトへの複数のアプリケーション / 注釈の割り当て
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_query_copy_table_values.html">
+        表の値をクリップボードにコピーしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_log_explorer.html">
+        ログを照会しています
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アノテーションの使用</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_defining_annotations.html">
+        アノテーションの定義
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_annotation.html">
+        アノテーションの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_annotation_rules.html">
+        アノテーションルールの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_annotation_import.html">
+        API を使用したアノテーションのインポート
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アプリケーションの操作</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_about_applications.html">
+        アプリケーションの概念
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_application.html">
+        アプリケーションの設定
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 監視とアラート</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_monitor.html">
+        モニタの作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_and_manage_alerts.html">
+        アラートの表示と管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_notifications_email.html">
+        通知受信者の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_system_monitors.html">
+        システム定義のモニター
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/API_Overview.html">
+        API の使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_webhook.html">
+        Webhook 通知
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 環境の監視</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_audit.html">
+        イベントの監査
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_ttl_and_downsampling.html">
+        TTL およびダウンサンプリング
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アセットページ情報</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_page_overview.html">
+        アセットページの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_in_context_filters.html">
+        オブジェクトのコンテキスト内フィルタリング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_summary_section.html">
+        Summary Topology セクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_expert_view_section.html">
+        Expert View セクシヨン
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_user_data_section.html">
+        User Data セクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_alerts_section.html">
+        関連アラートセクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_searching_assets.html">
+        資産を検索するためのヒントとヒント
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> レポート作成</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_overview.html">
+        レポート概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_user_roles.html">
+        Reporting User Roles の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_predefined_reports.html">
+        事前定義済みレポートの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_storage_manager_dashboard.html">
+        Storage Manager のダッシュボード
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_create_example.html">
+        レポートの例の作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_managing_reports.html">
+        レポートの管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_creating_custom_reports.html">
+        カスタムレポート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_creating_custom_reports.html#reporting-data-models">
+        データモデル
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_querying_database.html">
+        Reporting Database API の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_data_retention.html">
+        データ保持
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_schema_diagrams.html">
+        スキーマ図
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_schemas.html">
+        スキーマテーブル
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Secure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_intro.html">
+        Cloud Secure について
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_getting_started.html">
+        Cloud Secure の使用を開始する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_agent_requirements.html">
+        Cloud Secure エージェントの要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_add_agent.html">
+        Cloud Secure エージェントの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_delete_agent.html">
+        Cloud Secure エージェントの削除
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_user_dir_connect.html">
+        AD Directory Collector の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_user_dir_connect_ldap.html">
+        LDAP ディレクトリコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_cs_amazon_fsx.html">
+        NetApp ONTAP コレクタ用の Amazon FSX の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_add_collector_svm.html">
+        ONTAP SVM Data Collector の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_cs_incloud.html">
+        Cloud ONTAP データコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_user_management.html">
+        Cloud Secure ユーザー管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_event_rate_checker.html">
+        イベントレートチェッカー
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_alert_data.html">
+        アラート
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> フォレンジック</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_activity_history.html">
+        アクティビティフォレンジック - すべてのアクティビティ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_entity_detail.html">
+        アクティビティフォレンジック - エンティティ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_user_overview.html">
+        ユーザ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_automated_response_policies.html">
+        自動応答ポリシー
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_restrict_user_access.html">
+        ユーザアクセスの制限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_attack_simulator.html">
+        ランサムウェア攻撃のシミュレーション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_notifications_email.html">
+        通知
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_api.html">
+        Cloud Secure API の略
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_activeiq.html">
+        Active IQ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> トラブルシューティング</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_general_problems.html">
+        全般的なトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_linux_acquisition_unit_problems.html">
+        Linux Acquisition Unit の問題のトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_windows_acquisition_unit_problems.html">
+        Windows Acquisition Unit の問題のトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_research_failed_collector.html">
+        Data Collector エラーの調査
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> リファレンスサポート</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_requesting_support.html">
+        サポートをリクエストしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_data_collector_support_matrix.html">
+        Data Collector サポートマトリックス
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Infrastructure （データコレクターリファレンス - インフラストラクチャ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_data_collector_reference.html">
+        ベンダーリファレンスの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_amazon_ec2.html">
+        AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_azure.html">
+        Azure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Broadcom</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_brocade_bna.html">
+        Brocade Network Advisor の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_brocade_fc_switch.html">
+        Fibre Channel スイッチ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_cisco_fc_switch.html">
+        シスコ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> デル</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_dell_xc_series.html">
+        XC シリーズ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell EMC</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_datadomain.html">
+        Data Domain の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_ecs.html">
+        ECS の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_isilon.html">
+        PowerScale
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_powerstore.html">
+        PowerStore の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_recoverpoint.html">
+        RecoverPoint
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_scaleio.html">
+        ScaleIO
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_unity.html">
+        Unity （ VNXe ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vmax_powermax.html">
+        VMAX/PowerMax
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_block.html">
+        VNX ブロック（ Clariion ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_file.html">
+        VNX ファイル（ Celerra ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_unified.html">
+        VNX ユニファイド
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vplex.html">
+        VPLEX
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_xio.html">
+        XtremIO
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_fujitsu_eternus.html">
+        富士通
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_google_cloud.html">
+        Google
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP エンタープライズ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hp_3par.html">
+        HP Alletra 9000 および Primera
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hpe_commandview.html">
+        HP Command View AE
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hpe_nimble.html">
+        HPE Alletra 6000
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Hitachi Data Systems の略</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_commandsuite.html">
+        HDS コマンドスイート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_nas.html">
+        HDS HNAS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_ops_center.html">
+        HDS Ops Center の略
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_infinidat_infinibox.html">
+        インフィダト
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_huawei_oceanstor.html">
+        Huawei （ファー
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> IBM 社</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_cleversafe.html">
+        Cleversafe
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_cs.html">
+        CS シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_ds.html">
+        システムストレージ DS8000 シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_powervm.html">
+        PowerVM
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_svc.html">
+        SAN ボリュームコントローラ（ SVC ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_xiv.html">
+        XIV / A9000
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_lenovo.html">
+        Lenovo 社
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Microsoft 社</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_anf.html">
+        Azure NetApp Files の特長
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_hyperv.html">
+        Hyper-V
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ネットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_astra_data_store.html">
+        Astra データストア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_connection.html">
+        ONTAP 9.9 以降のクラウド接続
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_volumes_ontap.html">
+        Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_volumes.html">
+        AWS 向け Cloud Volume サービス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cdot.html">
+        ONTAP データ管理ソフトウェア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_7mode.html">
+        Data ONTAP 7-mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_eseries.html">
+        E シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_hci.html">
+        NetApp HCI 管理サーバ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_solidfire.html">
+        SolidFire
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_storagegrid.html">
+        StorageGRID
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_nutanix.html">
+        Nutanix
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_openstack.html">
+        OpenStack の機能を使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_oracle_zfs.html">
+        Oracle の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_pure_flasharray.html">
+        純粋
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_redhat_virtualization.html">
+        Red Hat の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_vmware.html">
+        VMware
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - サービス</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_node.html">
+        ホスト / ノード
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_activemq.html">
+        ActiveMQ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_apache.html">
+        Apache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_consul.html">
+        総領事
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_couchbase.html">
+        Couchbase
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_couchdb.html">
+        CouchDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_docker.html">
+        Docker です
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_elasticsearch.html">
+        Elasticsearch を指定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_flink.html">
+        フリップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_hadoop.html">
+        Hadoop
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_haproxy.html">
+        HAProxy
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_jvm.html">
+        Java
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kafka.html">
+        カフカ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kapacitor.html">
+        カパトール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kibana.html">
+        キバナ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_agent.html#kubernetes">
+        Kubernetes
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_memcached.html">
+        Memcached
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_mongodb.html">
+        MongoDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_mysql.html">
+        MySQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_netstat.html">
+        netstat
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_nginx.html">
+        nginx
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_openzfs.html">
+        OpenZFS の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_postgresql.html">
+        PostgreSQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_puppetagent.html">
+        パペット
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_redis.html">
+        Redis
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_rethinkdb.html">
+        RethinkDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_zookeeper.html">
+        Zookeeper の追加
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_object_icons.html">
+        オブジェクトアイコンリファレンス
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_legal_notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/test/">Cloud&nbsp;Insights</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/test/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">データを収集するエージェントの設定</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-03-12 06:08:57 +0000">03/12/2022</time>
+    
+  
+
+<span>寄稿者
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Cloud Insights ではを使用します <a href="https://docs.influxdata.com/telegraf/v1.19/">"Tegraf"</a> 統合データを収集するエージェントとして。Telegraf はプラグインベースのサーバエージェントで、指標、イベント、ログの収集とレポートに使用できます。入力プラグインは、システム /OS に直接アクセスするか、サードパーティ API を呼び出すか、設定されたストリームをリスニングすることによって、エージェントに必要な情報を収集するために使用されます（例：） Kafka や StatsD など）を参照してください。出力プラグインは、収集した指標、イベント、およびログをエージェントから Cloud Insights に送信するために使用します。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Insights の現在の Telegraf バージョンは *1.19.3 * です。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+正確な監査およびデータレポートを作成するためには、 * Network Time Protocol （ NTP; ネットワークタイムプロトコル） * または * Simple Network Time Protocol （ SNTP ） * を使用して、 Agent マシンの時刻を同期することを強くお勧めします。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+エージェントをインストールする前にインストールファイルを確認する場合は、の項を参照してください <a href="#Verifying Checksums">[Verifying Checksums]</a>。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="エージェントをインストールしています">エージェントをインストールしています</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>サービスデータコレクタをインストールしていて、エージェントをまだ設定していない場合は、最初に適切なオペレーティングシステム用のエージェントをインストールするように求められます。このトピックでは、 Tegraf エージェントを次のオペレーティングシステムにインストールする手順について説明します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Windows">[Windows]</a></p>
+</li>
+<li>
+<p><a href="#RHEL and CentOS">[RHEL and CentOS]</a></p>
+</li>
+<li>
+<p><a href="#Ubuntu and Debian">[Ubuntu and Debian]</a></p>
+</li>
+<li>
+<p><a href="#macOS">[macOS]</a></p>
+</li>
+<li>
+<p><a href="#kubernetes">Kubernetes</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>エージェントをインストールするには、使用しているプラットフォームに関係なく、まず次の手順を実行する必要があります。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>エージェントに使用するホストにログインします。</p>
+</li>
+<li>
+<p>Cloud Insights サイトにログインし、 * Admin &gt; Data Collectors * に移動します。</p>
+</li>
+<li>
+<p>[<strong>+Data Collector</strong> ] をクリックして、インストールするデータコレクタを選択します。</p>
+</li>
+<li>
+<p>ホストに適したプラットフォーム（ Windows 、 Linux 、 macOS など）を選択します</p>
+</li>
+<li>
+<p>プラットフォームごとに、残りの手順を実行します。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+ホストにエージェントをインストールしたら、そのホストに再度エージェントをインストールする必要はありません。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/tip.svg" alt="ヒント">
+</td>
+<td class="content">
+サーバ /VM にエージェントをインストールすると、 Cloud Insights は、設定したデータコレクタからの収集に加えて、そのシステムからメトリックを収集します。これらの指標は、のように収集されます <a href="task_config_telegraf_node.html">"「ノード」指標"</a>。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+プロキシを使用している場合は、 Tegraf エージェントをインストールする前に、お使いのプラットフォームのプロキシの手順をお読みください。
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="windows-の場合">Windows の場合</h3>
+<div class="paragraph">
+<p><span class="image"><img src="AgentInstallWindows.png" alt="Windows Agent のインストール"></span></p>
+</div>
+<div class="ulist">
+<div class="title">前提条件</div>
+<ul>
+<li>
+<p>PowerShell がインストールされていること</p>
+</li>
+<li>
+<p>プロキシの背後にいる場合は、「 Windows * 用プロキシ・サポートの構成」セクションの手順に従います。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Windows にエージェントをインストールする手順：</div>
+<ol class="arabic">
+<li>
+<p>エージェントアクセスキーを選択します。</p>
+</li>
+<li>
+<p>エージェントのインストールダイアログからコマンドブロックをコピーします。クリップボードアイコンをクリックすると、コマンドをクリップボードに簡単にコピーできます。</p>
+</li>
+<li>
+<p>PowerShell ウィンドウを開きます</p>
+</li>
+<li>
+<p>コマンドを PowerShell ウィンドウに貼り付け、 Enter キーを押します。</p>
+</li>
+<li>
+<p>コマンドは、適切なエージェントインストーラをダウンロードしてインストールし、デフォルト設定を行います。終了すると、エージェントサービスが再起動されます。コマンドには一意のキーがあり、 24 時間有効です。</p>
+</li>
+<li>
+<p>[ 完了 ] または [ 続行 ] をクリックします</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>エージェントのインストール後、次のコマンドを使用してサービスを開始または停止できます。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Start-Service telegraf
+Stop-Service telegraf</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="windows-向けプロキシサポートを設定しています">Windows 向けプロキシサポートを設定しています</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+次の手順は '_http_proxy/https_proxy_environment 変数を設定するために必要なアクションの概要を示しています一部のプロキシ環境では '_no_proxy 環境変数も設定する必要があります
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>プロキシの背後にあるシステムの場合、 Telegraf エージェントをインストールする前に <em>https_proxy</em> および /or_http_proxy_environment 変数 * を設定するには、次の手順を実行します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[System.Environment]::SetEnvironmentVariable(“https_proxy”, “&lt;proxy_server&gt;:&lt;proxy_port&gt;”, [System.EnvironmentVariableTarget]::Machine)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="エージェントをアンインストールしています">エージェントをアンインストールしています</h4>
+<div class="paragraph">
+<p>Windows でエージェントをアンインストールするには、 PowerShell ウィンドウで次の手順を実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Tegraf サービスを停止して削除します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>Stop-Service telegraf
+sc.exe delete telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>証明書を信頼ストアから削除します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>cd Cert:\CurrentUser\Root
+rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC</pre>
+</div>
+</div>
+</li>
+<li>
+<p>バイナリ、ログ、およびコンフィグレーションファイルを削除するには、 _C ： \Program Files\テレ グラムフォルダを削除します</p>
+</li>
+<li>
+<p>レジストリから _SYSTEM\CurrentControlSet\Services\EventLog\Application\テレ グラムキーを削除します</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="agent-をアップグレードしています">Agent をアップグレードしています</h4>
+<div class="paragraph">
+<p>テレグラムエージェントをアップグレードするには、次の手順に従います。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>テレグラムサービスを停止および削除します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>Stop-Service telegraf
+sc.exe delete telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>レジストリから _SYSTEM\CurrentControlSet\Services\EventLog\Application\テレ グラムキーを削除します</p>
+</li>
+<li>
+<p>DELETE_C ： \Program Files\テレ グラム \テレ グラム af.conf_</p>
+</li>
+<li>
+<p>DELETE_C ： \Program Files\テレ グラム \テレ グラム af.exe_</p>
+</li>
+<li>
+<p><a href="#windows">"新しいエージェントをインストールします"</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rhel-および-centos">RHEL および CentOS</h3>
+<div class="paragraph">
+<p><span class="image"><img src="Agent_Requirements_Rhel.png" alt="RHEL / CentOS Agent のインストール"></span></p>
+</div>
+<div class="ulist">
+<div class="title">前提条件</div>
+<ul>
+<li>
+<p>cURL 、 sudo 、 ping 、 sha256sum 、 openssl 、 dmidecode となります</p>
+</li>
+<li>
+<p>プロキシの背後にある場合は、「 RHEL / CentOS * 用のプロキシサポートの設定」セクションの手順に従ってください。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">RHEL または CentOS にエージェントをインストールする手順：</div>
+<ol class="arabic">
+<li>
+<p>エージェントアクセスキーを選択します。</p>
+</li>
+<li>
+<p>エージェントのインストールダイアログからコマンドブロックをコピーします。クリップボードアイコンをクリックすると、コマンドをクリップボードに簡単にコピーできます。</p>
+</li>
+<li>
+<p>Bash ウィンドウを開きます</p>
+</li>
+<li>
+<p>Bash ウィンドウにコマンドを貼り付けて、 Enter キーを押します。</p>
+</li>
+<li>
+<p>コマンドは、適切なエージェントインストーラをダウンロードしてインストールし、デフォルト設定を行います。終了すると、エージェントサービスが再起動されます。コマンドには一意のキーがあり、 24 時間有効です。</p>
+</li>
+<li>
+<p>[ 完了 ] または [ 続行 ] をクリックします</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>エージェントのインストール後、次のコマンドを使用してサービスを開始または停止できます。</p>
+</div>
+<div class="paragraph">
+<p>オペレーティングシステムで systemd （ CentOS 7+ および RHEL 7+ ）を使用している場合：</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo systemctl start telegraf
+sudo systemctl stop telegraf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>オペレーティングシステムで systemd （ CentOS 7+ および RHEL 7+ ）を使用していない場合：</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo service telegraf start
+sudo service telegraf stop</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="rhel-centos-でのプロキシサポートの設定">RHEL / CentOS でのプロキシサポートの設定</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+次の手順は '_http_proxy/https_proxy_environment 変数を設定するために必要なアクションの概要を示しています一部のプロキシ環境では '_no_proxy 環境変数も設定する必要があります
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>プロキシの背後にあるシステムの場合は、 Telegraf エージェントをインストールする前に、次の手順 * を実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>現在のユーザの <em>https_proxy</em> 変数と _http_proxy_environment 変数を設定します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;
+. /etc/default/テレ グラム af_ を作成し、 _https_proxy_/or_http_proxy_variable の定義を挿入します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="エージェントをアンインストールしています-2">エージェントをアンインストールしています</h4>
+<div class="paragraph">
+<p>Bash 端末で RHEL または CentOS のエージェントをアンインストールするには、次の手順を実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Telegraf サービスを停止します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Tegraf エージェントを取り外します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> yum remove telegraf
+. 残っている設定ファイルまたはログファイルを削除します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>rm -rf /etc/telegraf*
+rm -rf /var/log/telegraf*</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="agent-をアップグレードしています-2">Agent をアップグレードしています</h4>
+<div class="paragraph">
+<p>テレグラムエージェントをアップグレードするには、次の手順に従います。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>テレグラムサービスを停止します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>前のテレグラムエージェントを削除します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> yum remove telegraf
+. link:#rhel-and-centos["新しいエージェントをインストールします"]。</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ubuntu-と-debian">Ubuntu と Debian</h3>
+<div class="paragraph">
+<p><span class="image"><img src="Agent_Requirements_Ubuntu.png" alt="Ubuntu / Debian Agent のインストール"></span></p>
+</div>
+<div class="ulist">
+<div class="title">前提条件</div>
+<ul>
+<li>
+<p>cURL 、 sudo 、 ping 、 sha256sum 、 openssl 、 dmidecode となります</p>
+</li>
+<li>
+<p>プロキシの背後にいる場合は、「 Ubuntu / Debian * 用のプロキシサポートの設定」セクションの手順に従ってください。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Debian または Ubuntu にエージェントをインストールする手順 :</div>
+<ol class="arabic">
+<li>
+<p>エージェントアクセスキーを選択します。</p>
+</li>
+<li>
+<p>エージェントのインストールダイアログからコマンドブロックをコピーします。クリップボードアイコンをクリックすると、コマンドをクリップボードに簡単にコピーできます。</p>
+</li>
+<li>
+<p>Bash ウィンドウを開きます</p>
+</li>
+<li>
+<p>Bash ウィンドウにコマンドを貼り付けて、 Enter キーを押します。</p>
+</li>
+<li>
+<p>コマンドは、適切なエージェントインストーラをダウンロードしてインストールし、デフォルト設定を行います。終了すると、エージェントサービスが再起動されます。コマンドには一意のキーがあり、 24 時間有効です。</p>
+</li>
+<li>
+<p>[ 完了 ] または [ 続行 ] をクリックします</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>エージェントのインストール後、次のコマンドを使用してサービスを開始または停止できます。</p>
+</div>
+<div class="paragraph">
+<p>オペレーティング・システムが systemd を使用している場合：</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo systemctl start telegraf
+sudo systemctl stop telegraf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>オペレーティングシステムが systemd を使用していない場合は、次の手順を実行します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo service telegraf start
+sudo service telegraf stop</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ubuntu-debian-のプロキシサポートの設定">Ubuntu / Debian のプロキシサポートの設定</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+次の手順は '_http_proxy/https_proxy_environment 変数を設定するために必要なアクションの概要を示しています一部のプロキシ環境では '_no_proxy 環境変数も設定する必要があります
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>プロキシの背後にあるシステムの場合は、 Telegraf エージェントをインストールする前に、次の手順 * を実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>現在のユーザの <em>https_proxy</em> 変数と _http_proxy_environment 変数を設定します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;
+. /etc/default/テレ グラムを作成し、 _https_proxy_/or_http_proxy_variable 以下の定義を挿入します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="エージェントをアンインストールしています-3">エージェントをアンインストールしています</h4>
+<div class="paragraph">
+<p>Ubuntu または Debian でエージェントをアンインストールするには、 Bash ターミナルで次のコマンドを実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Telegraf サービスを停止します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Tegraf エージェントを取り外します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> dpkg -r telegraf
+. 残っている設定ファイルまたはログファイルを削除します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>rm -rf /etc/telegraf*
+rm -rf /var/log/telegraf*</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="agent-をアップグレードしています-3">Agent をアップグレードしています</h4>
+<div class="paragraph">
+<p>テレグラムエージェントをアップグレードするには、次の手順に従います。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>テレグラムサービスを停止します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>前のテレグラムエージェントを削除します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> dpkg -r telegraf
+. link:#ubuntu-and-debian["新しいエージェントをインストールします"]。</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="macos">MacOS</h3>
+<div class="paragraph">
+<p><span class="image"><img src="Agent_Requirements_Macos.png" alt="MacOS Agent のインストール"></span></p>
+</div>
+<div class="ulist">
+<div class="title">前提条件</div>
+<ul>
+<li>
+<p>次に示すコマンドは、 cURL 、 sudo 、 openssl 、および shasum を使用できる必要があります</p>
+</li>
+<li>
+<p>プロキシの背後にいる場合は、「 MacOS* のプロキシサポートの設定」セクションの手順に従います。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">エージェントを macOS にインストールする手順：</div>
+<ol class="arabic">
+<li>
+<p>エージェントアクセスキーを選択します。</p>
+</li>
+<li>
+<p>エージェントのインストールダイアログからコマンドブロックをコピーします。クリップボードアイコンをクリックすると、コマンドをクリップボードに簡単にコピーできます。</p>
+</li>
+<li>
+<p>Bash ウィンドウを開きます</p>
+</li>
+<li>
+<p>Bash ウィンドウにコマンドを貼り付けて、 Enter キーを押します。</p>
+</li>
+<li>
+<p>コマンドは、適切なエージェントインストーラをダウンロードしてインストールし、デフォルト設定を行います。終了すると、エージェントサービスが再起動されます。コマンドには一意のキーがあり、 24 時間有効です。</p>
+</li>
+<li>
+<p>前に Home醸造 を使用して Tegraf エージェントをインストールしていた場合は、アンインストールするように求められます。以前にインストールした Tegraf エージェントをアンインストールしたら、上記の手順 5 でコマンドを再実行します。</p>
+</li>
+<li>
+<p>[ 完了 ] または [ 続行 ] をクリックします</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>エージェントのインストール後、次のコマンドを使用してサービスを開始または停止できます。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo launchctl start telegraf
+sudo launchctl stop telegraf</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="macos-のプロキシサポートを設定しています">macOS のプロキシサポートを設定しています</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+次の手順は '_http_proxy/https_proxy_environment 変数を設定するために必要なアクションの概要を示しています一部のプロキシ環境では '_no_proxy 環境変数も設定する必要があります
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>プロキシの背後にあるシステムの場合、 Telegraf エージェントをインストールする前に、現在のユーザー * の <em>http_proxy</em> 変数および / または _http_proxy_environment 変数を設定するには、次の手順を実行します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;
+* Tegraf エージェントをインストールした後、次のアドレスに appropriate _https_proxy_ および / または _http_proxy_variable を追加して設定します。 _ アプリケーション /Telegraf .app/Contents/telegraf.plist_:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>…
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+   &lt;key&gt;EnvironmentVariables&lt;/key&gt;
+   &lt;dict&gt;
+          &lt;key&gt;https_proxy&lt;/key&gt;
+          &lt;string&gt;&lt;proxy_server&gt;:&lt;proxy_port&gt;&lt;/string&gt;
+   &lt;/dict&gt;
+   &lt;key&gt;Program&lt;/key&gt;
+   &lt;string&gt;/Applications/telegraf.app/Contents/MacOS/telegraf&lt;/string&gt;
+   &lt;key&gt;Label&lt;/key&gt;
+   &lt;string&gt;telegraf&lt;/string&gt;
+   &lt;key&gt;ProgramArguments&lt;/key&gt;
+   &lt;array&gt;
+     &lt;string&gt;/Applications/telegraf.app/Contents/MacOS/telegraf&lt;/string&gt;
+     &lt;string&gt;--config&lt;/string&gt;
+     &lt;string&gt;/usr/local/etc/telegraf.conf&lt;/string&gt;
+     &lt;string&gt;--config-directory&lt;/string&gt;
+     &lt;string&gt;/usr/local/etc/telegraf.d&lt;/string&gt;
+   &lt;/array&gt;
+   &lt;key&gt;RunAtLoad&lt;/key&gt;
+   &lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+…</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>次に、上記の変更を読み込んだ後、 Tegraf を再起動します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo launchctl stop telegraf
+sudo launchctl unload -w /Library/LaunchDaemons/telegraf.plist
+sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
+sudo launchctl start telegraf</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="エージェントをアンインストールしています-4">エージェントをアンインストールしています</h4>
+<div class="paragraph">
+<p>macOS でエージェントをアンインストールするには、 Bash 端末で次のコマンドを実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Telegraf サービスを停止します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> sudo launchctl stop telegraf
+. テレグラムエージェントをアンインストールします。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cp /Applications/telegraf.app/scripts/uninstall /tmp
+sudo /tmp/uninstall</pre>
+</div>
+</div>
+</li>
+<li>
+<p>残っている設定ファイルまたはログファイルを削除します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>rm -rf /usr/local/etc/telegraf*
+rm -rf /usr/local/var/log/telegraf.*</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="agent-をアップグレードしています-4">Agent をアップグレードしています</h4>
+<div class="paragraph">
+<p>テレグラムエージェントをアップグレードするには、次の手順に従います。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>テレグラムサービスを停止します。</p>
+<div class="literalblock">
+<div class="content">
+<pre> sudo launchctl stop telegraf
+. 前のテレグラムエージェントをアンインストールします。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cp /Applications/telegraf.app/scripts/uninstall /tmp
+sudo /tmp/uninstall</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="#macos">"新しいエージェントをインストールします"</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kubernetes">Kubernetes</h3>
+<div class="paragraph">
+<p>Kubernetes では、次の 2 つの方法でデータを収集できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NetApp Kubernetes Monitoring Operator の設定Kubernetes のインストールに推奨される方法です。</p>
+</li>
+<li>
+<p>従来のスクリプトベースのエージェントのインストール</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>インストール手順は、選択した内容によって異なります。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Operator_Tile_Choices.png" alt="Kubernetes のインストール方法の選択"></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+NetApp Kubernetes Monitoring Operator のインストールは、 _Preview_feature とみなされるため、変更される可能性があります。
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">前提条件</div>
+<ul>
+<li>
+<p>cURL 、 sudo 、 openssl 、 sha256sum 、および kubectl のコマンドを使用できる必要があります</p>
+<div class="paragraph">
+<p>最適な結果を得るには、これらのコマンドをパスに追加してください。</p>
+</div>
+</li>
+<li>
+<p>kube-state-metrics をインストールする必要があります。詳細については、以下を参照してください。kube-state-metrics は、オペレータベースのインストール時に自動的にインストールされます。</p>
+</li>
+<li>
+<p>プロキシの背後にいる場合は、「 Kubernetes 向けのプロキシサポートの設定」セクションの手順に従ってください。</p>
+</li>
+<li>
+<p>セキュリティコンテキスト制約を必要とする Kubernetes バリアントを実行している場合は、「 Kubernetes からデータを収集するためのエージェントの設定」セクションの手順に従ってください。これはオペレータベースのインストールでインストールされます。</p>
+</li>
+<li>
+<p>Kubernetes クラスタのロールおよびロールのバインドを作成する権限が必要です。</p>
+</li>
+<li>
+<p>NetApp Kubernetes Monitoring Operator インストールはテスト済みで、 AWS EKS 1.18 、 OpenShift 3.11 、 Rancher 2.6 で動作することが想定されています。</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="監視は-linux-ノードにのみインストールされます">監視は Linux ノードにのみインストールされます</h4>
+<div class="paragraph">
+<p>Cloud Insights では、 Linux を実行している Kubernetes ノードの監視をサポートしています。 Kubernetes ノードセレクタを指定して、これらのプラットフォームで次の Kubernetes ラベルを検索します。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">プラットフォーム</th>
+<th class="tableblock halign-left valign-top">ラベル</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes v1.17 以降</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes の IO / OS = Linux</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rancher + catt.io をオーケストレーション / Kubernetes プラットフォームとして使用</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">catt.io/os=linux</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="netapp-kubernetes-monitoring-operator-installation">NetApp Kubernetes Monitoring Operator Installation</h4>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Operator_Agent_Instructions.png" alt="オペレータベースのインストール"></span></p>
+</div>
+<div class="olist arabic">
+<div class="title">NetApp Kubernetes Monitoring Operator Agent を Kubernetes にインストールする手順：</div>
+<ol class="arabic">
+<li>
+<p>クラスタ名とネームスペースを入力します。</p>
+</li>
+<li>
+<p>これらのコードを入力したら、エージェントインストーラスニペットをコピーできます</p>
+</li>
+<li>
+<p>このスニペットをクリップボードにコピーするには、ボタンをクリックします。</p>
+</li>
+<li>
+<p>スニペットを a_bash_window に貼り付け、実行します。</p>
+</li>
+<li>
+<p>インストールが自動的に開始されます。完了したら、 <em>Complete Setup</em> ボタンをクリックします。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="netapp-kubernetes-monitoring-operator-向けのプロキシサポートを設定します">NetApp Kubernetes Monitoring Operator 向けのプロキシサポートを設定します</h4>
+<div class="paragraph">
+<p>監視オペレータのプロキシを設定するには、次の手順を実行します。</p>
+</div>
+<div class="paragraph">
+<p>まず、 _agent-monitoring -NetApp_file を開き、編集します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
+このファイルの _spec ： _ セクションに、次のコードブロックを追加します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>spec:
+  proxy:
+    isAuProxyEnabled: &lt;true or false&gt;
+    isTelegrafProxyEnabled: &lt;true or false&gt;
+    isFluentbitProxyEnabled: &lt;true or false&gt;
+    password: &lt;password for proxy, optional&gt;
+    port: &lt;port for proxy&gt;
+    server: &lt;server for proxy&gt;
+    username: &lt;username for proxy, optional&gt;
+    noProxy: &lt;comma separated list of IPs or resolvable hostnames that should bypass a proxy&gt;</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="カスタム-プライベート-docker-リポジトリを使用">カスタム / プライベート Docker リポジトリを使用</h5>
+<div class="paragraph">
+<p>カスタムの Docker リポジトリを使用する場合は、次の手順を実行します。</p>
+</div>
+<div class="paragraph">
+<p>Docker シークレットを取得します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> kubectl -n netapp-monitoring get secret docker -o yaml
+上記のコマンドの出力から、 _.dockerconfigjson ： _ の値をコピーして貼り付けます。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Docker シークレットをデコードします。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> echo &lt;paste from _.dockerconfigjson:_  output above&gt; | base64 -d
+の出力は次の JSON 形式になります。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{ "auths":
+  {"docker.&lt;cluster&gt;.cloudinsights.netapp.com" :
+    {"username":"&lt;tenant id&gt;",
+     "password":"&lt;password which is the CI API key&gt;",
+     "auth"    :"&lt;encoded username:password basic auth key. This is internal to docker&gt;"}
+  }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Docker リポジトリにログインします。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker login docker.&lt;cluster&gt;.cloudinsights.netapp.com (from step #2) -u &lt;username from step #2&gt;
+password: &lt;password from docker secret step above&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cloud Insights からオペレータ用 Docker イメージを取得します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> docker pull docker.&lt;cluster&gt;.cloudinsights.netapp.com/netapp-monitoring:&lt;version&gt;
+次のコマンドを使用して &lt;version&gt; フィールドを確認します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
+社内のポリシーに従って、オペレータ用の Docker イメージをプライベート / ローカル / エンタープライズ Docker リポジトリにプッシュします。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>オープンソースの依存関係をすべてプライベート Docker レジストリにダウンロードします。次のオープンソースイメージをダウンロードする必要があります。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker.io/telegraf:1.19.3
+gcr.io/kubebuilder/kube-rbac-proxy:v0.5.0
+k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.1.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>FLUENT ビットが有効になっている場合は、次のファイルもダウンロードしてください。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker.io/fluent-bit:1.7.8
+docker.io/kubernetes-event-exporter:0.10</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>エージェント CR を編集して新しい Docker repo の場所を反映し、自動アップグレードを無効にします（有効な場合）。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
+enableAutoUpgrade: false</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker-repo: &lt;docker repo of the enterprise/corp docker repo&gt;
+dockerRepoSecret: &lt;optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>spec セクションで、次の変更を行います。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>spec:
+  telegraf:
+    - name: ksm
+      substitutions:
+        - key: k8s.gcr.io
+          value: &lt;same as "docker-repo" field above&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="スクリプトベースのインストール">スクリプトベースのインストール</h4>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Install_Agent_screen.png" alt="スクリプトベースのインストール"></span></p>
+</div>
+<div class="olist arabic">
+<div class="title">Kubernetes にスクリプトベースのエージェントをインストールする手順：</div>
+<ol class="arabic">
+<li>
+<p>エージェントアクセスキーを選択します。</p>
+</li>
+<li>
+<p>インストールダイアログの * エージェントインストーラスニペットのコピー * ボタンをクリックします。コマンドブロックを表示する場合は、オプションで、 [<em>_ Reveal Agent Installer Snippet</em>] ボタンをクリックします。</p>
+</li>
+<li>
+<p>コマンドを次のようにして bash_window に貼り付けます。</p>
+</li>
+<li>
+<p>必要に応じて、 install コマンドの一部として名前空間をオーバーライドしたり、クラスタ名を指定したりできます。そのためには、コマンドブロックを変更して final_./$installerNam_ の前に次のいずれかまたは両方を追加します</p>
+<div class="ulist">
+<ul>
+<li>
+<p>cluster_name = &lt; クラスタ名 &gt;</p>
+</li>
+<li>
+<p>namespace = &lt; 名前空間 &gt;</p>
+<div class="paragraph">
+<p>コマンドブロックには、次のように配置されています。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>installerName=cloudinsights-kubernetes.sh ... &amp;&amp; CLUSTER_NAME=&lt;cluster_name&gt; NAMESPACE=&lt;new_namespace&gt; sudo -E -H ./$installerName --download --install</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/tip.svg" alt="ヒント">
+</td>
+<td class="content">
+_cluster_name _ は Cloud Insights から Kubernetes クラスタの名前で指標を収集し、 _namespace_は Tegraf エージェントを導入するネームスペースです。指定したネームスペースがない場合は作成されます。
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>準備ができたら、コマンドブロックを実行します。</p>
+</li>
+<li>
+<p>コマンドは、適切なエージェントインストーラをダウンロードしてインストールし、デフォルト設定を行います。明示的に <em>namespace_</em> を設定していない場合は、名前を入力するように求められます。終了すると、エージェントサービスが再起動されます。コマンドには一意のキーがあり、 24 時間有効です。</p>
+</li>
+<li>
+<p>完了したら、 [* Complete Setup* （セットアップ完了） ] をクリックします。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kubernetes-スクリプトベースのプロキシサポートを設定しています">Kubernetes スクリプトベースのプロキシサポートを設定しています</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+次の手順は '_http_proxy/https_proxy_environment 変数を設定するために必要なアクションの概要を示しています一部のプロキシ環境では '_no_proxy 環境変数も設定する必要があります
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>プロキシの背後にあるシステムの場合、 Telegraf エージェントをインストールする前に、現在のユーザー * の <em>http_proxy</em> 変数および / または _http_proxy_environment 変数を設定するには、次の手順を実行します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;
+* Tegraf エージェントのインストール後に、 appropriate _https_proxy_ および / または _http_proxy_environment 変数を、 _TETRF -demonset および _TETR_replicaset に追加して設定します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl edit ds telegraf-ds</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>…
+       env:
+       - name: https_proxy
+         value: &lt;proxy_server&gt;:&lt;proxy_port&gt;
+       - name: HOSTIP
+         valueFrom:
+           fieldRef:
+             apiVersion: v1
+             fieldPath: status.hostIP
+…</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl edit rs telegraf-rs</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>…
+       env:
+       - name: https_proxy
+         value: &lt;proxy_server&gt;:&lt;proxy_port&gt;
+       - name: HOSTIP
+         valueFrom:
+           fieldRef:
+             apiVersion: v1
+             fieldPath: status.hostIP
+…</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>次に Tegraf を再起動します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl delete pod telegraf-ds-*
+kubectl delete pod telegraf-rs-*</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="demonset-replicaset-およびエージェントの停止-起動">DemonSet 、 ReplicaSet 、およびエージェントの停止 / 起動</h4>
+<div class="paragraph">
+<p>DemonSet と ReplicaSet が Kubernetes クラスタ上に作成され、必要な Telegraf エージェント / ポッドが実行されます。デフォルトでは、これらの Telegraf エージェント / ポッドはマスターノードと非マスターノードの両方にスケジュールされます。</p>
+</div>
+<div class="paragraph">
+<p>エージェントの停止と再起動を容易にするには、次のコマンドを使用して Tegraf DemonSet YAML および ReplicaSet YAML を生成します。これらのコマンドは、デフォルトの名前空間「 CI-monitoring 」を使用していることに注意してください。独自のネームスペースを設定した場合は、これらのネームスペースと後続のすべてのコマンドおよびファイルを置き換えます。</p>
+</div>
+<div class="paragraph">
+<p>独自のネームスペースを設定した場合は、これらのネームスペースと後続のすべてのコマンドおよびファイルを置き換えます。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring get ds telegraf-ds -o yaml &gt; /tmp/telegraf-ds.yaml
+kubectl --namespace ci-monitoring get rs telegraf-rs -o yaml &gt; /tmp/telegraf-rs.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>その後、次のコマンドを使用して Tegraf サービスを停止および開始できます。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring delete ds telegraf-ds
+kubectl --namespace ci-monitoring delete rs telegraf-rs</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml
+kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kubernetes-からデータを収集するようにエージェントを設定します">Kubernetes からデータを収集するようにエージェントを設定します</h4>
+<div class="paragraph">
+<p>注：スクリプトベースのインストールのデフォルトの名前空間は、 _CI-MOCI_です 。オペレータベースのインストールの場合、デフォルトのネームスペースは _NetApp-monitoring _ です。名前空間を使用するコマンドでは、必ずインストールに適した名前空間を指定してください。</p>
+</div>
+<div class="paragraph">
+<p>エージェントが実行するポッドは、次の項目にアクセスできる必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ホストパス</p>
+</li>
+<li>
+<p>ConfigMap</p>
+</li>
+<li>
+<p>秘密</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>これらの Kubernetes オブジェクトは、 Cloud Insights UI に用意されている Kubernetes Agent インストールコマンドの一部として自動的に作成されます。OpenShift などの一部の Kubernetes タイプでは、これらのコンポーネントへのアクセスをブロックする追加のセキュリティレベルが実装されています。<em>SecurityContextConstraint</em> は、 Cloud Insights UI に用意されている Kubernetes エージェントインストールコマンドの一部として作成されていないため、手動で作成する必要があります。作成したら、 Tegraf ポッドを再起動します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    apiVersion: v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: telegraf-hostaccess
+      creationTimestamp:
+      annotations:
+        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
+      labels:
+        app: ci-telegraf
+    priority: 10
+    allowPrivilegedContainer: true
+    defaultAddCapabilities: []
+    requiredDropCapabilities: []
+    allowedCapabilities: []
+    allowedFlexVolumes: []
+    allowHostDirVolumePlugin: true
+    volumes:
+    - hostPath
+    - configMap
+    - secret
+    allowHostNetwork: false
+    allowHostPorts: false
+    allowHostPID: false
+    allowHostIPC: false
+    seLinuxContext:
+      type: MustRunAs
+    runAsUser:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    readOnlyRootFilesystem: false
+    users:
+    - system:serviceaccount:ci-monitoring:monitoring-operator
+    groups: []</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kube-state-metrics-サーバをインストールしています">kube-state-metrics サーバをインストールしています</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+オペレータベースのインストールでは、 kube-state-metrics のインストールを処理します。オペレータベースのインストールを実行する場合は、このセクションを省略してください。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+Kubernetes の永続ボリューム（ PVS ）をバックエンドストレージデバイスにリンクする機能を含むすべての機能を活用するには、 kube-state-metrics バージョン 2.0 以降を使用することを強く推奨します。kube-state-metrics バージョン 2.0 以降では、 Kubernetes オブジェクトラベルはデフォルトでエクスポートされません。Kubernetes オブジェクトラベルをエクスポートする kube-state-metrics を設定するには、メトリックラベル「 allow 」リストを指定する必要があります。の --metric-labels -allowlist_option を参照してください <a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md">"kube-state-metrics ドキュメント"</a>。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>kube-state-metrics サーバをインストールするには、次の手順を実行します（スクリプトベースのインストールを実行する場合に必要です）。</p>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>一時フォルダ（例えば、 /tmp/kube-state-yaml -files/_ ）を作成し、から .yaml ファイルをコピーします <a href="https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard" class="bare">https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard</a> をこのフォルダに追加します。</p>
+</li>
+<li>
+<p>kube-state-metrics のインストールに必要な .yaml ファイルを適用するには、次のコマンドを実行します。</p>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl apply -f /tmp/kube-state-yaml-files/</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kube-state-metrics-カウンタ">kube-state-metrics カウンタ</h4>
+<div class="paragraph">
+<p>kubbe 状態メトリックカウンタの情報にアクセスするには、次のリンクを使用します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/configmap-metrics.md">"ConfigMap メトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/daemonset-metrics.md">"DemonSet メトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/deployment-metrics.md">"導入メトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/ingress-metrics.md">"入力メトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/namespace-metrics.md">"ネームスペース指標"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/node-metrics.md">"ノードのメトリックス"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/persistentvolume-metrics.md">"永続的ボリューム指標"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/persistentvolumeclaim-metrics.md">"永続的ボリューム要求の指標"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/pod-metrics.md">"ポッドのメトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/replicaset-metrics.md">"ReplicaSet メトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/secret-metrics.md">"シークレットメトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md">"サービスメトリック"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md">"Stat助け Set メトリック"</a></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="エージェントをアンインストールしています-5">エージェントをアンインストールしています</h4>
+<div class="paragraph">
+<p>これらのコマンドは、デフォルトの名前空間「 CI-monitoring 」を使用していることに注意してください。独自のネームスペースを設定した場合は、それらのネームスペースと、以降のすべてのコマンドおよびファイルを置き換えます。</p>
+</div>
+<div class="paragraph">
+<p>Kubernetes 上のスクリプトベースのエージェントをアンインストールするには、次の手順を実行します。</p>
+</div>
+<div class="paragraph">
+<p>モニタリングネームスペースが Telegraf 専用に使用されている場合：</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+ kubectl delete ns ci-monitoring
+モニタリングネームスペースが Telegraf 以外の目的で使用されている場合：</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+オペレータベースのインストールの場合は、次のコマンドを実行します。</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl delete ns netapp-monitoring
+kubectl delete agent agent-monitoring-netapp
+kubectl delete crd agents.monitoring.netapp.com
+kubectl delete role agent-leader-election-role
+kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
+kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>スクリプトベースの Tegraf インストール用に手動で作成した Security Context Constraint の場合は、次の手順を実行します。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl delete scc telegraf-hostaccess</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="agent-をアップグレードしています-5">Agent をアップグレードしています</h4>
+<div class="paragraph">
+<p>これらのコマンドは、デフォルトの名前空間「 CI-monitoring 」を使用していることに注意してください。独自のネームスペースを設定した場合は、それらのネームスペースと、以降のすべてのコマンドおよびファイルを置き換えます。</p>
+</div>
+<div class="paragraph">
+<p>テレグラムエージェントをアップグレードするには、次の手順に従います。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>既存の構成をバックアップします。</p>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring get cm -o yaml &gt; /tmp/telegraf-configs.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Agent をアンインストールします（手順については、上記を参照）。</p>
+</li>
+<li>
+<p><a href="#kubernetes">"新しいエージェントをインストールします"</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="チェックサムを検証する">チェックサムを検証する</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Insights エージェントのインストーラで整合性チェックが実行されますが、ダウンロードしたアーティファクトのインストールまたは適用前に独自の検証を実行したいユーザもいます。デフォルトのダウンロードおよびインストールではなく、ダウンロードのみの操作を実行するには、 UI から取得したエージェントインストールコマンドを編集し、末尾の「インストール」オプションを削除します。</p>
+</div>
+<div class="paragraph">
+<p>次の手順を実行します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>指示に従ってエージェントインストーラスニペットをコピーします。</p>
+</li>
+<li>
+<p>スニペットをコマンドウィンドウに貼り付ける代わりに、テキストエディタに貼り付けます。</p>
+</li>
+<li>
+<p>コマンドから末尾の「 --install 」（ Linux/Mac ）または「 -install 」（ Windows ）を削除します。</p>
+</li>
+<li>
+<p>コマンド全体をテキストエディタからコピーします。</p>
+</li>
+<li>
+<p>次に、コマンドウィンドウ（作業ディレクトリ内）に貼り付けて実行します。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Windows 以外（ Kubernetes の場合は次の例を使用します。実際のスクリプト名は異なる場合があります）</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download and install （デフォルト）：</p>
+<div class="literalblock">
+<div class="content">
+<pre> installerName=cloudinsights-kubernetes.sh … &amp;&amp; sudo -E -H ./$installerName --download –-install
+* ダウンロードのみ：</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>installerName=cloudinsights-kubernetes.sh … &amp;&amp; sudo -E -H ./$installerName --download</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Windows の場合</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download and install （デフォルト）：</p>
+<div class="literalblock">
+<div class="content">
+<pre> !$($installerName=".\cloudinsights-windows.ps1") … -and $(&amp;$installerName -download -install)
+* ダウンロードのみ：</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>!$($installerName=".\cloudinsights-windows.ps1") … -and $(&amp;$installerName -download)</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>download-only コマンドを使用すると、必要なアーティファクトがすべて Cloud Insights から作業ディレクトリにダウンロードされます。アーティファクトには次のものがありますが、これらに限定することはできません。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>インストールスクリプト</p>
+</li>
+<li>
+<p>環境ファイル</p>
+</li>
+<li>
+<p>YAML ファイル</p>
+</li>
+<li>
+<p>署名済みチェックサムファイル（ SHA256 署名）</p>
+</li>
+<li>
+<p>署名の検証に使用する PEM ファイル（ NetApp_cert.pem ）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>インストールスクリプト、環境ファイル、 YAML ファイルは、目視検査を使用して検証できます。</p>
+</div>
+<div class="paragraph">
+<p>PEM ファイルは、フィンガープリントが次のようになっていることを確認することで検証できます。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+具体的には、</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows 以外：</p>
+<div class="literalblock">
+<div class="content">
+<pre> openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
+* Windows の場合</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Import-Certificate -Filepath .\netapp_cert.pem -CertStoreLocation Cert:\CurrentUser\Root</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>署名済みチェックサムファイルは、 PEM ファイルを使用して確認できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows 以外：</p>
+<div class="literalblock">
+<div class="content">
+<pre> openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+* Windows （上記の「証明書のインポート」を使用して証明書をインストールした後）：</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>すべてのアーティファクトが正常に検証されたら、次のコマンドを実行してエージェントのインストールを開始できます。</p>
+</div>
+<div class="paragraph">
+<p>Windows 以外：</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> sudo -E -H ./&lt;installation_script_name&gt; --install
+Windows の場合</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.\cloudinsights-windows.ps1 -install</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="エージェントインストールのトラブルシューティング">エージェントインストールのトラブルシューティング</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>エージェントの設定で問題が発生した場合の対処方法を次に示します。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">問題</th>
+<th class="tableblock halign-left valign-top">次の操作を実行します</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">すでに Cloud Insights を使用してエージェントをインストールしました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ホスト /VM にエージェントがすでにインストールされている場合は、エージェントを再度インストールする必要はありません。この場合は、 Agent Installation （エージェントのインストール）画面で適切な Platform and Key （プラットフォームとキー）を選択し、 * Continue * （続行）または * Finish （完了） * をクリックします。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">すでにエージェントをインストールしていますが、 Cloud Insights インストーラを使用してインストールしていません</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">前のエージェントを削除し、 Cloud Insights エージェントのインストールを実行して、適切なデフォルト設定ファイルを設定します。完了したら、 [* Continue * （続行） ] または [* Finish （完了） ] をクリックします。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes 永続ボリュームと対応するバックエンドストレージデバイスの間にハイパーリンク / 接続がありません。My Kubernetes Persistent Volume がストレージサーバのホスト名を使用して設定されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">手順に従って既存の Tegraf エージェントをアンインストールし、最新の Tegraf エージェントを再インストールします。Tegraf バージョン 2.0 以降を使用している必要があります。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次のようなログにメッセージが表示されます。 E0901 15 ： 21 ： 39.96145 1 reflector.GO ： 178]k81.io/kube-state/internal/store/Builder.GO ： 352 ： Failed to list *v1.MutatingWebhookConfiguration ： 8s could not find the requested resource E0901 15:15:2ku161781.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">これらのメッセージは、 Kubernetes バージョン 1.17 以下で kube-state-metrics バージョン 2.0.0 以降を実行している場合に発生する可能性があります。Kubernetes のバージョンを取得するには、次の Leubectl version_ kbe-state-metrics バージョンを取得します。 <em>kubectl デプロイ /kube-state-metrics -o jsonpath='{.image}'</em> これらのメッセージが発生しないようにするには、 kube-state-metrics デプロイを修正して、次の Leases 設定を具体的に無効にしてください。 _hookates_web_volumeconfigurations resources= 証明リクエスト , configmaps,cronjobs,demonsets,horizontalscalers,ingleers,jobs,limitrange,scapers,networkpolicies , nodes,persistentvolumes,persistentvolumesalims,persistentvolumes,podeters, replicaSets,replicaSets,replicationcontrollers ,residetodポッド ,residetappeditors,appers,uns,uns,uns,uns,sets,uns,uns,uns,uns,uns,sets,uns,sets,uns,sets,uns,uns,sets,uns,uns,sets,uns,uns,uns,wodecodeclieticecodetics,sets,sets,sets,sets,uns,sets,uns,uns,sets,sets,sets,un 検証する Web フック設定 ' ボリュームの添付ファイル</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes に Tegraf をインストールまたはアップグレードしましたが、 Tegraf ポッドは起動しません。Telegraf ReplicaSet または DemonSet は、次のような障害を報告しています。 Error creating ： PoD "Telegraf-RS" is forbidden ： Unable to validate against any security context constraint ： [spec.volumes [2] ： Invalid Value ： "hostPath" ： hostPath volumes are not allowed to be used]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">セキュリティコンテキスト制約を作成します（前述の「 Kubernetes からデータを収集するためのエージェントの設定」セクションを参照）。Security Context Constraint に指定された名前空間とサービスアカウントが、 Telegraf ReplicaSet および DemonSet の名前空間とサービスアカウントと一致することを確認します。kubectl 説明 SCC テレホ - ホストアクセス</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grep サービスアカウント kubectl-n CI- モニタリング&#8201;&#8212;&#8201;説明 RS テレグラム af-rs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grep -i " 名前空間 : "kubectl-n CI- モニタリング説明 RS テレグラム af-r</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grep -i " サービスアカウント : "kubectl-n CI-monitoring -ds-describe " テレグラムの説明 "-ds-describe - ネームスペース "grep</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Telegraf から次のようなエラーメッセージが表示されますが、 Telegraf は起動して実行されます。 Oct 11 14 ： 23 ： 41 IP-172-39-47 systemd[1] ： InfluxDB への指標の報告用に、プラグイン駆動型のサーバーエージェントを起動しました。10 月 11 日 14 ： 23 ： 41 IP-172-41-39-47 テレグラム [1827] ： time="2021 - 10-11T14 ： 23 ： 41Z" level= error msg=" キャッシュディレクトリの作成に失敗しました。/etc/テレ グラム /.cache/snowflake 、 err: mkdir /etc/テレ グラム f/.ca che: 許可が拒否されました。ignored \n" func = "gosnowfleke. (*defaultLogger).Errorf" file="log. go:120" Oct 11 14:23:41 IP-172-21-39-47 TEテレ グラフ [1827]: time="2021 - 10-11T14:23:41Z" level=error.msg=" 失敗しました。無視されます。/etc/テレ グラム /.cache/snowflake/ocspa_response_cache.json を開きます。ファイルまたはディレクトリがありません \n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120"Oct. 1114:23:41 IP-172-41-39-47 テレグラム [1827:1127]~21-21Z: Telegraf 1.19.3 を起動しています</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">これは問題と呼ばれています。を参照してください <a href="https://github.com/influxdata/telegraf/issues/9407">"この GitHub の記事"</a> 詳細：Tegraf が起動して動作している限り、ユーザはこのエラーメッセージを無視できます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes で、 Telegraf ポッドが次のエラーを報告しています。 "Error in processing mountstats info: failed to open mountstats file: /hostfs /proc/1/mountstats 、 error: open /hostfs /proc/1/mountstats ： permission denied"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>追加情報はから入手できます <a href="concept_requesting_support.html">"サポート"</a> ページまたはを参照してください <a href="https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf">"Data Collector サポートマトリックス"</a>。</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Web サイトについてのフィードバックを<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">お寄せください</a>
+  <a href="https://docs.netapp.com/ja-jp/announcements/" class="n-footer__copyright">お知らせ</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/test/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/test/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/test/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/test/js/www-ntap.js'></script>
+    <script src='/ja-jp/test/js/tabbed-blocks.js'></script>
+  </body></html>

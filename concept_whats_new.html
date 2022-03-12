@@ -1,0 +1,3254 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>Cloud Insights の新機能</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Cloud Insights の新機能" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/test/concept_whats_new.html" />
+	<meta property="og:description" content="Cloud Insights で利用できる新機能と特徴。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/test/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Cloud Insights で利用できる新機能と特徴。">
+  <meta name="keywords" content=" features"><meta name="robots" content="noindex" /><!-- Icons -->
+  <link rel="icon" href="/ja-jp/test/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/ja-jp/test/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/ja-jp/test/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/ja-jp/test/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/ja-jp/test/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/ja-jp/test/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/test/css/tabbed-blocks.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/test/js/na-search.js'></script><script src='/ja-jp/test/js/na-pagenav.js'></script><link rel='stylesheet' href='/ja-jp/test/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/ja-jp/test/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/ja-jp/test/js/na-utility.js'></script>
+  <script src='/ja-jp/test/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/ja-jp/test/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/test/js/toc.js'></script>
+  <script src='/ja-jp/test/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/ja-jp/test/js/version-dropdown.js'></script>
+  <script src='/ja-jp/test/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/test/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/test/js/jszip.min.js'></script>
+  <script src='/ja-jp/test/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/test/issues/new?body=Page%3A%20[Cloud Insights の新機能](https://docs.netapp.com/ja-jp/test/concept_whats_new.html)" class="page-nav-contribute-link" role="button"><img src="/ja-jp/test/images/discuss-sm.svg" class="github-icon" />ドキュメントの変更をリクエスト</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/test/blob/main/concept_whats_new.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/test/images/edit-sm.svg" class="github-icon" />GitHub で編集</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/test/images/article-sm.svg" class="github-icon" />寄稿者向けガイド</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/test/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/test/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/test/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/test/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索" 
+          data-no-results-found="{query}に該当する結果はありません" 
+          data-did-you-mean="{suggestion} を検索" 
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?" 
+          data-results-found="{hitCount} 件見つかりました"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">日本語</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/test/concept_whats_new.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/test/concept_whats_new.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/test/concept_whats_new.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/test/concept_whats_new.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/index.html">
+        Cloud Insights のドキュメント
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/ja-jp/test/concept_whats_new.html">
+        新機能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cloud_insights_onboarding_1.html">
+        Cloud Insights にサインアップします
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> セキュリティ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/security_overview.html">
+        セキュリティプラクティス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/security_information_and_region.html">
+        当社が保存するものと場所
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_feature_tutorials.html">
+        機能チュートリアル
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> データの収集中</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_getting_started_with_cloud_insights.html">
+        概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_acquisition_unit_requirements.html">
+        Acquisition Unit の要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_configure_acquisition_unit.html">
+        Acquisition Unit の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_agent.html">
+        エージェントの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_configure_data_collectors.html">
+        データコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_determining_data_collector_acq_status.html">
+        Data Collector の取得ステータスを確認しています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_configured_data_collectors.html">
+        設定済みデータコレクタを管理します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_research_failed_collector.html">
+        データコレクタエラーを調査します
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_import_from_dashboard_gallery.html">
+        推奨されるダッシュボードのインポート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_user_roles.html">
+        ユーザアカウントとロール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_other_cloud_products.html">
+        他の Cloud Central 製品に切り替える
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/data_collector_list.html">
+        Data Collector リスト
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_subscribing_to_cloud_insights.html">
+        Cloud Insights に登録しています
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 自動デバイス解決</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_device_resolution_overview.html">
+        デバイス解決の概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_rules.html">
+        デバイス解決ルール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_fibre_channel.html">
+        ファイバチャネルのデバイス解決
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_ip.html">
+        IP デバイス解決
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_device_resolution_preferences.html">
+        デバイス解決のプリファレンスの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_device_resolution_regex_examples.html">
+        正規表現の例
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ダッシュボードの作成</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboards_overview.html">
+        ダッシュボードの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboard_features.html">
+        ダッシュボードの機能
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ダッシュボードの例</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dashboard_example_VM_performance.html">
+        仮想マシンのパフォーマンス
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_dashboard_best_practices.html">
+        ダッシュボードのベストプラクティス
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Kubernetes エクスプローラ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/kubernetes_landing_page.html">
+        Kubernetes の概要ページ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/kubernetes_cluster_detail.html">
+        Kubernetes クラスタページ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> クエリを使用した作業</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_querying_assets.html">
+        アセットのクエリ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_query.html">
+        クエリーの作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_queries.html">
+        使用可能なクエリを表示する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_export_query_results.html">
+        クエリ結果を .csv にエクスポートしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_modify_delete_query.html">
+        クエリの変更または削除
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_query_assign_multiple_applicationss.html">
+        オブジェクトへの複数のアプリケーション / 注釈の割り当て
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_query_copy_table_values.html">
+        表の値をクリップボードにコピーしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_log_explorer.html">
+        ログを照会しています
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アノテーションの使用</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_defining_annotations.html">
+        アノテーションの定義
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_annotation.html">
+        アノテーションの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_annotation_rules.html">
+        アノテーションルールの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_annotation_import.html">
+        API を使用したアノテーションのインポート
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アプリケーションの操作</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_about_applications.html">
+        アプリケーションの概念
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_application.html">
+        アプリケーションの設定
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 監視とアラート</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_monitor.html">
+        モニタの作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_view_and_manage_alerts.html">
+        アラートの表示と管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_notifications_email.html">
+        通知受信者の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_system_monitors.html">
+        システム定義のモニター
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/API_Overview.html">
+        API の使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_create_webhook.html">
+        Webhook 通知
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 環境の監視</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_audit.html">
+        イベントの監査
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_ttl_and_downsampling.html">
+        TTL およびダウンサンプリング
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> アセットページ情報</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_page_overview.html">
+        アセットページの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_in_context_filters.html">
+        オブジェクトのコンテキスト内フィルタリング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_summary_section.html">
+        Summary Topology セクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_expert_view_section.html">
+        Expert View セクシヨン
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_user_data_section.html">
+        User Data セクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_asset_alerts_section.html">
+        関連アラートセクション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_searching_assets.html">
+        資産を検索するためのヒントとヒント
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> レポート作成</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_overview.html">
+        レポート概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_user_roles.html">
+        Reporting User Roles の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_predefined_reports.html">
+        事前定義済みレポートの使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_storage_manager_dashboard.html">
+        Storage Manager のダッシュボード
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_create_example.html">
+        レポートの例の作成
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_managing_reports.html">
+        レポートの管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_creating_custom_reports.html">
+        カスタムレポート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_creating_custom_reports.html#reporting-data-models">
+        データモデル
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_querying_database.html">
+        Reporting Database API の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_data_retention.html">
+        データ保持
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reporting_schema_diagrams.html">
+        スキーマ図
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_schemas.html">
+        スキーマテーブル
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Secure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_intro.html">
+        Cloud Secure について
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_getting_started.html">
+        Cloud Secure の使用を開始する
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_agent_requirements.html">
+        Cloud Secure エージェントの要件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_add_agent.html">
+        Cloud Secure エージェントの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_delete_agent.html">
+        Cloud Secure エージェントの削除
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_user_dir_connect.html">
+        AD Directory Collector の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_user_dir_connect_ldap.html">
+        LDAP ディレクトリコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_cs_amazon_fsx.html">
+        NetApp ONTAP コレクタ用の Amazon FSX の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_add_collector_svm.html">
+        ONTAP SVM Data Collector の設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_cs_incloud.html">
+        Cloud ONTAP データコレクタの設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_cs_user_management.html">
+        Cloud Secure ユーザー管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_event_rate_checker.html">
+        イベントレートチェッカー
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_alert_data.html">
+        アラート
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> フォレンジック</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_activity_history.html">
+        アクティビティフォレンジック - すべてのアクティビティ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_entity_detail.html">
+        アクティビティフォレンジック - エンティティ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/forensic_user_overview.html">
+        ユーザ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_automated_response_policies.html">
+        自動応答ポリシー
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_restrict_user_access.html">
+        ユーザアクセスの制限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_attack_simulator.html">
+        ランサムウェア攻撃のシミュレーション
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/cs_notifications_email.html">
+        通知
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_cs_api.html">
+        Cloud Secure API の略
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_activeiq.html">
+        Active IQ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> トラブルシューティング</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_general_problems.html">
+        全般的なトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_linux_acquisition_unit_problems.html">
+        Linux Acquisition Unit の問題のトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_troubleshooting_windows_acquisition_unit_problems.html">
+        Windows Acquisition Unit の問題のトラブルシューティング
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_research_failed_collector.html">
+        Data Collector エラーの調査
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> リファレンスサポート</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_requesting_support.html">
+        サポートをリクエストしています
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_data_collector_support_matrix.html">
+        Data Collector サポートマトリックス
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Infrastructure （データコレクターリファレンス - インフラストラクチャ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/concept_data_collector_reference.html">
+        ベンダーリファレンスの概要
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_amazon_ec2.html">
+        AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_azure.html">
+        Azure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Broadcom</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_brocade_bna.html">
+        Brocade Network Advisor の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_brocade_fc_switch.html">
+        Fibre Channel スイッチ
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_cisco_fc_switch.html">
+        シスコ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> デル</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_dell_xc_series.html">
+        XC シリーズ
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell EMC</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_datadomain.html">
+        Data Domain の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_ecs.html">
+        ECS の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_isilon.html">
+        PowerScale
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_powerstore.html">
+        PowerStore の略
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_recoverpoint.html">
+        RecoverPoint
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_scaleio.html">
+        ScaleIO
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_unity.html">
+        Unity （ VNXe ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vmax_powermax.html">
+        VMAX/PowerMax
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_block.html">
+        VNX ブロック（ Clariion ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_file.html">
+        VNX ファイル（ Celerra ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vnx_unified.html">
+        VNX ユニファイド
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_vplex.html">
+        VPLEX
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_emc_xio.html">
+        XtremIO
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_fujitsu_eternus.html">
+        富士通
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_google_cloud.html">
+        Google
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP エンタープライズ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hp_3par.html">
+        HP Alletra 9000 および Primera
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hpe_commandview.html">
+        HP Command View AE
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hpe_nimble.html">
+        HPE Alletra 6000
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Hitachi Data Systems の略</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_commandsuite.html">
+        HDS コマンドスイート
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_nas.html">
+        HDS HNAS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_hds_ops_center.html">
+        HDS Ops Center の略
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_infinidat_infinibox.html">
+        インフィダト
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_huawei_oceanstor.html">
+        Huawei （ファー
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> IBM 社</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_cleversafe.html">
+        Cleversafe
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_cs.html">
+        CS シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_ds.html">
+        システムストレージ DS8000 シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_powervm.html">
+        PowerVM
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_svc.html">
+        SAN ボリュームコントローラ（ SVC ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ibm_xiv.html">
+        XIV / A9000
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_lenovo.html">
+        Lenovo 社
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Microsoft 社</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_anf.html">
+        Azure NetApp Files の特長
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_ms_hyperv.html">
+        Hyper-V
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> ネットアップ</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_astra_data_store.html">
+        Astra データストア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_connection.html">
+        ONTAP 9.9 以降のクラウド接続
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_volumes_ontap.html">
+        Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cloud_volumes.html">
+        AWS 向け Cloud Volume サービス
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_cdot.html">
+        ONTAP データ管理ソフトウェア
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_7mode.html">
+        Data ONTAP 7-mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_eseries.html">
+        E シリーズ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_hci.html">
+        NetApp HCI 管理サーバ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_solidfire.html">
+        SolidFire
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_na_storagegrid.html">
+        StorageGRID
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_nutanix.html">
+        Nutanix
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_openstack.html">
+        OpenStack の機能を使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_oracle_zfs.html">
+        Oracle の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_pure_flasharray.html">
+        純粋
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_redhat_virtualization.html">
+        Red Hat の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_dc_vmware.html">
+        VMware
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - サービス</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_node.html">
+        ホスト / ノード
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_activemq.html">
+        ActiveMQ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_apache.html">
+        Apache
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_consul.html">
+        総領事
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_couchbase.html">
+        Couchbase
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_couchdb.html">
+        CouchDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_docker.html">
+        Docker です
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_elasticsearch.html">
+        Elasticsearch を指定します
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_flink.html">
+        フリップ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_hadoop.html">
+        Hadoop
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_haproxy.html">
+        HAProxy
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_jvm.html">
+        Java
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kafka.html">
+        カフカ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kapacitor.html">
+        カパトール
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_kibana.html">
+        キバナ
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_agent.html#kubernetes">
+        Kubernetes
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_memcached.html">
+        Memcached
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_mongodb.html">
+        MongoDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_mysql.html">
+        MySQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_netstat.html">
+        netstat
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_nginx.html">
+        nginx
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_openzfs.html">
+        OpenZFS の場合
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_postgresql.html">
+        PostgreSQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_puppetagent.html">
+        パペット
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_redis.html">
+        Redis
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_rethinkdb.html">
+        RethinkDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/task_config_telegraf_zookeeper.html">
+        Zookeeper の追加
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_object_icons.html">
+        オブジェクトアイコンリファレンス
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/ja-jp/test/reference_legal_notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/test/">Cloud&nbsp;Insights</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/test/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Cloud Insights の新機能</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-03-12 06:08:57 +0000">03/12/2022</time>
+    
+  
+
+<span>寄稿者
+</span>
+
+
+<a target="_blank" href="/ja-jp/test/feed.xml"><img width="48" height="20" src="./common/media/rss-button.png" alt="RSS" title="このページの RSS フィードをサブスクライブする" /></a>
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>ネットアップは、製品やサービスの改善と強化を継続的に行っています。ここでは、 Cloud Insights で利用できる最新の機能をいくつか紹介します。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2022-年-2-月">2022 年 2 月</h3>
+<div class="sect3">
+<h4 id="cloud-insights-は-apache-log4j-の脆弱性を解決します">Cloud Insights は Apache log4j の脆弱性を解決します</h4>
+<div class="paragraph">
+<p>お客様のセキュリティは、ネットアップの最優先事項です。Cloud Insights には、最新の Apache log4j の脆弱性に対処するためのソフトウェアライブラリの更新が含まれています。</p>
+</div>
+<div class="paragraph">
+<p>ネットアップの Product Security Advisory Web サイトに掲載されている次の資料を参照してください。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://security.netapp.com/advisory/ntap-20211210-0007/">"CVE-20121-44228"</a></p>
+</div>
+<div class="paragraph">
+<p>これらの脆弱性の詳細と、ネットアップの対応については、を参照してください <a href="https://www.netapp.com/newsroom/netapp-apache-log4j-response/">"ネットアップのニュースルーム"</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kubernetes-のネームスペースの詳細ページ">Kubernetes のネームスペースの詳細ページ</h4>
+<div class="paragraph">
+<p>Kubernetes 環境の探索は、クラスタの名前空間の情報詳細ページにより、かつてないほど優れています。ネームスペースの詳細ページには、ネームスペースに使用されているすべてのアセットの概要が表示されます。これには、バックエンドのすべてのストレージリソースとその容量利用率が含まれます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Namespace_Detail_Example_2.png" alt="Kubernetes のネームスペースの詳細ページ"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="フィーチャーのプレビュー-preview-features">フィーチャーのプレビュー（ Preview Features</h4>
+<div class="paragraph">
+<p>Cloud Insights は、いくつかの新しいプレビュー機能を強調しています。これらの機能をプレビューする場合は、にお問い合わせください <a href="https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx">"ネットアップの営業チーム"</a> を参照してください。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* 特徴 *</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* 概要 *</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザーアクセスの自動応答を制限します</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">攻撃が検出されると、 Cloud Secure は、ファイルシステムへのユーザーアクセスを制限する（フルブロック、または読み取り専用アクセスに設定する）ことで攻撃を停止できます。自動応答ポリシーを使用するか、アラートまたはユーザの詳細ページから手動でアクセスを制限できます。<a href="https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html">"詳細はこちら"</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データ破壊–ファイル削除攻撃の検出</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">異常な大規模なファイル削除アクティビティを検出し、悪意のあるユーザによる悪意のあるファイルアクセスをブロックし、自動応答ポリシーを使用してスナップショットを自動的に作成します。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">応力の下の共有リソース</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレス状態の共有リソースでは、次の項目を特定できます。 - 共有リソース上のワークロードの負荷が高く、影響を受けるワークロードが個々に存在するために負荷が高い共有ストレージリソース<a href="https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html">"詳細はこちら"</a></p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021-年-12-月">2021 年 12 月</h3>
+<div class="sect3">
+<h4 id="ontap-システムをさらに緊密に統合">ONTAP システムをさらに緊密に統合</h4>
+<div class="paragraph">
+<p>ネットアップの Event Management System （ EMS ；イベント管理システム）との新たな統合により、 ONTAP ハードウェア障害に対するアラート生成を簡易化できます。<a href="task_system_monitors.html">"調査とアラート"</a> Cloud Insights の下位レベルの ONTAP メッセージを使用して、トラブルシューティングのワークフローを通知および改善し、 ONTAP 要素管理ツールへの依存をさらに軽減します。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ログを照会しています">ログを照会しています</h4>
+<div class="paragraph">
+<p>ONTAP システムの場合、 Cloud Insights クエリには強力な機能が搭載されています <a href="concept_log_explorer.html">"ログエクスプローラ"</a>を使用すると、 EMS ログエントリの調査とトラブルシューティングを簡単に行うことができます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="LogQueryExplorer.png" alt="ログクエリ"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-レベルの通知">Data Collector レベルの通知。</h4>
+<div class="paragraph">
+<p>システム定義のアラート用モニタとカスタム作成のモニタに加えて、 ONTAP データコレクタのアラート通知も設定できます。これにより、他のモニタアラートとは無関係に、コレクタレベルのアラートの受信者を指定できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-ロールの柔軟性が向上します">Cloud Secure ロールの柔軟性が向上します</h4>
+<div class="paragraph">
+<p>に基づいて、ユーザに Cloud Secure 機能へのアクセスを許可できます <a href="concept_user_roles.html#permission-levels">"ロール"</a> 管理者が設定します。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ロール</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Secure アクセス</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">管理者</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アラート、フォレンジック、データコレクタ、自動応答ポリシー、 Cloud Secure 用 API など、すべての Cloud Secure 機能を実行できます。管理者は、他のユーザを招待することもできますが、割り当てることができるのは Cloud Secure ロールのみです。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アラートを表示および管理し、フォレンジックを表示できます。ユーザーロールは、アラートステータスの変更、メモの追加、スナップショットの手動作成、ユーザーアクセスの制限を行うことができます。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ゲスト</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アラートおよびフォレンジックを表示できます。ゲストロールは、アラートステータスの変更、メモの追加、スナップショットの手動作成、ユーザーアクセスの制限を行うことはできません。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="オペレーティングシステムのサポート">オペレーティングシステムのサポート</h4>
+<div class="paragraph">
+<p>CentOS 8.x のサポートは、現在 * CentOS 8 Stream * のサポートに置き換えられています。CentOS 8.x は、 2021 年 12 月 31 日にサポート終了となります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-のアップデート">Data Collector のアップデート</h4>
+<div class="paragraph">
+<p>ベンダーの変更を反映した Cloud Insights データコレクタ名がいくつか追加されています。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ベンダー / モデル</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">前の名前</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dell EMC PowerScale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Isilon</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HPE Alletra 9000/Primera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3PAR</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HPE Alletra 6000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nimble</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年11月">2021年11月</h3>
+<div class="sect3">
+<h4 id="adaptive-dashboards-アダプティブダッシュボード">Adaptive Dashboards （アダプティブダッシュボード</h4>
+<div class="paragraph">
+<p>_ 属性の新しい変数と、ウィジェットで変数を使用する機能 _ 。</p>
+</div>
+<div class="paragraph">
+<p>ダッシュボードは、かつてないほど強力で柔軟性に優れています。属性変数を使用してアダプティブダッシュボードを構築することで、ダッシュボードを即座にフィルタリングできます。これらと既存の他のものを使用する <a href="concept_dashboard_features.html#variables">"変数（ variables ）"</a> 環境全体の指標を確認するためのダッシュボードを 1 つ作成し、リソース名、タイプ、場所などでシームレスにフィルタリングダウンできるようになりました。ウィジェットの数値変数を使用して、ストレージサービスの GB あたりのコストなど、物理指標をコストに関連付けます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Variables_Drop_Down_Showing_Annotations.png" alt=""></span>
+<span class="image"><img src="Variables_Attribute_Filtering.png" alt=""></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="api-経由で-reporting-database-にアクセスします">API 経由で Reporting Database にアクセスします</h4>
+<div class="paragraph">
+<p>サードパーティのレポート作成ツール、 ITSM ツール、自動化ツールとの統合機能が強化されました。 Cloud Insights の強力な機能です <a href="API_Overview.html">"API"</a> Cognos Reporting 環境を使用せずに、 Cloud Insights Reporting データベースを直接照会できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vm-ランディングページのポッドテーブル">VM ランディングページのポッドテーブル</h4>
+<div class="paragraph">
+<p>VM と Kubernetes ポッド間のシームレスなナビゲーション：トラブルシューティングとパフォーマンスヘッドルーム管理を向上させるために、関連する Kubernetes ポッドの表が VM ランディングページに表示されるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Pod_Table_on_VM_Page.png" alt="VM ランディングページの Kubernetes ポッドの表"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-のアップデート-2">Data Collector のアップデート</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>ECS で、ストレージとノードのファームウェアが報告されるようになりました</p>
+</li>
+<li>
+<p>Isilon のプロンプト検出機能が向上しました</p>
+</li>
+<li>
+<p>Azure NetApp Files は、パフォーマンスデータをより迅速に収集します</p>
+</li>
+<li>
+<p>StorageGRID でシングルサインオン (SSO) がサポートされるようになりました。</p>
+</li>
+<li>
+<p>Brocade CLI は、 X&#8212;&#8203;4 のモデルを適切に報告します</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サポートされているその他のオペレーティングシステム">サポートされているその他のオペレーティングシステム</h4>
+<div class="paragraph">
+<p>Cloud Insights Acquisition Unit では、すでにサポートされている OS に加え、次のオペレーティングシステムがサポートされます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CentOS （ 64 ビット） 8.4</p>
+</li>
+<li>
+<p>Oracle Enterprise Linux （ 64 ビット） 8.4</p>
+</li>
+<li>
+<p>Red Hat Enterprise Linux （ 64 ビット） 8.4</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年10月">2021年10月</h3>
+<div class="sect3">
+<h4 id="k8s-explorer-ページのフィルター">K8S Explorer ページのフィルター</h4>
+<div class="paragraph">
+<p><a href="kubernetes_landing_page.html">"Kubernetes エクスプローラ"</a> ページフィルタを使用すると、 Kubernetes クラスタ、ノード、およびポッドの探索に表示されるデータを集中的に制御できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Filter_Kubernetes_Explorer.png" alt="Kubernetes Explorer のフィルタリングの例"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="レポート用の-k8s-データ">レポート用の K8s データ</h4>
+<div class="paragraph">
+<p>Reporting で Kubernetes データを使用できるようになりました。チャージバックやその他のレポートを作成できます。Kubernetes チャージバックデータを Reporting に渡すには、 Kubernetes クラスタとそのバックエンドストレージへのアクティブな接続が必要です。また、 Cloud Insights が Kubernetes クラスタとの間でデータを受信している必要があります。バックエンドストレージからデータを受信していない場合、 Cloud Insights は Kubernetes オブジェクトデータを Reporting に送信できません。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_ETL_Example.png" alt="チャージバックレポートに Kubernetes データが表示されます"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ダークテーマが到着しました">ダークテーマが到着しました</h4>
+<div class="paragraph">
+<p>あなたの多くは暗い主題を求め、 Cloud Insights は答えた。ライトテーマとダークテーマを切り替えるには、ユーザー名の横にあるドロップダウンをクリックします。<span class="image"><img src="DarkModeSwitch.png" alt="&quot;[ ダークテーマに切り替える"></span> は、 [ ユーザー ] ドロップダウンから選択できます"]
+<span class="image"><img src="DarkModeDashboard.png" alt="ダークテーマで表示される一般的なダッシュボードの画像"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-のサポート">Data Collector のサポート</h4>
+<div class="paragraph">
+<p>Cloud Insights データコレクタにいくつかの改善を加えました。主な特長は次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Amazon FSX for ONTAP の新しいコレクタ</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年9月">2021年9月</h3>
+<div class="sect3">
+<h4 id="パフォーマンスポリシーが監視対象になりました">パフォーマンスポリシーが監視対象になりました</h4>
+<div class="paragraph">
+<p>監視とアラートは、 Cloud Insights 全体でパフォーマンスポリシーと違反に取って代わるものです。 <a href="task_create_monitor.html">"モニタとのアラート"</a> 環境内の潜在的な問題や傾向をより柔軟に把握できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="モニタでのオートコンプリートの推奨事項ワイルドカードおよび式">モニタでのオートコンプリートの推奨事項、ワイルドカード、および式</h4>
+<div class="paragraph">
+<p>アラートを監視するモニタを作成する際に、フィルタを入力すると予測が可能になり、モニタのメトリックや属性を簡単に検索して見つけることができます。また、入力したテキストに基づいてワイルドカードフィルタを作成することもできます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Type-Ahead_Monitor_1.png" alt="モニターのタイプアヘッドフィルター"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="telegraf-agent-を更新">Telegraf Agent を更新</h4>
+<div class="paragraph">
+<p>テレグラム統合データの取り込みのためのエージェントがバージョン * 1.19.3* に更新され、性能とセキュリティが向上しました。更新を希望するユーザーは、の適切なアップグレードセクションを参照できます <a href="task_config_telegraf_agent.html">"エージェントのインストール"</a> ドキュメント以前のバージョンのエージェントは、ユーザの操作を必要とせずに引き続き機能します。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-のサポート-2">Data Collector のサポート</h4>
+<div class="paragraph">
+<p>Cloud Insights データコレクタにいくつかの改善を加えました。主な特長は次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Microsoft Hyper-V コレクタで、 WMI ではなく PowerShell が使用されるようになりました</p>
+</li>
+<li>
+<p>並行呼び出しのため、 Azure VM と VHD コレクタの処理速度が最大 10 倍になりました</p>
+</li>
+<li>
+<p>HPE Nimble は、フェデレーテッド構成と iSCSI 構成をサポートしています</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>また、常にデータ収集を改善しているため、次のような最近の変更点があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>EMC Powerstore の新しいコレクタ</p>
+</li>
+<li>
+<p>Hitachi Ops Center の新しいコレクタです</p>
+</li>
+<li>
+<p>Hitachi Content Platform の新しいコレクタ</p>
+</li>
+<li>
+<p>ONTAP コレクタを拡張して、ファブリックプールをレポートします</p>
+</li>
+<li>
+<p>ストレージプールとボリュームのパフォーマンスで ANF を強化</p>
+</li>
+<li>
+<p>EMC ECS で、ストレージノードとストレージパフォーマンス、およびバケット内のオブジェクト数が強化されました</p>
+</li>
+<li>
+<p>ストレージノードと qtree の指標で EMC Isilon が強化されました</p>
+</li>
+<li>
+<p>EMC Symetrix のボリューム QoS 制限メトリックが強化されました</p>
+</li>
+<li>
+<p>ストレージノードの親シリアル番号を持つ強化された IBM SVC および EMC PowerStore</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年8月">2021年8月</h3>
+<div class="sect3">
+<h4 id="新しい監査ページのユーザーインターフェイス">新しい監査ページのユーザーインターフェイス</h4>
+<div class="paragraph">
+<p>。 <a href="concept_audit.html">"監査ページ"</a> よりシンプルなインターフェイスを提供し、監査イベントを .csv ファイルにエクスポートできるようになりました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ユーザロール管理の強化">ユーザロール管理の強化</h4>
+<div class="paragraph">
+<p>Cloud Insights では、ユーザロールとアクセス制御をより自由に割り当てることができるようになりました。ユーザに、監視、レポート、および Cloud Secure に対する詳細な権限を個別に割り当てることができるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>つまり、監視、最適化、レポート機能への管理アクセスをより多くのユーザに許可しながら、機密性の高い Cloud Secure 監査およびアクティビティデータへのアクセスを必要なユーザだけに制限できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html">"詳細はこちら"</a> Cloud Insights のドキュメントに記載されている各アクセスレベルについて</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年6月">2021年6月</h3>
+<div class="sect3">
+<h4 id="フィルタ-での推奨事項ワイルドカードおよび式のオートコンプリート">[ フィルタ ] での推奨事項、ワイルドカード、および式のオートコンプリート</h4>
+<div class="paragraph">
+<p>このリリースの Cloud Insights では、クエリやウィジェットでフィルタリングする名前と値をすべて把握している必要はありません。フィルタリングを行う場合は、入力を開始 Cloud Insights するだけで、テキストに基づいて値が提示されます。ウィジェットに表示するアプリケーション名や Kubernetes 属性を検索する必要はありません。</p>
+</div>
+<div class="paragraph">
+<p>フィルタを入力すると、選択可能な結果のスマートリストが表示されます。また、現在のテキストに基づいて * ワイルドカードフィルタ * を作成するオプションも表示されます。このオプションを選択すると、ワイルドカード式に一致するすべての結果が返されます。もちろん、フィルタに追加する値を個別に複数選択することもできます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Type-Ahead-Example-ingest.png" alt="ワイルドカードフィルタ"></span></p>
+</div>
+<div class="paragraph">
+<p>また、 NOT または OR を使用して、フィルタに * 式 * を作成したり、「 None 」オプションを選択してフィールドで null 値をフィルタリングしたりすることもできます。</p>
+</div>
+<div class="paragraph">
+<p>詳細については、をご覧ください <a href="task_create_query.html#more-on-filtering">"フィルタリングオプション"</a> クエリおよびウィジェットで使用できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edition-で使用可能な-api">Edition で使用可能な API</h4>
+<div class="paragraph">
+<p>Cloud Insights の強力な API にはこれまで以上にアクセス可能であり、 Alerts API が Standard Edition および Premium Edition で利用可能になりました。各エディションで使用できる API は次のとおりです。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API カテゴリ</th>
+<th class="tableblock halign-center valign-top">基本</th>
+<th class="tableblock halign-center valign-top">標準</th>
+<th class="tableblock halign-center valign-top">Premium サービス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Acquisition Unit の略</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データ収集</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アラート</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">資産</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データの取り込み</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="kubernetes-の-pv-とポッドの可視化">Kubernetes の PV とポッドの可視化</h4>
+<div class="paragraph">
+<p>Cloud Insights を使用すると、 Kubernetes 環境のバックエンドストレージを可視化し、 Kubernetes ポッドと永続的ボリューム（ PVS ）を把握できます。IOPS 、レイテンシ、スループットなどの PV カウンタを、 1 台のポッドで使用されている PV カウンターから PV まで、そしてバックエンドのストレージデバイスまでのすべての方法で追跡できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>ボリュームまたは内部ボリュームのランディングページに、次の 2 つの新しいテーブルが表示される。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_PV_Table.png" alt="Kubernetes PV テーブル"></span>
+<span class="image"><img src="Kubernetes_Pod_Table.png" alt="Kubernetes ポッドテーブル"></span></p>
+</div>
+<div class="paragraph">
+<p>これらの新しいテーブルを利用するには、現在の Kubernetes エージェントをアンインストールして新規にインストールすることをお勧めします。Kbe State-Metrics バージョン 2.1.0 以降もインストールする必要があります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kubernetes-ノードから-vm-リンク">Kubernetes ノードから VM リンク</h4>
+<div class="paragraph">
+<p>Kubernetes Node ページで、をクリックしてノードの VM ページを開くことができます。VM ページには、ノード自体へのリンクも表示されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Node_Page_with_VM_Link.png" alt="VM リンクが表示された Kubernetes ノードページ"></span>
+<span class="image"><img src="Kubernetes_VM_Page_with_Node_Link.png" alt="ノードリンクを示す Kubernetes VM ページ"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="パフォーマンスポリシーの置き換えをアラート監視します">パフォーマンスポリシーの置き換えをアラート監視します</h4>
+<div class="paragraph">
+<p>Cloud Insights は、複数のしきい値、 webhook 、 E メールによるアラート送信、単一のインターフェイスを使用したすべての指標のアラート送信などの利点を追加するために、 2021 年 7 月から 8 月までの間、 Standard Edition および Premium Edition のお客様を * Performance Policies * から * Monitor * に変換します。の詳細を確認してください <a href="https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html">"アラートと監視"</a>では、このエキサイティングな変化に合わせて調整してください。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-は-nfs-をサポートしています">Cloud Secure は NFS をサポートしています</h4>
+<div class="paragraph">
+<p>Cloud Secure で ONTAP データ収集用の NFS がサポートされるようになりました。SMB および NFS ユーザアクセスを監視し、ランサムウェア攻撃からデータを保護また、 Cloud Secure は、 NFS ユーザ属性を収集するための Active Directory および LDAP ユーザディレクトリもサポートしています。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-スナップショットのパージ">Cloud Secure スナップショットのパージ</h4>
+<div class="paragraph">
+<p>Cloud Secure では、スナップショットパージ設定に基づいてスナップショットが自動的に削除されるため、ストレージスペースが節約され、手動でスナップショットを削除する必要がなくなります。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="CloudSecure_SnapshotPurgeSettings.png" alt="消去設定"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-のデータ収集速度">Cloud Secure のデータ収集速度</h4>
+<div class="paragraph">
+<p>1 つのデータコレクタエージェントシステムで、 Cloud Secure に 1 秒あたり最大 20,000 のイベントをポストできるようになりました。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年5月">2021年5月</h3>
+<div class="paragraph">
+<p>4 月に行った変更の一部を以下に示します。</p>
+</div>
+<div class="sect3">
+<h4 id="telegraf-agent-を更新-2">Telegraf Agent を更新</h4>
+<div class="paragraph">
+<p>テレグラム統合データの取り込み用エージェントは、パフォーマンスとセキュリティが向上し、バージョン 1.17.3 に更新されました。更新を希望するユーザーは、の適切なアップグレードセクションを参照できます <a href="https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html">"エージェントのインストール"</a> ドキュメント以前のバージョンのエージェントは、ユーザの操作を必要とせずに引き続き機能します。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="アラートに対処方法を追加します">アラートに対処方法を追加します</h4>
+<div class="paragraph">
+<p>オプションの概要を追加し、 [ アラート概要の追加 ] セクションに入力して、モニタの作成または変更時に追加のインサイトや修正アクションを追加できるようになりました。概要がアラートとともに送信されます。Insights と対処方法のフィールドには、アラートに対処するための詳細な手順とガイダンスが表示され、アラートのランディングページの概要セクションに表示されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Monitors_Alert_Description.png" alt="アラートの対処方法と概要"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="すべてのエディションの-cloud-insights-api">すべてのエディションの Cloud Insights API</h4>
+<div class="paragraph">
+<p>API アクセスがすべてのエディションの Cloud Insights で利用できるようになりました。Basic エディションのユーザは、 Acquisition Unit と Data Collector のアクションを自動化できるようになりました。また、 Standard Edition ユーザは、メトリックを照会してカスタムメトリックを取り込むことができます。Premium Edition では、引き続きすべての API カテゴリをフルに使用できます。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API カテゴリ</th>
+<th class="tableblock halign-center valign-top">基本</th>
+<th class="tableblock halign-center valign-top">標準</th>
+<th class="tableblock halign-center valign-top">Premium サービス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Acquisition Unit の略</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データ収集</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">資産</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データの取り込み</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data Warehouse</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><span class="image"><img src="SmallCheckMark.png" alt=""></span></strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>API の使用方法の詳細については、を参照してください <a href="https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger">"API のドキュメント"</a>。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年4月">2021年4月</h3>
+<div class="sect3">
+<h4 id="モニタの管理が容易になります">モニタの管理が容易になります</h4>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html#monitor-grouping">"グループ化を監視します"</a> 環境内のモニタの管理を簡易化します。複数のモニタをグループ化して、 1 つのモニタとして一時停止できるようになりました。たとえば、インフラストラクチャのスタックで更新が発生している場合は、それらのすべてのデバイスからのアラートを 1 回のクリックで一時停止できます。</p>
+</div>
+<div class="paragraph">
+<p>モニタグループは、 ONTAP デバイスの管理を Cloud Insights に向上させる、画期的な新機能の最初の部分です。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Monitors_GroupList.png" alt="グループ化を監視します"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="webhook-を使用した拡張アラートオプション">webhook を使用した拡張アラートオプション</h4>
+<div class="paragraph">
+<p>多くの商用アプリケーションをサポートしています <a href="task_create_webhook.html">"ウェブフック"</a> 標準入力インターフェイスとして使用します。Cloud Insights では、このような配信チャネルの多くがサポートされるようになりました。 Slack 、 PagerDuty 、 Teams 、および Discord 用のデフォルトテンプレートが用意されています。また、カスタマイズ可能な汎用 Web フックを使用して、他の多くのアプリケーションをサポート</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Webhooks_Notifications_sm.png" alt="Webhook 通知"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="デバイス識別機能の向上">デバイス識別機能の向上</h4>
+<div class="paragraph">
+<p>監視とトラブルシューティングを改善し、正確なレポートを作成するためには、 IP アドレスやその他の ID ではなく、デバイス名を理解しておくと役立ちます。Cloud Insights では、というルールベースのアプローチを使用して、環境内のストレージデバイスと物理ホストデバイスの名前を自動的に識別できるようになりました <a href="concept_device_resolution_overview.html">"* デバイス解決 *"</a>（ * Manage * メニューで使用できます）。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="もっと情報を求められました">もっと情報を求められました！</h4>
+<div class="paragraph">
+<p>お客様からの一般的な質問では、データの範囲を視覚化するためのデフォルトオプションが用意されています。そのため、サービス全体で次の 5 つの新しい選択肢が時間範囲ピッカーで利用できるようになりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>過去 30 分</p>
+</li>
+<li>
+<p>過去 2 時間</p>
+</li>
+<li>
+<p>過去 6 時間</p>
+</li>
+<li>
+<p>過去 12 時間</p>
+</li>
+<li>
+<p>過去 2 日間</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="1-つの-cloud-insights-環境で複数のサブスクリプションを登録できます">1 つの Cloud Insights 環境で複数のサブスクリプションを登録できます</h4>
+<div class="paragraph">
+<p>4 月 2 日より、 Cloud Insights は、 1 つの Cloud Insights インスタンスで 1 つの顧客に対して同じエディションタイプの複数のサブスクリプションをサポートします。これにより、お客様は、 Cloud Insights サブスクリプションの一部をインフラ購入と共存させることができます。複数のサブスクリプションについては、ネットアップの営業にお問い合わせください。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="パスを選択します">パスを選択します</h4>
+<div class="paragraph">
+<p>Cloud Insights のセットアップ中に、監視とアラートの開始方法と、ランサムウェアと内部の脅威の検出方法を選択できるようになりました。Cloud Insights は、選択したパスに基づいて開始環境を設定します。他のパスはあとでいつでも設定できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="簡単な-cloud-secure-オンボーディング">簡単な Cloud Secure オンボーディング</h4>
+<div class="paragraph">
+<p>また、 Cloud Secure の使用を今まで以上に簡単に開始でき、セットアップのための新しいチェックリストも追加されています。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="CloudSecure_SetupChecklist.png" alt="Cloud Secure チェックリスト"></span></p>
+</div>
+<div class="paragraph">
+<p>いつものように、お客様のご提案をお待ちしております。<a href="mailto:ng-cloudinsights-customerfeedback@netapp.com">ng-cloudinsights-customerfeedback@netapp.com</a> に送信します。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年2月">2021年2月</h3>
+<div class="sect3">
+<h4 id="telegraf-agent-を更新-3">Telegraf Agent を更新</h4>
+<div class="paragraph">
+<p>テレグラム統合データの取り込み用エージェントは、脆弱性およびバグ修正を含むバージョン 1.17.0 に更新されました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-cost-analyzer">Cloud Cost Analyzer</h4>
+<div class="paragraph">
+<p>詳細について解説したクラウドコストで、ネットアップの Spot by NetApp のパワーを体験してください <a href="http://docs.netapp.com/us-en/cloudinsights/task_getting_started_with_cloud_cost.html">"コスト分析"</a> 過去、現在、推定された支出のうち、環境内のクラウドの使用状況を可視化します。クラウドコストダッシュボードでは、クラウドのコストを明確に把握し、個々のワークロード、アカウント、サービスを詳細に把握できます。</p>
+</div>
+<div class="paragraph">
+<p>クラウドコストは、次のような大きな課題に役立ちます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>クラウドコストの追跡と監視</p>
+</li>
+<li>
+<p>廃棄物と潜在的な最適化領域を特定する</p>
+</li>
+<li>
+<p>実行可能アクションアイテムを配信しています</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>クラウドコストは監視に重点を置いています。ネットアップのアカウントで Full Spot by NetApp にアップグレードすると、コストを自動削減し、環境を最適化できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="フィルタを使用した-null-値を持つオブジェクトのクエリ">フィルタを使用した null 値を持つオブジェクトのクエリ</h4>
+<div class="paragraph">
+<p>Cloud Insights では、フィルタを使用して、値が NULL / なしの属性とメトリックを検索できるようになりました。このフィルタリングは、次の場所で任意の属性や指標に対して実行できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>をクリックします</p>
+</li>
+<li>
+<p>ダッシュボードウィジェットおよびページ変数で使用できます</p>
+</li>
+<li>
+<p>をクリックします</p>
+</li>
+<li>
+<p>モニターを作成するとき</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>NULL / なしの値をフィルタリングするには ' 該当するフィルタのドロップダウンに <em>None</em> オプションが表示されたら ' そのオプションを選択します</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Filter_Null_Example.png" alt="ドロップダウンに NULL フィルタがあります"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="複数リージョンのサポート">複数リージョンのサポート</h4>
+<div class="paragraph">
+<p>本日より、世界中のさまざまな地域で Cloud Insights サービスを提供します。これにより、米国外のお客様のパフォーマンスが向上し、セキュリティが強化されます。Cloud Insights / Cloud Secure は、環境を作成したリージョンに応じて情報を格納します。</p>
+</div>
+<div class="paragraph">
+<p>をクリックします <a href="http://docs.netapp.com/us-en/cloudinsights/security_information_and_region.html">"こちらをご覧ください"</a> を参照してください。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2021年1月">2021年1月</h3>
+<div class="sect3">
+<h4 id="その他の-ontap-メトリックの名前変更">その他の ONTAP メトリックの名前変更</h4>
+<div class="paragraph">
+<p>ONTAP システムからのデータ収集の効率化に向けて継続的に取り組んでいる一環として、以下の ONTAP 指標の名前が変更されました。</p>
+</div>
+<div class="paragraph">
+<p>既存のダッシュボードウィジェットやこれらのいずれかの指標を使用するクエリがある場合は、新しい指標名を使用するようにそれらのウィジェットを編集または再作成する必要があります。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">前のメトリック名</th>
+<th class="tableblock halign-left valign-top">新しいメトリック名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.DISK_constituent.total_transfers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.disk_constituent.total_iops</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.disk.total_transfers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.disk.total_iops</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.FCP_LIF.READ_DATA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.FCP_LIF.READ_Throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.fcp_lif.write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.fcp_lif.write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.iscsi_lif.read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.iscsi_lif.read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.iscsi_lif.write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.iscsi_lif.write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.LIF.recv_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.LIF.recv_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">netapp_ontap.lif.sent_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">netapp_ontap.lif.sent_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.LUN.READ_DATA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.LUN.READ_Throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.LUN.write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.LUN.write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.nic_common_rx_bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.nic_common_rx_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.nic_common.tx_bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.nic_common.tx_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ontap .path.read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ontap 。 path.read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ontap .path.write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ontap 。 path.write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ontap .path.total_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ontap 。 path.total_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.policy_group.read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.policy_group.read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.policy_group.write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.policy_group.write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.policy_group.other_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.policy_group.other_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.policy_group.total_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.policy_group.total_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.system_node.disk_data_read</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.SYSTEM_NODE.DISK_Throughput 読み取り</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.system_node.disk_data_written に書き込まれている</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.DISK_Throughput _ Written</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.HDD_DATA 読み取り</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.SYSTEM_NODE.HDD_Throughput 読み取り</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.system_node.HDD_data_written に作成されている必要があります</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.HDD_Throughput _ Written</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.SSD_DATA 読み取り</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.SYSTEM_NODE.SSD_Throughput 読み取り</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.system_node.ssd_data_written</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.SYSTEM_NODE.SSD_Throughput _ Written</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">netapp_ontap.system_node.net_data_recv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">netapp_ontap.system_node.net_throughput_recv</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">netapp_ontap.system_node.net_data_sent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">netapp_ontap.system_node.net_throughput_sent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.FCP_DATA _ recv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.FCP_Throughput _ recv</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.FCP_DATA _ 送信されました</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.SYSTEM_NODE.FCP_Throughput 送信</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.volume_node.cifs_read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.cifs_read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.cifs_write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.cifs_write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.nfs_read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.nfs_read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.nfs_write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.nfs_write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.iscsi_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.iscsi_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.iscsi_write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.iscsi_write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.fcp_read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.fcp_read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.fcp_write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_node.fcp_write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.volume_read_data を選択します</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.volume_write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.workload .read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.workload .read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.workload .write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.workload .write_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.workload _volume. read_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.workload _volume. read_throughput</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetApp_ONTAP.workload _volume_write_data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NetAppONTAP.workload _volume. write_throughput</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="新しい-kubernetes-エクスプローラ">新しい Kubernetes エクスプローラ</h4>
+<div class="paragraph">
+<p>。 <a href="kubernetes_landing_page.html">"Kubernetes エクスプローラ"</a> Kubernetes クラスタのトポロジをわかりやすく表示できるため、エキスパートでなくても、クラスタレベルからコンテナやストレージまで、問題や依存関係をすばやく特定できます。</p>
+</div>
+<div class="paragraph">
+<p>Kubernetes 環境内のクラスタ、ノード、ポッド、コンテナ、ストレージのステータス、使用状況、健全性に関する Kubernetes Explorer のドリルダウンの詳細を使用して、さまざまな情報を調べることができます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Kubernetes_Cluster_Detail_Example.png" alt="Kubernetes エクスプローラを使用します"></span></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年12月">2020年12月</h3>
+<div class="sect3">
+<h4 id="kubernetes-のインストールを簡易化">Kubernetes のインストールを簡易化</h4>
+<div class="paragraph">
+<p>Kubernetes Agent のインストールは合理化され、ユーザの操作が少なくて済みます。 <a href="task_config_telegraf_agent.html#kubernetes">"Kubernetes Agent をインストールします"</a> Kubernetes のデータ収集機能が追加されました。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年11月">2020年11月</h3>
+<div class="sect3">
+<h4 id="その他のダッシュボード">その他のダッシュボード</h4>
+<div class="paragraph">
+<p>ONTAP に焦点を当てた次のダッシュボードがギャラリーに追加され、インポート可能になりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ONTAP ：アグリゲートのパフォーマンスと容量</p>
+</li>
+<li>
+<p>ONTAP FAS / AFF - 容量利用率</p>
+</li>
+<li>
+<p>ONTAP FAS/AFF - クラスタ容量</p>
+</li>
+<li>
+<p>ONTAP FAS / AFF - 効率性</p>
+</li>
+<li>
+<p>ONTAP FAS / AFF - FlexVol のパフォーマンス</p>
+</li>
+<li>
+<p>ONTAP FAS / AFF ノードの運用 / 最適ポイント</p>
+</li>
+<li>
+<p>ONTAP FAS / AFF - ポスト前の容量削減</p>
+</li>
+<li>
+<p>ONTAP ：ネットワークポートのアクティビティ</p>
+</li>
+<li>
+<p>ONTAP ：ノードプロトコルのパフォーマンス</p>
+</li>
+<li>
+<p>ONTAP ：ノードワークロードのパフォーマンス（フロントエンド）</p>
+</li>
+<li>
+<p>ONTAP ：プロセッサ</p>
+</li>
+<li>
+<p>ONTAP ： SVM ワークロードのパフォーマンス（フロントエンド）</p>
+</li>
+<li>
+<p>ONTAP ：ボリュームワークロードのパフォーマンス（フロントエンド）</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="表ウィジェットの列名を変更します">表ウィジェットの列名を変更します</h4>
+<div class="paragraph">
+<p>表ウィジェットの <em>Metrics および Attributes</em> セクションで列の名前を変更するには、編集モードでウィジェットを開き、列の上部にあるメニューをクリックします。新しい名前を入力して、 <em>Save</em>( 保存 ) をクリックするか、 <em>Reset</em> ( リセット ) をクリックして列を元の名前に戻します。</p>
+</div>
+<div class="paragraph">
+<p>これは、表ウィジェットでの列の表示名にのみ影響します。指標 / 属性名は、基になるデータ自体では変更されません。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Table_Widget_Column_Rename.png" alt="表ウィジェットの名前変更列"></span></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年10月">2020年10月</h3>
+<div class="sect3">
+<h4 id="統合データのデフォルトの拡張">統合データのデフォルトの拡張</h4>
+<div class="paragraph">
+<p>表ウィジェットのグループ化により、 Kubernetes 、 ONTAP Advanced Data 、およびエージェントノードのデフォルトの拡張が可能になりました。たとえば、 Kubernetes Nodes <em>by_Cluster</em> をグループ化すると、クラスタごとの表に行が表示されます。そのあと、各クラスタの行を展開すると、ノードオブジェクトのリストが表示されます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="basic-edition-テクニカルサポート">Basic Edition テクニカルサポート</h4>
+<div class="paragraph">
+<p>Standard Edition および Premium Edition に加えて、 Cloud Insights Basic Edition をご利用のお客様にもテクニカルサポートをご利用いただけるようになりました。また、 Cloud Insights を使用すると、ネットアップサポートチケットを作成するためのワークフローが簡易化されています。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-公開-api">Cloud Secure 公開 API</h4>
+<div class="paragraph">
+<p>Cloud Secure はをサポートします <a href="concept_cs_api.html">"REST API"</a> アクティビティおよびアラート情報へのアクセス用。これは、 Cloud Secure 管理 UI で作成された API アクセストークンを使用して実行されます。 API アクセストークンは、 REST API にアクセスするために使用されます。Swagger の REST API のドキュメントは Cloud Secure と統合されています。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年9月">2020年9月</h3>
+<div class="sect3">
+<h4 id="統合データを含むクエリーページ">統合データを含むクエリーページ</h4>
+<div class="paragraph">
+<p>Cloud Insights クエリページでは、統合データ（ Kubernetes 、 ONTAP Advanced Metrics など）をサポートしています。統合データを使用している場合、クエリ結果の表には「分割画面」ビューが表示され、左側にオブジェクト / グループ化が、右側にオブジェクトデータ（属性 / 指標）が表示されます。統合データをグループ化するための属性を複数選択することもできます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="QueryPageIntegrationData.png" alt="統合データを示すクエリ"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="表ウィジェットでの単位表示形式">表ウィジェットでの単位表示形式</h4>
+<div class="paragraph">
+<p>表ウィジェットで、指標 / カウンタデータを表示する列（ギガバイト、 MB/ 秒など）を単位で表示できるようになりました。メトリックの表示単位を変更するには、列ヘッダーの「 3 つのドット」メニューをクリックし、「単位表示」を選択します。使用可能な任意の単位から選択できます。使用可能な単位は、表示列の指標データのタイプによって異なります。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="TableWidgetUnitManagement1.png" alt="表ウィジェットのユニット管理"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="acquisition-unit-の詳細ページ">Acquisition Unit の詳細ページ</h4>
+<div class="paragraph">
+<p>Acquisition Unit に専用のランディングページが追加されました。このページでは、 AU ごとに役立つ詳細情報やトラブルシューティングに役立つ情報を確認できます。。 <a href="task_configure_acquisition_unit.html#viewing-au-details">"AU 詳細ページ"</a> AU のデータコレクタおよび有用なステータス情報へのリンクを示します。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-docker-依存関係が削除されました">Cloud Secure Docker 依存関係が削除されました</h4>
+<div class="paragraph">
+<p>Cloud Secure による Docker への依存は解消されました。Cloud Secure エージェントのインストールに Docker は不要になりました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reporting-user-roles-の場合">Reporting User Roles の場合</h4>
+<div class="paragraph">
+<p>Cloud Insights Premium Edition と Reporting を使用している場合は、環境内のすべての Cloud Insights ユーザに、 Reporting アプリケーションへのシングルサインオン（ SSO ）ログイン（など）が付与されます Cognos ）。メニューの * Reports * リンクをクリックすると、レポートに自動的にログインします。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Insights でのユーザロールによって、の割り当てが決まります <a href="reporting_user_roles.html">"Reporting ユーザのロール"</a>：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Insights ロール</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reporting ロール</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">レポート権限</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ゲスト</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">消費者</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">レポートの表示、スケジュール設定、実行、および言語やタイムゾーンなどの個人設定を行うことができます。消費者は、レポートの作成や管理タスクの実行はできません。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ユーザ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">作成者</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">すべてのコンシューマ機能を実行できるだけでなく、レポートやダッシュボードの作成と管理も可能です。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">管理者</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">管理者</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">レポートの構成やレポートタスクのシャットダウンおよび再起動など、すべての管理タスクだけでなく、作成者のすべての機能も実行できます。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+Cloud Insights レポートは 500 MU 以上の環境で使用できます。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/important.svg" alt="重要">
+</td>
+<td class="content">
+現在の Premium Edition のお客様で、レポートを保持したい場合は、こちらをお読みください <a href="reporting_user_roles.html#important-note-for-existing-customers">"既存のお客様にとって重要な注意事項です"</a>。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="データ取り込み用の新しい-api-カテゴリ">データ取り込み用の新しい API カテゴリ</h4>
+<div class="paragraph">
+<p>Cloud Insights では、 * データの取り込み * API カテゴリが追加され、カスタムデータとエージェントをより詳細に制御できるようになりました。この API カテゴリおよびその他の API カテゴリの詳細なドキュメントは、 Cloud Insights で * Admin &gt; API Access * に移動し、 _API Documentation_link をクリックすると参照できます。AU 詳細ページおよび AU リストページに表示される Note フィールドの AU にコメントを追加することもできます。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年8月">2020年8月</h3>
+<div class="sect3">
+<h4 id="監視とアラート生成">監視とアラート生成</h4>
+<div class="paragraph">
+<p>Cloud Insights Standard Edition には、ストレージオブジェクト、 VM 、 EC2 、およびポートのパフォーマンスポリシーを設定できるようになったほか、次の機能が追加されました <a href="task_create_monitor.html">"モニタを設定します"</a> Kubernetes 、 ONTAP の高度な指標、 Telegraf プラグインの統合データのしきい値用。アラートをトリガーするオブジェクト指標ごとに監視を作成し、警告レベルまたは重大レベルのしきい値の条件を設定し、各レベルに必要な E メール受信者を指定するだけです。そのあとで、を実行できます  傾向を追跡したり、問題をトラブルシューティングしたりできます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="define_monitor_conditions_2.png" alt="モニター条件"></span></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020-年-7-月">2020 年 7 月</h3>
+<div class="sect3">
+<h4 id="cloud-secure-がスナップショットアクションを実行します">Cloud Secure がスナップショットアクションを実行します</h4>
+<div class="paragraph">
+<p>Cloud Secure は、悪意のあるアクティビティが検出されたときにスナップショットを自動的に取得することでデータを保護し、データを安全にバックアップします。</p>
+</div>
+<div class="paragraph">
+<p>ランサムウェア攻撃やその他の異常なユーザアクティビティが検出されたときにスナップショットを取る自動応答ポリシーを定義できます。アラートページから手動で Snapshot を作成することもできます。</p>
+</div>
+<div class="paragraph">
+<p>自動 Snapshot の作成：<span class="image"><img src="AlertActionsAutomaticExample.png" alt="アラート処置画面、 1000"></span></p>
+</div>
+<div class="paragraph">
+<p>手動スナップショット：<span class="image"><img src="AlertActionsExample.png" alt="アラート処置画面、 1000"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="メトリック-カウンタの更新">メトリック / カウンタの更新</h4>
+<div class="paragraph">
+<p>Cloud Insights UI および REST API で使用できる容量カウンタを次に示します。これまでは、これらのカウンタは Data Warehouse / Reporting でのみ使用できていました。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">オブジェクトタイプ（ Object Type ）</th>
+<th class="tableblock halign-left valign-top">カウンタ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容量 - スペアの物理容量 - 物理エラー</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ストレージプール</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データ容量 - 使用済みデータ容量 - その他の合計容量 - 使用済み容量 - 合計容量 - 物理容量 - ソフトリミット</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">内部ボリューム</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">データ容量 - 使用済みデータ容量 - その他の合計容量 - 使用済みその他の容量 - クローンの合計削減容量 - 合計</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-の潜在的な攻撃検出">Cloud Secure の潜在的な攻撃検出</h4>
+<div class="paragraph">
+<p>Cloud Secure はランサムウェアなどの潜在的な攻撃を検出するようになりました[Alerts] リストページでアラートをクリックすると ' 次のような詳細ページが開きます</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>攻撃の時間</p>
+</li>
+<li>
+<p>関連付けられているユーザおよびファイルアクティビティ</p>
+</li>
+<li>
+<p>実行されたアクション</p>
+</li>
+<li>
+<p>追加情報は、潜在的なセキュリティ違反の追跡を支援します</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ランサムウェア攻撃の可能性を示すアラートページ：<span class="image"><img src="RansomwareAlertExample.png" alt="ランサムウェアアラートの例"></span></p>
+</div>
+<div class="paragraph">
+<p>ランサムウェア攻撃の詳細ページ：<span class="image"><img src="RansomwareDetailPageExample.png" alt="Ransomware Detail Page の例"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aws-で-premium-edition-に登録">AWS で Premium Edition に登録</h4>
+<div class="paragraph">
+<p>Cloud Insights の試用期間中は、次の操作を実行できます <a href="concept_subscribing_to_cloud_insights.html">"セルフサブスクライブ"</a> AWS Marketplace から Cloud Insights Standard Edition または Premium Edition に移動する。これまでは、 AWS Marketplace でのみ Standard Edition に自分で登録することができました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="拡張テーブルウィジェット">拡張テーブルウィジェット</h4>
+<div class="paragraph">
+<p>ダッシュボード / アセットページの表ウィジェットには、次の拡張機能が含まれています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>「分割画面」ビュー：表ウィジェットの左側にはオブジェクト / グループ化、右側にはオブジェクトデータ（属性 / 指標）が表示されます。</p>
+<div class="paragraph">
+<p><span class="image"><img src="TableWidgetLeftRightPanes.png" alt="左右のペインを示す表ウィジェット"></span></p>
+</div>
+</li>
+<li>
+<p>複数の属性のグループ化：統合データ（ Kubernetes 、 ONTAP Advanced Metrics 、 Docker など）については、グループ化の対象として複数の属性を選択できます。選択したグループ化属性に従ってデータが表示されます。</p>
+<div class="paragraph">
+<p>統合データによるグループ化（編集モードで表示）：<span class="image"><img src="TableWidgetIntegrationEditMode.png" alt="表ウィジェットでの統合データのグループ化"></span></p>
+</div>
+</li>
+<li>
+<p>インフラデータ（ストレージ、 EC2 、 VM 、ポートなど）をグループ化することは、従来と同様に単一の属性によって行われます。オブジェクトではない属性によってグループ化する場合、テーブルでグループ行を展開すると、グループ内のすべてのオブジェクトが表示されます。</p>
+<div class="paragraph">
+<p>インフラストラクチャデータによるグループ化（表示モードで表示）：<span class="image"><img src="TableWidgetPerformanceData.png" alt="表ウィジェットでのインフラストラクチャデータのグループ化"></span></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="メトリックフィルタリング">メトリックフィルタリング</h4>
+<div class="paragraph">
+<p>ウィジェット内のオブジェクトの属性でフィルタリングできるだけでなく、指標もフィルタリングできるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="MetricsFiltering.png" alt="メトリックフィルタリング"></span></p>
+</div>
+<div class="paragraph">
+<p>統合データ（ Kubernetes 、 ONTAP 高度なデータなど）を使用する場合、指標フィルタリングを使用すると、データ系列の集計値でフィルタが機能し、グラフからオブジェクト全体が削除されるのとは異なり、プロットされたデータ系列から個々のデータポイントや一致しないデータポイントが削除されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="IntegrationMetricFilterExample.png" alt="統合メトリックフィルタリング"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ontap-詳細カウンタデータ">ONTAP 詳細カウンタデータ</h4>
+<div class="paragraph">
+<p>Cloud Insights は、 ONTAP デバイスから収集された多数のカウンタと指標を提供する NetApp ONTAP 固有の * Advanced Counter Data * を利用しています。ONTAP の Advanced Counter データは、ネットアップのすべてのお客様がご利用になれます。 ONTAPこれらの指標を使用して、 Cloud Insights のウィジェットやダッシュボードで、カスタマイズした幅広いデータを視覚化できます。</p>
+</div>
+<div class="paragraph">
+<p>ONTAP の高度なカウンタを確認するには、ウィジェットのクエリで「 NetApp_ONTAP 」を検索し、カウンタから選択します。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="netapp_ontap%20counters.png" alt="ONTAP Advanced Counters を検索しています"></span></p>
+</div>
+<div class="paragraph">
+<p>カウンタ名の一部を入力することで、検索条件を絞り込むことができます。例：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>LIF _</p>
+</li>
+<li>
+<p>_ アグリゲート _</p>
+</li>
+<li>
+<p>_ 外付け _ VScan サーバ _</p>
+</li>
+<li>
+<p>その他</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ONTAP_Widget_Example2.png" alt="ONTAP ウィジェットの例 - WAFL"></span>
+<span class="image"><img src="ONTAP_Widget_Example1.png" alt="ONTAP ウィジェットの例 - CP の読み取り"></span></p>
+</div>
+<div class="paragraph">
+<p>次の点に注意してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>新しい ONTAP データコレクタでは、高度なデータ収集がデフォルトで有効になります。既存の ONTAP データコレクタに対して高度なデータ収集を有効にするには、データコレクタを編集し、 _Advanced Configuration_Section を展開します。</p>
+</li>
+<li>
+<p>7-Mode の ONTAP では高度なデータ収集を使用できません。</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="advanced-counter-dashboards-のことです">Advanced Counter Dashboards のことです</h5>
+<div class="paragraph">
+<p>Cloud Insights には、 ONTAP アドバンストカウンタの可視化を開始するのに役立つ、さまざまな設計済みダッシュボードが用意されています。これらのダッシュボードでは、 _ アグリゲートパフォーマンス _ 、 _ ボリュームワークロード _ 、 _ プロセッサアクティビティ _ などのトピックを確認できます。ONTAP データコレクタが 1 つ以上設定されている場合は、ダッシュボード一覧ページのダッシュボードギャラリーからインポートできます。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="詳細はこちら">詳細はこちら。</h5>
+<div class="paragraph">
+<p>ONTAP 詳細データの詳細については、次のリンクを参照してください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://mysupport.netapp.com/site/tools/tool-eula/netapp-harvest" class="bare">https://mysupport.netapp.com/site/tools/tool-eula/netapp-harvest</a> （注：ネットアップサポートにサインインする必要があります）。</p>
+</li>
+<li>
+<p><a href="https://nabox.org/faq/" class="bare">https://nabox.org/faq/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ポリシーと違反メニュー">ポリシーと違反メニュー</h4>
+<div class="paragraph">
+<p>パフォーマンスポリシーと違反が [* アラート ] メニューに表示されるようになりました。ポリシーと違反機能は変更されません。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="PoliciesMenuChange.png" alt="ポリシーと違反メニュー"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="telegraf-agent-を更新-4">Telegraf Agent を更新</h4>
+<div class="paragraph">
+<p>テレグラム統合データの取り込み用エージェントがに更新されました <a href="https://docs.influxdata.com/telegraf/v1.14/">"バージョン 1.14"</a>には、バグ修正、セキュリティ修正、および新しいプラグインが含まれています。</p>
+</div>
+<div class="paragraph">
+<p>注： Kubernetes プラットフォームで Kubernetes データコレクタを設定する際、「 clusterrole 」属性に必要な権限がないため、ログに「 HTTP status 403 Forbidden 」エラーが表示されることがあります。</p>
+</div>
+<div class="paragraph">
+<p>この問題を回避するには、エンドポイントアクセスクラスタロールの _rules に以下の強調表示された行を追加し、 Tegraf ポッドを再起動します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>rules:
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - extensions
+  - policy
+  - rbac.authorization.k8s.io
+  attributeRestrictions: null
+  resources:
+  - nodes/metrics
+  - nodes/proxy     &lt;== Add this line
+  - nodes/stats
+  - pods            &lt;== Add this line
+  verbs:
+  - get
+  - list            &lt;== Add this line</pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020-年-6-月">2020 年 6 月</h3>
+<div class="sect3">
+<h4 id="data-collector-エラーレポートの簡易化">Data Collector エラーレポートの簡易化</h4>
+<div class="paragraph">
+<p>データコレクタページの <em>Send Error Report</em> ボタンを使用すると、データコレクタエラーのレポートが簡単になります。ボタンをクリックすると、エラーに関する基本情報がネットアップに送信され、問題の調査が求められます。Cloud Insights を押すと、ネットアップに通知されたことを示すメッセージが表示され、 Error Report ボタンが無効になります。このボタンをクリックすると、データコレクタについてのエラーレポートが送信されたことを示します。このボタンは、ブラウザページが更新されるまで無効のままです。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="DCErrorReportButton.png" alt="&quot;[ エラーレポート"></span> ボタン"]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ウィジェットの改良">ウィジェットの改良</h4>
+<div class="paragraph">
+<p>ダッシュボードウィジェットでは、次の点が強化されています。これらの機能強化はプレビュー機能とみなされ、すべての Cloud Insights 環境で利用できるわけではありません。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>新しいオブジェクト / 指標選択機能：オブジェクト（ストレージ、ディスク、ポート、ノードなど）と関連する指標（ IOPS 、レイテンシ、 CPU 数など）を、強力な検索機能を備えた 1 つの包括的なドロップダウンウィジェットで使用できるようになりました。ドロップダウンに複数の条件を部分的に入力すると、それらの条件を満たすすべてのオブジェクト指標が Cloud Insights に表示されます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Object_Metric_Chooser.png" alt="オブジェクト / メトリックセレクタ"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>複数のタグのグループ化：統合データ（ Kubernetes など）を操作する場合、複数のタグ / 属性でデータをグループ化できます。たとえば、 Kubernetes のネームスペースとコンテナ名別のメモリ使用量の合計です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="MultipleGroupsIntegrationLineChart.png" alt="統合データを表示する際の複数のグループ化"></span></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年5月">2020年5月</h3>
+<div class="sect3">
+<h4 id="reporting-user-roles-の場合-2">Reporting User Roles の場合</h4>
+<div class="paragraph">
+<p>Reporting に追加されたロールは次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Insights コンシューマ：レポートの実行と表示が可能です</p>
+</li>
+<li>
+<p>Cloud Insights Author ： Consumer 機能を実行できるほか、レポートやダッシュボードを作成、管理することもできます</p>
+</li>
+<li>
+<p>Cloud Insights 管理者：作成者機能およびすべての管理タスクを実行できます</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-アップデート">Cloud Secure アップデート</h4>
+<div class="paragraph">
+<p>Cloud Insights では、 Cloud Secure に関する次の最近の変更が行われています</p>
+</div>
+<div class="paragraph">
+<p>Forensics &gt; Activity Forensics ページでは、ユーザーアクティビティを分析および調査するための 2 つのビューを提供しています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ユーザアクティビティに重点を置いたアクティビティビュー（操作は何か？どこで実施したか？）</p>
+</li>
+<li>
+<p>ユーザーがアクセスしたファイルに焦点を合わせたエンティティビュー。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="CSActivityForensicsExample.png" alt="エンティティページの例"></span></p>
+</div>
+<div class="paragraph">
+<p>また、アラート E メール通知にアラートページへの直接リンクが追加されました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ダッシュボードのグループ化">ダッシュボードのグループ化</h4>
+<div class="paragraph">
+<p>ダッシュボードのグループ化により、パフォーマンスが向上します <a href="concept_dashboard_features.html#dashboard-groups">"ダッシュボードの管理"</a> あなたに関係があります。関連するダッシュボードをグループに追加して、ストレージや仮想マシンなどを「ワンストップ」で管理できます。</p>
+</div>
+<div class="paragraph">
+<p>グループはユーザごとにカスタマイズされるため、 1 人のグループが他のユーザと異なる場合があります。グループは必要な数だけ作成でき、各グループにダッシュボードをいくつでも配置できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="DashboardGroupNoPin.png" alt="ダッシュボードグループ"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ダッシュボードのピン留め">ダッシュボードのピン留め</h4>
+<div class="paragraph">
+<p>お気に入りが常にリストの先頭に表示されるように、ダッシュボードを固定することができます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="DashboardPin.png" alt="ダッシュボードピン"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tv-モードと自動更新">TV モードと自動更新</h4>
+<div class="paragraph">
+<p><a href="concept_dashboard_features.html#tv-mode-and-auto-refresh">"TV モードと自動更新"</a> ダッシュボードやアセットページにほぼリアルタイムでデータを表示できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>*TV モード * は、すっきりとしたディスプレイを提供します。ナビゲーションメニューは非表示になっており、データ表示用の画面のスペースが増えます。</p>
+</li>
+<li>
+<p>ダッシュボードとアセットランディングページのウィジェットのデータ * 自動更新 * 選択したダッシュボードの期間（ダッシュボードの時間を上書きするように設定されている場合は、ウィジェットの時間範囲）で設定された更新間隔（ 10 秒ごと）に基づいてデータが表示されます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TV モードと自動更新機能を組み合わせることで、 Cloud Insights データのライブビューが提供され、シームレスなデモンストレーションや社内モニタリングに最適です。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年4月">2020年4月</h3>
+<div class="sect3">
+<h4 id="ダッシュボードの新しい時間範囲の選択肢">ダッシュボードの新しい時間範囲の選択肢</h4>
+<div class="paragraph">
+<p>ダッシュボードおよびその他の Cloud Insights ページの時間範囲の選択に <em>Last 1 Hour_Last 15 Minutes</em> が含まれるようになりました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-secure-アップデート-2">Cloud Secure アップデート</h4>
+<div class="paragraph">
+<p>Cloud Insights では、 Cloud Secure に関する次の最近の変更が行われています</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ファイルおよびフォルダのメタデータの変更が認識され、ユーザが権限、所有者、またはグループ所有権を変更したかどうかを確認できるようになりました。</p>
+</li>
+<li>
+<p>ユーザアクティビティレポートを CSV にエクスポートします。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cloud Secure は、ファイルおよびフォルダに対するすべてのユーザアクセス操作を監視して監査します。アクティビティ監査では、内部セキュリティポリシーへの準拠、 PCI 、 GDPR 、 HIPAA などの外部コンプライアンス要件への準拠、データ侵害やセキュリティインシデント調査を実施できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="デフォルトのダッシュボード時間">デフォルトのダッシュボード時間</h4>
+<div class="paragraph">
+<p>ダッシュボードのデフォルトの期間は、 24 時間ではなく 3 時間に変更されました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="集約時間の最適化">集約時間の最適化</h4>
+<div class="paragraph">
+<p>最適化 <a href="concept_dashboard_features.html#aggregating-data">"時間の集約"</a> タイムシリーズウィジェット（ライン、スプライン、エリア、積み上げ面グラフ）の間隔は、ダッシュボード / ウィジェットの 3 時間および 24 時間の時間範囲でより頻繁になり、データをより迅速にグラフ化できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>3 時間の時間範囲は、 1 分の集約間隔に最適化されます。これまでは 5 分でした。</p>
+</li>
+<li>
+<p>24 時間の時間範囲は、 30 分の集約間隔に最適化されます。以前は 1 時間でしたが、</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>カスタムインターバルを設定して、最適化された集計を上書きすることもできます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="単位の自動フォーマットを表示します">単位の自動フォーマットを表示します</h4>
+<div class="paragraph">
+<p>ほとんどのウィジェットでは、 Cloud Insights は値を表示するベースユニットを認識しています。たとえば、 <em>mabm</em>,<em>unse</em>,<em>percent</em>,_milliseconds(ms) _ 、 など <a href="concept_dashboard_features.html#choosing-the-unit-for-displaying-data">"自動的にフォーマットします"</a> 最も読み取り可能な単位のウィジェット。たとえば、データ値が 1 、 234 、 5678 、 890 バイトの場合、自動的に 1.23 ギビバイトにフォーマットされます。多くの場合、 Cloud Insights は取得するデータの最適な形式を認識しています。最適な形式がわからない場合や、自動書式設定を上書きするウィジェットの場合は、目的の形式を選択できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="used_memory_in_bytes_gb.png" alt="ウィジェットの自動フォーマット、幅 =480"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="api-を使用してアノテーションをインポート">API を使用してアノテーションをインポート</h4>
+<div class="paragraph">
+<p>Cloud Insights Premium Edition の強力な API を使用して、次のことが可能になりました <a href="task_annotation_import.html">"アノテーションをインポートする"</a> をクリックし、 .csv ファイルを使用してオブジェクトに割り当てます。アプリケーションをインポートし、ビジネスエンティティを同じように割り当てることもできます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="api_assets_import.png" alt="アノテーションのインポート"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ウィジェットセレクタの簡易化">ウィジェットセレクタの簡易化</h4>
+<div class="paragraph">
+<p>すべてのウィジェットタイプを 1 つの一度に表示する新しいウィジェットセレクタでは、ダッシュボードやアセットランディングページにウィジェットを簡単に追加できます。追加するウィジェットタイプを特定するために、ウィジェットタイプのリストをスクロールする必要がなくなりました。関連ウィジェットは、新しいセレクタの近くで色分けされ、グループ化されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="NewWidgetPicker.png" alt="新しいウィジェットセレクタ"></span></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年2月">2020年2月</h3>
+<div class="sect3">
+<h4 id="premium-edition-の-api">Premium Edition の API</h4>
+<div class="paragraph">
+<p>Cloud Insights Premium Edition には、が付属しています <a href="API_Overview.html">"強力な API"</a> これを使用して、 Cloud Insights を CMDB や他のチケットシステムなどの他のアプリケーションと統合できます。</p>
+</div>
+<div class="paragraph">
+<p>Swagger ベースの詳細情報は、 * Admin &gt; API Acccess * の * API Documentation リンクから参照できます。Swagger では、 API の簡単な概要情報と使用状況の情報を提供しており、環境内の各 API を試すことができます。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Insights API では、アクセストークンを使用して、資産や収集などのカテゴリの API にアクセスする権限ベースのアクセスを提供します。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="API_Documentation.png" alt="API のドキュメント"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-を追加した後の初期ポーリング">Data Collector を追加した後の初期ポーリング</h4>
+<div class="paragraph">
+<p>以前は、新しいデータコレクタを設定すると、 Cloud Insights はデータコレクタをただちにポーリングして collector_inventory_data を収集しましたが、設定されたパフォーマンスポーリング間隔（通常は 15 分）まで待機して initial_performion_data が収集されます。そのあと、別の間隔を待ってから 2 回目のパフォーマンスポーリングを開始します。つまり、新しいデータコレクタから有意義なデータが取得されるまでに、最大 30 分 _ かかることになります。</p>
+</div>
+<div class="paragraph">
+<p>データコレクタ <a href="task_configure_data_collectors.html">"ポーリング"</a> は、インベントリのポーリング直後に最初のパフォーマンスポーリングが行われるように大幅に改善され、最初のパフォーマンスポーリングが完了してから数秒以内に 2 番目のパフォーマンスポーリングが実行されるようになりました。これにより、 Cloud Insights は、非常に短時間でダッシュボードやグラフに有用なデータの表示を開始できます。</p>
+</div>
+<div class="paragraph">
+<p>このポーリング動作は、既存のデータコレクタの設定を編集したあとにも発生します。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ウィジェットの重複を容易にします">ウィジェットの重複を容易にします</h4>
+<div class="paragraph">
+<p>ダッシュボードやランディングページにウィジェットのコピーを簡単に作成できるようになりました。ダッシュボード編集モードで、ウィジェットのメニューをクリックし、 * 複製 * を選択します。ウィジェットエディタが起動し、元のウィジェットの設定とウィジェット名に「 copy 」というサフィックスが付きます。必要な変更を簡単に加えて、新しいウィジェットを保存することができます。ウィジェットはダッシュボードの下部に配置され、必要に応じて配置することができます。すべての変更が完了したら、必ずダッシュボードを保存してください。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="DuplicateWidget.png" alt="ウィジェットを複製します"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="シングルサインオン-sso">シングルサインオン（ SSO ）</h4>
+<div class="paragraph">
+<p>Cloud Insights Premium Edition では、管理者は * を有効にできます<a href="concept_user_roles.html#single-sign-on-sso-accounts">"単一 Sign-On"</a>* （ SSO ）は、企業ドメイン内のすべてのユーザの Cloud Insights へのアクセスを個別に招待する必要がありません。SSO が有効になっている場合、同じドメインの E メールアドレスを持つすべてのユーザは、各自の企業クレデンシャルを使用して Cloud Insights にログインできます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="注記">
+</td>
+<td class="content">
+SSO は Cloud Insights Premium Edition でのみ使用可能で、 Cloud Insights で有効にする前に設定する必要があります。SSO 設定にはが含まれます <a href="https://services.cloud.netapp.com/misc/federation-support">"アイデンティティフェデレーション"</a> NetApp Cloud Central を使用フェデレーションを使用すると、シングルサインオンユーザが、社内ディレクトリのクレデンシャルを使用して NetApp Cloud Central アカウントにアクセスできます。
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2020年1月">2020年1月</h3>
+<div class="sect3">
+<h4 id="swagger-rest-api-のドキュメント">Swagger REST API のドキュメント</h4>
+<div class="paragraph">
+<p>Swagger では、 Cloud Insights で使用可能な REST API のほか、その用途や構文についても説明しています。Cloud Insights API の詳細については、を参照してください <a href="http://docs.netapp.com/us-en/cloudinsights/API_Overview.html">"ドキュメント"</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="feature-tutorials-progress-bar-機能チュートリアルの進行状況">Feature Tutorials Progress Bar ( 機能チュートリアルの進行状況</h4>
+<div class="paragraph">
+<p>機能チュートリアルのチェックリストは上部のバナーに移動され、進行状況を示すインジケータが表示されます。チュートリアルは、閉じるまで各ユーザーに提供され、 Cloud Insights では常に利用できます <a href="concept_feature_tutorials.html">"ドキュメント"</a>。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="TutorialProgress.png" alt="チュートリアルチェックリストの進行状況"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="acquisition-unit-の変更">Acquisition Unit の変更</h4>
+<div class="paragraph">
+<p>Acquisition Unit （ AU ）をインストール済みの AU と同じ名前のホストまたは VM にインストールする場合、 Cloud Insights では、 AU 名に「 _1 」、「 _2 」を追加して一意の名前が保証されます。 など。これは、最初に Cloud Insights から AU を削除せずに、同じ VM から AU をアンインストールして再インストールする場合にも当てはまります。別の AU 名を使用したい場合は、問題ありません。インストール後に AU の名前を変更できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ウィジェットの時間集約を最適化">ウィジェットの時間集約を最適化</h4>
+<div class="paragraph">
+<p>ウィジェットでは、設定した _Optimised _ time 集計間隔または _Custom_interval のいずれかを選択できます。最適化された集計では、ダッシュボードで選択した時間範囲（ダッシュボードの時間を上書きする場合はウィジェットの時間範囲）に基づいて、適切な時間間隔が自動的に選択されます。間隔は、ダッシュボードまたはウィジェットの時間範囲が変更されると動的に変わります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-started-with-cloud-insights-プロセスがシンプルになりました">「 Getting Started with Cloud Insights 」プロセスがシンプルになりました</h4>
+<div class="paragraph">
+<p>Cloud Insights の使用を開始するプロセスが簡易化され、初回セットアップがスムーズになり、簡単になりました。最初のデータコレクタを選択し、指示に従います。Cloud Insights では、データコレクタと、必要なエージェントまたは Acquisition Unit の設定手順を説明します。ほとんどの場合、最初のダッシュボードも 1 つ以上インポートするため、環境に関する分析情報を短時間で取得できます（ Cloud Insights で意味のあるデータを収集するには最大 30 分かかります）。</p>
+</div>
+<div class="paragraph">
+<p>その他の改善点：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Acquisition Unit のインストールはシンプルで、処理も高速です。</p>
+</li>
+<li>
+<p>[ アルファベット順のデータコレクタ ] を選択すると、探しているデータコレクタを簡単に見つけることができます。</p>
+</li>
+<li>
+<p>Data Collector のセットアップ手順の改善がより簡単になりました。</p>
+</li>
+<li>
+<p>経験豊富なユーザーは、ボタンをクリックするだけで、開始プロセスを省略できます。</p>
+</li>
+<li>
+<p>新しい進行状況バーには、進行中の状態が表示されます。</p>
+<div class="paragraph">
+<p><span class="image"><img src="Onboarding_Progress.png" alt="進捗バー"></span></p>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年12月">2019年12月</h3>
+<div class="sect3">
+<h4 id="ビジネスエンティティはフィルタで使用できます">ビジネスエンティティはフィルタで使用できます</h4>
+<div class="paragraph">
+<p>ビジネスエンティティのアノテーションは、クエリ、ウィジェット、パフォーマンスポリシー、およびランディングページのフィルタで使用できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ドリルダウンは単一値ウィジェットとゲージウィジェットおよびすべてでロールされたウィジェットで使用できます">ドリルダウンは、単一値ウィジェットとゲージウィジェット、および「すべて」でロールされたウィジェットで使用できます。</h4>
+<div class="paragraph">
+<p>単一値ウィジェットまたはゲージウィジェットの値をクリックすると、ウィジェットで最初に使用されたクエリの結果を示すクエリページが開きます。また、データが「すべて」で集計されているウィジェットの凡例をクリックすると、ウィジェットで最初に使用したクエリの結果を示すクエリページも開きます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="試用期間が延長されました">試用期間が延長されました</h4>
+<div class="paragraph">
+<p>Cloud Insights の無償トライアルに登録された新規ユーザは、製品を評価するために 30 日間の期間を用意しています。これは、過去 14 日間の試用期間からの増加です。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="管理ユニットの計算">管理ユニットの計算</h4>
+<div class="paragraph">
+<p>Cloud Insights の管理ユニット（ MU ）の計算が次のように変更されました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1 台の管理対象ユニット = 2 台のホスト（任意の仮想マシンまたは物理マシン）</p>
+</li>
+<li>
+<p>1 管理ユニット = 物理ディスクまたは仮想ディスクのフォーマットされていない容量の 4TB</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>この変更により、既存の Cloud Insights サブスクリプションを使用して監視できる環境容量が 2 倍になります。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年11月">2019年11月</h3>
+<div class="sect3">
+<h4 id="エディション機能比較表">エディション機能比較表</h4>
+<div class="paragraph">
+<p>[<strong>Admin] &gt; [Subscription</strong>] ページ <a href="concept_subscribing_to_cloud_insights.html#key-features">"比較表"</a> Cloud Insights の Basic 、 Standard 、および Premium Edition で使用できる機能セットのリストが更新されました。ネットアップでは常にクラウドサービスの改善に取り組んでいますので、このページを頻繁にチェックして、進化するビジネスニーズに最適なエディションをお探しください。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年10月">2019年10月</h3>
+<div class="sect3">
+<h4 id="レポート作成">レポート作成</h4>
+<div class="paragraph">
+<p><a href="reporting_overview.html">"* Cloud Insights Reporting*"</a> は、事前定義済みのレポートを表示したりカスタムレポートを作成したりできる、ビジネスインテリジェンスツールです。Reporting を使用すると、次のタスクを実行できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>事前定義済みのレポートを実行します</p>
+</li>
+<li>
+<p>カスタムレポートを作成する</p>
+</li>
+<li>
+<p>レポートの形式と配信方法をカスタマイズする</p>
+</li>
+<li>
+<p>レポートが自動的に実行されるようにスケジュールを設定する</p>
+</li>
+<li>
+<p>レポートを E メールで送信</p>
+</li>
+<li>
+<p>データのしきい値を色で表します</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cloud Insights レポートでは、チャージバック、消費分析、予測などの領域用のカスタムレポートを生成できます。また、回答に関する次のような質問にも対応できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>所有しているインベントリ</p>
+</li>
+<li>
+<p>インベントリの場所</p>
+</li>
+<li>
+<p>アセットの使用者</p>
+</li>
+<li>
+<p>ビジネスユニットに割り当てられているストレージのチャージバック</p>
+</li>
+<li>
+<p>ストレージ容量の追加購入が必要になるまでの期間</p>
+</li>
+<li>
+<p>ビジネスユニットが適切なストレージ階層に配置されているか。</p>
+</li>
+<li>
+<p>1 カ月、 1 四半期、 1 年のストレージ割り当ての変化</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cloud Insights * Premium Edition * ではレポート作成が可能です。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="active-iq-の機能拡張">Active IQ の機能拡張</h4>
+<div class="paragraph">
+<p><a href="concept_activeiq.html">"Active IQ のリスク"</a> ダッシュボードテーブルのウィジェットで使用するだけでなく、照会できるオブジェクトとしても使用できるようになりました。リスクオブジェクトには次の属性が含まれます。 * カテゴリ * 軽減カテゴリ * 潜在的影響 * リスクの詳細 * 重大度 * ソース * ストレージ * ストレージノード * UI カテゴリ</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019-年-9-月">2019 年 9 月</h3>
+<div class="sect3">
+<h4 id="新しいゲージウィジェット">新しいゲージウィジェット</h4>
+<div class="paragraph">
+<p>ダッシュボードに単一値のデータを表示するウィジェットが、指定したしきい値に基づいて人目を引く色で 2 つ追加されました。値は、 * ソリッドゲージ * または * Bullet Gauge * のいずれかを使用して表示できます。警告範囲内にある値はオレンジで表示されます。Critical 範囲の値は赤で表示されます。警告しきい値を下回る値は緑で表示されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Gauge-Solid.png" alt="固体 / 従来型ゲージ"></span>
+<span class="image"><img src="Gauge-Bullet.png" alt="ブレットゲージ"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="単一値ウィジェットの条件付きカラーフォーマット">単一値ウィジェットの条件付きカラーフォーマット</h4>
+<div class="paragraph">
+<p>設定したしきい値に基づいて、背景色の単一値ウィジェットを表示できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Single-Value%20Widgets%20-%20Formatted.png" alt="書式設定された単一値ウィジェット"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="オンボーディング中にユーザーを招待する">オンボーディング中にユーザーを招待する</h4>
+<div class="paragraph">
+<p>オンボーディングプロセスの任意の時点で、 [ 管理 ] 、 [ ユーザー管理 ] 、 [ ユーザー ] の順にクリックして、 Cloud Insights 環境に他のユーザーを招待できます。オンボーディングが完了してデータが収集されると、 _Guest_or_User_roles を持つユーザにはより大きなメリットがもたらされることに注意してください。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-詳細ページの改善">Data Collector 詳細ページの改善</h4>
+<div class="paragraph">
+<p>データコレクタの詳細ページが改善され、読み取り可能な形式でエラーが表示されるようになりました。エラーがページ上の別のテーブルに表示されるようになりました。データコレクタで複数のエラーが発生した場合は、エラーがそれぞれ別の行に表示されます。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年8月">2019年8月</h3>
+<div class="sect3">
+<h4 id="すべて対使用可能なデータコレクタ">すべて対使用可能なデータコレクタ</h4>
+<div class="paragraph">
+<p>データコレクタを環境に追加するときに、サブスクリプションレベルまたはすべてのデータコレクタに基づいて使用可能なデータコレクタのみを表示するようにフィルタを設定できます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="active-iq-統合">Active IQ 統合</h4>
+<div class="paragraph">
+<p>Cloud Insights は、ネットアップのお客様とそのハードウェア / ソフトウェアシステムに対し、可視化、分析、その他のサポート関連サービスを提供するネットアップ ActiveIQ からデータを収集します。Cloud Insights は、 ONTAP データ管理システムと統合されます。を参照してください <a href="concept_activeiq.html">"Active IQ"</a> を参照してください。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019-年-7-月">2019 年 7 月</h3>
+<div class="sect3">
+<h4 id="ダッシュボードの機能強化">ダッシュボードの機能強化</h4>
+<div class="paragraph">
+<p>ダッシュボードとウィジェットが次のように改善されました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>合計、最小、最大、平均に加えて、 * カウント * は単一値ウィジェットでの集計オプションになりました。「カウント」でロールアップする場合、 Cloud Insights はオブジェクトがアクティブであるかどうかをチェックし、アクティブなオブジェクトだけをカウントに追加します。結果の番号は、集約およびフィルタの対象となります。</p>
+</li>
+<li>
+<p>単一値ウィジェットでは、 0 、 1 、 2 、 3 、または 4 桁の小数桁数を表示するように選択できるようになりました。</p>
+</li>
+<li>
+<p>折れ線グラフには、 1 つのカウンタをプロットするときの軸ラベルと単位が表示されます。</p>
+</li>
+<li>
+<p>* Transform * オプションは、すべての指標の時系列ウィジェットでサービス統合データに使用できるようになりました。タイムシリーズウィジェット（ Line 、 Spline 、 Area 、 Stacked Area ）のサービス統合（ Telegraf ）カウンタまたはメトリックの場合、任意の方法を選択できます <a href="concept_telegraf_display_options.html">"値を変換します"</a>。なし（表示値はそのまま）、合計、デルタ、累積など</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="basic-edition-へのダウングレード">Basic Edition へのダウングレード</h4>
+<div class="paragraph">
+<p>過去 7 日間にポーリングを正常に完了した設定済みのネットアップデバイスがない場合、 Basic Edition へのダウングレードが失敗してエラーメッセージが表示されます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="収集-kue-state-metrics">収集 Kue-State-Metrics</h4>
+<div class="paragraph">
+<p>。 <a href="task_config_telegraf_kubernetes.html">"Kubernetes Data Collector を実行します"</a> kube-state-metrics プラグインからオブジェクトとカウンタを収集し、 Cloud Insights で監視できる指標の数と範囲を大幅に拡大します。</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019-年-6-月">2019 年 6 月</h3>
+<div class="sect3">
+<h4 id="cloud-insights-エディション">Cloud Insights エディション</h4>
+<div class="paragraph">
+<p>Cloud Insights には、予算とビジネスニーズに合わせて、さまざまなエディションが用意されています。ネットアップサポートアカウントをお持ちの既存のお客様は、 7 日間のデータ保持期間をご利用いただけます。また、無料の * Basic Edition * をご利用いただくことで、ネットアップのデータ収集ツールへのアクセス、専門的なテクニカルサポートなどのデータ保持期間を延長できます。 * Standard Edition * をご利用ください。使用可能な機能の詳細については、ネットアップのを参照してください <a href="https://cloud.netapp.com/cloud-insights">"Cloud Insights の機能です"</a> サイト</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="新しいインフラストラクチャデータコレクタ-netapp-hci">新しいインフラストラクチャデータコレクタ： NetApp HCI</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task_dc_na_hci.html">"NetApp HCI 仮想センター"</a> は、インフラストラクチャデータコレクタとして追加されました。HCI Virtual Center データコレクタは、 NetApp HCI ホスト情報を収集します。 Virtual Center 内のすべてのオブジェクトに対する読み取り専用の権限が必要です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>HCI のデータコレクタが取得するのは HCI Virtual Center のみです。ストレージシステムからデータを収集するには、ネットアップも設定する必要があります <a href="task_dc_na_solidfire">"SolidFire"</a> データコレクタ：</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019-年-5-月">2019 年 5 月</h3>
+<div class="sect3">
+<h4 id="新しいサービスデータコレクター-kapacitor">新しいサービスデータコレクター： Kapacitor</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task_config_telegraf_kapacitor.html">"カパトール"</a> は、サービスのデータコレクタとして追加されています。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="telegraf-によるサービスとの統合">Telegraf によるサービスとの統合</h4>
+<div class="paragraph">
+<p>Cloud Insights では、スイッチやストレージなどのインフラデバイスからデータを取得するだけでなく、を使用してさまざまなオペレーティングシステムやサービスからデータを収集できるようになりました <a href="task_config_telegraf_agent.html">"Tegraf の代理店"</a> 統合データの収集用。Telegraf はプラグインベースのエージェントで、メトリックの収集とレポートに使用できます。入力プラグインは、システム /OS に直接アクセスするか、サードパーティ API を呼び出すか、または設定されたストリームをリスニングすることによって、エージェントに必要な情報を収集するために使用されます。</p>
+</div>
+<div class="paragraph">
+<p>現在サポートされているインテグレーションのドキュメントは、左側のメニューの「 * Reference and Support * 」の下にあります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="storage-virtual-machine-のアセット">Storage Virtual Machine のアセット</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Storage Virtual Machine （ SVM ）は、 Cloud Insights でアセットとして使用できます。SVM には独自のアセットランディングページがあり、検索、クエリ、フィルタで表示および使用できます。SVM は、ダッシュボードウィジェットやアノテーションに関連付けることもできます。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="acquisition-unit-のシステム要件の削減">Acquisition Unit のシステム要件の削減</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Acquisition Unit （ AU ）ソフトウェアのシステム CPU およびメモリの要件が削減されました。新しい要件は次のとおりです。</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* コンポーネント *</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* 旧要件 *</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* 新しい要件 *</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CPU コア</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">メモリ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 GB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 GB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="サポートされているその他のプラットフォーム">サポートされているその他のプラットフォーム</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>現在、これらのプラットフォームには次のプラットフォームが追加されています <a href="https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html">"Cloud Insights でサポートされます"</a>：</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linux の場合</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows の場合</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CentOS 7.3 64 ビット CentOS 7.4 64 ビット CentOS 7.6 64 ビット Debian 9 64 ビット Red Hat Enterprise Linux 7.3 64 ビット Red Hat Enterprise Linux 7.4 64 ビット Red Hat Enterprise Linux 7.6 64 ビット Ubuntu Server 18.04 LTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft Windows 10 64 ビット Microsoft Windows Server 2008 R2 Microsoft Windows Server 2019</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年4月">2019年4月</h3>
+<div class="sect3">
+<h4 id="タグで仮想マシンをフィルタリングします">タグで仮想マシンをフィルタリングします</h4>
+<div class="paragraph">
+<p>次のデータコレクタを設定するときに、タグまたはラベルに従って、データ収集に仮想マシンを含めるか除外するかをフィルタリングできます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task_dc_amazon_ec2.html#advanced-configuration">"Amazon EC2"</a></p>
+</li>
+<li>
+<p><a href="task_dc_ms_azure.html#advanced-configuration">"Azure"</a></p>
+</li>
+<li>
+<p><a href="task_dc_google_cloud.html#advanced_configuration">"Google Cloud Platform の 1 つです"</a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019-年-3-月">2019 年 3 月</h3>
+<div class="sect3">
+<h4 id="サブスクリプション関連イベントの-e-メール通知">サブスクリプション関連イベントの E メール通知</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>E メールの受信者を選択できます <a href="concept_notifications_email.html">"通知"</a> サブスクリプション関連のイベントが発生した場合（トライアルの有効期限が近づいている、またはアカウントを登録しているなど）。これらの通知の受信者は、次のいずれかから選択できます。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>すべてのアカウント所有者</p>
+</li>
+<li>
+<p>すべての管理者</p>
+</li>
+<li>
+<p>指定する追加の E メールアドレス</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="その他のダッシュボード-2">その他のダッシュボード</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>AWS を中心とした新しい機能 <a href="concept_import_from_dashboard_gallery.html">"ダッシュボード"</a> ギャラリーに追加されており、インポート可能です：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>AWS Admin - どの EC2 が需要の高いか</p>
+</li>
+<li>
+<p>AWS EC2 Instance Performance by Region 』を参照してください</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年2月">2019年2月</h3>
+<div class="sect3">
+<h4 id="aws-の子アカウントから収集しています">AWS の子アカウントから収集しています</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Insights はをサポートします <a href="task_dc_amazon_ec2.html#collecting_from_aws_child_accounts">"AWS の子アカウントから収集します"</a> 単一のデータコレクタ内。Cloud Insights が子アカウントから収集できるように AWS 環境を設定する必要があります。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-collector-の命名">Data Collector の命名</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Data Collector 名に、英字、数字、およびアンダースコアのほかに、ピリオド（ . ）、ハイフン（ - ）、およびスペース（）を含めることができるようになりました。名前の先頭と末尾にスペース、ピリオド、ハイフンを使用することはできません。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="acquisition-unit-for-windows-の略">Acquisition Unit for Windows の略</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Insights Acquisition Unit は Windows サーバ / VM に設定できます。ウィンドウを確認します <a href="concept_acquisition_unit_requirements.html">"前提条件"</a> をインストールする前に 。</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2019年1月">2019年1月</h3>
+<div class="sect3">
+<h4 id="owner-フィールドは読み取りやすくなっています">「 Owner 」フィールドは読み取りやすくなっています</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>ダッシュボードリストとクエリリストでは、「所有者」フィールドのデータは、以前はわかりやすい所有者名ではなく、認証 ID 文字列でした。「 Owner 」フィールドに、よりシンプルでわかりやすい所有者名が表示されるようになりました。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サブスクリプションページでの管理ユニットの内訳">サブスクリプションページでの管理ユニットの内訳</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>[<strong>Admin] &gt; [Subscription</strong>] ページにリストされている各データコレクタについて、ホストとストレージの管理ユニット (MU) カウントの内訳と合計が表示されるようになりました。</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2018年12月">2018年12月</h3>
+<div class="sect3">
+<h4 id="ui-ロード時間の改善">UI ロード時間の改善</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Insights のユーザインターフェイス（ UI ）の初回ロード時間が大幅に短縮されました。また、メタデータがロードされている環境では、更新時間を短縮することもできます。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="データコレクタを一括編集します">データコレクタを一括編集します</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>複数のデータコレクタの情報を同時に編集できます。[*Admin] &gt; [Data Collectors] ページで、変更するデータコレクタをそれぞれの左側にあるチェックボックスをオンにして、 [*Bulk Actions] ボタンをクリックします。「 * 編集」を選択し、必要なフィールドを変更します。</p>
+<div class="paragraph">
+<p>同じベンダーとモデルのデータコレクタを選択し、同じ Acquisition Unit に配置する必要があります。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サポートページとサブスクリプションページはオンボーディング中に利用できます">サポートページとサブスクリプションページはオンボーディング中に利用できます</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>オンボーディングワークフロー中に、ヘルプ &gt; サポート * ページと * 管理者 &gt; サブスクリプション * ページに移動できます。このページから戻るとオンボーディングワークフローに戻りますが、ブラウザのタブを閉じていないことが条件です。</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2018年11月">2018年11月</h3>
+<div class="sect3">
+<h4 id="ネットアップの営業担当者または-aws-marketplace-で登録">ネットアップの営業担当者または AWS Marketplace で登録</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Insights への登録と請求がネットアップから直接可能になりました。このサービスは、 AWS Marketplace で提供されるセルフサービスサブスクリプションに加えて提供されます。新しい * Contact Sales * リンクが、 * Admin &gt; Subscription * ページに表示されます。環境内の管理対象ユニット（ MU ）が 1 、 000 以上であることが予想される場合は、 Contact Sales リンクからネットアップの営業担当者に問い合わせることを推奨します。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="テキスト注釈ハイパーリンク">テキスト注釈ハイパーリンク</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>テキスト型注釈にハイパーリンクを含めることができるようになりました。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="チュートリアル">チュートリアル</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Insights では、最初のユーザ（管理者またはアカウント所有者）が新しい環境にログインする際のオンボーディング手順が追加されました。このチュートリアルでは、 Acquisition Unit のインストール、初期データコレクタの設定、および有用なダッシュボードの選択を行います。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gallery-からダッシュボードをインポートします">Gallery からダッシュボードをインポートします</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>オンボーディング中にダッシュボードを選択するだけでなく、 [ ダッシュボード（ * Dashboards ） ] &gt; [ すべてのダッシュボードを表示（ Show All Dashboards ） ] * を使用してダッシュボードをインポートし、 [ ギャラリーから * + （ * + from Gallery *</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ダッシュボードの複製">ダッシュボードの複製</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>ダッシュボードを複製する機能が、ダッシュボードリストページに各ダッシュボードのオプションメニューの選択肢として追加されました。また、ダッシュボードのメインページ自体については、 _Save_menu から選択できます。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloud-central-の製品メニュー">Cloud Central の製品メニュー</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>他の NetApp Cloud Central 製品に切り替えるメニューは、画面の右上に移動しました。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/test/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Web サイトについてのフィードバックを<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">お寄せください</a>
+  <a href="https://docs.netapp.com/ja-jp/announcements/" class="n-footer__copyright">お知らせ</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/test/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/test/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/test/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/test/js/www-ntap.js'></script>
+    <script src='/ja-jp/test/js/tabbed-blocks.js'></script>
+  </body></html>
