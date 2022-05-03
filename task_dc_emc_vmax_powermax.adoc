@@ -5,6 +5,7 @@ keywords: data collector, EMC, DELL, vmax, powermax
 summary: Dell EMC VMAX および PowerMax ファミリのデバイスデータコレクタの設定。 
 ---
 = Dell EMC VMAX および PowerMax ファミリのデバイスデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

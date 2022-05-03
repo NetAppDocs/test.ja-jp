@@ -5,6 +5,7 @@ keywords: kubernetes, pods, clusters, nodes. troubleshooting, planning
 summary: Kubernetes ノードの詳細ページでは、バックエンドの PV ストレージとポッドストレージに関する情報を確認できます。 
 ---
 = Kubernetes Node Detail ページ
+:allow-uri-read: 
 
 
 [role="lead"]

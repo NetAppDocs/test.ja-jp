@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, MongoDB
 summary: MongoDB データコレクタの設定 
 ---
 = MongoDB データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

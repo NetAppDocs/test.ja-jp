@@ -5,6 +5,7 @@ summary: ネットアップの Astra データストアを設定
 keywords: data collector, queries, create, astra, data, store, 
 ---
 = NetApp Astra データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]
@@ -12,7 +13,7 @@ keywords: data collector, queries, create, astra, data, store,
 
 
 TIP: 以下のインストール手順と追加情報は、 Astra データストアのドキュメントにも記載されています。link:https://docs.netapp.com/us-en/astra-data-store/use/monitor-with-cloud-insights.html["Cloud Insights で指標を監視"]
-
+link:https://docs.netapp.com/us-en/astra-data-store/get-started/quick-start.html["Astra データストアのクイックスタート"]
 
 
 

@@ -5,6 +5,7 @@ keywords: data collector, Pure Storage, pure
 summary: Pure Storage データコレクタの設定 
 ---
 = Pure Storage FlashArray データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

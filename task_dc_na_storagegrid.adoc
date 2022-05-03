@@ -5,6 +5,7 @@ summary: NetApp StorageGRID のデータコレクタを設定する
 keywords: data collector, queries, create, storagegrid 
 ---
 = NetApp StorageGRID データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: data collector, isilon, EMC, DELL, PowerScale
 summary: Dell EMC PowerScale （旧 Isilon ）データコレクタの設定 
 ---
 = Dell EMC PowerScale データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

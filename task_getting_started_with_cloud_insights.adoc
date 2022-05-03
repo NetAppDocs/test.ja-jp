@@ -5,6 +5,7 @@ summary: Cloud Insights での作業の開始
 keywords: invite, roles, data collector, acquisition unit, AU 
 ---
 = データの収集を開始しています
+:allow-uri-read: 
 
 
 Cloud Insights に登録して初めて環境にログインしたあと、以下の手順に従ってデータの収集と管理を開始します。

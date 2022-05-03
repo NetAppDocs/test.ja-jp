@@ -5,6 +5,7 @@ keywords: Active IQ, risks, svm
 summary: Cloud Insights は、 NetApp Active IQ からリスクデータを収集します 
 ---
 = Active IQ
+:allow-uri-read: 
 
 
 [role="lead"]

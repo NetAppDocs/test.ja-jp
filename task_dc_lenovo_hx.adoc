@@ -5,6 +5,7 @@ keywords: data collector, Lenovo, HX
 summary: Lenovo HX データコレクタの設定。 
 ---
 = Lenovo HX データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

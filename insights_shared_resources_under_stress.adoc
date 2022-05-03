@@ -5,6 +5,7 @@ keywords: insight, greedy, degraded, impacted, impacting, impactful, impact, res
 summary: この分析情報から、リソースが環境内の他のリソースにどのような影響を及ぼすかを確認できます。 
 ---
 = 知見：ストレスのある共有リソース
+:allow-uri-read: 
 
 
 [role="lead"]

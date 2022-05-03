@@ -5,6 +5,7 @@ keywords: notifications, annotations, queries, applications,
 summary: IO 密度 
 ---
 = I/O 密度のデータに内部データボリュームのみが含まれていることを確認する
+:allow-uri-read: 
 
 
 [role="lead"]

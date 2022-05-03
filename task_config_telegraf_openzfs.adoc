@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, openzfs
 summary: OpenZFS データコレクタ設定 
 ---
 = OpenZFS Data Collector を使用します
+:allow-uri-read: 
 
 
 [role="lead"]

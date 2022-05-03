@@ -5,6 +5,7 @@ summary: クラウドコストの導入を開始します。
 keywords: analysis, cost, analyzer 
 ---
 = クラウドコストの導入を開始します
+:allow-uri-read: 
 
 
 [role="lead"]

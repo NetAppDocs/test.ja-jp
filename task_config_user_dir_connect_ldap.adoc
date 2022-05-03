@@ -5,6 +5,7 @@ keywords: collector, configure, LDAP, Active Directory
 summary: Cloud Secure LDAP ユーザディレクトリコレクタの設定 
 ---
 = LDAP Directory Server Collector の設定
+:allow-uri-read: 
 
 
 [role="lead"]
@@ -124,7 +125,7 @@ LDAP ユーザ権限および属性定義は、次の手順で検証できます
  ldapsearch -D "uid=john ,cn=users,cn=accounts,dc=dorp,dc=company,dc=com" -W -x -LLL -o ldif-wrap=no -b "cn=accounts,dc=dorp,dc=company,dc=com" -H ldap://vmwipaapp08.dorp.company.com
 * LDAP エクスプローラを使用して、 LDAP データベースの移動、オブジェクトのプロパティと属性の表示、権限の表示、オブジェクトのスキーマの表示、高度な検索の実行を行い、保存して再実行することができます。
 +
-** LDAP Explorer をインストールします (http://ldaptool.sourceforge.net/)[] または Java LDAP Explorer を選択します  LDAP サーバに接続できる任意の Windows マシン。
+** LDAP Explorer をインストールします (http://ldaptool.sourceforge.net/)[] または Java LDAP Explorer を選択します (http://jxplorer.org/)[] LDAP サーバに接続できる任意の Windows マシン。
 ** LDAP ディレクトリサーバのユーザ名とパスワードを使用して LDAP サーバに接続します。
 
 

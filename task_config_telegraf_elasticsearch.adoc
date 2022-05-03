@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, ElasticSearch
 summary: Elasticsearch データコレクタの設定 
 ---
 = Elasticsearch Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

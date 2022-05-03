@@ -5,6 +5,7 @@ summary: Google Compute データコレクタを設定します
 keywords: data collector, queries, create 
 ---
 = NetApp Google Compute データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

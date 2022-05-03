@@ -4,6 +4,7 @@ permalink: task_cloud_insights_onboarding_1.html
 summary: Cloud Insights に登録して環境を作成 
 ---
 = Cloud Insights オンボーディング
+:allow-uri-read: 
 
 
 [role="lead"]

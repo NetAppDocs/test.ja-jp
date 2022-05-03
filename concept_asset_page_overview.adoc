@@ -5,6 +5,7 @@ summary: アセットページは、ほとんどのオブジェクトタイプ�
 keywords: asset page, objects, landing page, Virtual machine, VM, Storage Virtual Machine, SVM, Volume, Internal volume, Host, Hypervisor, pool, Storage, Datastore, Application, node, Qtree, Disk, VMDK, Port, Switch, Fabric 
 ---
 = アセットページの概要
+:allow-uri-read: 
 
 
 [role="lead"]

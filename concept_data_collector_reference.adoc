@@ -5,6 +5,7 @@ summary: ベンダー固有のデータコレクタリファレンス情報。
 keywords: data collector, vendor, AWS, BROADCOM, Cisco, Dell, EMC, Hitachi, IBM, NetApp, OceanStor, OpenStack, Oracle, Pure Storage, Red Hat, redhat, VMWare 
 ---
 = Vendor-Specific Reference 』を参照してください
+:allow-uri-read: 
 
 
 [role="lead"]

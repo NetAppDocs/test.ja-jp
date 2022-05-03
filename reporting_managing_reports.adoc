@@ -5,6 +5,7 @@ summary: レポートの出力と配信のカスタマイズ、クリップボ�
 keywords: reporting, cognos, data warehouse, dwh, managing, customizing, copying 
 ---
 = レポートの管理
+:allow-uri-read: 
 
 
 [role="lead"]

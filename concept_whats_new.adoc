@@ -5,6 +5,7 @@ summary: Cloud Insights で利用できる新機能と特徴。
 keywords: features 
 ---
 = Cloud Insights の新機能
+:allow-uri-read: 
 
 
 ネットアップは、製品やサービスの改善と強化を継続的に行っています。ここでは、 Cloud Insights で利用できる最新の機能をいくつか紹介します。
@@ -22,8 +23,8 @@ keywords: features
 ネットアップの Product Security Advisory Web サイトに掲載されている次の資料を参照してください。
 
 link:https://security.netapp.com/advisory/ntap-20211210-0007/["CVE-20121-44228"]
-
-
+link:https://security.netapp.com/advisory/ntap-20211215-0001/["CVE-20121-45046"]
+link:https://security.netapp.com/advisory/ntap-20211218-0001/["CVE-2021-45105"]
 
 これらの脆弱性の詳細と、ネットアップの対応については、を参照してください link:https://www.netapp.com/newsroom/netapp-apache-log4j-response/["ネットアップのニュースルーム"]。
 
@@ -841,7 +842,7 @@ Cloud Insights では、 * データの取り込み * API カテゴリが追加�
 
 ==== 監視とアラート生成
 
-Cloud Insights Standard Edition には、ストレージオブジェクト、 VM 、 EC2 、およびポートのパフォーマンスポリシーを設定できるようになったほか、次の機能が追加されました link:task_create_monitor.html["モニタを設定します"] Kubernetes 、 ONTAP の高度な指標、 Telegraf プラグインの統合データのしきい値用。アラートをトリガーするオブジェクト指標ごとに監視を作成し、警告レベルまたは重大レベルのしきい値の条件を設定し、各レベルに必要な E メール受信者を指定するだけです。そのあとで、を実行できます  傾向を追跡したり、問題をトラブルシューティングしたりできます。
+Cloud Insights Standard Edition には、ストレージオブジェクト、 VM 、 EC2 、およびポートのパフォーマンスポリシーを設定できるようになったほか、次の機能が追加されました link:task_create_monitor.html["モニタを設定します"] Kubernetes 、 ONTAP の高度な指標、 Telegraf プラグインの統合データのしきい値用。アラートをトリガーするオブジェクト指標ごとに監視を作成し、警告レベルまたは重大レベルのしきい値の条件を設定し、各レベルに必要な E メール受信者を指定するだけです。そのあとで、を実行できます link:task_view_and_manage_alerts.html["アラートを表示および管理します"] 傾向を追跡したり、問題をトラブルシューティングしたりできます。
 
 image:define_monitor_conditions_2.png["モニター条件"]
 
@@ -1579,7 +1580,7 @@ Cloud Insights では、スイッチやストレージなどのインフラデ�
 
 ==== Acquisition Unit for Windows の略
 
-* Cloud Insights Acquisition Unit は Windows サーバ / VM に設定できます。ウィンドウを確認します link:concept_acquisition_unit_requirements.html["前提条件"] をインストールする前に 。
+* Cloud Insights Acquisition Unit は Windows サーバ / VM に設定できます。ウィンドウを確認します link:concept_acquisition_unit_requirements.html["前提条件"] をインストールする前に link:task_configure_acquisition_unit.html["Acquisition Unit ソフトウェアの略"]。
 
 
 '''

@@ -5,6 +5,7 @@ keywords: IBM, XIV, SAN, A9000
 summary: IBM XIV / A9000 データコレクタの設定 
 ---
 = IBM XIV / A9000 データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

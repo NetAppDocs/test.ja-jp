@@ -5,6 +5,7 @@ keywords: webhook, notification, slack, integration
 summary: パフォーマンスまたはインベントリのしきい値をアラートするためのモニタを作成する 
 ---
 = webhook を使用した通知
+:allow-uri-read: 
 
 
 [role="lead"]
@@ -77,4 +78,4 @@ image:Webhook_Monitor_Notify.png["Webhook モニタの通知"]
 
 == Webhook の例：
 
-のウェブフック link:task_webhook_example_slack.html["Slack"]のウェブフック のウェブフック のウェブフック 
+のウェブフック link:task_webhook_example_slack.html["Slack"]のウェブフック link:task_webhook_example_pagerduty.html["PagerDuty"]のウェブフック link:task_webhook_example_teams.html["チーム"]のウェブフック link:task_webhook_example_discord.html["切断"]

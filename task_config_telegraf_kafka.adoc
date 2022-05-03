@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, kafka
 summary: Kafka データコレクタの設定 
 ---
 = Kafka Data Collector の利用
+:allow-uri-read: 
 
 
 [role="lead"]

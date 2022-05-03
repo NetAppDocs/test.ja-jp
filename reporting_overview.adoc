@@ -5,6 +5,7 @@ summary: Cloud Insights を使用して、データの事前定義およびカ�
 keywords: reporting, cognos, data warehouse, dwh 
 ---
 = Cloud Insights レポート概要
+:allow-uri-read: 
 
 
 [role="lead"]

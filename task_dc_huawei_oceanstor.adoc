@@ -5,6 +5,7 @@ keywords: data collector, Huawei, OceanStor, Dorado
 summary: HUAWEI OceanStor （ REST / HTTPS ）データコレクタの設定 
 ---
 = Huawei OceanStor データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

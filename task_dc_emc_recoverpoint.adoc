@@ -5,6 +5,7 @@ keywords: data collector, RecoverPoint, EMC, DELL
 summary: Dell EMC RecoverPoint データコレクタの構成 
 ---
 = Dell EMC RecoverPoint データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ summary: 作成されたクエリを表示します
 keywords: query, queries, viewing 
 ---
 = クエリを表示する
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -8,6 +8,7 @@ summary: Brocade Sphereon/Intrepid Switch データコレクタの設定
 :toc: macro
 :hardbreaks:
 :toclevels: 2
+:allow-uri-read: 
 :toc: 
 :toclevels: 2
 :nofooter: 

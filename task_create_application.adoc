@@ -5,6 +5,7 @@ summary: アノテーションルールを作成すると、定義した条件�
 keywords: application, create application, 
 ---
 = アプリケーションの作成
+:allow-uri-read: 
 
 
 [role="lead"]

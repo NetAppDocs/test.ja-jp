@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, memcached
 summary: Memcached データコレクタの設定 
 ---
 = Memcached Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

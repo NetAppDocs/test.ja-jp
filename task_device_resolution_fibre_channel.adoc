@@ -5,6 +5,7 @@ keywords: Automatic, AR, AHR, Host, automatic device resolution, FC, Identify
 summary:  
 ---
 = ファイバチャネルデバイスの解決
+:allow-uri-read: 
 
 
 [role="lead"]
@@ -113,5 +114,5 @@ Cloud Insights デバイス解決機能から、既存のファイバチャネ�
 
 
 関連：link:task_device_resolution_ip.html["IP デバイス解決"]
-
-
+link:task_device_resolution_rules.html["デバイス解決ルールの作成"]
+link:task_device_resolution_preferences.html["デバイス解決のプリファレンスの設定"]

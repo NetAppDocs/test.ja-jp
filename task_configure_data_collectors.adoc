@@ -5,6 +5,7 @@ keywords: acquisition, AU, data collector, collector
 summary: データコレクタを設定する 
 ---
 = データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ summary: レポート用の Cloud Insights データ保持
 keywords: reporting, cognos, data warehouse, dwh, managing, customizing, copying, retention 
 ---
 = レポート用に履歴データを保持する方法
+:allow-uri-read: 
 
 
 [role="lead"]

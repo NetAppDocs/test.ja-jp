@@ -5,6 +5,7 @@ keywords: data collector, IBM CS, CS Series
 summary: IBM CS データコレクタの設定。 
 ---
 = IBM CS データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

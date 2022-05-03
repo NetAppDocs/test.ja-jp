@@ -6,6 +6,7 @@ summary: フォレンジックユーザーデータ
 ---
 = フォレンジックユーザーデータ
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

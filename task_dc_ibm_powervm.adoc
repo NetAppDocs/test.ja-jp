@@ -5,6 +5,7 @@ keywords: IBM, powerVM,
 summary: IBM PowerVM データコレクタを設定しています。 
 ---
 = IBM PowerVM データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ summary: ONTAP SVM DSC をインストールする前に、このスクリプト
 keywords: event, checker, rate, sizing 
 ---
 = SVM イベントレートチェッカー
+:allow-uri-read: 
 
 
 [role="lead"]

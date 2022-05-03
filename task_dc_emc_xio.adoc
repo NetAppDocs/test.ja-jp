@@ -5,6 +5,7 @@ keywords: data collector, XtremeIO, EMC
 summary: XtremeIO データコレクタを構成しています。 
 ---
 = Dell EMC XtremeIO データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

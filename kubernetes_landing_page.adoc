@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, kubernetes, pods, clusters, filters, 
 summary: Kubernetes のランディングページで 
 ---
 = Kubernetes クラスタの概要
+:allow-uri-read: 
 
 
 [role="lead"]

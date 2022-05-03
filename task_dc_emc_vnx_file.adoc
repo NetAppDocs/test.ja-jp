@@ -5,6 +5,7 @@ keywords: data collector, Celerra, EMC, DELL, VNX File
 summary: Dell EMC Celerra データコレクタの設定 
 ---
 = Dell EMC VNX File （旧 Celerra Unified Storage System ）データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

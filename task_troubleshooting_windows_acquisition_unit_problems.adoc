@@ -5,6 +5,7 @@ summary: Windows で Acquisition Unit の問題に関するトラブルシュー
 keywords: AU, acquisition unit, trioubleshooting 
 ---
 = Windows での Acquisition Unit の問題のトラブルシューティング
+:allow-uri-read: 
 
 
 [role="lead"]

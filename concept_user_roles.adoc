@@ -5,10 +5,11 @@ keywords: roles, guest, user, administrator, SSO, Federate, federation, identity
 summary: Cloud Insights には、さまざまな権限レベルを持つ複数のユーザアカウントがあります。 
 ---
 = ユーザアカウントとロール
+:allow-uri-read: 
 
 
 [role="lead"]
-Cloud Insights には、アカウント所有者、管理者、ユーザ、ゲストの 4 つまでのユーザアカウントロールが用意されています。各アカウントには、次の表に示す特定の権限レベルが割り当てられます。（ Cloud Secure 機能では、 _User_ROLES および _Guest_ROLES は使用できません）。ユーザはです link:#creating-accounts-by-inviting-users["招待済み"] から Cloud Insights にサインインして特定のロールを割り当てた場合、またはを使用してサインインできます  デフォルトのロールです。SSO 認証は、 Cloud Insights プレミアムエディションの機能として利用できます。
+Cloud Insights には、アカウント所有者、管理者、ユーザ、ゲストの 4 つまでのユーザアカウントロールが用意されています。各アカウントには、次の表に示す特定の権限レベルが割り当てられます。（ Cloud Secure 機能では、 _User_ROLES および _Guest_ROLES は使用できません）。ユーザはです link:#creating-accounts-by-inviting-users["招待済み"] から Cloud Insights にサインインして特定のロールを割り当てた場合、またはを使用してサインインできます link:#single-sign-on-sso-accounts["シングルサインオン（ SSO ）許可"] デフォルトのロールです。SSO 認証は、 Cloud Insights プレミアムエディションの機能として利用できます。
 
 
 

@@ -5,6 +5,7 @@ keywords: alert, snapshot, ransomware, attack
 summary: 潜在的な攻撃（ランサムウェアなど）やアクティビティの警告に対する自動応答ポリシーを設定できます 
 ---
 = 自動応答ポリシー
+:allow-uri-read: 
 
 
 [role="lead"]

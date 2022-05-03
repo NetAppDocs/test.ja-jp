@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, haproxy
 summary: HAProxy データコレクタの設定 
 ---
 = HAProxy Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

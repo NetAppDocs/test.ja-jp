@@ -5,6 +5,7 @@ summary: この手順を使用して、事前定義済みの Cloud Insights レ�
 keywords: reporting, cognos, data warehouse, dwh, create, report 
 ---
 = レポートの作成（例）
+:allow-uri-read: 
 
 
 [role="lead"]

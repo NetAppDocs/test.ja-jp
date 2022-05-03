@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, nginx
 summary: nginx のデータコレクタ設定 
 ---
 = nginx データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

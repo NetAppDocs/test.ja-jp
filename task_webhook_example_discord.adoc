@@ -5,6 +5,7 @@ keywords: webhook, notification, Discord, integration
 summary: Discord のパフォーマンスや在庫のしきい値を警告するためのウェブフックを作成します 
 ---
 = Discord のウェブフックの例
+:allow-uri-read: 
 
 
 [role="lead"]

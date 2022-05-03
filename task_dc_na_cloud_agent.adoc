@@ -5,6 +5,7 @@ summary: ONTAP 9.9 以上のデータコレクタ用にネットアップクラ�
 keywords: data collector, NetApp, Cloud agent, ONTAP 
 ---
 = ONTAP 9.9 以上のデータコレクタ向けのネットアップクラウド接続
+:allow-uri-read: 
 
 
 [role="lead"]

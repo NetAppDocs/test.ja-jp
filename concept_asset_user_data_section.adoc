@@ -5,6 +5,7 @@ summary: アセットページの User Data セクションでは、アノテー
 keywords: asset page, user data, applications, annotations 
 ---
 = User Data セクション
+:allow-uri-read: 
 
 
 [role="lead"]

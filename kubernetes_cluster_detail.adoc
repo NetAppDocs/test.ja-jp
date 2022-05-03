@@ -5,6 +5,7 @@ keywords: kubernetes, pods, clusters, nodes. troubleshooting, planning
 summary: Kubernetes の詳細ページには、トラブルシューティングや計画に役立つ情報と詳細が記載されています。 
 ---
 = Kubernetes クラスタの詳細ページ
+:allow-uri-read: 
 
 
 [role="lead"]

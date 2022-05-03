@@ -8,6 +8,7 @@ summary: フォレンジックの概要
 :toc: macro
 :hardbreaks:
 :toclevels: 1
+:allow-uri-read: 
 :history: Review 1/17,
 :toc: 
 :toclevels: 1

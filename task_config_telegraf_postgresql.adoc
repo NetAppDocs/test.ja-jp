@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, postgresql
 summary: PostgreSQL データコレクタの設定 
 ---
 = PostgreSQL データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: data collector, Brocade, BNA
 summary: Brocade BNA コレクタの設定 
 ---
 = Brocade Network Advisor データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

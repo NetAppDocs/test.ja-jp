@@ -5,6 +5,7 @@ keywords: data collector, ecs, EMC
 summary: ECS データコレクタの設定。 
 ---
 = EMC ECS データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ summary: Cloud Insights のダッシュボードの概要。
 keywords: dashboard, widget, custom, view, data 
 ---
 = ダッシュボードの概要
+:allow-uri-read: 
 
 
 [role="lead"]

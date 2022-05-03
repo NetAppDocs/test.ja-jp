@@ -5,6 +5,7 @@ summary: 概要の照会
 keywords: query, queries, Application, Datastore, Disk, Fabric, Generic Device, Host, Internal Volume, iSCSI, Network, Portal, Path, Port, Qtree, Quota, Share, Storage, Node, Pool, SVM, Switch, Tape, VMDK, Virtual Machine, VM, Volume, Zone, Member 
 ---
 = クエリで使用するアセット
+:allow-uri-read: 
 
 
 [role="lead"]

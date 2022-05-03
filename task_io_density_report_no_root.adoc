@@ -5,6 +5,7 @@ summary: 大量の I/O 密度を照会する際に、ルートボリュームを
 keywords: NetApp, root volume, high I/O, 
 ---
 = I/O 密度レポートに内部データボリュームのみが記載されていることを確認する
+:allow-uri-read: 
 
 
 [role="lead"]

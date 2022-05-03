@@ -5,6 +5,7 @@ keywords: data collector, VMware,
 summary: VMware データコレクタの設定 
 ---
 = VMware vSphere データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: webhook, notification, Microsoft, Teams, integration
 summary: Microsoft チームのパフォーマンスやインベントリのしきい値を通知するためのウェブフックを作成します 
 ---
 = Microsoft チームの Web フックの例
+:allow-uri-read: 
 
 
 [role="lead lead"]

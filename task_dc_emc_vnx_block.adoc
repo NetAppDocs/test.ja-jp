@@ -5,6 +5,7 @@ keywords: data collector, EMC, clariion, VNX block
 summary: Dell EMC VNX Block Storage の設定（旧 CLARiX ） 
 ---
 = Dell EMC VNX Block Storage （ NaviCLI ）データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

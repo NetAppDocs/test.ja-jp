@@ -5,6 +5,7 @@ summary: ダッシュボードを最大限に活用するためのベストプ�
 keywords: dashboard, hints, tips, best practice, widgets, metrics, 
 ---
 = ダッシュボードとウィジェットのベストプラクティス
+:allow-uri-read: 
 
 
 [role="lead"]

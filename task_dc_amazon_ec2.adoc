@@ -5,6 +5,7 @@ keywords: data collector, EC2,
 summary: Amazon EC2 データコレクタの設定 
 ---
 = Amazon EC2 データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

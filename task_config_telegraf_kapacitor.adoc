@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, kapacitor
 summary: kapacitor の設定 
 ---
 = Kapacitor Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

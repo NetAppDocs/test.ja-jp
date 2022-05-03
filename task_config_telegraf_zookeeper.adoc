@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, apache, zookeeper
 summary: Apache Zookeeper データコレクタの設定 
 ---
 = Zookeeper データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: data collector, Data Domain, EMC, DELL
 summary: Dell EMC Data Domain データコレクタの設定。 
 ---
 = Dell EMC Data Domain データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

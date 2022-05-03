@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, node, host
 summary: Flink データコレクタの設定 
 ---
 = ノードデータ収集
+:allow-uri-read: 
 
 
 [role="lead"]

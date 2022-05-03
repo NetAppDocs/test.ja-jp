@@ -5,6 +5,7 @@ keywords: data collector, VNX, EMC, Dell
 summary: VNX データコレクタの構成。 
 ---
 = Dell EMC VNX Unified データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

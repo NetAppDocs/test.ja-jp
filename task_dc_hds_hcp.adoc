@@ -5,6 +5,7 @@ keywords: data collector, Hitachi HDS, HCP
 summary: HDS データコレクタを構成しています。 
 ---
 = Hitachi HCP データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

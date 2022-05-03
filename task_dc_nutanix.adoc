@@ -5,6 +5,7 @@ keywords: data collector, Nutanix, NX Series
 summary: Nutanix のデータコレクタの設定 
 ---
 = Nutanix NX データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

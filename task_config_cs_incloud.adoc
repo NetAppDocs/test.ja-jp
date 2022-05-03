@@ -5,6 +5,7 @@ keywords: Cloud, Storage, AWS, Cloud Volumes, Cloud ONTAP, firewall, VPC, Subnet
 summary: Cloud Secure では、データコレクタを使用して、デバイスからファイルとユーザのアクセスデータを収集します。 
 ---
 = Cloud Volumes ONTAP Data Collector の設定
+:allow-uri-read: 
 
 
 [role="lead"]

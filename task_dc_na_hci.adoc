@@ -5,6 +5,7 @@ keywords: data collector, VMware, hci
 summary: NetApp HCI 管理サーバのデータコレクタの設定 
 ---
 = NetApp HCI 管理サーバのデータコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

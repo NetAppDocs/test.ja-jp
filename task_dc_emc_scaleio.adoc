@@ -5,6 +5,7 @@ keywords: data collector, scaleIO, EMC, DELL
 summary: Dell EMC ScaleIO データコレクタの設定。 
 ---
 = Dell EMC ScaleIO データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

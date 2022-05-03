@@ -5,6 +5,7 @@ keywords: data collector, PowerStore, EMC, DELL
 summary: Dell EMC PowerStore データコレクタの設定 
 ---
 = Dell EMC PowerStore データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

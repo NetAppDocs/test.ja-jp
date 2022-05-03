@@ -5,6 +5,7 @@ summary: エージェントとして使用するサーバまたは VM が、最�
 keywords: agent, Linux, requirements, docker, browsers, permissions, Network 
 ---
 = エージェントの要件
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: annotations, import, api
 summary: Cloud Insights API を使用して、煩わしい作業やアプリケーションをインポートできます。 
 ---
 = アノテーションのインポート
+:allow-uri-read: 
 
 
 [role="lead"]

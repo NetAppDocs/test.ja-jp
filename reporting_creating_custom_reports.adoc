@@ -5,6 +5,7 @@ summary: レポートオーサリングツールを使用してカスタム（�
 keywords: reporting, cognos, data warehouse, dwh, ad-hoc, custom 
 ---
 = カスタムレポートの作成
+:allow-uri-read: 
 
 
 [role="lead"]

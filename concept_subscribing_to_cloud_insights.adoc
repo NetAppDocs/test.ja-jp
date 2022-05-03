@@ -5,13 +5,14 @@ summary: 無料トライアル期間中は、いつでも Cloud Insights に登�
 keywords: subscribe, trial, subscription, contract, raw capacity, region 
 ---
 = Cloud Insights に登録しています
+:allow-uri-read: 
 
 
 Cloud Insights の導入は、次の 3 つの簡単な手順で簡単に行えます。
 
 * でアカウントに登録します link:https://cloud.netapp.com/["* NetApp Cloud Central *"] ネットアップのクラウドサービスをすべて利用できるようになります。
 * に登録します link:https://cloud.netapp.com/cloud-insights["* 無償トライアル *"] 使用可能な機能を調べるための Cloud Insights の。
-* * Cloud Insights に登録すると、データへの継続的な無停止アクセスが実現します link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx["ネットアップの営業担当者"] Direct または AWS Marketplace （ または ）。
+* * Cloud Insights に登録すると、データへの継続的な無停止アクセスが実現します link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx["ネットアップの営業担当者"] Direct または AWS Marketplace （link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY["Standard Edition の場合"] または link:https://aws.amazon.com/marketplace/pp/prodview-pbc3h2mkgaqxe["Premium Edition の場合"]）。
 
 
 登録プロセスでは、 Cloud Insights 環境をホストするグローバルリージョンを選択できます。詳細については、「 Cloud Insights について」を参照してください link:security_information_and_region.html["情報と地域"]。

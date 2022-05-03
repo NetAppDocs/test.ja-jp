@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, dcos
 summary: DCOS コンフィギュレーション 
 ---
 = DC/OS データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

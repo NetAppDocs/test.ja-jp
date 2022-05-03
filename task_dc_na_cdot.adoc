@@ -5,6 +5,7 @@ keywords: data collector, ontap, ontap, CDOT
 summary: ONTAP データコレクタ 
 ---
 = NetApp ONTAP データ管理ソフトウェアのデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

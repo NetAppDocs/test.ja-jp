@@ -5,6 +5,7 @@ keywords: data collector, IBM, DS4000
 summary: IBM TotalStorage DS4000 データコレクタ 
 ---
 = IBM TotalStorage DS4000 データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ summary: Cloud Insights のアセットページの概要セクション。
 keywords: asset, summary, landing page, topology 
 ---
 = アセットページの概要セクション
+:allow-uri-read: 
 
 
 [role="lead"]

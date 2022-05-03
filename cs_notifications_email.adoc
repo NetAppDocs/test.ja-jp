@@ -5,6 +5,7 @@ summary: Cloud Secure アラートの通知用の E メールアドレスの追�
 keywords: email, notifications, alerts, warnings, attacks 
 ---
 = アラート E メール通知の設定
+:allow-uri-read: 
 
 
 [role="lead"]

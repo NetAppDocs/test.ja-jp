@@ -5,6 +5,7 @@ summary: クエリを変更または削除する
 keywords: query, queries, modify, edit, delete, remove 
 ---
 = クエリの変更または削除
+:allow-uri-read: 
 
 
 

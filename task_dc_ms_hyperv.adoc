@@ -5,6 +5,7 @@ keywords: data collector, Microsoft, Hyper-V
 summary: Microsoft Hyper-V データコレクタの設定 
 ---
 = Microsoft Hyper-V データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

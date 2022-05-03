@@ -5,6 +5,7 @@ summary: モニタによってトリガーされたアラートを表示する
 keywords: monitor, alert, viewing 
 ---
 = モニタからのアラートの表示と管理
+:allow-uri-read: 
 
 
 [role="lead"]

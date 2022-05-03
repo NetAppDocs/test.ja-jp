@@ -5,6 +5,7 @@ summary: テーブルからクリップボードに値をコピーして、他�
 keywords: query, queries, copy, values, clipboard 
 ---
 = テーブル値をコピーしています
+:allow-uri-read: 
 
 
 [role="lead"]

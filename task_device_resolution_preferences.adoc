@@ -5,6 +5,7 @@ keywords: Automatic, AR, AHR, Host, automatic device resolution, FC, Identify
 summary:  
 ---
 = [ 環境設定 ] タブでオプションを設定します
+:allow-uri-read: 
 
 
 [role="lead"]

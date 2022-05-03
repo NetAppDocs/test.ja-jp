@@ -5,12 +5,13 @@ summary: Cloud Insights の一般的なトラブルシューティングのヒ�
 keywords: troubleshooting, problems, browser, login, log in, accessing, access to 
 ---
 = Cloud Insights の一般的な問題のトラブルシューティング
+:allow-uri-read: 
 
 
 [role="lead"]
 ここでは、 Cloud Insights のトラブルシューティングに関する推奨事項を示します。
 
-も参照してください link:task_troubleshooting_linux_acquisition_unit_problems.html["Linux Acquisition Unit の問題のトラブルシューティング"] および 。
+も参照してください link:task_troubleshooting_linux_acquisition_unit_problems.html["Linux Acquisition Unit の問題のトラブルシューティング"] および link:task_troubleshooting_windows_acquisition_unit_problems.html["Windows Acquisition Unit の問題のトラブルシューティング"]。
 
 
 
@@ -45,6 +46,6 @@ keywords: troubleshooting, problems, browser, login, log in, accessing, access t
 アクティブな Cloud Insights サブスクリプションがある場合は、次のサポートオプションを使用できます。
 
 link:https://www.netapp.com/us/contact-us/support.aspx["電話"]
-
+link:https://mysupport.netapp.com/site/cases/mine/create?serialNumber=95001014387268156333["サポートチケット"]
 
 詳細については、を参照してください https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html["Cloud Insights サポートドキュメント"]。

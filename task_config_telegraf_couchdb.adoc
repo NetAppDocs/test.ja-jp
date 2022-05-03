@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, couchdb
 summary: CouchDB データコレクタの設定 
 ---
 = CouchDB データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

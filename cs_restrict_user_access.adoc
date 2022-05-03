@@ -5,6 +5,7 @@ keywords: alert, snapshot,  attack
 summary: Cloud Secure を使用すると、破壊の疑いがある場合にユーザアクセスを制限できます 
 ---
 = ユーザアクセスの制限
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: data collector, ontap, clustered ontap
 summary: NetApp E シリーズのデータコレクタの設定 
 ---
 = NetApp E シリーズのデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

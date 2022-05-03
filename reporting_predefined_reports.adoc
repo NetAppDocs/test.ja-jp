@@ -5,6 +5,7 @@ summary: 事前定義済みレポートの概要
 keywords: reporting, cognos, data warehouse, dwh, pre-defined 
 ---
 = 事前定義済みのレポートを簡単に作成
+:allow-uri-read: 
 
 
 [role="lead"]

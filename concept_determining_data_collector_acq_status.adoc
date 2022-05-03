@@ -5,6 +5,7 @@ summary: Data Collector の取得ステータス
 keywords: collector, acquisition, status 
 ---
 = データコレクタの収集ステータスの確認
+:allow-uri-read: 
 
 
 [role="lead"]

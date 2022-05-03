@@ -5,6 +5,7 @@ keywords: data collector, Brocade, EFCM,
 summary: Brocade データコレクタの設定 
 ---
 = Brocade Enterprise Fabric Connectivity Manager データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

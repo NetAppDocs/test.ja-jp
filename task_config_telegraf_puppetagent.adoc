@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, Puppet
 summary: Puppet データコレクタの設定 
 ---
 = Puppet Agent データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

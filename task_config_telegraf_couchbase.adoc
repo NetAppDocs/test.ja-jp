@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, couchbase
 summary: Couchbase データコレクタの設定 
 ---
 = Couchbase Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

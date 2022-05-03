@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, redis
 summary: Redis データコレクタの設定 
 ---
 = RethinkDB データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

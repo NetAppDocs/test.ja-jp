@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, mysql
 summary: MySQL データコレクタの設定 
 ---
 = MySQL データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

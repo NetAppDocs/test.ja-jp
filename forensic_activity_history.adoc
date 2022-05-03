@@ -5,6 +5,7 @@ keywords: Forensic, activity history, activity data, history
 summary: フォレンジックアクティビティ履歴データ 
 ---
 = 法医学 - すべての活動
+:allow-uri-read: 
 
 
 [role="lead"]

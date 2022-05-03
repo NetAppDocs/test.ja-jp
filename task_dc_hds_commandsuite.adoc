@@ -5,6 +5,7 @@ keywords: data collector, Hitachi Vantara Command Suite, Hitachi
 summary: HDS Command Suite Device Manager データコレクタの設定 
 ---
 = Hitachi Vantara Command Suite データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

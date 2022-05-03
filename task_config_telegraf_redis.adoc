@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, redis
 summary: Redis データコレクタの設定 
 ---
 = Redis Data Collector の場合
+:allow-uri-read: 
 
 
 [role="lead"]

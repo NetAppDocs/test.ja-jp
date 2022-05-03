@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, Hadoop
 summary: Hadoop のデータコレクタの設定 
 ---
 = Hadoop Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

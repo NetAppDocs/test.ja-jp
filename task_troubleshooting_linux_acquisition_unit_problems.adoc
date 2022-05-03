@@ -5,6 +5,7 @@ summary: Acquisition Unit の問題に関するトラブルシューティング
 keywords: AU, acquisition unit, trioubleshooting 
 ---
 = Linux での Acquisition Unit の問題のトラブルシューティング
+:allow-uri-read: 
 
 
 [role="lead"]

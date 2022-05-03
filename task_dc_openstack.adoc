@@ -5,6 +5,7 @@ keywords: data collector, openstack, OpenStack
 summary: OpenStack データコレクタ 
 ---
 = OpenStack データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

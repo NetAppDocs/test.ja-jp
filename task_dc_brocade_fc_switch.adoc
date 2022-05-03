@@ -5,6 +5,7 @@ keywords: data collector, Brocade, FC switch,
 summary: Brocade FC スイッチデータコレクタの設定 
 ---
 = Brocade FC スイッチデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

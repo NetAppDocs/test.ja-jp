@@ -5,6 +5,7 @@ summary: Data Collector サポートマトリックスには、サポートさ�
 keywords: support matrix, vendor, NetApp, IBM, EMC, dell, HP, Hitachi, VMware, Huawei, OpenStack, 
 ---
 = Cloud Insights データコレクタのサポートマトリックス
+:allow-uri-read: 
 
 
 [role="lead"]

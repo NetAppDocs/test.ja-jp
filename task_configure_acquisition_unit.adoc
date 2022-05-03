@@ -5,6 +5,7 @@ keywords: Acquisition Unit, AU, install, configure, Linux, add, remove, uninstal
 summary:  
 ---
 = Acquisition Unit の設定
+:allow-uri-read: 
 
 
 [role="lead"]

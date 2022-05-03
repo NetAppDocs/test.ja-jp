@@ -5,6 +5,7 @@ keywords: data collector, Oracle, ZFS, storage applicance
 summary: Oracle ZFS データコレクタを設定しています 
 ---
 = Oracle ZFS Storage Appliance データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

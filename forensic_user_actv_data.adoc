@@ -5,6 +5,7 @@ keywords: Forensic, user activity, user activity data,
 summary: フォレンジックユーザーアクティビティデータ 
 ---
 = フォレンジックユーザーアクティビティデータ
+:allow-uri-read: 
 
 
 ユーザーアクティビティページでは、ユーザーがエンティティに対して実行するアクションを理解できます。

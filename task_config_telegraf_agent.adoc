@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, agent, telegraf agent
 summary: Cloud Insights は統合データの収集エージェントとして Telegraf をサポートしており、 Windows 、 Linux 、 macOS 、および Kubernetes で設定できます。 
 ---
 = データを収集するエージェントの設定
+:allow-uri-read: 
 
 
 [role="lead"]

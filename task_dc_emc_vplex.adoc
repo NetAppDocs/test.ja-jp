@@ -5,6 +5,7 @@ keywords: data collector, VPLEX, EMC
 summary: VPLEX データコレクタを構成しています。 
 ---
 = EMC VPLEX データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: agent, Cloud Secure, delete agent
 summary: Cloud Secure エージェントの削除 
 ---
 = Cloud Secure エージェントの削除
+:allow-uri-read: 
 
 
 [role="lead"]

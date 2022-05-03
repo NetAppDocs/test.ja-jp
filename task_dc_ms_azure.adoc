@@ -5,6 +5,7 @@ keywords: data collector, azure,
 summary: Azure コンピューティングデータコレクタの設定 
 ---
 = Azure コンピューティングデータコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

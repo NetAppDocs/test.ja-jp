@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, consul
 summary: 絶縁データコレクタの設定 
 ---
 = 総領事データ収集
+:allow-uri-read: 
 
 
 [role="lead"]

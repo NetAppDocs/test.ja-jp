@@ -5,6 +5,7 @@ keywords: data collector, Dell, EMC, xc
 summary: Dell EMC XC シリーズデータコレクタの設定 
 ---
 = Dell EMC XC シリーズデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

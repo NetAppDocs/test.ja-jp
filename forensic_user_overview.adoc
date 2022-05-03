@@ -5,6 +5,7 @@ keywords: Forensic, user, user, activity
 summary: フォレンジックユーザーの詳細 
 ---
 = Forensic User の概要
+:allow-uri-read: 
 
 
 各ユーザーの情報については、「ユーザー概要」を参照してください。これらのビューを使用して、ユーザの特性、関連付けられたエンティティ、および最近のアクティビティを把握できます。

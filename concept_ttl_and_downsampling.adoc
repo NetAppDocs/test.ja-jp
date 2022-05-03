@@ -5,6 +5,7 @@ summary: Time-To-Live （ TTL ）とダウンサンプリングの説明
 keywords: time-to-live, TTL, downsampling, downsample, 
 ---
 = Time-To-Live （ TTL ）とデータのダウンサンプリング
+:allow-uri-read: 
 
 
 [role="lead"]

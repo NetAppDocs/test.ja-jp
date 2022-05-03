@@ -5,6 +5,7 @@ summary: 通知用の E メールアドレスの追加
 keywords: email, notifications, signature, recipient, list, subscription 
 ---
 = 電子メール通知を設定しています
+:allow-uri-read: 
 
 
 [role="lead"]

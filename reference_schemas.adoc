@@ -5,6 +5,7 @@ summary: Reporting で使用する Data Warehouse スキーマの図とテーブ
 keywords: dwh, data warehouse, schema, reporting 
 ---
 = レポート作成用の Cloud Insights スキーマ
+:allow-uri-read: 
 
 
 [role="lead"]

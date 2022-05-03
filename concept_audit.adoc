@@ -5,6 +5,7 @@ keywords: audit, users, activities
 summary: 監査では、 Cloud Insights システムのシステムアクティビティとユーザアクティビティが確認できます。 
 ---
 = 監査
+:allow-uri-read: 
 
 
 [role="lead"]

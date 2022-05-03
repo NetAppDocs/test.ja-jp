@@ -5,6 +5,7 @@ keywords: data collector, azure, Netapp files, anf
 summary: Azure NetApp Files データコレクタの設定 
 ---
 = Azure NetApp Files データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

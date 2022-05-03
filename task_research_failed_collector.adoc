@@ -5,6 +5,7 @@ keywords: data collector, changes, failures
 summary: データコレクタのエラーです 
 ---
 = データコレクタの問題の調査
+:allow-uri-read: 
 
 
 [role="lead"]

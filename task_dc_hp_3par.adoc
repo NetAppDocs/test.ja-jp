@@ -5,6 +5,7 @@ keywords: data collector, 3PAR, HP, HP 3PAR, HPE,
 summary: HP Enterprise Alletra 9000/Primera （旧 3PAR ）データコレクタの設定 
 ---
 = HP Enterprise Alletra 9000/Primera Storage データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

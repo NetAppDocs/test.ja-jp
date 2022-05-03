@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, kibana
 summary: Kibana データコレクタの設定 
 ---
 = Kibana データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

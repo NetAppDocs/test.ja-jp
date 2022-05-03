@@ -5,6 +5,7 @@ summary: NetApp Cloud Volume Services for AWS データコレクタを設定し�
 keywords: data collector, NetApp, Cloud, AWS 
 ---
 = NetApp Cloud Volume Services for AWS データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

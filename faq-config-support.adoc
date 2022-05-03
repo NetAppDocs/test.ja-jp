@@ -5,6 +5,7 @@ keywords: FAQ, Frequently asked questions, questions, configuration,
 summary:  
 ---
 = 構成とサポートされるデバイス
+:allow-uri-read: 
 
 
 [role="lead"]

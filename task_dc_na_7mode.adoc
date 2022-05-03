@@ -5,6 +5,7 @@ keywords: data collector, 7-mode, NetApp
 summary: NetApp 7-Mode データコレクタの設定 
 ---
 = NetApp Data ONTAP 7-Mode データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

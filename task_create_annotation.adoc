@@ -5,6 +5,7 @@ keywords: annotations, annotation rules, manual annotations,
 summary: アノテーションの作成方法 
 ---
 = アノテーションの使用
+:allow-uri-read: 
 
 
 [role="lead"]

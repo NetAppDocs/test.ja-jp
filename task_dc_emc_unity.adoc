@@ -5,6 +5,7 @@ keywords: data collector, VNXe, EMC, Unity
 summary: VNXe データコレクタを構成しています。 
 ---
 = EMC Unity データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

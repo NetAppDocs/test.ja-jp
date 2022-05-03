@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, netstat
 summary: netstat データコレクタ設定です 
 ---
 = netstat Data Collector の場合
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, docker
 summary: Docker データコレクタの設定 
 ---
 = Docker Data Collector
+:allow-uri-read: 
 
 
 [role="lead"]

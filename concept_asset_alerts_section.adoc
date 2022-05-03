@@ -5,6 +5,7 @@ summary: Cloud Insights のアセットページの関連するアラートセ�
 keywords: asset, landing page, violations, Alerts, 
 ---
 = Asset Page Related Alerts セクション
+:allow-uri-read: 
 
 
 [role="lead"]

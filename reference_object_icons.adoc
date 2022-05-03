@@ -5,6 +5,7 @@ summary: Cloud Insights オブジェクトアイコンリファレンスです�
 keywords: icons, assets, objects, reference 
 ---
 = オブジェクトアイコンリファレンス
+:allow-uri-read: 
 
 
 [role="lead"]

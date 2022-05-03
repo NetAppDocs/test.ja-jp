@@ -5,6 +5,7 @@ keywords: logs, monitors, alerts,
 summary: ログエクスプローラは、問題を調査するための強力なツールです。 
 ---
 = ログエクスプローラ
+:allow-uri-read: 
 
 
 [role="lead"]

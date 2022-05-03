@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, ActiveMQ
 summary: HTTP データコレクタの設定 
 ---
 = ActiveMQ データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

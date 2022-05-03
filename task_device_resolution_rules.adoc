@@ -5,6 +5,7 @@ keywords: Automatic, AR, AHR, Host, automatic device resolution
 summary: デバイス解決は、環境内のパフォーマンスとインベントリを正確に追跡するのに役立ちます。 
 ---
 = デバイス解決ルール
+:allow-uri-read: 
 
 
 [role="lead"]
@@ -149,5 +150,5 @@ Cloud Insights は、上から順に表示された方法に従ってホスト�
 適用されるルールが検出されると、ルールの名前がルールの列に表示され、手動で識別されます。
 
 関連：link:task_device_resolution_fibre_channel.html["ファイバチャネルのデバイス解決"]
-
-
+link:task_device_resolution_ip.html["IP デバイス解決"]
+link:task_device_resolution_preferences.html["デバイス解決のプリファレンスの設定"]

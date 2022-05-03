@@ -5,6 +5,7 @@ summary: 仮想マシンのパフォーマンスを強調表示するダッシ�
 keywords: dashboard, widget, custom, example, virtual machine, vm, performance 
 ---
 = ダッシュボードの例：仮想マシンのパフォーマンス
+:allow-uri-read: 
 
 
 [role="lead"]

@@ -5,6 +5,7 @@ summary: Cloud Insights の設定には、 NetApp ONTAP のストリーミング
 keywords: ONTAP, Telemetry, streaming, 
 ---
 = NetApp ONTAP による計測データのストリーミング
+:allow-uri-read: 
 
 
 [role="lead"]

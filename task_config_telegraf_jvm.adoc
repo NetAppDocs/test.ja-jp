@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, jvm
 summary: JVM データコレクタの設定 
 ---
 = JVM Data Collector （ JVM データ収集）
+:allow-uri-read: 
 
 
 [role="lead"]

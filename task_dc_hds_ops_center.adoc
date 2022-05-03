@@ -5,6 +5,7 @@ keywords: data collector, Hitachi Ops Center
 summary: HDS COPS Center データコレクタの設定。 
 ---
 = Hitachi Ops Center データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

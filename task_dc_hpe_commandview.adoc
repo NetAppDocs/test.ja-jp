@@ -5,6 +5,7 @@ keywords: data collector, HP Command View, HP, CVAE
 summary: HP Enterprise Command View データコレクタの設定。 
 ---
 = HP Enterprise Command View データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

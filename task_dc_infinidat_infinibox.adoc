@@ -5,6 +5,7 @@ keywords: data collector, infinidat, InfiniBox
 summary: Infinidat InfiniBox データコレクタを設定します。 
 ---
 = Infinidat InfiniBox データコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

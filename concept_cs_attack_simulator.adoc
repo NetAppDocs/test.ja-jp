@@ -5,6 +5,7 @@ keywords: ransomware, simulation, simulator, restrict, attack
 summary: スクリプトを使用して、 Cloud Secure のテストやデモを目的としたランサムウェア攻撃をシミュレートできます 
 ---
 = Cloud Secure ：攻撃のシミュレーション
+:allow-uri-read: 
 
 
 [role="lead"]

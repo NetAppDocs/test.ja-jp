@@ -5,6 +5,7 @@ summary: サポートされているデータコレクタのリスト。
 keywords: data collector, vendor, infrastructure, integration, service 
 ---
 = Cloud Insights データコレクタリスト
+:allow-uri-read: 
 
 
 [role="lead"]

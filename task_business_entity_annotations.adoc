@@ -5,6 +5,7 @@ keywords: annotations, business entity
 summary: ビジネスエンティティのアノテーションは、ビジネス階層内のアセットの監視とレポートに使用できます 
 ---
 = ビジネスエンティティのアノテーション
+:allow-uri-read: 
 
 
 [role="lead"]

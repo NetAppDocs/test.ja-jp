@@ -5,6 +5,7 @@ summary: このトピックはまだ準備ができていません。
 keywords: coming soon 
 ---
 = このトピックは構築中です
+:allow-uri-read: 
 
 
 [role="lead"]

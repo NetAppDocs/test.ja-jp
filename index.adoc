@@ -4,6 +4,7 @@ permalink: index.html
 summary: Cloud Insights のドキュメントポータルへようこそ。 
 ---
 = Cloud Insights のドキュメント
+:allow-uri-read: 
 
 
 [role="lead"]
@@ -31,10 +32,10 @@ Cloud Insights は、次のようなメリットを
 
 * 新規のお客様： link:task_cloud_insights_onboarding_1.html["オンボーディング"]
 * サインアップしました。どうすればよいですか？link:task_getting_started_with_cloud_insights.html["データの取得"]
-
+link:concept_user_roles.html["ユーザを設定する"]
 * Cloud Insights を最大限に活用するにはどうすればよいですか？link:task_defining_annotations.html["アセットの準備：アノテーション"]
-
-
-
+link:concept_querying_assets.html["目的のアセットの検索：クエリ"]
+link:concept_dashboards_overview.html["必要なデータの表示：ダッシュボード"]
+link:https:task_create_monitor.html["監視とアラート"]
 * Cloud Insights を試したことがありますが、準備ができました link:concept_subscribing_to_cloud_insights.html["* 予約購読 *"]。
 

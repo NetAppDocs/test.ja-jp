@@ -5,6 +5,7 @@ summary: Acquisition Unit として使用するサーバまたは VM が最小�
 keywords: AU, acquisition unit, RAU, requirements, sizing 
 ---
 = Acquisition Unit の要件
+:allow-uri-read: 
 
 
 [role="lead"]

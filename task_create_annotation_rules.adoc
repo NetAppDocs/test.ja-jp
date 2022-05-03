@@ -4,6 +4,7 @@ permalink: task_create_annotation_rules.html
 summary: アノテーションルールを作成して、複数のアセットにアノテーションを自動的に適用します。 
 ---
 = アノテーションルールの作成
+:allow-uri-read: 
 
 
 [role="lead"]

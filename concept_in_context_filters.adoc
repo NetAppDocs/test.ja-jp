@@ -5,6 +5,7 @@ summary: 現在のアセットに直接関連するオブジェクトをフィ�
 keywords: Assets, landing page, filtering, context, related 
 ---
 = コンテキスト内のオブジェクトのフィルタリング
+:allow-uri-read: 
 
 
 [role="lead"]

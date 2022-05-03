@@ -5,6 +5,7 @@ keywords: IBM, SVC,SAN
 summary: IBM SAN Volume Controller データコレクタの設定 
 ---
 = IBM SAN Volume Controller データコレクタの設定
+:allow-uri-read: 
 
 
 [role="lead"]

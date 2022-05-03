@@ -5,6 +5,7 @@ summary: Cloud Insights は、リリースライフサイクル全体を通じ�
 keywords: security, risk, protection 
 ---
 = 情報と地域
+:allow-uri-read: 
 
 
 [role="lead"]

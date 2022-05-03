@@ -5,6 +5,7 @@ keywords: agent, Cloud Secure, installation
 summary: Cloud Secure エージェントを追加しています 
 ---
 = Cloud Secure エージェントのインストール
+:allow-uri-read: 
 
 
 [role="lead"]

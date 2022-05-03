@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, flink
 summary: Flink データコレクタの設定 
 ---
 = Flink Data Collector の使用
+:allow-uri-read: 
 
 
 [role="lead"]

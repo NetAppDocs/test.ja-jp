@@ -5,6 +5,7 @@ summary: アセットページのエキスパートビューセクションは�
 keywords: asset page, expert view, metrics, greedy, degraded, correlated, contributors, chart, 
 ---
 = エキスパートビュー
+:allow-uri-read: 
 
 
 [role="lead"]

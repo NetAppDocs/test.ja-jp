@@ -5,6 +5,7 @@ keywords: webhook, notification, Slack, integration
 summary: Slack のパフォーマンスやインベントリのしきい値を通知するためのウェブフックを作成します 
 ---
 = Slack の Web フックの例
+:allow-uri-read: 
 
 
 [role="lead"]

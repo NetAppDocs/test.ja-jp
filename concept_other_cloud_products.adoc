@@ -5,6 +5,7 @@ keywords: cloud central, cloud products, switching between
 summary: Cloud Insights から他の NetApp Cloud Central 製品に簡単に切り替えることができます。 
 ---
 = 他の Cloud Central 製品に切り替える
+:allow-uri-read: 
 
 
 [role="lead"]

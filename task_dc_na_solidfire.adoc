@@ -5,6 +5,7 @@ summary: NetApp SolidFire のデータコレクタを設定する
 keywords: data collector, queries, create 
 ---
 = NetApp SolidFire オールフラッシュアレイデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

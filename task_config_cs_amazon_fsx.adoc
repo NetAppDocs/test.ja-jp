@@ -5,6 +5,7 @@ keywords: Cloud, Storage, AWS, Fsx
 summary: Cloud Secure では、データコレクタを使用して、デバイスからファイルとユーザのアクセスデータを収集します。 
 ---
 = NetApp ONTAP 構成用の Amazon FSX
+:allow-uri-read: 
 
 
 [role="lead"]

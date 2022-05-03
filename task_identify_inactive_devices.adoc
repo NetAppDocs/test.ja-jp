@@ -5,6 +5,7 @@ keywords: inactive, device,
 summary: 非アクティブなデバイスを識別すると、そのデバイスを削除するか、アクティブなロールに割り当てるかを選択できます。 
 ---
 = 非アクティブなデバイスの識別
+:allow-uri-read: 
 
 
 [role="lead"]

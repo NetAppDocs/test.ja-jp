@@ -5,6 +5,7 @@ keywords: applications, asset, cost
 summary: 会社の環境で使用されているアプリケーションを把握しておくと、アセットの使用状況やコストを追跡しやすくなります。 
 ---
 = アプリケーションごとにアセットの使用状況を追跡する
+:allow-uri-read: 
 
 
 [role="lead"]

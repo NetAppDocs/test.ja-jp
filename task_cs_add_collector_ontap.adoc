@@ -5,6 +5,7 @@ keywords: data collector, ONTAP, SVM
 summary: データコレクタの追加 
 ---
 = NetApp ONTAP Data Collector の設定
+:allow-uri-read: 
 
 
 [role="lead"]

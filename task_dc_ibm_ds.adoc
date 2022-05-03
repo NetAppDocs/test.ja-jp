@@ -5,6 +5,7 @@ keywords: data collector, IBM DS6xxx, IBM DS6xxx, IBM, IBM DS
 summary: System Storage DS8000 シリーズデータコレクタの設定 
 ---
 = IBM System Storage DS8000 シリーズデータコレクタ
+:allow-uri-read: 
 
 
 [role="lead"]

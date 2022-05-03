@@ -5,6 +5,7 @@ keywords: Forensic, entity, entity overview, entity behavior, detail
 summary: フォレンジックエンティティの詳細 
 ---
 = フォレンジックエンティティの詳細
+:allow-uri-read: 
 
 
 TOC: マクロ : ハードブレーク :toclevels:1:nofooter: アイコン :linkattrs:imagesdir:./media/
@@ -17,7 +18,7 @@ TOC: マクロ : ハードブレーク :toclevels:1:nofooter: アイコン :link
 
 にアクセスします
 
-エンティティプロファイル（ Entity Profile ）::
+エンティティプロファイル（ Entity Profile ）:: 以下の詳細について説明します。
 +
 --
 * 名前

@@ -5,6 +5,7 @@ keywords: monitors, alerts, log, metric, system-defined, system, metric,
 summary: パフォーマンスやインベントリのしきい値、およびメトリックやログの条件に関するアラートを生成するモニタを作成します。 
 ---
 = モニタとのアラート
+:allow-uri-read: 
 
 
 [role="lead"]

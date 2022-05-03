@@ -5,6 +5,7 @@ keywords: telegraf, installation, install, kubernetes
 summary: Kubernetes のデータコレクタの設定 
 ---
 = Kubernetes Data Collector を実行します
+:allow-uri-read: 
 
 
 [role="lead"]
