@@ -54,6 +54,7 @@ image:SubscriptionNotificationSection.png["サブスクリプションの E メ�
 
 グローバルアラート受信者を設定するには、 [* Admin] > [Notifications] をクリックし、 [* Global Monitor Notification Recipients] セクションで目的の受信者を選択します。
 
+.image:GlobalMonitorRecipients.png["グローバルモニタ通知の受信者"]
 [role="thumb"]
 モニタを作成または変更するときは、各モニタのグローバル受信者リストを常に上書きできます。
 

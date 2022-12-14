@@ -72,7 +72,7 @@ Vserver 名、 CIFS サーバ名、およびその他のフィールドが返さ
 
 
 
-==== クラスタ管理 IP を使用して追加する場合の権限：
+==== クラスタ管理IPを使用して追加する場合の権限：
 
 クラスタ管理者ユーザを使用して Cloud Secure による ONTAP SVM データコレクタへのアクセスを許可できない場合は、次のコマンドに示すロールを持つ「 csuser 」という新しいユーザを作成できます。Cloud Secure データコレクタでクラスタ管理 IP を使用するように設定する場合は、「 csuser 」のユーザ名とパスワードを使用します。
 
@@ -97,7 +97,7 @@ security login role create -role csrole -cmddirname "vserver export-policy rule"
 ....
 
 
-==== SVM 管理 IP を使用して追加する場合の権限：
+==== SVM管理IP *を使用して追加する場合の権限：
 
 クラスタ管理者ユーザを使用して Cloud Secure による ONTAP SVM データコレクタへのアクセスを許可できない場合は、次のコマンドに示すロールを持つ「 csuser 」という新しいユーザを作成できます。Cloud Secure データコレクタで SVM 管理 IP を使用するように設定する場合は、「 csuser 」のユーザ名とパスワードを使用します。
 

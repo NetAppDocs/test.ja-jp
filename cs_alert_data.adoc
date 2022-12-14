@@ -113,7 +113,7 @@ image:CloudSecureChangeAlertStatus.png["アラートステータスを変更し�
 
 
 
-== Snapshot 処理を実行します
+== Snapshot_Actionを実行します
 
 Cloud Secure は、悪意のあるアクティビティが検出されたときにスナップショットを自動的に取得することでデータを保護し、データを安全にバックアップします。
 

@@ -853,7 +853,7 @@ image:define_monitor_conditions_2.png["モニター条件"]
 
 
 
-==== Cloud Secure がスナップショットアクションを実行します
+==== Snapshot_Actionを実行しますCloud Secure
 
 Cloud Secure は、悪意のあるアクティビティが検出されたときにスナップショットを自動的に取得することでデータを保護し、データを安全にバックアップします。
 

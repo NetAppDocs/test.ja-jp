@@ -282,7 +282,7 @@ Cloud Insights でサポートされているデータコレクタの ABC 順リ
 | link:task_config_telegraf_agent.html#rhel-and-centos["RHEL および CentOS"] | サービス 
 
 
-| link:task_config_telegraf_agent.html#ubuntu-and-debian["Ubuntu & Debian"] | サービス 
+| link:task_config_telegraf_agent.html#ubuntu-and-debian["Ubuntu  Debian"] | サービス 
 
 
 | link:task_dc_vmware.html["VMware vSphere の場合"] | インフラ 

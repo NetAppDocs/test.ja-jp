@@ -21,7 +21,7 @@ NOTE: 正確な監査およびデータレポートを作成するためには�
 == Linux Acquisition Unit の追加
 
 .作業を開始する前に
-* プロキシを使用するシステムの場合は、 Acquisition Unit をインストールする前にプロキシ環境変数を設定する必要があります。詳細については、を参照してください <<Setting proxy environment variables>>。
+* プロキシを使用するシステムの場合は、 Acquisition Unit をインストールする前にプロキシ環境変数を設定する必要があります。詳細については、を参照してください <<プロキシ環境変数を設定しています>>。
 
 
 .Linux Acquisition Unit のインストール手順
@@ -183,6 +183,7 @@ Acquisition Unit ソフトウェアをアンインストールするには、次
 
 Acquisition Unit を同じサーバ / VM に再インストールするには、次の手順を実行する必要があります。
 
+.作業を開始する前に
 Acquisition Unit を再インストールするには、あらかじめ別のサーバ / VM で一時的な Acquisition Unit を設定しておく必要があります。
 
 .手順

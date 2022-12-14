@@ -43,6 +43,7 @@ keywords: reporting, cognos, data warehouse, dwh, create, report
 . をクリックしてレポートを実行します image:Reporting-RunButton.png["を実行します"] をクリックし、出力タイプを選択します。
 
 
+.結果
 次のようなレポートが作成されます。
 
 image:Reporting-Example1.png["レポート例"]
