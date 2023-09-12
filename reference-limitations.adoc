@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations.html 
+keywords: limitations, flexgroup, ontap s3, s3 configuration, svm dr, svm disaster recovery, disaster recovery, storage vm dr, BlueXP, cloud manager 
+summary: 既知の制限事項は、このリリースの製品でサポートされていないプラットフォーム、デバイス、機能、または製品と正しく相互運用できない機能を特定します。これらの制限事項を慎重に確認してください 
+---
+= 既知の制限
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+既知の制限事項は、このリリースの製品でサポートされていないプラットフォーム、デバイス、機能、または製品と正しく相互運用できない機能を特定します。これらの制限事項を慎重に確認してください
+
+これらの制限は、BlueXPでのCloud Volumes ONTAP 管理に固有のものです。Cloud Volumes ONTAP ソフトウェア自体の制限を確認するには、次の手順を実行します。 https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limitations.html["Cloud Volumes ONTAP のリリースノートに移動します"^]
+
+
+
+== BlueXPでは、FlexGroup ボリュームの作成はサポートされていません
+
+Cloud Volumes ONTAP ではFlexGroup ボリュームがサポートされますが、現時点ではFlexGroup ボリュームの作成はサポートされていません。System ManagerまたはCLIからFlexGroup ボリュームを作成する場合は、BlueXPの容量管理モードを手動に設定する必要があります。FlexGroup ボリュームで自動モードが適切に機能しない可能性があります。
+
+
+NOTE: 今後のリリースでは、BlueXPでFlexGroup ボリュームを作成できるようになる予定です。
+
+
+
+== BlueXPは、Cloud Volumes ONTAP でS3をサポートしていません
+
+Cloud Volumes ONTAPはスケールアウトストレージのオプションとしてS3をサポートしていますが、BlueXPにはこの機能の管理機能はありません。CLI を使用することが、 Cloud Volumes ONTAP からの S3 クライアントアクセスを設定するためのベストプラクティスです。詳細については、を参照してください http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-s3-cg/home.html["S3 構成パワーガイド"^]。
+
+link:concept-client-protocols.html["S3およびその他のクライアントプロトコルに対するCloud Volumes ONTAP のサポートに関する詳細を確認できます"]。
+
+
+
+== BlueXPでは、Storage VMのディザスタリカバリはサポートされていません
+
+BlueXPは、Storage VM（SVM）ディザスタリカバリのセットアップやオーケストレーションのサポートは提供していません。System Manager または CLI を使用する必要があります。
+
+link:task-manage-svm-dr.html["SVMディザスタリカバリに関する詳細情報"]。

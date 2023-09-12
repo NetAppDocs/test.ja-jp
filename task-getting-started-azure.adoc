@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: task-getting-started-azure.html 
+keywords: microsoft, azure, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, marketplace, virtual machine, vnet, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, permissions, custom role, role, json, permissions, virtual machine, video, connectivity, internet, outbound, endpoint, connection, networks, vpn, replicating, policy, iam, setupasservice, sign up, cloud manager, BlueXP, cloud volumes ontap, cloud ontap, subscription, create 
+summary: いくつかの手順で、 Cloud Volumes ONTAP for Azure を使い始めましょう。 
+---
+= Azure での Cloud Volumes ONTAP のクイックスタート
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+いくつかの手順で、 Cloud Volumes ONTAP for Azure を使い始めましょう。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"] コネクタを作成します
+[role="quick-margin-para"]
+を持っていなければ https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コネクタ"^] ただし、アカウント管理者がアカウントを作成する必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["Azure でコネクタを作成する方法について説明します"^]
+
+[role="quick-margin-para"]
+インターネットアクセスを使用できないサブネットにCloud Volumes ONTAP を導入する場合は、コネクタを手動でインストールし、そのコネクタで実行されているBlueXPユーザインターフェイスにアクセスする必要があります。 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html["インターネットにアクセスできない場所にコネクタを手動でインストールする方法について説明します"^]
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"] 構成を計画
+[role="quick-margin-para"]
+BlueXPでは、ワークロード要件に合わせて事前設定されたパッケージを提供しています。また、独自の構成を作成することもできます。独自の設定を選択する場合は、使用可能なオプションを理解しておく必要があります。 link:task-planning-your-config-azure.html["詳細はこちら。"]。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"] ネットワークをセットアップします
+[role="quick-margin-list"]
+. VNet とサブネットがコネクタと Cloud Volumes ONTAP 間の接続をサポートすることを確認します。
+. ターゲットVPCからのアウトバウンドのインターネットアクセスをNetApp AutoSupport で有効にします。
++
+インターネットにアクセスできない場所にCloud Volumes ONTAP を導入する場合は、この手順は必要ありません。
+
+
+
+[role="quick-margin-para"]
+link:reference-networking-azure.html["ネットワーク要件の詳細については、こちらをご覧ください"]。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."] BlueXPを使用してCloud Volumes ONTAP を起動します
+[role="quick-margin-para"]
+[ 作業環境の追加 ] をクリックし、展開するシステムのタイプを選択して、ウィザードの手順を実行します。 link:task-deploying-otc-azure.html["詳細な手順を参照してください"]。
+
+.関連リンク
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["BlueXPからコネクタを作成しています"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-azure.html["Azure Marketplace からコネクタを作成する"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Linux ホストへの Connector ソフトウェアのインストール"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html["BlueXPが権限を持って実行できること"^]
+

@@ -1,0 +1,504 @@
+---
+sidebar: sidebar 
+permalink: reference-networking-azure.html 
+keywords: networking, network, requirements, connection, connections, vnet, security group, security groups, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, blob, service endpoint 
+summary: Cloud Volumes ONTAP システムが適切に動作するように Azure ネットワークをセットアップします。 
+---
+= Azure の Cloud Volumes ONTAP のネットワーク要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP システムが適切に動作するように Azure ネットワークをセットアップします。
+
+
+
+== Cloud Volumes ONTAP の要件
+
+Azure では、次のネットワーク要件を満たしている必要があります。
+
+
+
+=== アウトバウンドインターネットアクセス
+
+Cloud Volumes ONTAP ノードには、NetApp AutoSupport へのアウトバウンドインターネットアクセスが必要です。ネットアップは、システムの健常性をプロアクティブに監視し、ネットアップテクニカルサポートにメッセージを送信します。
+
+Cloud Volumes ONTAP が AutoSupport メッセージを送信できるように、ルーティングポリシーとファイアウォールポリシーで次のエンドポイントへの HTTP / HTTPS トラフィックを許可する必要があります。
+
+* \https://support.netapp.com/aods/asupmessage
+* \https://support.netapp.com/asupprod/post/1.0/postAsup
+
+
+AutoSupport メッセージの送信にアウトバウンドのインターネット接続が使用できない場合、Cloud Volumes ONTAP システムは自動的にコネクタをプロキシサーバとして使用するように設定されます。唯一の要件は、コネクタのセキュリティグループがポート3128で_ inbound_connectionsを許可することです。コネクタを展開した後、このポートを開く必要があります。
+
+Cloud Volumes ONTAP に厳密なアウトバウンドルールを定義した場合は、Cloud Volumes ONTAP セキュリティグループがポート3128で_OUTBOUND接続を許可する必要もあります。
+
+アウトバウンドのインターネットアクセスが使用可能であることを確認したら、 AutoSupport をテストしてメッセージを送信できることを確認します。手順については、を参照してください https://docs.netapp.com/us-en/ontap/system-admin/setup-autosupport-task.html["ONTAP のドキュメント：「 AutoSupport のセットアップ"^]。
+
+AutoSupport メッセージを送信できないことがBlueXPから通知された場合は、 link:task-verify-autosupport.html#troubleshoot-your-autosupport-configuration["AutoSupport 構成のトラブルシューティングを行います"]。
+
+
+
+=== IP アドレス
+
+BlueXPは、必要な数のプライベートIPアドレスを自動的にAzureのCloud Volumes ONTAP に割り当てます。ネットワークに利用可能な十分な数のプライベートIPアドレスがあることを確認する必要があります。
+
+Cloud Volumes ONTAP 用に割り当てられるLIFの数は、シングルノードシステムとHAペアのどちらを導入するかによって異なります。LIF は、物理ポートに関連付けられた IP アドレスです。SnapCenter などの管理ツールには、 SVM 管理 LIF が必要です。
+
+
+NOTE: iSCSI LIFは、iSCSIプロトコルを介したクライアントアクセスを提供し、システムがその他の重要なネットワークワークフローに使用します。これらのLIFは必須であり、削除しないでください。
+
+
+
+==== シングルノードシステムの IP アドレス
+
+BlueXPは'1つのノードシステムに5つまたは6つのIPアドレスを割り当てます
+
+* クラスタ管理IP
+* ノード管理IP
+* SnapMirror用のクラスタ間IP
+* NFS / CIFS IP
+* iSCSI IP
++
+
+NOTE: iSCSI IPは、iSCSIプロトコルを使用したクライアントアクセスを提供します。システムでは、その他の重要なネットワークワークフローにも使用されます。このLIFは必須であり、削除することはできません。
+
+* SVMの管理（オプション-デフォルトでは設定されていません）
+
+
+
+
+==== HA ペアの IP アドレス
+
+BlueXPでは、導入時に1ノードあたり4 NICにIPアドレスが割り当てられています。
+
+BlueXPでは、HAペアにSVM管理LIFが作成されますが、Azureのシングルノードシステムには作成されません。
+
+* NIC0*
+
+* ノード管理IP
+* クラスタ間IP
+* iSCSI IP
++
+
+NOTE: iSCSI IPは、iSCSIプロトコルを使用したクライアントアクセスを提供します。システムでは、その他の重要なネットワークワークフローにも使用されます。このLIFは必須であり、削除することはできません。
+
+
+
+* NIC1*
+
+* クラスタネットワークIP
+
+
+* NIC2 *
+
+* クラスタインターコネクトIP（HA IC）
+
+
+*NIC3*
+
+* Pageblob NIC IP (ディスクアクセス)
+
+
+
+NOTE: NIC3は、ページBLOBストレージを使用するHA環境にのみ適用できます。
+
+上記のIPアドレスは、フェイルオーバーイベントの際に移行されません。
+
+また、4つのフロントエンドIP（FIPS）がフェイルオーバーイベント時に移行するように設定されています。これらのフロントエンドIPはロードバランサに存在します。
+
+* クラスタ管理IP
+* nodeAデータIP（NFS / CIFS）
+* nodeBデータIP（NFS / CIFS）
+* SVM管理IP
+
+
+
+
+=== Azure サービスへのセキュアな接続
+
+BlueXPでは、Cloud Volumes ONTAP とAzureページBLOBストレージアカウント間の接続用にAzure Private Linkがデフォルトで有効になっています。
+
+ほとんどの場合、必要な操作は何もありません。BlueXPはAzure Private Linkを管理します。ただし、 Azure プライベート DNS を使用している場合は、構成ファイルを編集する必要があります。また、Azureのコネクタの場所に関する要件も把握しておく必要があります。
+
+ビジネスニーズに応じて、プライベートリンク接続を無効にすることもできます。リンクを無効にすると、Cloud Volumes ONTAP はサービスエンドポイントを使用するように設定されます。
+
+link:task-enabling-private-link.html["AzureプライベートリンクまたはサービスエンドポイントでCloud Volumes ONTAP を使用する方法の詳細については、こちらをご覧ください"]。
+
+
+
+=== 他の ONTAP システムへの接続
+
+Azure内のCloud Volumes ONTAP システムと他のネットワーク内のONTAP システム間でデータをレプリケートするには、企業ネットワークなど、Azure VNetとその他のネットワーク間にVPN接続が必要です。
+
+手順については、を参照してください https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal["Microsoft Azure のドキュメント：「 Create a Site-to-Site connection in the Azure portal"^]。
+
+
+
+=== HA インターコネクトのポート
+
+Cloud Volumes ONTAP HA ペアには HA インターコネクトが含まれています。 HA インターコネクトを使用すると、各ノードはパートナーが機能しているかどうかを継続的に確認し、パートナーの不揮発性メモリのログデータをミラーリングできます。HA インターコネクトは、通信に TCP ポート 10006 を使用します。
+
+デフォルトでは、 HA インターコネクト LIF 間の通信は開いており、このポートにはセキュリティグループのルールはありません。ただし、 HA インターコネクト LIF の間にファイアウォールを作成する場合は、 HA ペアが適切に動作するように、ポート 10006 の TCP トラフィックが開いていることを確認する必要があります。
+
+
+
+=== Azure リソースグループには HA ペアが 1 つしかありません
+
+Azure に導入する Cloud Volumes ONTAP HA ペアごとに、 _dedicated_resource グループを使用する必要があります。リソースグループでサポートされる HA ペアは 1 つだけです。
+
+Azureリソースグループに2つ目のCloud Volumes ONTAP HAペアを導入しようとすると、接続の問題が発生します。
+
+
+
+=== セキュリティグループのルール
+
+BlueXPでは、Cloud Volumes ONTAP が正常に動作するために必要なインバウンドとアウトバウンドのルールを含むAzureセキュリティグループが作成されます。テスト目的でポートを参照したり、独自のセキュリティグループを使用したりする場合に使用します。
+
+Cloud Volumes ONTAP のセキュリティグループには、インバウンドルールとアウトバウンドルールの両方が必要です。
+
+
+TIP: コネクタに関する情報をお探しですか？ https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["コネクタのセキュリティグループルールを表示します"^]
+
+
+
+==== シングルノードシステムのインバウンドルール
+
+作業環境を作成し、事前定義されたセキュリティグループを選択する場合、次のいずれかの範囲内でトラフィックを許可するように選択できます。
+
+* *選択したVNetのみ*：インバウンドトラフィックのソースは、Cloud Volumes ONTAP システムのVNetのサブネット範囲およびコネクタが存在するVNetのサブネット範囲です。これが推奨されるオプションです。
+* *すべてのVNet *：インバウンドトラフィックの送信元は0.0.0.0/0のIP範囲です。
+
+
+[cols="4*"]
+|===
+| 優先順位と名前 | ポートおよびプロトコル | ソースとデスティネーションの 2 つです | 説明 
+
+
+| 1000
+inbound_ssh | 22.
+TCP | Any から Any | クラスタ管理 LIF またはノード管理 LIF の IP アドレスへの SSH アクセス 
+
+
+| 1001
+Inbound_http | 8時80分
+TCP | Any から Any | クラスタ管理 LIF の IP アドレスを使用した System Manager Web コンソールへの HTTP アクセス 
+
+
+| 1002
+INBOUND _111_TCP | 一一一
+TCP | Any から Any | NFS のリモートプロシージャコール 
+
+
+| 1003
+Inbound_111_UDP | 一一一
+UDP | Any から Any | NFS のリモートプロシージャコール 
+
+
+| 1004
+Inbound_139 | 一三九
+TCP | Any から Any | CIFS の NetBIOS サービスセッション 
+
+
+| 1005
+Inbound_161-162_TCP | 161-162
+TCP | Any から Any | 簡易ネットワーク管理プロトコル 
+
+
+| 2006 年 10 月
+Inbound_161-162_UDP | 161-162
+UDP | Any から Any | 簡易ネットワーク管理プロトコル 
+
+
+| 1007
+INBOUND _ 443 | 443年
+TCP | Any から Any | コネクタへの接続と、クラスタ管理LIFのIPアドレスを使用したSystem Manager WebコンソールへのHTTPSアクセス 
+
+
+| 1008
+Inbound_445 | 445
+TCP | Any から Any | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 1009
+Inbound_635_tcp の場合 | 635
+TCP | Any から Any | NFS マウント 
+
+
+| 1010
+Inbound_635_udp | 635
+UDP | Any から Any | NFS マウント 
+
+
+| 1011
+Inbound_749 | 749
+TCP | Any から Any | Kerberos 
+
+
+| 1012
+INBOUND _2049 _TCP | 2049年
+TCP | Any から Any | NFS サーバデーモン 
+
+
+| 一 〇 一三
+Inbound_2049 _UDP | 2049年
+UDP | Any から Any | NFS サーバデーモン 
+
+
+| 1014
+インバウンド _3260 | 3260
+TCP | Any から Any | iSCSI データ LIF を介した iSCSI アクセス 
+
+
+| 1015
+INBOUND _4045-4046_tcp のようになりました | 4045-4046
+TCP | Any から Any | NFS ロックデーモンとネットワークステータスモニタ 
+
+
+| 1016
+INBOUND _4045-4046-UDP です | 4045-4046
+UDP | Any から Any | NFS ロックデーモンとネットワークステータスモニタ 
+
+
+| 1017
+Inbound_10000 | 10、000
+TCP | Any から Any | NDMP を使用したバックアップ 
+
+
+| 1018
+INBOUND _11104-11105 | 11104-11105
+TCP | Any から Any | SnapMirror によるデータ転送 
+
+
+| 3000
+INBOUND _DENY_ALL_TCP | 任意のポート
+TCP | Any から Any | 他のすべての TCP インバウンドトラフィックをブロックします 
+
+
+| 3001
+Inbound_deny_all_udp | 任意のポート
+UDP | Any から Any | 他のすべての UDP 着信トラフィックをブロックします 
+
+
+| 65、000
+AllowVnetInBound のことです | 任意のポート
+任意のプロトコル | VirtualNetwork | VNet 内からのインバウンドトラフィック 
+
+
+| 65001
+AllowAzureLoad BalancerInBound の略 | 任意のポート
+任意のプロトコル | AzureLoadBalancer を任意のに設定します | Azure Standard Load Balancer からのデータトラフィック 
+
+
+| 65500
+DenyAllInBound の 2 つの機能があります | 任意のポート
+任意のプロトコル | Any から Any | 他のすべてのインバウンドトラフィックをブロックする 
+|===
+
+
+==== HA システムのインバウンドルール
+
+作業環境を作成し、事前定義されたセキュリティグループを選択する場合、次のいずれかの範囲内でトラフィックを許可するように選択できます。
+
+* *選択したVNetのみ*：インバウンドトラフィックのソースは、Cloud Volumes ONTAP システムのVNetのサブネット範囲およびコネクタが存在するVNetのサブネット範囲です。これが推奨されるオプションです。
+* *すべてのVNet *：インバウンドトラフィックの送信元は0.0.0.0/0のIP範囲です。
+
+
+
+NOTE: HA システムのインバウンドデータトラフィックは Azure Standard Load Balancer を経由するため、シングルノードシステムよりもインバウンドルールが少なくなります。そのため、「 AllowAzureLoadBalancerInBound 」ルールに示されているように、ロードバランサからのトラフィックがオープンである必要があります。
+
+[cols="4*"]
+|===
+| 優先順位と名前 | ポートおよびプロトコル | ソースとデスティネーションの 2 つです | 説明 
+
+
+| 100です
+INBOUND _ 443 | 443年
+任意のプロトコル | Any から Any | コネクタへの接続と、クラスタ管理LIFのIPアドレスを使用したSystem Manager WebコンソールへのHTTPSアクセス 
+
+
+| 101です
+INBOUND _111_TCP | 一一一
+任意のプロトコル | Any から Any | NFS のリモートプロシージャコール 
+
+
+| 一 〇 二
+INBOUND _2049 _TCP | 2049年
+任意のプロトコル | Any から Any | NFS サーバデーモン 
+
+
+| 一一一
+inbound_ssh | 22.
+任意のプロトコル | Any から Any | クラスタ管理 LIF またはノード管理 LIF の IP アドレスへの SSH アクセス 
+
+
+| 一二一
+Inbound_53 | 53.
+任意のプロトコル | Any から Any | DNS と CIFS 
+
+
+| 65、000
+AllowVnetInBound のことです | 任意のポート
+任意のプロトコル | VirtualNetwork | VNet 内からのインバウンドトラフィック 
+
+
+| 65001
+AllowAzureLoad BalancerInBound の略 | 任意のポート
+任意のプロトコル | AzureLoadBalancer を任意のに設定します | Azure Standard Load Balancer からのデータトラフィック 
+
+
+| 65500
+DenyAllInBound の 2 つの機能があります | 任意のポート
+任意のプロトコル | Any から Any | 他のすべてのインバウンドトラフィックをブロックする 
+|===
+
+
+==== アウトバウンドルール
+
+Cloud Volumes 用の事前定義済みセキュリティグループ ONTAP は、すべての発信トラフィックをオープンします。これが可能な場合は、基本的なアウトバウンドルールに従います。より厳格なルールが必要な場合は、高度なアウトバウンドルールを使用します。
+
+
+
+===== 基本的なアウトバウンドルール
+
+Cloud Volumes ONTAP 用の定義済みセキュリティグループには、次のアウトバウンドルールが含まれています。
+
+[cols="3*"]
+|===
+| ポート | プロトコル | 目的 
+
+
+| すべて | すべての TCP | すべての発信トラフィック 
+
+
+| すべて | すべてのUDP | すべての発信トラフィック 
+|===
+
+
+===== 高度なアウトバウンドルール
+
+発信トラフィックに厳格なルールが必要な場合は、次の情報を使用して、 Cloud Volumes ONTAP による発信通信に必要なポートのみを開くことができます。
+
+
+NOTE: source は、 Cloud Volumes ONTAP システムのインターフェイス（ IP アドレス）です。
+
+[cols="10,10,6,20,20,34"]
+|===
+| サービス | ポート | プロトコル | ソース | 宛先 | 目的 
+
+
+.18+| Active Directory | 88 | TCP | ノード管理 LIF | Active Directory フォレスト | Kerberos V 認証 
+
+
+| 一三七 | UDP | ノード管理 LIF | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| 一三八 | UDP | ノード管理 LIF | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| 一三九 | TCP | ノード管理 LIF | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| 389 | TCP および UDP | ノード管理 LIF | Active Directory フォレスト | LDAP 
+
+
+| 445 | TCP | ノード管理 LIF | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 464 | TCP | ノード管理 LIF | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| 464 | UDP | ノード管理 LIF | Active Directory フォレスト | Kerberos キー管理 
+
+
+| 749 | TCP | ノード管理 LIF | Active Directory フォレスト | Kerberos V Change & Set Password （ RPCSEC_GSS ） 
+
+
+| 88 | TCP | データ LIF （ NFS 、 CIFS 、 iSCSI ） | Active Directory フォレスト | Kerberos V 認証 
+
+
+| 一三七 | UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS ネームサービス 
+
+
+| 一三八 | UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS データグラムサービス 
+
+
+| 一三九 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS サービスセッション 
+
+
+| 389 | TCP および UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | LDAP 
+
+
+| 445 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | NetBIOS フレーム同期を使用した Microsoft SMB over TCP 
+
+
+| 464 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos V パスワードの変更と設定（ SET_CHANGE ） 
+
+
+| 464 | UDP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos キー管理 
+
+
+| 749 | TCP | データ LIF （ NFS 、 CIFS ） | Active Directory フォレスト | Kerberos V Change & Set Password （ RPCSEC_GSS ） 
+
+
+.3+| AutoSupport | HTTPS | 443 | ノード管理 LIF | support.netapp.com | AutoSupport （デフォルトは HTTPS ） 
+
+
+| HTTP | 8時80分 | ノード管理 LIF | support.netapp.com | AutoSupport （転送プロトコルが HTTPS から HTTP に変更された場合のみ） 
+
+
+| TCP | 3128だ | ノード管理 LIF | コネクタ | アウトバウンドのインターネット接続が使用できない場合に、コネクタのプロキシサーバを介してAutoSupport メッセージを送信する 
+
+
+| 構成のバックアップ | HTTP | 8時80分 | ノード管理 LIF | \http://<connector-IP-address>/occm/offboxconfig | 構成バックアップをコネクタに送信します。 link:https://docs.netapp.com/us-en/ontap/system-admin/node-cluster-config-backed-up-automatically-concept.html["構成バックアップファイルについて説明します"^]。 
+
+
+| DHCP | 68 | UDP | ノード管理 LIF | DHCP | 初回セットアップ用の DHCP クライアント 
+
+
+| DHCP | 67 | UDP | ノード管理 LIF | DHCP | DHCPサーバ 
+
+
+| DNS | 53. | UDP | ノード管理 LIF とデータ LIF （ NFS 、 CIFS ） | DNS | DNS 
+
+
+| NDMP | 18600 ～ 18699 | TCP | ノード管理 LIF | 宛先サーバ | NDMP コピー 
+
+
+| SMTP | 25 | TCP | ノード管理 LIF | メールサーバ | SMTP アラート。 AutoSupport に使用できます 
+
+
+.4+| SNMP | 161 | TCP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| 161 | UDP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| 一六二 | TCP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+| 一六二 | UDP | ノード管理 LIF | サーバを監視します | SNMP トラップによる監視 
+
+
+.2+| SnapMirror | 11104 | TCP | クラスタ間 LIF | ONTAP クラスタ間 LIF | SnapMirror のクラスタ間通信セッションの管理 
+
+
+| 11105 | TCP | クラスタ間 LIF | ONTAP クラスタ間 LIF | SnapMirror によるデータ転送 
+
+
+| syslog | 514 | UDP | ノード管理 LIF | syslog サーバ | syslog 転送メッセージ 
+|===
+
+
+== コネクタの要件
+
+コネクタをまだ作成していない場合は、コネクタのネットワーク要件も確認してください。
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-azure.html["コネクタのネットワーク要件を確認します"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-azure.html["Azureのセキュリティグループルール"^]
+

@@ -1,0 +1,287 @@
+---
+sidebar: sidebar 
+permalink: reference-networking-aws.html 
+keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, vpn, internet, nat, s3, dns, ad, active directory, az, availability zone, floating IP, floating, SVM, management LIF, route, route tables, proxy, HTTP, private, tier, s3 endpoint, tiering, storage tier, storage tiering, proxy server, nat device, vpn, snapmanager, snapcenter, iscsi, nfs, cifs, nas, san, outbound, inbound, connections, autosupport, ha, ha pair, high availability 
+summary: BlueXPは、IPアドレス、ネットマスク、ルートなど、Cloud Volumes ONTAP のネットワークコンポーネントのセットアップを処理します。アウトバウンドのインターネットアクセスが可能であること、十分な数のプライベート IP アドレスを利用できること、適切な接続が確立されていることなどを確認する必要があります。 
+---
+= Cloud Volumes ONTAP in AWS のネットワーク要件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+BlueXPは、IPアドレス、ネットマスク、ルートなど、Cloud Volumes ONTAP のネットワークコンポーネントのセットアップを処理します。アウトバウンドのインターネットアクセスが可能であること、十分な数のプライベート IP アドレスを利用できること、適切な接続が確立されていることなどを確認する必要があります。
+
+
+
+== 一般的な要件
+
+AWS では、次の要件を満たす必要があります。
+
+
+
+=== Cloud Volumes ONTAP ノードのアウトバウンドインターネットアクセス
+
+Cloud Volumes ONTAP ノードには、NetApp AutoSupport へのアウトバウンドインターネットアクセスが必要です。ネットアップは、システムの健常性をプロアクティブに監視し、ネットアップテクニカルサポートにメッセージを送信します。
+
+Cloud Volumes ONTAP が AutoSupport メッセージを送信できるように、ルーティングポリシーとファイアウォールポリシーで次のエンドポイントへの HTTP / HTTPS トラフィックを許可する必要があります。
+
+* \https://support.netapp.com/aods/asupmessage
+* \https://support.netapp.com/asupprod/post/1.0/postAsup
+
+
+NAT インスタンスがある場合は、プライベートサブネットからインターネットへの HTTPS トラフィックを許可する着信セキュリティグループルールを定義する必要があります。
+
+AutoSupport メッセージの送信にアウトバウンドのインターネット接続が使用できない場合、Cloud Volumes ONTAP システムは自動的にコネクタをプロキシサーバとして使用するように設定されます。唯一の要件は、コネクタのセキュリティグループがポート3128で_ inbound_connectionsを許可することです。コネクタを展開した後、このポートを開く必要があります。
+
+Cloud Volumes ONTAP に厳密なアウトバウンドルールを定義した場合は、Cloud Volumes ONTAP セキュリティグループがポート3128で_OUTBOUND接続を許可する必要もあります。
+
+アウトバウンドのインターネットアクセスが使用可能であることを確認したら、 AutoSupport をテストしてメッセージを送信できることを確認します。手順については、を参照してください https://docs.netapp.com/us-en/ontap/system-admin/setup-autosupport-task.html["ONTAP のドキュメント：「 AutoSupport のセットアップ"^]。
+
+AutoSupport メッセージを送信できないことがBlueXPから通知された場合は、 link:task-verify-autosupport.html#troubleshoot-your-autosupport-configuration["AutoSupport 構成のトラブルシューティングを行います"]。
+
+
+
+=== HA メディエータのアウトバウンドインターネットアクセス
+
+HA メディエータインスタンスは、 AWS EC2 サービスへのアウトバウンド接続を持っている必要があります。これにより、ストレージのフェイルオーバーを支援できます。接続を提供するには、パブリック IP アドレスを追加するか、プロキシサーバを指定するか、または手動オプションを使用します。
+
+手動オプションには、 NAT ゲートウェイまたはターゲットサブネットから AWS EC2 サービスへのインターフェイス VPC エンドポイントを指定できます。VPC エンドポイントの詳細については、を参照してください http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-interface.html["AWS ドキュメント：「 Interface VPC Endpoints 」（ AWS PrivateLink ）"^]。
+
+
+
+=== プライベート IP アドレス
+
+BlueXPは、必要な数のプライベートIPアドレスを自動的にCloud Volumes ONTAP に割り当てます。ネットワークに十分な数のプライベート IP アドレスがあることを確認する必要があります。
+
+Cloud Volumes ONTAP 用に割り当てられるLIFの数は、シングルノードシステムとHAペアのどちらを導入するかによって異なります。LIF は、物理ポートに関連付けられた IP アドレスです。
+
+
+
+==== シングルノードシステムの IP アドレス
+
+BlueXPでは、1つのノードシステムに6つのIPアドレスが割り当てられます。
+
+次の表に、各プライベートIPアドレスに関連付けられているLIFの詳細を示します。
+
+[cols="20,40"]
+|===
+| LIF | 目的 
+
+
+| クラスタ管理 | クラスタ全体（ HA ペア）の管理。 
+
+
+| ノード管理 | ノードの管理。 
+
+
+| クラスタ間 | クラスタ間の通信、バックアップ、レプリケーション。 
+
+
+| NAS データ | NAS プロトコルを使用したクライアントアクセス。 
+
+
+| iSCSI データ | iSCSI プロトコルを使用したクライアントアクセス。システムでは、その他の重要なネットワークワークフローにも使用されます。このLIFは必須であり、削除することはできません。 
+
+
+| Storage VM管理 | Storage VM 管理 LIF は、 SnapCenter などの管理ツールで使用されます。 
+|===
+
+
+==== HA ペアの IP アドレス
+
+HA ペアには、シングルノードシステムよりも多くの IP アドレスが必要です。次の図に示すように、これらの IP アドレスは異なるイーサネットインターフェイスに分散されています。
+
+image:diagram_cvo_aws_networking_ha.png["AWS の Cloud Volumes ONTAP HA 構成の eth0 、 eth1 、 eth2 を示す図。"]
+
+HA ペアに必要なプライベート IP アドレスの数は、選択する導入モデルによって異なります。A_SILE_AWS アベイラビリティゾーン（ AZ ）に導入する HA ペアには 15 個のプライベート IP アドレスが必要です。一方、 _multiple_AZs に導入する HA ペアには、 13 個のプライベート IP アドレスが必要です。
+
+次の表に、各プライベート IP アドレスに関連付けられている LIF の詳細を示します。
+
+
+
+===== 単一の AZ にある HA ペアの LIF
+
+[cols="20,20,20,40"]
+|===
+| LIF | インターフェイス | ノード | 目的 
+
+
+| クラスタ管理 | eth0 | ノード 1 | クラスタ全体（ HA ペア）の管理。 
+
+
+| ノード管理 | eth0 | ノード 1 とノード 2 | ノードの管理。 
+
+
+| クラスタ間 | eth0 | ノード 1 とノード 2 | クラスタ間の通信、バックアップ、レプリケーション。 
+
+
+| NAS データ | eth0 | ノード 1 | NAS プロトコルを使用したクライアントアクセス。 
+
+
+| iSCSI データ | eth0 | ノード 1 とノード 2 | iSCSI プロトコルを使用したクライアントアクセス。システムでは、その他の重要なネットワークワークフローにも使用されます。これらのLIFは必須であり、削除しないでください。 
+
+
+| クラスタ接続 | Eth1 | ノード 1 とノード 2 | ノード間の通信およびクラスタ内でのデータの移動を可能にします。 
+
+
+| HA 接続 | eth2 | ノード 1 とノード 2 | フェイルオーバー時の 2 つのノード間の通信。 
+
+
+| RSM iSCSI トラフィック | eth3 | ノード 1 とノード 2 | RAID SyncMirror iSCSI トラフィック、および 2 つの Cloud Volumes ONTAP ノードとメディエーター間の通信。 
+
+
+| メディエーター | eth0 | メディエーター | ストレージのテイクオーバーとギブバックのプロセスを支援するための、ノードとメディエーターの間の通信チャネル。 
+|===
+
+
+===== 複数の AZ にまたがる HA ペア用の LIF です
+
+[cols="20,20,20,40"]
+|===
+| LIF | インターフェイス | ノード | 目的 
+
+
+| ノード管理 | eth0 | ノード 1 とノード 2 | ノードの管理。 
+
+
+| クラスタ間 | eth0 | ノード 1 とノード 2 | クラスタ間の通信、バックアップ、レプリケーション。 
+
+
+| iSCSI データ | eth0 | ノード 1 とノード 2 | iSCSI プロトコルを使用したクライアントアクセス。
+また、ノード間でのフローティングIPアドレスの移行も管理します。これらのLIFは必須であり、削除しないでください。 
+
+
+| クラスタ接続 | Eth1 | ノード 1 とノード 2 | ノード間の通信およびクラスタ内でのデータの移動を可能にします。 
+
+
+| HA 接続 | eth2 | ノード 1 とノード 2 | フェイルオーバー時の 2 つのノード間の通信。 
+
+
+| RSM iSCSI トラフィック | eth3 | ノード 1 とノード 2 | RAID SyncMirror iSCSI トラフィック、および 2 つの Cloud Volumes ONTAP ノードとメディエーター間の通信。 
+
+
+| メディエーター | eth0 | メディエーター | ストレージのテイクオーバーとギブバックのプロセスを支援するための、ノードとメディエーターの間の通信チャネル。 
+|===
+
+TIP: 複数のアベイラビリティゾーンに導入すると、いくつかの LIF が関連付けられます link:reference-networking-aws.html#floatingips["フローティング IP アドレス"]AWS のプライベート IP 制限にはカウントされません。
+
+
+
+=== セキュリティグループ
+
+セキュリティグループを作成する必要はありません。BlueXPではセキュリティグループが自動的に作成されます。自分で使用する必要がある場合は、を参照してください link:reference-security-groups.html["セキュリティグループのルール"]。
+
+
+TIP: コネクタに関する情報をお探しですか？ https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html["コネクタのセキュリティグループルールを表示します"^]
+
+
+
+=== データ階層化のための接続
+
+EBS をパフォーマンス階層として使用し、 AWS S3 を容量階層として使用する場合は、 Cloud Volumes ONTAP が S3 に接続されていることを確認する必要があります。この接続を提供する最善の方法は、 S3 サービスへの vPC エンドポイントを作成することです。手順については、を参照してください https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpce-gateway.html#create-gateway-endpoint["AWS のドキュメント：「 Creating a Gateway Endpoint"^]。
+
+vPC エンドポイントを作成するときは、 Cloud Volumes ONTAP インスタンスに対応するリージョン、 vPC 、およびルートテーブルを必ず選択してください。S3 エンドポイントへのトラフィックを有効にする発信 HTTPS ルールを追加するには、セキュリティグループも変更する必要があります。そうしないと、 Cloud Volumes ONTAP は S3 サービスに接続できません。
+
+問題が発生した場合は、を参照してください https://aws.amazon.com/premiumsupport/knowledge-center/connect-s3-vpc-endpoint/["AWS のサポートナレッジセンター：ゲートウェイ VPC エンドポイントを使用して S3 バケットに接続できないのはなぜですか。"^]
+
+
+
+=== ONTAP システムへの接続
+
+AWSのCloud Volumes ONTAP システムと他のネットワークのONTAP システムの間でデータをレプリケートするには、AWS VPCと他のネットワーク（社内ネットワークなど）の間にVPN接続が必要です。手順については、を参照してください https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/SetUpVPNConnections.html["AWS ドキュメント：「 Setting Up an AWS VPN Connection"^]。
+
+
+
+=== CIFS 用の DNS と Active Directory
+
+CIFS ストレージをプロビジョニングする場合は、 AWS で DNS と Active Directory をセットアップするか、オンプレミスセットアップを AWS に拡張する必要があります。
+
+DNS サーバは、 Active Directory 環境に名前解決サービスを提供する必要があります。デフォルトの EC2 DNS サーバを使用するように DHCP オプションセットを設定できます。このサーバは、 Active Directory 環境で使用される DNS サーバであってはなりません。
+
+手順については、を参照してください https://aws-quickstart.github.io/quickstart-microsoft-activedirectory/["AWS ドキュメント：「 Active Directory Domain Services on the AWS Cloud ： Quick Start Reference Deployment"^]。
+
+
+
+=== vPC共有
+
+9.11.1リリース以降では、VPCを共有するAWSでCloud Volumes ONTAP HAペアがサポートされます。VPC共有を使用すると、他のAWSアカウントとサブネットを共有できます。この構成を使用するには、AWS環境をセットアップし、APIを使用してHAペアを導入する必要があります。
+
+link:task-deploy-aws-shared-vpc.html["共有サブネットにHAペアを導入する方法について説明します"]。
+
+
+
+== 複数の AZ にまたがる HA ペアに関する要件
+
+複数の可用性ゾーン（ AZS ）を使用する Cloud Volumes ONTAP HA 構成には、 AWS ネットワークの追加要件が適用されます。HAペアを起動する前に、作業環境の作成時にBlueXPでネットワークの詳細を入力する必要があるため、これらの要件を確認してください。
+
+HA ペアの仕組みについては、を参照してください link:concept-ha.html["ハイアベイラビリティペア"]。
+
+可用性ゾーン:: この HA 導入モデルでは、複数の AZS を使用してデータの高可用性を確保します。各 Cloud Volumes ONTAP インスタンスと、 HA ペア間の通信チャネルを提供するメディエータインスタンスには、専用の AZ を使用する必要があります。
+
+
+サブネットが各アベイラビリティゾーンに存在する必要があります。
+
+[[floatingips]]
+NAS データおよびクラスタ / SVM 管理用のフローティング IP アドレス:: 複数の AZ に展開された HA configurations では、障害が発生した場合にノード間で移行するフローティング IP アドレスを使用します。VPC の外部からネイティブにアクセスすることはできません。ただし、その場合は除きます link:task-setting-up-transit-gateway.html["AWS 転送ゲートウェイを設定します"]。
++
+--
+フローティング IP アドレスの 1 つはクラスタ管理用、 1 つはノード 1 の NFS/CIFS データ用、もう 1 つはノード 2 の NFS/CIFS データ用です。SVM 管理用の 4 つ目のフローティング IP アドレスはオプションです。
+
+
+NOTE: SnapCenter for Windows または SnapDrive を HA ペアで使用する場合は、 SVM 管理 LIF 用にフローティング IP アドレスが必要です。
+
+Cloud Volumes ONTAP HA作業環境を作成する場合は、BlueXPでフローティングIPアドレスを入力する必要があります。システムの起動時に、HAペアにIPアドレスが割り当てられます。
+
+フローティング IP アドレスは、 HA 構成を導入する AWS リージョン内のどの VPC の CIDR ブロックにも属していない必要があります。フローティング IP アドレスは、リージョン内の VPC の外部にある論理サブネットと考えてください。
+
+次の例は、 AWS リージョンのフローティング IP アドレスと VPC の関係を示しています。フローティング IP アドレスはどの VPC の CIDR ブロックにも属しておらず、ルーティングテーブルを介してサブネットにルーティングできます。
+
+image:diagram_ha_floating_ips.png["この概念図は、 AWS リージョン内の 5 つの VPC の CIDR ブロックと、それらの VPC の CIDR ブロックに属さない 3 つのフローティング IP アドレスを示しています。"]
+
+
+NOTE: BlueXPでは、VPCの外部にあるクライアントからのiSCSIアクセスとNASアクセスに対して、自動的に静的IPアドレスが作成されます。これらの種類の IP アドレスの要件を満たす必要はありません。
+
+--
+外部からのフローティング IP アクセスを可能にする中継ゲートウェイ VPC:: 必要に応じて、 link:task-setting-up-transit-gateway.html["AWS 転送ゲートウェイを設定します"] HA ペアが配置されている VPC の外部から HA ペアのフローティング IP アドレスにアクセスできるようにします。
+ルートテーブル:: BlueXPでフローティングIPアドレスを指定すると、フローティングIPアドレスへのルートを含むルートテーブルを選択するように求められます。これにより、 HA ペアへのクライアントアクセスが可能になります。
++
+--
+VPC内のサブネット用のルーティングテーブルが1つ（メインルーティングテーブル）だけの場合は、そのルーティングテーブルにフローティングIPアドレスが自動的に追加されます。ルーティングテーブルが複数ある場合は、 HA ペアの起動時に正しいルーティングテーブルを選択することが非常に重要です。そうしないと、一部のクライアントが Cloud Volumes ONTAP にアクセスできない場合があります。
+
+たとえば、異なるルートテーブルに関連付けられた 2 つのサブネットがあるとします。ルーティングテーブル A を選択し、ルーティングテーブル B は選択しなかった場合、ルーティングテーブル A に関連付けられたサブネット内のクライアントは HA ペアにアクセスできますが、ルーティングテーブル B に関連付けられたサブネット内のクライアントはアクセスできません。
+
+ルーティングテーブルの詳細については、を参照してください http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS のドキュメント：「 Route Tables"^]。
+
+--
+ネットアップの管理ツールとの連携:: 複数の AZ に展開された HA 構成でネットアップ管理ツールを使用するには、次の 2 つの接続オプションがあります。
++
+--
+. ネットアップの管理ツールは、別の VPC とに導入できます link:task-setting-up-transit-gateway.html["AWS 転送ゲートウェイを設定します"]。ゲートウェイを使用すると、 VPC の外部からクラスタ管理インターフェイスのフローティング IP アドレスにアクセスできます。
+. NAS クライアントと同様のルーティング設定を使用して、同じ VPC にネットアップ管理ツールを導入できます。
+
+
+--
+
+
+
+
+=== HA 構成の例
+
+次の図は、複数の AZ にまたがる HA ペアに固有のネットワークコンポーネントを示しています。 3 つのアベイラビリティゾーン、 3 つのサブネット、フローティング IP アドレス、およびルートテーブルです。
+
+image:diagram_ha_networking.png["この概念図は、 Cloud Volumes ONTAP HA アーキテクチャのコンポーネントを示しています。 2 つの Cloud Volumes ONTAP ノードと 1 つのメディエーターインスタンスが、それぞれ別々のアベイラビリティゾーンに配置されています。"]
+
+
+
+== コネクタの要件
+
+コネクタをまだ作成していない場合は、コネクタのネットワーク要件も確認してください。
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["コネクタのネットワーク要件を確認します"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/reference-ports-aws.html["AWSのセキュリティグループのルール"^]
+

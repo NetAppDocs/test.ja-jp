@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: whats-new-ontap.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, cloud volumes ontap' 
+summary: Cloud Volumes ONTAP のリリースノートには、リリース固有の情報が記載されています。リリースの新機能、サポートされる構成、ストレージの制限、および製品の機能に影響する可能性がある既知の制限事項や問題。 
+---
+= Cloud Volumes ONTAP リリースノート
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP のリリースノートには、リリース固有の情報が記載されています。リリースの新機能、サポートされる構成、ストレージの制限、および製品の機能に影響する可能性がある既知の制限事項や問題。
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Cloud Volumes ONTAP のリリースノートに移動します"^]

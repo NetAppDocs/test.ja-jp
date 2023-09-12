@@ -1,0 +1,572 @@
+---
+sidebar: sidebar 
+permalink: task-deploying-otc-aws.html 
+keywords: Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, aws, serial number, license key, byol, test instance, aws tags, tags, location, vpc, encryption, security group, aws-managed encryption, disk size, disk type, write speed, licensing, IAM role, preconfigured package, access control, volume protection, usage profile, register, CIFS share, quota, qtree, WorkingEnvironmentId, HA, high availability, subscription, cloud data sense, cloud backup 
+summary: Cloud Volumes ONTAP インスタンスは、単一システム構成または AWS での HA ペアとして起動できます。 
+---
+= AWS での Cloud Volumes ONTAP の起動
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP は単一システム構成で起動することも、 AWS で HA ペアとして起動することもできます。
+
+
+
+== 始める前に
+
+作業環境を作成するには、次の作業が必要です。
+
+[[licensing]]
+* 稼働中のコネクタ。
++
+** を用意しておく必要があります https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["ワークスペースに関連付けられているコネクタ"^]。
+** https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["コネクタをで実行したままにする準備をしておく必要があります 常時"^]。
+
+
+* 使用する構成についての理解。
++
+設定を選択し、管理者から AWS ネットワーク情報を取得して準備を完了しておく必要があります。詳細については、を参照してください link:task-planning-your-config.html["Cloud Volumes ONTAP 構成を計画"^]。
+
+* Cloud Volumes ONTAP のライセンスを設定するために必要な事項を理解する。
++
+link:task-set-up-licensing-aws.html["ライセンスの設定方法について説明します"^]。
+
+* CIFS 構成用の DNS と Active Directory
++
+詳細については、を参照してください link:reference-networking-aws.html["Cloud Volumes ONTAP in AWS のネットワーク要件"^]。
+
+
+
+
+
+== AWS でのシングルノード Cloud Volumes ONTAP システムの起動
+
+AWSでCloud Volumes ONTAP を起動する場合は、BlueXPで新しい作業環境を作成する必要があります
+
+.このタスクについて
+作業環境を作成した直後に、指定されたVPCでテストインスタンスを起動して接続を検証します。成功すると、すぐにインスタンスが終了し、Cloud Volumes ONTAP システムの導入が開始されます。BlueXPが接続を検証できない場合は'作業環境の作成に失敗しますテストインスタンスは、 t2.nano （デフォルトの vPC テナンシーの場合）または m3.medium （専用の vPC テナンシーの場合）のいずれかです。
+
+.手順
+. 左側のナビゲーションメニューから、* Storage > Canvas *を選択します。
+. [[subscribe] キャンバスページで、 * 作業環境の追加 * をクリックし、プロンプトに従います。
+. * 場所を選択 * ：「 * Amazon Web Services * 」と「 * Cloud Volumes ONTAP シングルノード * 」を選択します。
+. プロンプトが表示されたら、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-aws.html["コネクタを作成します"^]。
+. * 詳細とクレデンシャル * ：必要に応じて、 AWS のクレデンシャルとサブスクリプションを変更し、作業環境名を入力してタグを追加し、パスワードを入力します。
++
+このページの一部のフィールドは、説明のために用意されています。次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| 作業環境名 | BlueXPでは、作業環境名を使用してCloud Volumes ONTAP システムとAmazon EC2インスタンスの両方に名前を付けます。また、このオプションを選択した場合は、事前定義されたセキュリティグループのプレフィックスとして名前が使用されます。 
+
+
+| タグを追加します | AWS タグは、 AWS リソースのメタデータです。BlueXPは、Cloud Volumes ONTAP インスタンスとそのインスタンスに関連付けられている各AWSリソースにタグを追加します。
+
+作業環境を作成するときに、ユーザインターフェイスから最大 4 つのタグを追加し、作成後にさらに追加できます。API では、作業環境の作成時にタグを 4 つに制限することはありません。
+
+タグの詳細については、を参照してください https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["AWS ドキュメント：「 Tagging your Amazon EC2 Resources"^]。 
+
+
+| ユーザ名とパスワード | Cloud Volumes ONTAP クラスタ管理者アカウントのクレデンシャルです。このクレデンシャルを使用して、 System Manager またはその CLI から Cloud Volumes ONTAP に接続できます。default_admin_user の名前をそのまま使用するか ' カスタム・ユーザー名に変更します 
+
+
+| 資格情報を編集します | このシステムを導入するアカウントに関連付けられている AWS クレデンシャルを選択します。この Cloud Volumes ONTAP システムで使用する AWS Marketplace サブスクリプションを関連付けることもできます。
+
+Add Subscription * をクリックして、選択したクレデンシャルを新しい AWS Marketplace サブスクリプションに関連付けます。サブスクリプションは、年間契約の場合と、 Cloud Volumes ONTAP の料金を 1 時間ごとに支払う場合があります。
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["BlueXPにAWSクレデンシャルを追加する方法について説明します"^]。 
+|===
++
+次のビデオでは、従量課金制の Marketplace サブスクリプションを AWS クレデンシャルに関連付ける方法を紹介します。
+
++
+video::video_subscribing_aws.mp4[width=848,height=480]
++
+
+TIP: 複数の IAM ユーザが同じ AWS アカウントで作業する場合は、各ユーザにサブスクライブする必要があります。最初のユーザがサブスクライブすると、次の図に示すように、 AWS Marketplace から後続のユーザに登録済みであることが通知されます。AWS_account_ のサブスクリプションが設定されている間、各 IAM ユーザは、そのサブスクリプションに自分自身を関連付ける必要があります。次のメッセージが表示されたら、[Click here *（ここをクリック）]リンクをクリックしてBlueXP Webサイトにアクセスし、プロセスを完了します。
+image:screenshot_aws_marketplace.gif["AWSアカウントにサブスクリプションがすでに設定されているものの、特定のIAMユーザがサブスクリプションを設定していない場合に、BlueXP for Cloud Volumes ONTAP のサブスクリプションページを示すスクリーンショット。"]
+
+. * サービス *: サービスを有効にしておくか、 Cloud Volumes ONTAP で使用しない個々のサービスを無効にします。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["BlueXPの分類の詳細については、こちらをご覧ください"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-backup-to-cloud.html["BlueXPのバックアップとリカバリの詳細については、こちらをご覧ください"^]
++
+
+TIP: WORMとデータ階層化を活用する場合は、BlueXPのバックアップとリカバリを無効にし、バージョン9.8以降のCloud Volumes ONTAP 作業環境を導入する必要があります。
+
+
+
+. * 場所と接続 * ：に記録したネットワーク情報を入力します https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#collect-networking-information["AWS ワークシート"^]。
++
+次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| vPC | AWS Outpost を使用している場合は、 Outpost VPC を選択して、その Outpost に単一のノードの Cloud Volumes ONTAP システムを導入できます。エクスペリエンスは、 AWS に存在する他の VPC と同じです。 
+
+
+| セキュリティグループが生成されました  a| 
+BlueXPがセキュリティグループを生成するようにした場合は、トラフィックを許可する方法を選択する必要があります。
+
+** 「* Selected VPC Only *」を選択した場合、インバウンドトラフィックのソースは、選択したVPCのサブネット範囲と、コネクタが存在するVPCのサブネット範囲です。これが推奨されるオプションです。
+** どのVPC *も選択した場合、インバウンドトラフィックのソースは0.0.0.0/0のIP範囲になります。
+
+
+
+
+| 既存のセキュリティグループを使用する | 既存のファイアウォールポリシーを使用する場合は、必要なルールが含まれていることを確認してください。 link:reference-security-groups.html["Cloud Volumes ONTAP のファイアウォールルールについて説明します"^]。 
+|===
+. * データ暗号化 * ：データ暗号化なし、または AWS で管理する暗号化を選択します。
++
+AWS で管理する暗号化の場合は、アカウントまたは別の AWS アカウントから別の Customer Master Key （ CMK ；カスタマーマスターキー）を選択できます。
+
++
+
+TIP: Cloud Volumes ONTAP システムの作成後に AWS のデータ暗号化方式を変更することはできません。
+
++
+link:task-setting-up-kms.html["Cloud 用の AWS KMS の設定方法については、こちらをご覧ください Volume ONTAP の略"^]。
+
++
+link:concept-security.html#encryption-of-data-at-rest["サポートされている暗号化テクノロジの詳細を確認してください"^]。
+
+. * 課金方法と NSS アカウント * ：このシステムで使用する課金オプションを指定し、NetApp Support Siteのアカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAP のライセンスオプションについて説明します"^]。
+** link:task-set-up-licensing-aws.html["ライセンスの設定方法について説明します"^]。
+
+
+. * Cloud Volumes ONTAP 構成 * （ AWS Marketplace の年間契約のみ）：デフォルトの構成を確認して「 * Continue * 」をクリックするか、「 * 構成の変更 * 」をクリックして独自の構成を選択します。
++
+デフォルトの設定を使用している場合、ボリュームを指定し、構成を確認および承認するだけで済みます。
+
+. *構成済みパッケージ*：Cloud Volumes ONTAP をすばやく起動するパッケージを1つ選択するか、*構成の変更*をクリックして独自の構成を選択します。
++
+いずれかのパッケージを選択した場合、ボリュームを指定し、構成を確認および承認するだけで済みます。
+
+. *IAMの役割*: BlueXPが役割を作成できるようにするには、既定のオプションをそのまま使用することをお勧めします。
++
+独自のポリシーを使用する場合は、それが満たされている必要があります link:task-set-up-iam-roles.html["Cloud Volumes ONTAP ノードのポリシーの要件"^]。
+
+. *ライセンス*：必要に応じてCloud Volumes ONTAP のバージョンを変更し、インスタンスタイプとインスタンステナンシーを選択します。
++
+
+NOTE: 選択したバージョンで新しいリリース候補、一般提供、またはパッチリリースが利用可能な場合、作業環境の作成時にシステムがそのバージョンに更新されます。たとえば、Cloud Volumes ONTAP 9.10.1と9.10.1 P4が利用可能になっていれば、更新が実行されます。たとえば、 9.6 から 9.7 への更新など、あるリリースから別のリリースへの更新は行われません。
+
+. *基盤となるストレージリソース*：ディスクタイプを選択し、基盤となるストレージを構成して、データの階層化を有効にするかどうかを選択します。
++
+次の点に注意してください。
+
++
+** ディスクタイプは最初のボリューム（およびアグリゲート）用です。以降のボリューム（およびアグリゲート）には別のディスクタイプを選択できます。
+** GP3またはio1ディスクを選択した場合、BlueXPはAWSのElastic Volumes機能を使用して、必要に応じて、基盤となるストレージディスク容量を自動的に増やします。初期容量はストレージのニーズに基づいて選択し、Cloud Volumes ONTAP の導入後に変更することができます。 link:concept-aws-elastic-volumes.html["Elastic VolumesのAWSサポートの詳細については、こちらをご覧ください"^]。
+** gp2ディスクまたはst1ディスクを選択する場合、シンプルなプロビジョニングオプションを使用する場合、初期アグリゲートおよびBlueXPで作成される追加のアグリゲートのすべてのディスクサイズを選択できます。Advanced Allocation オプションを使用すると、異なるディスクサイズを使用するアグリゲートを作成できます。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データの階層化を無効にすると、以降のアグリゲートで有効にすることができます。
++
+link:concept-data-tiering.html["データ階層化の仕組みをご確認ください"^]。
+
+
+
+. *書き込み速度とWORM *：
++
+.. 必要に応じて、「標準」または「高速」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度の詳細については、こちらをご覧ください。"^]。
+
+.. 必要に応じて、Write Once、Read Many（WORM）ストレージをアクティブにします。
++
+Cloud Volumes ONTAP 9.7以前のバージョンでデータ階層化が有効になっている場合は、WORMを有効にすることはできません。Cloud Volumes ONTAP 9.8へのリバートまたはダウングレードは、WORMと階層化を有効にしたあとはブロックされます。
+
++
+link:concept-worm.html["WORM ストレージの詳細については、こちらをご覧ください。"^]。
+
+.. WORMストレージをアクティブ化する場合は、保持期間を選択します。
+
+
+. * ボリュームの作成 * ：新しいボリュームの詳細を入力するか、 * スキップ * をクリックします。
++
+link:concept-client-protocols.html["サポートされるクライアントプロトコルおよびバージョンについて説明します"^]。
+
++
+このページの一部のフィールドは、説明のために用意されています。次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シンプロビジョニングを有効にするかどうかによって大きく異なります。シンプロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きいボリュームを作成できます。 
+
+
+| アクセス制御（ NFS のみ） | エクスポートポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、BlueXPはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー / グループ（ CIFS のみ） | これらのフィールドを使用すると、ユーザおよびグループ（アクセスコントロールリストまたは ACL とも呼ばれる）の共有へのアクセスレベルを制御できます。ローカルまたはドメインの Windows ユーザまたはグループ、 UNIX ユーザまたはグループを指定できます。ドメインの Windows ユーザ名を指定する場合は、 domain\username 形式でユーザのドメインを指定する必要があります。 
+
+
+| スナップショットポリシー | Snapshot コピーポリシーは、自動的に作成される NetApp Snapshot コピーの頻度と数を指定します。NetApp Snapshot コピーは、パフォーマンスに影響を与えず、ストレージを最小限に抑えるポイントインタイムファイルシステムイメージです。デフォルトポリシーを選択することも、なしを選択することもできます。一時データには、 Microsoft SQL Server の tempdb など、 none を選択することもできます。 
+
+
+| アドバンストオプション（ NFS のみ） | ボリュームの NFS バージョンを NFSv3 または NFSv4 のいずれかで選択してください。 
+
+
+| イニシエータグループと IQN （ iSCSI のみ） | iSCSI ストレージターゲットは LUN （論理ユニット）と呼ばれ、標準のブロックデバイスとしてホストに提示されます。
+
+イニシエータグループは、 iSCSI ホストのノード名のテーブルであり、どのイニシエータがどの LUN にアクセスできるかを制御します。
+
+iSCSI ターゲットは、標準のイーサネットネットワークアダプタ（ NIC ）、ソフトウェアイニシエータを搭載した TOE カード、 CNA 、または専用の HBA を使用してネットワークに接続され、 iSCSI Qualified Name （ IQN ）で識別されます。
+
+iSCSIボリュームを作成すると、BlueXPによって自動的にLUNが作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、 link:task-connect-lun.html["IQN を使用して、から LUN に接続します ホスト"]。 
+|===
++
+次の図は、 CIFS プロトコルの [Volume] ページの設定を示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット： Cloud Volumes ONTAP インスタンスのボリュームページが表示されます。"]
+
+. * CIFS セットアップ * ： CIFS プロトコルを選択した場合は、 CIFS サーバをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNS プライマリおよびセカンダリ IP アドレス | CIFS サーバの名前解決を提供する DNS サーバの IP アドレス。
+リストされた DNS サーバには、 CIFS サーバが参加するドメインの Active Directory LDAP サーバとドメインコントローラの検索に必要なサービスロケーションレコード（ SRV ）が含まれている必要があります。 
+
+
+| 参加する Active Directory ドメイン | CIFS サーバを参加させる Active Directory （ AD ）ドメインの FQDN 。 
+
+
+| ドメインへの参加を許可されたクレデンシャル | AD ドメイン内の指定した組織単位（ OU ）にコンピュータを追加するための十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS サーバの NetBIOS 名 | AD ドメイン内で一意の CIFS サーバ名。 
+
+
+| 組織単位 | CIFS サーバに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。
+AWS Managed Microsoft AD を Cloud Volumes ONTAP の AD サーバとして設定する場合は、このフィールドに「 * OU=computers 、 OU=corp * 」と入力します。 
+
+
+| DNS ドメイン | Cloud Volumes ONTAP Storage Virtual Machine （ SVM ）の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバを設定するには、「 Active Directory ドメインを使用」を選択します。別のアドレスを使用して NTP サーバを設定する必要がある場合は、 API を使用してください。を参照してください https://docs.netapp.com/us-en/bluexp-automation/index.html["BlueXP自動化ドキュメント"^] を参照してください。
+
+NTP サーバは、 CIFS サーバを作成するときにのみ設定できます。CIFS サーバを作成したあとで設定することはできません。 
+|===
+. * 使用状況プロファイル、ディスクタイプ、階層化ポリシー * ：必要に応じて、 Storage Efficiency 機能を有効にするかどうかを選択し、ボリューム階層化ポリシーを編集します。
++
+詳細については、を参照してください link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリューム使用率プロファイルについて"^] および link:concept-data-tiering.html["データ階層化の概要"^]。
+
+. * レビューと承認 *: 選択内容を確認して確認します。
++
+.. 設定の詳細を確認します。
+.. [詳細情報*]をクリックして、BlueXPが購入するサポートとAWSリソースの詳細を確認します。
+.. [* I understand ... * （理解しています ... * ） ] チェックボックスを選択
+.. [Go*] をクリックします。
+
+
+
+
+.結果
+Cloud Volumes ONTAP インスタンスが起動します。タイムラインで進行状況を追跡できます。
+
+Cloud Volumes ONTAP インスタンスの起動時に問題が発生した場合は、障害メッセージを確認してください。また、作業環境を選択して、 [ 環境の再作成 ] をクリックすることもできます。
+
+詳細については、を参照してください https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAP のサポート"^]。
+
+.完了後
+* CIFS 共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、それらのユーザが共有にアクセスしてファイルを作成できることを確認します。
+* ボリュームにクォータを適用する場合は、 System Manager または CLI を使用します。
++
+クォータを使用すると、ユーザ、グループ、または qtree が使用するディスク・スペースとファイル数を制限または追跡できます。
+
+
+
+
+
+== AWS での Cloud Volumes ONTAP HA ペアの起動
+
+AWSでCloud Volumes ONTAP HAペアを起動するには、BlueXPでHA作業環境を作成する必要があります。
+
+.制限事項
+現時点では、 AWS アウトポストで HA ペアがサポートされていません。
+
+.このタスクについて
+作業環境を作成した直後に、指定されたVPCでテストインスタンスを起動して接続を検証します。成功すると、すぐにインスタンスが終了し、Cloud Volumes ONTAP システムの導入が開始されます。BlueXPが接続を検証できない場合は'作業環境の作成に失敗しますテストインスタンスは、 t2.nano （デフォルトの vPC テナンシーの場合）または m3.medium （専用の vPC テナンシーの場合）のいずれかです。
+
+.手順
+. 左側のナビゲーションメニューから、* Storage > Canvas *を選択します。
+. Canvas ページで、 * Add Working Environment * をクリックし、画面の指示に従います。
+. *場所を選択*：「* Amazon Web Services *」と「* Cloud Volumes ONTAP HA *」を選択します。
+. * 詳細とクレデンシャル * ：必要に応じて、 AWS のクレデンシャルとサブスクリプションを変更し、作業環境名を入力してタグを追加し、パスワードを入力します。
++
+このページの一部のフィールドは、説明のために用意されています。次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| 作業環境名 | BlueXPでは、作業環境名を使用してCloud Volumes ONTAP システムとAmazon EC2インスタンスの両方に名前を付けます。また、このオプションを選択した場合は、事前定義されたセキュリティグループのプレフィックスとして名前が使用されます。 
+
+
+| タグを追加します | AWS タグは、 AWS リソースのメタデータです。BlueXPは、Cloud Volumes ONTAP インスタンスとそのインスタンスに関連付けられている各AWSリソースにタグを追加します。
+
+作業環境を作成するときに、ユーザインターフェイスから最大 4 つのタグを追加し、作成後にさらに追加できます。API では、作業環境の作成時にタグを 4 つに制限することはありません。
+
+タグの詳細については、を参照してください https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html["AWS ドキュメント：「 Tagging your Amazon EC2 Resources"^]。 
+
+
+| ユーザ名とパスワード | Cloud Volumes ONTAP クラスタ管理者アカウントのクレデンシャルです。このクレデンシャルを使用して、 System Manager またはその CLI から Cloud Volumes ONTAP に接続できます。default_admin_user の名前をそのまま使用するか ' カスタム・ユーザー名に変更します 
+
+
+| 資格情報を編集します | この Cloud Volumes ONTAP システムで使用する AWS クレデンシャルと Marketplace サブスクリプションを選択します。
+
+Add Subscription * をクリックして、選択したクレデンシャルを新しい AWS Marketplace サブスクリプションに関連付けます。サブスクリプションは、年間契約の場合と、 Cloud Volumes ONTAP の料金を 1 時間ごとに支払う場合があります。
+
+NetApp （ BYOL ）からライセンスを直接購入した場合、 AWS サブスクリプションは必要ありません。
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html["BlueXPにAWSクレデンシャルを追加する方法について説明します"^]。 
+|===
++
+次のビデオでは、従量課金制の Marketplace サブスクリプションを AWS クレデンシャルに関連付ける方法を紹介します。
+
++
+video::video_subscribing_aws.mp4[width=848,height=480]
++
+
+TIP: 複数の IAM ユーザが同じ AWS アカウントで作業する場合は、各ユーザにサブスクライブする必要があります。最初のユーザがサブスクライブすると、次の図に示すように、 AWS Marketplace から後続のユーザに登録済みであることが通知されます。AWS_account_ のサブスクリプションが設定されている間、各 IAM ユーザは、そのサブスクリプションに自分自身を関連付ける必要があります。次のメッセージが表示されたら、[Click here *（ここをクリック）]リンクをクリックしてBlueXP Webサイトにアクセスし、プロセスを完了します。
+image:screenshot_aws_marketplace.gif["AWSアカウントにサブスクリプションがすでに設定されているものの、特定のIAMユーザがサブスクリプションを設定していない場合に、BlueXP for Cloud Volumes ONTAP のサブスクリプションページを示すスクリーンショット。"]
+
+. * サービス *: この Cloud Volumes ONTAP システムで使用しない個々のサービスを有効または無効にしておきます。
++
+** https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html["BlueXPの分類の詳細については、こちらをご覧ください"^]
+** https://docs.netapp.com/us-en/bluexp-backup-recovery/task-backup-to-s3.html["BlueXPのバックアップとリカバリの詳細については、こちらをご覧ください"^]
++
+
+TIP: WORMとデータ階層化を活用する場合は、BlueXPのバックアップとリカバリを無効にし、バージョン9.8以降のCloud Volumes ONTAP 作業環境を導入する必要があります。
+
+
+
+. *HA 導入モデル *: HA 構成を選択します。
++
+導入モデルの概要については、を参照してください link:concept-ha.html["AWS での Cloud Volumes ONTAP HA"^]。
+
+. *場所と接続*（単一AZ）または*リージョンとVPC *（複数のAZ）：AWSワークシートに記録したネットワーク情報を入力します。
++
+次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| セキュリティグループが生成されました  a| 
+BlueXPがセキュリティグループを生成するようにした場合は、トラフィックを許可する方法を選択する必要があります。
+
+** 「* Selected VPC Only *」を選択した場合、インバウンドトラフィックのソースは、選択したVPCのサブネット範囲と、コネクタが存在するVPCのサブネット範囲です。これが推奨されるオプションです。
+** どのVPC *も選択した場合、インバウンドトラフィックのソースは0.0.0.0/0のIP範囲になります。
+
+
+
+
+| 既存のセキュリティグループを使用する | 既存のファイアウォールポリシーを使用する場合は、必要なルールが含まれていることを確認してください。 link:reference-security-groups.html["Cloud Volumes ONTAP のファイアウォールルールについて説明します"^]。 
+|===
+. * 接続と SSH 認証 * ： HA ペアとメディエーターの接続方法を選択します。
+. * フローティング IP * ：複数の AZ を選択した場合は、フローティング IP アドレスを指定します。
++
+IP アドレスは、その地域のすべての VPC の CIDR ブロックの外側にある必要があります。詳細については、を参照してください link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-networking-aws.html#requirements-for-ha-pairs-in-multiple-azs["複数の AZS での Cloud Volumes ONTAP HA の AWS ネットワーク要件"^]。
+
+. * ルートテーブル * ：複数の AZ を選択した場合は、フローティング IP アドレスへのルートを含むルーティングテーブルを選択します。
++
+複数のルートテーブルがある場合は、正しいルートテーブルを選択することが非常に重要です。そうしないと、一部のクライアントが Cloud Volumes ONTAP HA ペアにアクセスできない場合があります。ルーティングテーブルの詳細については、を参照してください http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html["AWS のドキュメント：「 Route Tables"^]。
+
+. * データ暗号化 * ：データ暗号化なし、または AWS で管理する暗号化を選択します。
++
+AWS で管理する暗号化の場合は、アカウントまたは別の AWS アカウントから別の Customer Master Key （ CMK ；カスタマーマスターキー）を選択できます。
+
++
+
+TIP: Cloud Volumes ONTAP システムの作成後に AWS のデータ暗号化方式を変更することはできません。
+
++
+link:task-setting-up-kms.html["Cloud 用の AWS KMS の設定方法については、こちらをご覧ください Volume ONTAP の略"^]。
+
++
+link:concept-security.html#encryption-of-data-at-rest["サポートされている暗号化テクノロジの詳細を確認してください"^]。
+
+. * 課金方法と NSS アカウント * ：このシステムで使用する課金オプションを指定し、NetApp Support Siteのアカウントを指定します。
++
+** link:concept-licensing.html["Cloud Volumes ONTAP のライセンスオプションについて説明します"^]。
+** link:task-set-up-licensing-aws.html["ライセンスの設定方法について説明します"^]。
+
+
+. * Cloud Volumes ONTAP 構成 * （ AWS Marketplace の年間契約のみ）：デフォルトの構成を確認して「 * Continue * 」をクリックするか、「 * 構成の変更 * 」をクリックして独自の構成を選択します。
++
+デフォルトの設定を使用している場合、ボリュームを指定し、構成を確認および承認するだけで済みます。
+
+. * 構成済みパッケージ * （時間単位または BYOL のみ）： Cloud Volumes ONTAP をすばやく起動するパッケージを 1 つ選択するか、 * 構成の変更 * をクリックして独自の構成を選択します。
++
+いずれかのパッケージを選択した場合、ボリュームを指定し、構成を確認および承認するだけで済みます。
+
+. *IAMの役割*: BlueXPが役割を作成できるようにするには、既定のオプションをそのまま使用することをお勧めします。
++
+独自のポリシーを使用する場合は、それが満たされている必要があります link:task-set-up-iam-roles.html["Cloud Volumes ONTAP ノードと HA のポリシー要件 メディエーター"^]。
+
+. *ライセンス*：必要に応じてCloud Volumes ONTAP のバージョンを変更し、インスタンスタイプとインスタンステナンシーを選択します。
++
+
+NOTE: 選択したバージョンで新しいリリース候補、一般提供、またはパッチリリースが利用可能な場合、作業環境の作成時にシステムがそのバージョンに更新されます。たとえば、Cloud Volumes ONTAP 9.10.1と9.10.1 P4が利用可能になっていれば、更新が実行されます。たとえば、 9.6 から 9.7 への更新など、あるリリースから別のリリースへの更新は行われません。
+
+. *基盤となるストレージリソース*：ディスクタイプを選択し、基盤となるストレージを構成して、データの階層化を有効にするかどうかを選択します。
++
+次の点に注意してください。
+
++
+** ディスクタイプは最初のボリューム（およびアグリゲート）用です。以降のボリューム（およびアグリゲート）には別のディスクタイプを選択できます。
+** GP3またはio1ディスクを選択した場合、BlueXPはAWSのElastic Volumes機能を使用して、必要に応じて、基盤となるストレージディスク容量を自動的に増やします。初期容量はストレージのニーズに基づいて選択し、Cloud Volumes ONTAP の導入後に変更することができます。 link:concept-aws-elastic-volumes.html["Elastic VolumesのAWSサポートの詳細については、こちらをご覧ください"^]。
+** gp2ディスクまたはst1ディスクを選択する場合、シンプルなプロビジョニングオプションを使用する場合、初期アグリゲートおよびBlueXPで作成される追加のアグリゲートのすべてのディスクサイズを選択できます。Advanced Allocation オプションを使用すると、異なるディスクサイズを使用するアグリゲートを作成できます。
+** ボリュームを作成または編集するときに、特定のボリューム階層化ポリシーを選択できます。
+** データの階層化を無効にすると、以降のアグリゲートで有効にすることができます。
++
+link:concept-data-tiering.html["データ階層化の仕組みをご確認ください"^]。
+
+
+
+. *書き込み速度とWORM *：
++
+.. 必要に応じて、「標準」または「高速」の書き込み速度を選択します。
++
+link:concept-write-speed.html["書き込み速度の詳細については、こちらをご覧ください。"^]。
+
+.. 必要に応じて、Write Once、Read Many（WORM）ストレージをアクティブにします。
++
+Cloud Volumes ONTAP 9.7以前のバージョンでデータ階層化が有効になっている場合は、WORMを有効にすることはできません。Cloud Volumes ONTAP 9.8へのリバートまたはダウングレードは、WORMと階層化を有効にしたあとはブロックされます。
+
++
+link:concept-worm.html["WORM ストレージの詳細については、こちらをご覧ください。"^]。
+
+.. WORMストレージをアクティブ化する場合は、保持期間を選択します。
+
+
+. * ボリュームの作成 * ：新しいボリュームの詳細を入力するか、 * スキップ * をクリックします。
++
+link:concept-client-protocols.html["サポートされるクライアントプロトコルおよびバージョンについて説明します"^]。
+
++
+このページの一部のフィールドは、説明のために用意されています。次の表では、ガイダンスが必要なフィールドについて説明します。
+
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| サイズ | 入力できる最大サイズは、シンプロビジョニングを有効にするかどうかによって大きく異なります。シンプロビジョニングを有効にすると、現在使用可能な物理ストレージよりも大きいボリュームを作成できます。 
+
+
+| アクセス制御（ NFS のみ） | エクスポートポリシーは、ボリュームにアクセスできるサブネット内のクライアントを定義します。デフォルトでは、BlueXPはサブネット内のすべてのインスタンスへのアクセスを提供する値を入力します。 
+
+
+| 権限とユーザー / グループ（ CIFS のみ） | これらのフィールドを使用すると、ユーザおよびグループ（アクセスコントロールリストまたは ACL とも呼ばれる）の共有へのアクセスレベルを制御できます。ローカルまたはドメインの Windows ユーザまたはグループ、 UNIX ユーザまたはグループを指定できます。ドメインの Windows ユーザ名を指定する場合は、 domain\username 形式でユーザのドメインを指定する必要があります。 
+
+
+| スナップショットポリシー | Snapshot コピーポリシーは、自動的に作成される NetApp Snapshot コピーの頻度と数を指定します。NetApp Snapshot コピーは、パフォーマンスに影響を与えず、ストレージを最小限に抑えるポイントインタイムファイルシステムイメージです。デフォルトポリシーを選択することも、なしを選択することもできます。一時データには、 Microsoft SQL Server の tempdb など、 none を選択することもできます。 
+
+
+| アドバンストオプション（ NFS のみ） | ボリュームの NFS バージョンを NFSv3 または NFSv4 のいずれかで選択してください。 
+
+
+| イニシエータグループと IQN （ iSCSI のみ） | iSCSI ストレージターゲットは LUN （論理ユニット）と呼ばれ、標準のブロックデバイスとしてホストに提示されます。
+
+イニシエータグループは、 iSCSI ホストのノード名のテーブルであり、どのイニシエータがどの LUN にアクセスできるかを制御します。
+
+iSCSI ターゲットは、標準のイーサネットネットワークアダプタ（ NIC ）、ソフトウェアイニシエータを搭載した TOE カード、 CNA 、または専用の HBA を使用してネットワークに接続され、 iSCSI Qualified Name （ IQN ）で識別されます。
+
+iSCSIボリュームを作成すると、BlueXPによって自動的にLUNが作成されます。ボリュームごとに 1 つの LUN だけを作成することでシンプルになり、管理は不要になります。ボリュームを作成したら、 link:task-connect-lun.html["IQN を使用して、から LUN に接続します ホスト"]。 
+|===
++
+次の図は、 CIFS プロトコルの [Volume] ページの設定を示しています。
+
++
+image:screenshot_cot_vol.gif["スクリーンショット： Cloud Volumes ONTAP インスタンスのボリュームページが表示されます。"]
+
+. * CIFS セットアップ * ： CIFS プロトコルを選択した場合は、 CIFS サーバをセットアップします。
++
+[cols="25,75"]
+|===
+| フィールド | 説明 
+
+
+| DNS プライマリおよびセカンダリ IP アドレス | CIFS サーバの名前解決を提供する DNS サーバの IP アドレス。
+リストされた DNS サーバには、 CIFS サーバが参加するドメインの Active Directory LDAP サーバとドメインコントローラの検索に必要なサービスロケーションレコード（ SRV ）が含まれている必要があります。 
+
+
+| 参加する Active Directory ドメイン | CIFS サーバを参加させる Active Directory （ AD ）ドメインの FQDN 。 
+
+
+| ドメインへの参加を許可されたクレデンシャル | AD ドメイン内の指定した組織単位（ OU ）にコンピュータを追加するための十分な権限を持つ Windows アカウントの名前とパスワード。 
+
+
+| CIFS サーバの NetBIOS 名 | AD ドメイン内で一意の CIFS サーバ名。 
+
+
+| 組織単位 | CIFS サーバに関連付ける AD ドメイン内の組織単位。デフォルトは CN=Computers です。
+AWS Managed Microsoft AD を Cloud Volumes ONTAP の AD サーバとして設定する場合は、このフィールドに「 * OU=computers 、 OU=corp * 」と入力します。 
+
+
+| DNS ドメイン | Cloud Volumes ONTAP Storage Virtual Machine （ SVM ）の DNS ドメイン。ほとんどの場合、ドメインは AD ドメインと同じです。 
+
+
+| NTPサーバ | Active Directory DNS を使用して NTP サーバを設定するには、「 Active Directory ドメインを使用」を選択します。別のアドレスを使用して NTP サーバを設定する必要がある場合は、 API を使用してください。を参照してください https://docs.netapp.com/us-en/bluexp-automation/index.html["BlueXP自動化ドキュメント"^] を参照してください。
+
+NTP サーバは、 CIFS サーバを作成するときにのみ設定できます。CIFS サーバを作成したあとで設定することはできません。 
+|===
+. * 使用状況プロファイル、ディスクタイプ、階層化ポリシー * ：必要に応じて、 Storage Efficiency 機能を有効にするかどうかを選択し、ボリューム階層化ポリシーを編集します。
++
+詳細については、を参照してください link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-planning-your-config.html#choose-a-volume-usage-profile["ボリュームの使用プロファイルを選択してください"^] および link:concept-data-tiering.html["データ階層化の概要"^]。
+
+. * レビューと承認 *: 選択内容を確認して確認します。
++
+.. 設定の詳細を確認します。
+.. [詳細情報*]をクリックして、BlueXPが購入するサポートとAWSリソースの詳細を確認します。
+.. [* I understand ... * （理解しています ... * ） ] チェックボックスを選択
+.. [Go*] をクリックします。
+
+
+
+
+.結果
+Cloud Volumes ONTAP HAペアが起動します。タイムラインで進行状況を追跡できます。
+
+HA ペアの起動で問題が発生した場合は、障害メッセージを確認します。また、作業環境を選択して、 [ 環境の再作成 ] をクリックすることもできます。
+
+詳細については、を参照してください https://mysupport.netapp.com/site/products/all/details/cloud-volumes-ontap/guideme-tab["NetApp Cloud Volumes ONTAP のサポート"^]。
+
+.完了後
+* CIFS 共有をプロビジョニングした場合は、ファイルとフォルダに対する権限をユーザまたはグループに付与し、それらのユーザが共有にアクセスしてファイルを作成できることを確認します。
+* ボリュームにクォータを適用する場合は、 System Manager または CLI を使用します。
++
+クォータを使用すると、ユーザ、グループ、または qtree が使用するディスク・スペースとファイル数を制限または追跡できます。
+
+

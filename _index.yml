@@ -1,0 +1,77 @@
+---
+indexpage:
+  lead: Cloud Volumes ONTAP を使用すると、データ保護、セキュリティ、コンプライアンスを強化しながら、クラウドストレージのコストとパフォーマンスを最適化できます。
+  tiles:
+  - title: はじめに
+    links:
+    - title: Cloud Volumes ONTAP の詳細をご覧ください
+      url: concept-overview-cvo.html
+    - title: AWS でのクイックスタート
+      url: task-getting-started-aws.html
+      flavor: aws
+    - title: Azure のクイックスタート
+      url: task-getting-started-azure.html
+      flavor: azure
+    - title: Google Cloud のクイックスタート
+      url: task-getting-started-gcp.html
+      flavor: gcp
+  - title: ライセンス
+    links:
+    - title: ライセンスの概要
+      url: concept-licensing.html
+    - title: 容量ベースのライセンスを管理します
+      url: task-manage-capacity-licenses.html
+    - title: 未割り当てのノードベースライセンスを交換します
+      url: task-manage-node-licenses.html#exchange-unassigned-node-based-licenses
+    - title: Keystoneサブスクリプションの管理
+      url: task-manage-keystone.html
+  - title: ストレージ管理
+    links:
+    - title: ボリュームを作成します
+      url: task-create-volumes.html
+    - title: アクセス頻度の低いデータをオブジェクトストレージに階層化します
+      url: task-tiering.html
+    - title: FlexCache でデータアクセスを高速化
+      url: task-accelerate-data-access.html
+    - title: ONTAP SAN ホスト構成
+      url: https://docs.netapp.com/us-en/ontap-sanhost
+  - title: システム管理
+    links:
+    - title: Cloud Volumes ONTAP をアップグレードします
+      url: task-updating-ontap-cloud.html
+    - title: Cloud Volumes ONTAP を停止して起動します
+      url: task-managing-state.html
+  - title: セキュリティ
+    links:
+    - title: ネットアップの暗号化機能でボリュームを暗号化
+      url: task-encrypting-volumes.html
+    - title: ランサムウェアからの保護を強化
+      url: task-protecting-ransomware.html
+  - title: API
+    links:
+    - title: Cloud Volumes ONTAP API の概要
+      url: https://docs.netapp.com/us-en/bluexp-automation/cm/overview.html
+    - title: API を使用する準備をします
+      url: https://docs.netapp.com/us-en/bluexp-automation/cm/prepare.html
+    - title: API リファレンス
+      url: https://docs.netapp.com/us-en/bluexp-automation/cm/api_ref_resources.html
+  - title: トラブルシューティング
+    links:
+    - title: ネットアップナレッジベース
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Volumes_ONTAP_(CVO)
+  - title: 参照
+    links:
+    - title: サポートされている構成
+      url: https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html
+    - title: サポートされるクラウドリージョン
+      url: https://cloud.netapp.com/cloud-volumes-global-regions
+    - title: 計算機
+      url: https://cloud.netapp.com/calculator-hub
+  - title: ブログとコミュニティ
+    links:
+    - title: ネットアップコミュニティ
+      url: https://community.netapp.com/t5/Cloud-Volumes-ONTAP/bd-p/CloudVolumes
+    - title: BlueXPのウェブサイトのblog
+      url: https://cloud.netapp.com/blog/topic/cloud-volumes-ontap
+    - title: クラウドに関する Web セミナー
+      url: https://cloud.netapp.com/events

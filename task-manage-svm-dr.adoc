@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: task-manage-svm-dr.html 
+keywords: storage virtual machine, vserver, svm, storage vm, svm dr, disaster recovery, svm disaster recovery, storage vm dr 
+summary: BlueXPでは、Storage VMディザスタリカバリのセットアップやオーケストレーションはサポートされていません。System Manager または CLI を使用する必要があります。 
+---
+= SVMディザスタリカバリのセットアップ
+:toc: macro
+:hardbreaks:
+:allow-uri-read: 
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+BlueXPは、Storage VM（SVM）ディザスタリカバリのセットアップやオーケストレーションのサポートは提供していません。System Manager または CLI を使用する必要があります。
+
+2つのCloud Volumes ONTAPシステム間にSnapMirror SVMレプリケーションを設定する場合は、2つのHAペアシステム間または2つのシングルノードシステム間でレプリケーションを行う必要があります。HAペアとシングルノードシステムの間にSnapMirror SVMレプリケーションをセットアップすることはできません。
+
+CLIの手順については、次のドキュメントを参照してください。
+
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856["SVM ディザスタリカバリ設定エクスプレスガイド"^]
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857["SVM ディザスタリカバリエクスプレスガイド"^]
+

@@ -1,440 +1,342 @@
 ---
 settings:
-  name: Cloud Insights
-  rss_page: concept_whats_new.html
-  noindex: true
+  name: Cloud Volumes ONTAP
+  harmony_integration: maestro
+  platform: cloud
   internal:
     pdf_enabled: true
   prod:
-    pdf_enabled: false
+    pdf_enabled: true
     harmony_enabled: false
-    hide_language_selector: true
-  langs: ja-jp,us-en,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr
+  versions:
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-relnotes"
+    version-number: 9.13.1
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9130-relnotes"
+    version-number: 9.13.0
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9121-relnotes"
+    version-number: 9.12.1
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9120-relnotes"
+    version-number: 9.12.0
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9111-relnotes"
+    version-number: 9.11.1
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9110-relnotes"
+    version-number: 9.11.0
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9101-relnotes"
+    version-number: 9.10.1
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-9100-relnotes"
+    version-number: 9.10.0
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-991-relnotes"
+    version-number: 9.9.1
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-990-relnotes"
+    version-number: 9.9.0
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-98-relnotes"
+    version-number: '9.8'
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-97-relnotes"
+    version-number: '9.7'
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-96-relnotes"
+    version-number: '9.6'
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-95-relnotes"
+    version-number: '9.5'
+  - name: Cloud Volumes ONTAP
+    url: "/cloud-volumes-ontap-94-relnotes"
+    version-number: '9.4'
+  - name: ONTAPクラウド
+    url: "/cloud-volumes-ontap-93-relnotes"
+    version-number: '9.3'
+  rss_page: whats-new.html
+  filter:
+    label: クラウドプロバイダ
+    default: すべてのクラウドプロバイダ
+    options:
+    - name: Amazon Web Services の
+      alias: AWS
+      id: aws
+    - name: Google Cloud
+      alias: Google Cloud
+      id: gcp
+    - name: Microsoft Azure
+      alias: Azure
+      id: azure
+  langs: ja-jp,us-en,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
-  - title: Cloud Insights のドキュメント
+  - title: Cloud Volumes ONTAP のドキュメント
     url: "/index.html"
-  - title: 新機能
-    url: "/concept_whats_new.html"
-  - title: Cloud Insights にサインアップします
-    url: "/task_cloud_insights_onboarding_1.html"
-  - title: セキュリティ
+  - title: リリースノート
     entries:
-    - title: セキュリティプラクティス
-      url: "/security_overview.html"
-    - title: 当社が保存するものと場所
-      url: "/security_information_and_region.html"
+    - title: 新機能
+      url: "/whats-new.html"
+    - title: 既知の制限
+      url: "/reference-limitations.html"
+    - title: Cloud Volumes ONTAP リリースノート
+      url: "/whats-new-ontap.html"
   - title: はじめに
     entries:
-    - title: 機能チュートリアル
-      url: "/concept_feature_tutorials.html"
-    - title: データの収集中
+    - title: Cloud Volumes ONTAP の詳細をご覧ください
+      url: "/concept-overview-cvo.html"
+    - title: 新規導入でサポートされるバージョン
+      url: "/reference-versions.html"
+    - title: Amazon Web Services の利用を開始しましょう
+      flavor: aws
       entries:
-      - title: 概要
-        url: "/task_getting_started_with_cloud_insights.html"
-      - title: Acquisition Unit の要件
-        url: "/concept_acquisition_unit_requirements.html"
-      - title: Acquisition Unit の設定
-        url: "/task_configure_acquisition_unit.html"
-      - title: エージェントの設定
-        url: "/task_config_telegraf_agent.html"
-      - title: データコレクタの設定
-        url: "/task_configure_data_collectors.html"
-      - title: Data Collector の取得ステータスを確認しています
-        url: "/concept_determining_data_collector_acq_status.html"
-      - title: 設定済みデータコレクタを管理します
-        url: "/task_view_configured_data_collectors.html"
-      - title: データコレクタエラーを調査します
-        url: "/task_research_failed_collector.html"
-    - title: 推奨されるダッシュボードのインポート
-      url: "/concept_import_from_dashboard_gallery.html"
-    - title: ユーザアカウントとロール
-      url: "/concept_user_roles.html"
-    - title: 他の Cloud Central 製品に切り替える
-      url: "/concept_other_cloud_products.html"
-  - title: Data Collector リスト
-    url: "/data_collector_list.html"
-  - title: Cloud Insights に登録しています
-    url: "/concept_subscribing_to_cloud_insights.html"
-  - title: 自動デバイス解決
-    entries:
-    - title: デバイス解決の概要
-      url: "/concept_device_resolution_overview.html"
-    - title: デバイス解決ルール
-      url: "/task_device_resolution_rules.html"
-    - title: ファイバチャネルのデバイス解決
-      url: "/task_device_resolution_fibre_channel.html"
-    - title: IP デバイス解決
-      url: "/task_device_resolution_ip.html"
-    - title: デバイス解決のプリファレンスの設定
-      url: "/task_device_resolution_preferences.html"
-    - title: 正規表現の例
-      url: "/concept_device_resolution_regex_examples.html"
-  - title: ダッシュボードの作成
-    entries:
-    - title: ダッシュボードの概要
-      url: "/concept_dashboards_overview.html"
-    - title: ダッシュボードの機能
-      url: "/concept_dashboard_features.html"
-    - title: ダッシュボードの例
+      - title: クイックスタート
+        url: "/task-getting-started-aws.html"
+      - title: 構成を計画
+        url: "/task-planning-your-config.html"
+      - title: ネットワークをセットアップします
+        entries:
+        - title: ネットワーク要件
+          url: "/reference-networking-aws.html"
+        - title: AWS 転送ゲートウェイを設定します
+          url: "/task-setting-up-transit-gateway.html"
+        - title: HAペアを共有サブネットに導入します
+          url: "/task-deploy-aws-shared-vpc.html"
+        - title: AWS のセキュリティグループルール
+          url: "/reference-security-groups.html"
+      - title: AWS KMS を設定します
+        url: "/task-setting-up-kms.html"
+      - title: IAMロールを設定する
+        url: "/task-set-up-iam-roles.html"
+      - title: ライセンスをセットアップする
+        url: "/task-set-up-licensing-aws.html"
+      - title: AWS で Cloud Volumes ONTAP を起動します
+        url: "/task-deploying-otc-aws.html"
+      - title: AWS C2S で作業を開始する
+        url: "/task-getting-started-aws-c2s.html"
+    - title: Microsoft Azure で利用を開始しましょう
+      flavor: azure
       entries:
-      - title: 仮想マシンのパフォーマンス
-        url: "/task_dashboard_example_VM_performance.html"
-    - title: ダッシュボードのベストプラクティス
-      url: "/concept_dashboard_best_practices.html"
-  - title: Kubernetes エクスプローラ
-    entries:
-    - title: Kubernetes の概要ページ
-      url: "/kubernetes_landing_page.html"
-    - title: Kubernetes クラスタページ
-      url: "/kubernetes_cluster_detail.html"
-  - title: クエリを使用した作業
-    entries:
-    - title: アセットのクエリ
-      url: "/concept_querying_assets.html"
-    - title: クエリーの作成
-      url: "/task_create_query.html"
-    - title: 使用可能なクエリを表示する
-      url: "/task_view_queries.html"
-    - title: クエリ結果を .csv にエクスポートしています
-      url: "/task_export_query_results.html"
-    - title: クエリの変更または削除
-      url: "/task_modify_delete_query.html"
-    - title: オブジェクトへの複数のアプリケーション / 注釈の割り当て
-      url: "/task_query_assign_multiple_applicationss.html"
-    - title: 表の値をクリップボードにコピーしています
-      url: "/task_query_copy_table_values.html"
-    - title: ログを照会しています
-      url: "/concept_log_explorer.html"
-  - title: アノテーションの使用
-    entries:
-    - title: アノテーションの定義
-      url: "/task_defining_annotations.html"
-    - title: アノテーションの使用
-      url: "/task_create_annotation.html"
-    - title: アノテーションルールの使用
-      url: "/task_create_annotation_rules.html"
-    - title: API を使用したアノテーションのインポート
-      url: "/task_annotation_import.html"
-  - title: アプリケーションの操作
-    entries:
-    - title: アプリケーションの概念
-      url: "/concept_about_applications.html"
-    - title: アプリケーションの設定
-      url: "/task_create_application.html"
-  - title: 監視とアラート
-    entries:
-    - title: モニタの作成
-      url: "/task_create_monitor.html"
-    - title: アラートの表示と管理
-      url: "/task_view_and_manage_alerts.html"
-    - title: 通知受信者の設定
-      url: "/concept_notifications_email.html"
-    - title: システム定義のモニター
-      url: "/task_system_monitors.html"
-  - title: API の使用
-    url: "/API_Overview.html"
-  - title: Webhook 通知
-    url: "/task_create_webhook.html"
-  - title: 環境の監視
-    entries:
-    - title: イベントの監査
-      url: "/concept_audit.html"
-    - title: TTL およびダウンサンプリング
-      url: concept_ttl_and_downsampling.html
-  - title: アセットページ情報
-    entries:
-    - title: アセットページの概要
-      url: "/concept_asset_page_overview.html"
-    - title: オブジェクトのコンテキスト内フィルタリング
-      url: "/concept_in_context_filters.html"
-    - title: Summary Topology セクション
-      url: "/concept_asset_summary_section.html"
-    - title: Expert View セクシヨン
-      url: "/concept_asset_expert_view_section.html"
-    - title: User Data セクション
-      url: "/concept_asset_user_data_section.html"
-    - title: 関連アラートセクション
-      url: "/concept_asset_alerts_section.html"
-    - title: 資産を検索するためのヒントとヒント
-      url: "/concept_searching_assets.html"
-  - title: レポート作成
-    entries:
-    - title: レポート概要
-      url: "/reporting_overview.html"
-    - title: Reporting User Roles の場合
-      url: "/reporting_user_roles.html"
-    - title: 事前定義済みレポートの使用
-      url: "/reporting_predefined_reports.html"
-    - title: Storage Manager のダッシュボード
-      url: "/reporting_storage_manager_dashboard.html"
-    - title: レポートの例の作成
-      url: "/reporting_create_example.html"
-    - title: レポートの管理
-      url: "/reporting_managing_reports.html"
-    - title: カスタムレポート
-      url: "/reporting_creating_custom_reports.html"
-    - title: データモデル
-      url: "/reporting_creating_custom_reports.html#reporting-data-models"
-    - title: Reporting Database API の略
-      url: "/reporting_querying_database.html"
-    - title: データ保持
-      url: "/reporting_data_retention.html"
-    - title: スキーマ図
-      url: "/reporting_schema_diagrams.html"
-    - title: スキーマテーブル
-      url: "/reference_schemas.html"
-  - title: Cloud Secure
-    entries:
-    - title: Cloud Secure について
-      url: "/cs_intro.html"
-    - title: はじめに
+      - title: クイックスタート
+        url: "/task-getting-started-azure.html"
+      - title: 構成を計画
+        url: "/task-planning-your-config-azure.html"
+      - title: ネットワークをセットアップします
+        url: "/reference-networking-azure.html"
+      - title: キーを使用して暗号化を設定します
+        url: "/task-set-up-azure-encryption.html"
+      - title: ライセンスをセットアップする
+        url: "/task-set-up-licensing-azure.html"
+      - title: ハイアベイラビリティモードを有効にします
+        url: "/task-azure-high-availability-mode.html"
+      - title: Azure で Cloud Volumes ONTAP を起動します
+        url: "/task-deploying-otc-azure.html"
+    - title: Google Cloud で始めましょう
+      flavor: gcp
       entries:
-      - title: Cloud Secure の使用を開始する
-        url: "/task_cs_getting_started.html"
-      - title: Cloud Secure エージェントの要件
-        url: "/concept_cs_agent_requirements.html"
-      - title: Cloud Secure エージェントの設定
-        url: "/task_cs_add_agent.html"
-      - title: Cloud Secure エージェントの削除
-        url: "/task_cs_delete_agent.html"
-      - title: AD Directory Collector の設定
-        url: "/task_config_user_dir_connect.html"
-      - title: LDAP ディレクトリコレクタの設定
-        url: "/task_config_user_dir_connect_ldap.html"
-      - title: NetApp ONTAP コレクタ用の Amazon FSX の設定
-        url: "/task_config_cs_amazon_fsx.html"
-      - title: ONTAP SVM Data Collector の設定
-        url: "/task_add_collector_svm.html"
-      - title: Cloud ONTAP データコレクタの設定
-        url: "/task_config_cs_incloud.html"
-      - title: Cloud Secure ユーザー管理
-        url: "/task_cs_user_management.html"
-      - title: イベントレートチェッカー
-        url: "/concept_cs_event_rate_checker.html"
-    - title: アラート
-      url: "/cs_alert_data.html"
-    - title: フォレンジック
-      entries:
-      - title: アクティビティフォレンジック - すべてのアクティビティ
-        url: "/forensic_activity_history.html"
-      - title: アクティビティフォレンジック - エンティティ
-        url: "/forensic_entity_detail.html"
-      - title: ユーザ
-        url: "/forensic_user_overview.html"
-    - title: 自動応答ポリシー
-      url: "/cs_automated_response_policies.html"
-    - title: ユーザアクセスの制限
-      url: "/cs_restrict_user_access.html"
-    - title: ランサムウェア攻撃のシミュレーション
-      url: "/concept_cs_attack_simulator.html"
-    - title: 通知
-      url: "/cs_notifications_email.html"
-    - title: Cloud Secure API の略
-      url: "/concept_cs_api.html"
-  - title: Active IQ
-    url: "/concept_activeiq.html"
-  - title: トラブルシューティング
+      - title: クイックスタート
+        url: "/task-getting-started-gcp.html"
+      - title: 構成を計画
+        url: "/task-planning-your-config-gcp.html"
+      - title: ネットワークをセットアップします
+        url: "/reference-networking-gcp.html"
+      - title: VPC サービスコントロールを計画する
+        url: "/reference-vpc-service-controls-gcp.html"
+      - title: サービスアカウントを作成します
+        url: "/task-creating-gcp-service-account.html"
+      - title: お客様が管理する暗号化キーを使用します
+        url: "/task-setting-up-gcp-encryption.html"
+      - title: ライセンスをセットアップする
+        url: "/task-set-up-licensing-google.html"
+      - title: Google CloudでCloud Volumes ONTAP を起動します
+        url: "/task-deploying-gcp.html"
+      - title: Google Cloud Platformイメージの検証
+        entries:
+        - title: 概要
+          url: "/concept-gcp-image-verification.html"
+        - title: GCPで画像をRaw形式に変換します
+          url: "/task-gcp-convert-image-raw.html"
+        - title: 画像署名の検証
+          entries:
+          - title: GCP署名済みイメージを確認します
+            url: "/concept-gcp-verify-signed-image.html"
+          - title: OpenSSLを使用してコンテンツを確認します
+            url: "/task-verify-openssl-gcp.html"
+  - title: Cloud Volumes ONTAP を使用します
     entries:
-    - title: 全般的なトラブルシューティング
-      url: "/task_troubleshooting_general_problems.html"
-    - title: Linux Acquisition Unit の問題のトラブルシューティング
-      url: "/task_troubleshooting_linux_acquisition_unit_problems.html"
-    - title: Windows Acquisition Unit の問題のトラブルシューティング
-      url: "/task_troubleshooting_windows_acquisition_unit_problems.html"
-    - title: Data Collector エラーの調査
-      url: "/task_research_failed_collector.html"
-  - title: リファレンスサポート
+    - title: ライセンス管理
+      entries:
+      - title: 容量ベースのライセンスを管理します
+        url: "/task-manage-capacity-licenses.html"
+      - title: Keystoneサブスクリプションの管理
+        url: "/task-manage-keystone.html"
+      - title: ノードベースのライセンスを管理します
+        url: "/task-manage-node-licenses.html"
+    - title: ボリュームと LUN の管理
+      entries:
+      - title: ボリュームを作成します
+        url: "/task-create-volumes.html"
+      - title: 既存のボリュームを管理
+        url: "/task-manage-volumes.html"
+      - title: アクセス頻度の低いデータをオブジェクトストレージに階層化します
+        url: "/task-tiering.html"
+      - title: LUN をホストに接続します
+        url: "/task-connect-lun.html"
+      - title: FlexCache でデータアクセスを高速化
+        url: "/task-accelerate-data-access.html"
+    - title: アグリゲートの管理
+      entries:
+      - title: アグリゲートを作成する
+        url: "/task-create-aggregates.html"
+      - title: 既存のアグリゲートを管理する
+        url: "/task-manage-aggregates.html"
+      - title: 容量の設定を管理します
+        url: "/task-manage-capacity-settings.html"
+    - title: Storage VM 管理
+      entries:
+      - title: BlueXPでStorage VMを操作します
+        url: "/task-managing-svms.html"
+      - title: AWS で Storage VM を作成します
+        flavor: aws
+        url: "/task-managing-svms-aws.html"
+      - title: Azure で Storage VM を作成します
+        flavor: azure
+        url: "/task-managing-svms-azure.html"
+      - title: Google CloudでStorage VMを作成します
+        flavor: gcp
+        url: "/task-managing-svms-gcp.html"
+      - title: SVMディザスタリカバリのセットアップ
+        url: "/task-manage-svm-dr.html"
+    - title: セキュリティとデータ暗号化
+      entries:
+      - title: ネットアップの暗号化機能でボリュームを暗号化
+        url: "/task-encrypting-volumes.html"
+      - title: AWS Key Management Serviceを使用してキーを管理します
+        flavor: aws
+        url: "/task-aws-key-management.html"
+      - title: Azure Key Vaultを使用してキーを管理します
+        flavor: azure
+        url: "/task-azure-key-vault.html"
+      - title: Google Cloud KMSを使用してキーを管理します
+        flavor: gcp
+        url: "/task-google-key-manager.html"
+      - title: ランサムウェアからの保護を強化
+        url: "/task-protecting-ransomware.html"
+    - title: システム管理
+      entries:
+      - title: Cloud Volumes ONTAP をアップグレードします
+        url: "/task-updating-ontap-cloud.html"
+      - title: 従量課金制システムを登録
+        url: "/task-registering.html"
+      - title: システムを停止して起動します
+        url: "/task-managing-state.html"
+      - title: システム時間を同期します
+        url: "/task-sync-time.html"
+      - title: システムの書き込み速度を変更する
+        url: "/task-modify-write-speed.html"
+      - title: システムパスワードを変更します
+        url: "/task-change-password.html"
+      - title: システムを追加、削除、または削除します
+        entries:
+        - title: 既存のシステムを追加します
+          url: "/task-adding-systems.html"
+        - title: 作業環境を削除します
+          url: "/task-removing.html"
+        - title: システムを削除します
+          url: "/task-deleting-working-env.html"
+      - title: AWSの管理
+        flavor: aws
+        entries:
+        - title: EC2 インスタンスタイプを変更します
+          url: "/task-change-ec2-instance.html"
+        - title: HA ペアのルーティングテーブルを変更する
+          url: "/task-change-route-tables.html"
+        - title: 配置グループの作成を設定する
+          url: task-configure-placement-group-failure-aws.html
+      - title: Azureの管理
+        flavor: azure
+        entries:
+        - title: Azure VM タイプを変更します
+          url: "/task-change-azure-vm.html"
+        - title: CIFS ロックを上書きする
+          url: "/task-overriding-cifs-locks.html"
+        - title: Azure Private Linkまたはサービスエンドポイントを使用する
+          url: "/task-enabling-private-link.html"
+        - title: リソースグループを移動する
+          url: "/task-moving-resource-groups-azure.html"
+      - title: Google Cloudの管理
+        flavor: gcp
+        entries:
+        - title: マシンタイプを変更します
+          url: "/task-change-gcp-machine.html"
+      - title: System Managerで管理を行います
+        url: "/task-administer-advanced-view.html"
+      - title: CLIからの管理
+        url: "/task-connecting-to-otc.html"
+    - title: システムの健全性とイベント
+      entries:
+      - title: AutoSupport のセットアップを確認します
+        url: "/task-verify-autosupport.html"
+      - title: EMSの設定
+        url: "/task-configure-ems.html"
+  - title: 概念
     entries:
-    - title: サポートをリクエストしています
-      url: "/concept_requesting_support.html"
-    - title: Data Collector サポートマトリックス
-      url: "/reference_data_collector_support_matrix.html"
-    - title: Data Collector Reference - Infrastructure （データコレクターリファレンス - インフラストラクチャ
+    - title: ライセンス
+      url: "/concept-licensing.html"
+    - title: ストレージ
       entries:
-      - title: ベンダーリファレンスの概要
-        url: "/concept_data_collector_reference.html"
-      - title: AWS
-        url: "/task_dc_amazon_ec2.html"
-      - title: Azure
-        url: "/task_dc_ms_azure.html"
-      - title: Broadcom
-        entries:
-        - title: Brocade Network Advisor の略
-          url: "/task_dc_brocade_bna.html"
-        - title: Fibre Channel スイッチ
-          url: "/task_dc_brocade_fc_switch.html"
-      - title: シスコ
-        url: "/task_dc_cisco_fc_switch.html"
-      - title: デル
-        entries:
-        - title: XC シリーズ
-          url: "/task_dc_dell_xc_series.html"
-      - title: Dell EMC
-        entries:
-        - title: Data Domain の略
-          url: "/task_dc_emc_datadomain.html"
-        - title: ECS の場合
-          url: "/task_dc_emc_ecs.html"
-        - title: PowerScale
-          url: "/task_dc_emc_isilon.html"
-        - title: PowerStore の略
-          url: "/task_dc_emc_powerstore.html"
-        - title: RecoverPoint
-          url: "/task_dc_emc_recoverpoint.html"
-        - title: ScaleIO
-          url: "/task_dc_emc_scaleio.html"
-        - title: Unity （ VNXe ）
-          url: "/task_dc_emc_unity.html"
-        - title: VMAX/PowerMax
-          url: "/task_dc_emc_vmax_powermax.html"
-        - title: VNX ブロック（ Clariion ）
-          url: "/task_dc_emc_vnx_block.html"
-        - title: VNX ファイル（ Celerra ）
-          url: "/task_dc_emc_vnx_file.html"
-        - title: VNX ユニファイド
-          url: "/task_dc_emc_vnx_unified.html"
-        - title: VPLEX
-          url: "/task_dc_emc_vplex.html"
-        - title: XtremIO
-          url: "/task_dc_emc_xio.html"
-      - title: 富士通
-        url: "/task_dc_fujitsu_eternus.html"
-      - title: Google
-        url: "/task_dc_google_cloud.html"
-      - title: HP エンタープライズ
-        entries:
-        - title: HP Alletra 9000 および Primera
-          url: "/task_dc_hp_3par.html"
-        - title: HP Command View AE
-          url: "/task_dc_hpe_commandview.html"
-        - title: HPE Alletra 6000
-          url: "/task_dc_hpe_nimble.html"
-      - title: Hitachi Data Systems の略
-        entries:
-        - title: HDS コマンドスイート
-          url: "/task_dc_hds_commandsuite.html"
-        - title: HDS HNAS
-          url: "/task_dc_hds_nas.html"
-        - title: HDS Ops Center の略
-          url: "/task_dc_hds_ops_center.html"
-      - title: インフィダト
-        url: "/task_dc_infinidat_infinibox.html"
-      - title: Huawei （ファー
-        url: "/task_dc_huawei_oceanstor.html"
-      - title: IBM 社
-        entries:
-        - title: Cleversafe
-          url: "/task_dc_ibm_cleversafe.html"
-        - title: CS シリーズ
-          url: "/task_dc_ibm_cs.html"
-        - title: システムストレージ DS8000 シリーズ
-          url: "/task_dc_ibm_ds.html"
-        - title: PowerVM
-          url: "/task_dc_ibm_powervm.html"
-        - title: SAN ボリュームコントローラ（ SVC ）
-          url: "/task_dc_ibm_svc.html"
-        - title: XIV / A9000
-          url: "/task_dc_ibm_xiv.html"
-      - title: Lenovo 社
-        url: "/task_dc_lenovo.html"
-      - title: Microsoft 社
-        entries:
-        - title: Azure NetApp Files の特長
-          url: "/task_dc_ms_anf.html"
-        - title: Hyper-V
-          url: "/task_dc_ms_hyperv.html"
-      - title: ネットアップ
-        entries:
-        - title: Astra データストア
-          url: "/task_dc_na_astra_data_store.html"
-        - title: ONTAP 9.9 以降のクラウド接続
-          url: "/task_dc_na_cloud_connection.html"
-        - title: Cloud Volumes ONTAP
-          url: "/task_dc_na_cloud_volumes_ontap.html"
-        - title: AWS 向け Cloud Volume サービス
-          url: "/task_dc_na_cloud_volumes.html"
-        - title: ONTAP データ管理ソフトウェア
-          url: "/task_dc_na_cdot.html"
-        - title: Data ONTAP 7-mode
-          url: "/task_dc_na_7mode.html"
-        - title: E シリーズ
-          url: "/task_dc_na_eseries.html"
-        - title: NetApp HCI 管理サーバ
-          url: "/task_dc_na_hci.html"
-        - title: SolidFire
-          url: "/task_dc_na_solidfire.html"
-        - title: StorageGRID
-          url: "/task_dc_na_storagegrid.html"
-      - title: Nutanix
-        url: "/task_dc_nutanix.html"
-      - title: OpenStack の機能を使用
-        url: "/task_dc_openstack.html"
-      - title: Oracle の場合
-        url: "/task_dc_oracle_zfs.html"
-      - title: 純粋
-        url: "/task_dc_pure_flasharray.html"
-      - title: Red Hat の場合
-        url: "/task_dc_redhat_virtualization.html"
-      - title: VMware
-        url: "/task_dc_vmware.html"
-    - title: Data Collector Reference - サービス
+      - title: クライアントプロトコル
+        url: "/concept-client-protocols.html"
+      - title: ディスクとアグリゲート
+        url: "/concept-storage.html"
+      - title: AWSのElastic Volumes
+        flavor: aws
+        url: "/concept-aws-elastic-volumes.html"
+      - title: データの階層化
+        url: "/concept-data-tiering.html"
+      - title: ストレージ管理
+        url: "/concept-storage-management.html"
+      - title: 書き込み速度
+        url: "/concept-write-speed.html"
+      - title: Flash Cache
+        url: "/concept-flash-cache.html"
+      - title: WORM ストレージ
+        url: "/concept-worm.html"
+    - title: ハイアベイラビリティペア
       entries:
-      - title: ホスト / ノード
-        url: "/task_config_telegraf_node.html"
-      - title: ActiveMQ
-        url: "/task_config_telegraf_activemq.html"
-      - title: Apache
-        url: "/task_config_telegraf_apache.html"
-      - title: 総領事
-        url: "/task_config_telegraf_consul.html"
-      - title: Couchbase
-        url: "/task_config_telegraf_couchbase.html"
-      - title: CouchDB
-        url: "/task_config_telegraf_couchdb.html"
-      - title: Docker です
-        url: "/task_config_telegraf_docker.html"
-      - title: Elasticsearch を指定します
-        url: "/task_config_telegraf_elasticsearch.html"
-      - title: フリップ
-        url: "/task_config_telegraf_flink.html"
-      - title: Hadoop
-        url: "/task_config_telegraf_hadoop.html"
-      - title: HAProxy
-        url: "/task_config_telegraf_haproxy.html"
-      - title: Java
-        url: "/task_config_telegraf_jvm.html"
-      - title: カフカ
-        url: "/task_config_telegraf_kafka.html"
-      - title: カパトール
-        url: task_config_telegraf_kapacitor.html
-      - title: キバナ
-        url: "/task_config_telegraf_kibana.html"
-      - title: Kubernetes
-        url: "/task_config_telegraf_agent.html#kubernetes"
-      - title: Memcached
-        url: "/task_config_telegraf_memcached.html"
-      - title: MongoDB
-        url: "/task_config_telegraf_mongodb.html"
-      - title: MySQL
-        url: "/task_config_telegraf_mysql.html"
-      - title: netstat
-        url: "/task_config_telegraf_netstat.html"
-      - title: nginx
-        url: "/task_config_telegraf_nginx.html"
-      - title: OpenZFS の場合
-        url: task_config_telegraf_openzfs.html
-      - title: PostgreSQL
-        url: "/task_config_telegraf_postgresql.html"
-      - title: パペット
-        url: "/task_config_telegraf_puppetagent.html"
-      - title: Redis
-        url: "/task_config_telegraf_redis.html"
-      - title: RethinkDB
-        url: task_config_telegraf_rethinkdb.html
-      - title: Zookeeper の追加
-        url: task_config_telegraf_zookeeper.html
-    - title: オブジェクトアイコンリファレンス
-      url: "/reference_object_icons.html"
+      - title: AWS の HA ペア
+        flavor: aws
+        url: "/concept-ha.html"
+      - title: Azure の HA ペア
+        flavor: azure
+        url: "/concept-ha-azure.html"
+      - title: GCPノHAペア
+        flavor: gcp
+        url: "/concept-ha-google-cloud.html"
+      - title: ストレージテイクオーバー中の操作
+        url: "/concept-degraded-ha-pair.html"
+    - title: セキュリティ
+      url: "/concept-security.html"
+    - title: パフォーマンス
+      url: "/concept-performance.html"
+    - title: ノードベースの BYOL の管理
+      url: "/concept-license-management.html"
+    - title: AutoSupport と Active IQ デジタルアドバイザ
+      url: "/concept-active-iq.html"
+    - title: デフォルト設定
+      url: "/reference-default-configs.html"
+  - title: 知識とサポート
+    entries:
+    - title: サポートに登録します
+      url: "/task-support-registration.html"
+    - title: ヘルプを表示します
+      url: "/task-get-help.html"
   - title: 法的通知
-    url: "/reference_legal_notices.html"
+    url: "/legal-notices.html"
+product-family:
+  name: BlueXP
+  repo: bluexp-family
+  sidebar_label: BlueXPのすべてのマニュアル

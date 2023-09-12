@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: task-moving-resource-groups-azure.html 
+keywords: move resource groups, azure, remove working environment, resource groups, azure console, Azure subscriptions 
+summary: Cloud Volumes ONTAP ではAzureリソースグループの移動がサポートされていますが、ワークフローはAzureコンソールでのみ実行されます。 
+---
+= リソースグループを移動しています
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP ではAzureリソースグループの移動がサポートされていますが、ワークフローはAzureコンソールでのみ実行されます。
+
+同じAzureサブスクリプション内で、あるリソースグループからAzure内の別のリソースグループに作業環境を移動することができます。異なるAzureサブスクリプション間でのリソースグループの移動はサポートされていません。
+
+.手順
+. 作業環境を* Canvas *から削除します。
++
+作業環境を削除する方法については、を参照してください link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-removing.html["Cloud Volumes ONTAP の動作環境を削除しています"]。
+
+. Azureコンソールでリソースグループ移動を実行する。
++
+移動を完了するには、を参照してください link:https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription["Microsoft Azureのドキュメントで、リソースを新しいリソースグループまたはサブスクリプションに移動する"^]。
+
+. Canvas *で、作業環境を確認します。
+. 作業環境の情報で新しいリソースグループを探します。
+
+
+.結果
+新しいリソースグループには、作業環境とそのリソース（VM、ディスク、ストレージアカウント、ネットワークインターフェイス、Snapshot）が含まれます。

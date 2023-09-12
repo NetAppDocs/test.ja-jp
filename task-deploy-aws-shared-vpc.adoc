@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: task-deploy-aws-shared-vpc.html 
+keywords: shared vpc, aws shared vpc, vpc sharing, shared subnet, deploy shared vpc, assume role 
+summary: 9.11.1リリース以降では、VPCを共有するAWSでCloud Volumes ONTAP HAペアがサポートされます。VPC共有を使用すると、他のAWSアカウントとサブネットを共有できます。この構成を使用するには、AWS環境をセットアップし、APIを使用してHAペアを導入する必要があります。 
+---
+= HAペアを共有サブネットに導入します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+9.11.1リリース以降では、VPCを共有するAWSでCloud Volumes ONTAP HAペアがサポートされます。VPC共有を使用すると、他のAWSアカウントとサブネットを共有できます。この構成を使用するには、AWS環境をセットアップし、APIを使用してHAペアを導入する必要があります。
+
+を使用 https://aws.amazon.com/blogs/networking-and-content-delivery/vpc-sharing-a-new-approach-to-multiple-accounts-and-vpc-management/["vPC共有"^]Cloud Volumes ONTAP HA構成は、次の2つのアカウントに分散されます。
+
+* ネットワークを所有するVPC所有者アカウント（VPC、サブネット、ルーティングテーブル、Cloud Volumes ONTAP セキュリティグループ）
+* EC2インスタンスが共有サブネット（2つのHAノードとメディエーターを含む）に導入されている参加者アカウント
+
+
+複数のアベイラビリティゾーンにまたがって導入されているCloud Volumes ONTAP HA構成の場合は、HAメディエーターからVPC所有者アカウントのルーティングテーブルに書き込むための特定の権限が必要です。メディエーターで想定できるIAMロールを設定して、これらの権限を指定する必要があります。
+
+次の図は、この導入に関連するコンポーネントを示しています。
+
+image:diagram-aws-vpc-sharing.png["共有VPCにおけるCloud Volumes ONTAP HA構成の概念図。VPCの所有者アカウントと参加者アカウントで使用できる共有VPCを示しています。共有VPCには、IAMロール、ルートテーブル、セキュリティグループ、および3つの共有サブネットがあります。参加者アカウントには、Cloud Volumes ONTAP HA構成とメディエーターに接続されたIAMロールが含まれています。"]
+
+以下の手順で説明するように、サブネットを参加者アカウントと共有し、VPC所有者アカウント内にIAMロールとセキュリティグループを作成する必要があります。
+
+Cloud Volumes ONTAP 作業環境を作成すると、自動的にIAMロールが作成され、メディエーターに関連付けられます。このロールは、VPC所有者アカウントで作成したIAMロールを前提としており、HAペアに関連付けられているルーティングテーブルを変更します。
+
+.手順
+. VPC所有者アカウントのサブネットを参加者アカウントと共有します。
++
+この手順は、HAペアを共有サブネットに導入するために必要です。
+
++
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html#vpc-sharing-share-subnet["AWSドキュメント：サブネットを共有"^]
+
+. VPC所有者アカウントで、Cloud Volumes ONTAP のセキュリティグループを作成します。
++
+link:reference-security-groups.html["Cloud Volumes ONTAP のセキュリティグループルールを参照してください"]。HAメディエーターのセキュリティグループを作成する必要はありません。BlueXPはそのような機能を提供します。
+
+. VPC所有者アカウントで、次の権限を含むIAMロールを作成します。
++
+[source, json]
+----
+Action": [
+                "ec2:AssignPrivateIpAddresses",
+                "ec2:CreateRoute",
+                "ec2:DeleteRoute",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeVpcs",
+                "ec2:ReplaceRoute",
+                "ec2:UnassignPrivateIpAddresses"
+----
+. BlueXP APIを使用して'新しいCloud Volumes ONTAP 作業環境を作成します
++
+次のフィールドを指定する必要があります。
+
++
+** "securityGroupId"
++
+「securityGroupId」フィールドには、VPC所有者アカウントで作成したセキュリティグループを指定する必要があります（上記の手順2を参照）。
+
+** "haParams"オブジェクトの"amereRoleArn"を想定します
++
+「仮定ロールアーn」フィールドには、VPC所有者アカウントで作成したIAMロールのARNを含める必要があります（上記の手順3を参照）。
+
++
+例：
+
++
+[source, json]
+----
+"haParams": {
+     "assumeRoleArn": "arn:aws:iam::642991768967:role/mediator_role_assume_fromdev"
+}
+----
++
+https://docs.netapp.com/us-en/bluexp-automation/cm/overview.html["Cloud Volumes ONTAP APIについて説明します"^]
+
+
+
+

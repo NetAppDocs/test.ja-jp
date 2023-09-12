@@ -1,0 +1,439 @@
+---
+sidebar: sidebar 
+permalink: concept-licensing.html 
+keywords: freemium, professional, essentials, licensing, licenses, cloud volumes ontap charging, cloud volumes ontap licenses, cloud volumes ontap licensing, cvo licenses, cvo licensing, byol, bring your own license, paygo, pay as you go, keystone flex, keystone, cloud backup, digital wallet 
+summary: Cloud Volumes ONTAP には、いくつかのライセンスオプションがあります。それぞれのオプションを使用することで、ニーズに合わせた構成を選択できます。 
+---
+= Cloud Volumes ONTAP ライセンス
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP には、いくつかのライセンスオプションがあります。それぞれのオプションで、ニーズに合った消費モデルを選択できます。
+
+
+
+== ライセンスの概要
+
+新規のお客様は、次のライセンスオプションを利用できます。
+
+容量単位のライセンス:: ネットアップアカウントで複数のCloud Volumes ONTAP システムをプロビジョニングした容量分だけ料金が発生追加のクラウドデータサービスを購入できます。
+Keystoneサブスクリプション:: ニーズに合わせて拡張できるサブスクリプションベースのサービス。 HA ペア向けのシームレスなハイブリッドクラウドエクスペリエンスを提供します。
+
+
+以前のノード単位のライセンスモデルは、ライセンスを購入済みの既存のお客様や、アクティブな Marketplace サブスクリプションを所有しているお客様には引き続き提供されます。
+
+以降のセクションでは、これらの各オプションについて詳しく説明します。
+
+
+NOTE: ライセンスがないと、ライセンスされた機能の使用はサポートされません。
+
+
+
+== 容量単位のライセンス
+
+容量ベースのライセンスパッケージを使用すると、TiB分の容量に対してCloud Volumes ONTAP の料金を支払うことができます。このライセンスはネットアップアカウントに関連付けられており、ライセンスで十分な容量が使用可能であれば、ライセンスに対して複数のシステムを充電することができます。
+
+たとえば、 20TiB のライセンスを 1 つ購入して 4 つの Cloud Volumes ONTAP システムを導入し、各システムに 5TiB のボリュームを割り当てて合計 20TiB にするとします。そのアカウントに導入されている各 Cloud Volumes ONTAP システムのボリュームで容量を使用できます。
+
+容量ベースのライセンスは、 a_packag_ の形式で用意されています。Cloud Volumes ONTAP システムを導入する際には、ビジネスニーズに応じて、複数のライセンスパッケージから選択できます。
+
+
+
+=== パッケージ
+
+Cloud Volumes ONTAP で使用できる容量ベースのパッケージは次のとおりです。
+
+
+
+==== フリーミアム
+
+Cloud Volumes ONTAP のすべての機能をネットアップから無償で提供（クラウドプロバイダの料金がまだ適用されます）。
+
+* ライセンスや契約は必要ありません。
+* ネットアップによるサポートは含まれていません。
+* Cloud Volumes ONTAP システムあたりのプロビジョニング可能な容量は 500GiB に制限されています。
+* ネットアップのアカウント 1 つにつき、最大 10 台の Cloud Volumes ONTAP システムを任意のクラウドプロバイダで使用できます。
+* Cloud Volumes ONTAP システム用にプロビジョニングされた容量が500GiBを超えると、BlueXPはシステムをEssentialsパッケージに変換します。
++
+システムがEssentialsパッケージに変換されるとすぐに、が表示されます <<充電に関するメモ,最低料金>> 適用されます。
+
++
+プロビジョニングされた容量が 500GiB 未満の他のシステムは、 Freemium （ Freemium 製品を使用して導入されている場合）に残ります。
+
+
+
+
+
+==== 最適化
+
+プロビジョニングされた容量とI/O処理の料金は別途お支払いください。
+
+* Cloud Volumes ONTAP のシングルノードまたはHA
+* 充電は、ストレージと使用量（I/O）という2つのコストコンポーネントに基づいています。
++
+データレプリケーション（SnapMirror）やNDMPに関連するI/Oは料金に含まれません。
+
+
+
+ifdef::azure[]
+
+* Azure Marketplaceでは、従量課金制または年間契約として提供されています
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Google Cloud Marketplaceでは、従量課金制サービスまたは年間契約として提供されます
+
+
+endif::gcp[]
+
+* 選択したVMタイプでサポートされます：
+
+
+ifdef::azure[]
+
+* Azureの場合：E4s_v3、E4ds_v4、DS4_v2、DS13_v2、E8s_v3、およびE8ds_v4
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Google Cloudの場合：n2-standard-4、n2-standard-8
+
+
+endif::gcp[]
+
+* ネットアップのクラウドデータサービスを追加コストで利用できます
+
+
+
+
+==== Essentialsをクリックします
+
+さまざまな構成で Cloud Volumes ONTAP の容量に基づいて料金が発生します。
+
+* Cloud Volumes ONTAP 構成を選択します。
++
+** シングルノードまたは HA システム
+** ディザスタリカバリ（ DR ）用のファイルストレージとブロックストレージまたはセカンダリデータ
+
+
+* ネットアップのクラウドデータサービスを追加コストで利用できます
+
+
+
+
+==== プロフェッショナル
+
+バックアップの数に制限はなく、あらゆる種類のCloud Volumes ONTAP 構成で容量ごとに料金が発生します。
+
+* Cloud Volumes ONTAP 構成のライセンスを提供します
++
+プライマリボリュームとセカンダリボリュームの容量を同じ速度で課金する、シングルノードまたはHA
+
+* BlueXPのバックアップとリカバリを使用したボリュームバックアップは無制限ですが、Professionalパッケージを使用するCloud Volumes ONTAP システムのみが対象です
+* ネットアップのクラウドデータサービスを追加コストで利用できます
+
+
+
+
+==== Edge Cache（エッジキャッシュ）
+
+Cloud Volume Edge Cacheのライセンスを提供します。
+
+* 分散型企業向けのビジネス継続性とデータ保護を備えたプロフェッショナルパッケージと同じ機能を提供します
+* 設置面積の小さいWindows VMを使用して、各場所でインテリジェントなエッジキャッシングを実現します
+* 3台のTiBを購入するごとに、1つのエッジノードを使用します
+
+
+ifdef::azure[]
+
+* Azure Marketplaceでは、従量課金制または年間契約として提供されています
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* Google Cloud Marketplaceでは、従量課金制サービスまたは年間契約として提供されます
+
+
+endif::gcp[]
+
+https://cloud.netapp.com/cloud-volumes-edge-cache["Cloud Volume Edgeキャッシュがビジネスにどのように役立つかをご確認ください"^]
+
+
+
+=== 消費モデル
+
+容量ベースのライセンスパッケージには、次の消費モデルがあります。
+
+* * BYOL *：ネットアップから購入したライセンス。任意のクラウドプロバイダでCloud Volumes ONTAP を導入する際に使用できます。
+
+
+ifdef::azure[]
+
+[+]
+BYOLではOptimizedパッケージとEdge Cacheパッケージは使用できません。
+
+endif::azure[]
+
+* * PAYGO *：クラウドプロバイダの市場から1時間ごとのサブスクリプション。
+* * Annual *：クラウドプロバイダの市場から年間契約。
+
+
+次の点に注意してください。
+
+* ネットアップからライセンスを購入した場合（ BYOL ）は、クラウドプロバイダが提供する PAYGO のサブスクリプションも必要です。
++
+ライセンスは常に最初に請求されますが、次の場合は、マーケットプレイスで 1 時間ごとの料金が請求されます。
+
++
+** ライセンス容量を超えた場合
+** ライセンスの期間が終了する場合
+
+
+* 市場から年間契約を結んでいる場合、導入する Cloud Volumes ONTAP システムにはその契約が適用されます。BYOL と年間市場契約を組み合わせることはできません。
+* 中国のリージョンでは、BYOLを使用するシングルノードシステムのみがサポートされます。
+
+
+
+
+=== パッケージの変更
+
+導入後、容量ベースのライセンスを使用するCloud Volumes ONTAP システムのパッケージを変更できます。たとえば、Essentialsパッケージを含むCloud Volumes ONTAP システムを導入した場合、ビジネスニーズの変化に応じて、そのシステムをProfessionalパッケージに変更できます。
+
+link:task-manage-capacity-licenses.html["充電方法を変更する方法について説明します"]。
+
+
+
+=== 価格設定
+
+価格設定の詳細については、を参照してください https://cloud.netapp.com/pricing?hsCtaTracking=4f8b7b77-8f63-4b73-b5af-ee09eab4fbd6%7C5fefbc99-396c-4084-99e6-f1e22dc8ffe7["NetApp BlueXPのWebサイト"^]。
+
+
+
+=== 無償トライアルを利用できます
+
+30 日間の無償トライアルをクラウドプロバイダのマーケットプレイスで従量課金制サブスクリプションで利用できます。この無償トライアルには、Cloud Volumes ONTAP とBlueXPのバックアップとリカバリ機能が含まれています。トライアルは、市場で提供サービスに登録すると開始されます。
+
+インスタンスや容量の制限はありません。Cloud Volumes ONTAP システムは必要な数だけ導入でき、必要な容量を30日間無償で割り当てることができます。無料トライアルは、30日後に1時間ごとの有料サブスクリプションに自動的に変換されます。
+
+Cloud Volumes ONTAP のソフトウェアライセンス料金は1時間ごとに発生しませんが、クラウドプロバイダからインフラ料金が請求されます。
+
+
+TIP: 無料トライアルが開始されたとき、7日間残っているとき、残りの1日があるときに、BlueXPに通知が届きます。例：
+image:screenshot-free-trial-notification.png["BlueXPインターフェイスでの通知のスクリーンショット。無料トライアルで残り7日間しか残っていないことを示しています。"]
+
+
+
+=== サポートされている構成
+
+容量ベースのライセンスパッケージは Cloud Volumes ONTAP 9.7 以降で利用できます。
+
+
+
+=== 容量制限
+
+このライセンスモデルでは、個々の Cloud Volumes ONTAP システムでディスクとオブジェクトストレージへの階層化によって、最大 2 PiB の容量をサポートします。
+
+ライセンス自体にに関しては、最大容量制限はありません。
+
+
+
+=== システムの最大数
+
+容量単位のライセンスを使用する場合、Cloud Volumes ONTAP システムの最大数はネットアップアカウントあたり20個に制限されます。a_system_は、Cloud Volumes ONTAP HAペア、Cloud Volumes ONTAP シングルノードシステム、またはユーザが作成した追加のStorage VMです。デフォルトのStorage VMはカウントされません。これにより、環境 のすべてのライセンスモデルが制限されます。
+
+たとえば、次の3つの作業環境があるとします。
+
+* 1つのStorage VMを含むシングルノードのCloud Volumes ONTAP システム（Cloud Volumes ONTAP の導入時に作成されるデフォルトのStorage VM）
++
+この作業環境は1つのシステムとしてカウントされます。
+
+* 2つのStorage VMを含むシングルノードのCloud Volumes ONTAP システム（デフォルトのStorage VMと、作成した追加のStorage VM 1台）
++
+この作業環境は、シングルノードシステム用と追加のStorage VM用の2つのシステムとしてカウントされます。
+
+* 3つのStorage VMを含むCloud Volumes ONTAP HAペア（デフォルトのStorage VMと、作成した追加のStorage VM 2つ）
++
+この作業環境は、HAペア用と追加のStorage VM用の2つという3つのシステムとしてカウントされます。
+
+
+
+合計6つのシステムです。その後、アカウントに14台のシステムを追加するためのスペースを確保します。
+
+20台以上のシステムを必要とする大規模な導入環境の場合は、アカウント担当者または営業チームにお問い合わせください。
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/concept-netapp-accounts.html["ネットアップアカウントの詳細については、こちらをご覧ください"^]。
+
+
+
+=== 充電に関するメモ
+
+以下の詳細は、課金が容量ベースのライセンスとどのように連携するかを理解するのに役立ちます。
+
+
+
+==== 最低料金
+
+プライマリ（読み取り/書き込み）ボリュームが1つ以上あるStorage VMをデータ提供する場合は、最小4TiBの料金が発生します。プライマリボリュームの合計が4TiBを下回った場合、BlueXPはそのStorage VMに4TiBの最小料金を適用します。
+
+まだボリュームをプロビジョニングしていない場合は、最小料金は適用されません。
+
+Essentialsパッケージの場合、4TiBの最小容量料金は、セカンダリ（データ保護）ボリュームのみを含むStorage VMには適用されません。たとえば、1TiBのセカンダリデータが格納されたStorage VMがある場合、その1TiBのデータに対してのみ課金されます。Essentials以外のパッケージタイプ（Optimized、Professional、Edge Cache）では、ボリュームタイプに関係なく、最小容量4TiBが適用されます。
+
+
+
+==== 年齢が高すぎます
+
+BYOL の容量を超えた場合やライセンスの有効期限が切れた場合は、マーケットプレイスのサブスクリプションに基づいて 1 時間あたりの料金が高すぎることを意味します。
+
+
+
+==== Essentials パッケージ
+
+Essentialsパッケージでは、導入タイプ（HAまたはシングルノード）とボリュームタイプ（プライマリまたはセカンダリ）ごとに課金されます。たとえば、_Essentials HA_に は、_Essentials Secondary HA_と は異なる価格が設定されています。
+
+Essentialsライセンスをネットアップから購入した場合（BYOL）、その導入環境およびボリュームタイプでライセンスされている容量を超えた場合、BlueXPデジタルウォレットは、より高い価格のEssentialsライセンス（お持ちの場合）に対して追加料金を請求します。これは、市場に課金する前に、前払い済みの容量として購入済みの使用可能容量を最初に使用するためです。市場に課金することで、月額料金が加算されます。
+
+次に例を示します。Essentialsパッケージには、次のライセンスがあるとします。
+
+* 500TiBのコミット済み容量を含む500TiBのセカンダリHA_License
+* 100TiBのコミット済み容量のみを含む500TiB _ Essentialsシングルノードライセンス
+
+
+セカンダリボリュームを含むHAペアにはもう1つの50TiBがプロビジョニングされます。BlueXPデジタルウォレットは、その50TiBをPAYGOに課金する代わりに、_Essentials Single Node_licenseに対して50TiBの超過料金を請求します。このライセンスは_Essentials Secondary HA_より も価格が高くなりますが、PAYGOの価格よりも安いです。
+
+BlueXPデジタルウォレットでは、_Essentials Single Node_licenseに対して請求される50TiBが表示されます。
+
+
+
+==== Storage VMs
+
+* データ提供用の Storage VM （ SVM ）を追加する場合、追加のライセンスコストは発生しませんが、データ提供用 SVM ごとの容量は 4TiB になります。
+* ディザスタリカバリ用 SVM は、プロビジョニングされた容量に基づいて料金が発生します。
+
+
+
+
+==== HA ペア
+
+HA ペアの場合、ノードのプロビジョニング済み容量に対してのみ料金が発生します。パートナーノードに同期ミラーリングされるデータには料金は発生しません。
+
+
+
+==== FlexCloneボリュームとFlexCache ボリューム
+
+* FlexClone ボリュームで使用される容量に対する料金は発生しません。
+* ソースおよびデスティネーションの FlexCache ボリュームはプライマリデータとみなされ、プロビジョニング済みスペースに基づいて料金が発生します。
+
+
+
+
+=== 開始方法
+
+容量単位のライセンスの取得方法については、以下をご覧ください。
+
+ifdef::aws[]
+
+* link:task-set-up-licensing-aws.html["AWSでCloud Volumes ONTAP のライセンスを設定"]
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* link:task-set-up-licensing-azure.html["AzureでCloud Volumes ONTAP のライセンスをセットアップする"]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:task-set-up-licensing-google.html["Google CloudでCloud Volumes ONTAP のライセンスを設定します"]
+
+
+endif::gcp[]
+
+
+
+== Keystoneサブスクリプション
+
+成長に合わせて拡張できるサブスクリプションベースのサービス。運用コストの消費モデルを希望するお客様に、設備投資やリースを先行するお客様にシームレスなハイブリッドクラウドエクスペリエンスを提供します。
+
+課金は、Keystoneサブスクリプションに含まれる1つ以上のCloud Volumes ONTAP HAペアのコミット済み容量に基づいて行われます。
+
+各ボリュームのプロビジョニング済み容量は集計され、Keystoneサブスクリプションのコミット済み容量と定期的に比較されます。超過した容量はKeystoneサブスクリプションのバーストとして課金されます。
+
+link:https://docs.netapp.com/us-en/keystone-staas/index.html["NetApp Keystoneの詳細については、こちらをご覧ください"^]。
+
+
+
+=== サポートされている構成
+
+KeystoneサブスクリプションはHAペアでサポートされます。現時点では、このライセンスオプションはシングルノードシステムではサポートされていません。
+
+
+
+=== 容量制限
+
+個々の Cloud Volumes ONTAP システムでは、ディスクとオブジェクトストレージへの階層化によって、最大 2 PiB の容量をサポートしています。
+
+
+
+=== 開始方法
+
+Keystoneサブスクリプションの利用を開始する方法をご確認ください。
+
+ifdef::aws[]
+
+* link:task-set-up-licensing-aws.html["AWSでCloud Volumes ONTAP のライセンスを設定"]
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+* link:task-set-up-licensing-azure.html["AzureでCloud Volumes ONTAP のライセンスをセットアップする"]
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+* link:task-set-up-licensing-google.html["Google CloudでCloud Volumes ONTAP のライセンスを設定します"]
+
+
+endif::gcp[]
+
+
+
+== ノードベースのライセンス
+
+ノードベースのライセンスは、 Cloud Volumes ONTAP のライセンスをノード単位で付与することが可能になった旧世代のライセンスモデルです。このライセンスモデルは、新規のお客様にはご利用いただけません。また、無償トライアルもご利用いただけません。ノード単位の充電は、前述のキャパシティ単位の充電方法に置き換えられました。
+
+既存のお客様は、ノードベースのライセンスを引き続き利用できます。
+
+* アクティブなライセンスがある場合は、 BYOL をライセンスの更新のみに使用できます。
+* 有効なマーケットプレイスサブスクリプションをお持ちの場合は、そのサブスクリプションを通じて引き続き課金をご利用いただけます。
+
+
+
+
+== ライセンスの変換
+
+既存の Cloud Volumes ONTAP システムを別のライセンス方式に変換することはできません。現在のライセンス方式は、容量単位のライセンス、Keystoneサブスクリプション、ノード単位のライセンスの3つです。たとえば、システムをノードベースのライセンスから容量ベースのライセンスに変換することはできません（逆の場合も同様）。
+
+別のライセンス方式に移行する場合は、ライセンスを購入し、そのライセンスを使用して新しい Cloud Volumes ONTAP システムを導入してから、その新しいシステムにデータをレプリケートできます。
+
+システムをPAYGOからノード単位のライセンスからBYOLへ（逆も同様）に変換することはサポートされていません。新しいシステムを導入し、そのシステムにデータをレプリケートする必要があります。 link:task-manage-node-licenses.html["PAYGOとBYOLの違いを解説します"]。
