@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: task-aws-key-management.html 
+keywords: aws, amazon, encryption, NVE, NetApp volume encryption, KMIP, kms, key manager service 
+summary: AWSのキー管理サービスをサードパーティのキー管理サービスに利用できます。 
+---
+= AWS Key Management Serviceを使用してキーを管理します
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+を使用できます link:https://docs.aws.amazon.com/kms/latest/developerguide/overview.html["AWS Key Management Service（KMS）"^] Google Cloud Platform導入アプリケーションでONTAP 暗号化キーを保護します。
+
+AWS KMSを使用したキー管理は、CLIまたはONTAP REST APIを使用して有効にできます。
+
+KMSを使用する場合は、デフォルトではデータSVMのLIFがクラウドキー管理エンドポイントとの通信に使用されることに注意してください。ノード管理ネットワークは、AWSの認証サービスとの通信に使用されます。クラスタネットワークが正しく設定されていないと、クラスタでキー管理サービスが適切に利用されません。
+
+.作業を開始する前に
+* Cloud Volumes ONTAPでバージョン9.12.0以降が実行されている必要があります
+* Volume Encryption（VE）ライセンスとをインストールしておく必要があります
+* Multi-tenant Encryption Key Management（MTEKM）ライセンスをインストールしておく必要があります。
+* クラスタ管理者またはSVMの管理者である必要があります
+* 有効なAWSサブスクリプションが必要です
+
+
+
+NOTE: 設定できるのはデータSVMのキーだけです。
+
+
+
+== 設定
+
+.AWS
+. を作成する必要があります link:https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant["グラント"^] 暗号化を管理するIAMロールで使用されるAWS KMSキー用。IAMロールには、次の処理を許可するポリシーが含まれている必要があります。
++
+** `DescribeKey`
+** `Encrypt`
+** `Decrypt`
+認可を作成するには、を参照してください link:https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html["AWSのドキュメント"^]。
+
+
+. link:https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html["適切なIAMロールにポリシーを追加します。"^] ポリシーでがサポートされている必要があります `DescribeKey`、 `Encrypt`および `Decrypt` 操作：
+
+
+.Cloud Volumes ONTAP
+. Cloud Volumes ONTAP環境に切り替えます。
+. advanced 権限レベルに切り替えます。
+`set -privilege advanced`
+. AWSキー管理ツールを有効にします。
+`security key-manager external aws enable -vserver _data_svm_name_ -region _AWS_region_ -key-id _key_ID_ -encryption-context _encryption_context_`
+. プロンプトが表示されたら、シークレットキーを入力します。
+. AWS KMSが正しく設定されたことを確認します。
+`security key-manager external aws show -vserver _svm_name_`
+

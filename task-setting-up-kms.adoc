@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: task-setting-up-kms.html 
+keywords: encryption, kms, key management service, cmk, customer master key, master key, key, permissions 
+summary: Cloud Volumes ONTAP で Amazon 暗号化を使用する場合は、 AWS Key Management Service をセットアップする必要があります。 
+---
+= AWS KMS のセットアップ
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP で Amazon 暗号化を使用する場合は、 AWS Key Management Service （ KMS ）を設定する必要があります。
+
+.手順
+. アクティブな Customer Master Key （ CMK ）が存在することを確認します。
++
+CMK は、 AWS 管理の CMK または顧客管理の CMK にすることができます。BlueXPやCloud Volumes ONTAP と同じAWSアカウントにすることも、別のAWSアカウントに含めることもできます。
+
++
+https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys["AWS ドキュメント：「 Customer Master Keys （ CMK ；カスタマーマスターキー）」"^]
+
+. BlueXPに「a_key user__」権限を提供するIAMロールを追加して、各CMKのキーポリシーを変更します。
++
+IAMロールをキーユーザとして追加すると、Cloud Volumes ONTAP でCMKを使用するためのBlueXP権限が付与されます。
+
++
+https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["AWS のドキュメント：「キーの編集"^]
+
+. CMK が別の AWS アカウントにある場合は、次の手順を実行します。
++
+.. CMK が存在するアカウントから KMS コンソールにアクセスします。
+.. キーを選択します。
+.. General configuration * ペインで、キーの ARN をコピーします。
++
+Cloud Volumes ONTAP システムを作成するときは、BlueXPにARNを提供する必要があります。
+
+.. [* Other AWS accounts *（その他のAWSアカウント*）]ペインで、BlueXPに権限を付与するAWSアカウントを追加します。
++
+ほとんどの場合、これはBlueXPが存在するアカウントです。BlueXPがAWSにインストールされていない場合は、BlueXPにAWSアクセスキーを提供したアカウントになります。
+
++
+image:screenshot_cmk_add_accounts.gif["このスクリーンショットは、 AWS KMS コンソールの「 Add other AWS accounts 」ボタンを示しています。"]
+
++
+image:screenshot_cmk_add_accounts_dialog.gif["このスクリーンショットは、 AWS KMS コンソールの「その他の AWS アカウント」ダイアログボックスを示しています。"]
+
+.. 次に、BlueXPに権限を付与するAWSアカウントに切り替えて、IAMコンソールを開きます。
+.. 以下の権限を含む IAM ポリシーを作成します。
+.. このポリシーを、BlueXPに対する権限を提供するIAMロールまたはIAMユーザに関連付けます。
++
+次のポリシーは、BlueXPが外部AWSアカウントからCMKを使用するために必要な権限を提供します。「リソース」セクションで、リージョンとアカウント ID を必ず変更してください。
+
++
+[source, json]
+----
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowUseOfTheKey",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:DescribeKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:externalaccountid:key/externalkeyid"
+            ]
+        },
+        {
+            "Sid": "AllowAttachmentOfPersistentResources",
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant",
+                "kms:ListGrants",
+                "kms:RevokeGrant"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:externalaccountid:key/externalaccountid"
+            ],
+            "Condition": {
+                "Bool": {
+                    "kms:GrantIsForAWSResource": true
+                }
+            }
+        }
+    ]
+}
+----
++
+このプロセスの詳細については、を参照してください https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html["AWS のマニュアル：他のアカウントのユーザに KMS キーの使用を許可する"^]。
+
+
+
+. お客様が管理する CMK を使用している場合は、 Cloud Volumes ONTAP IAM ロールを a_key user_権限 として追加して、 CMK のキーポリシーを変更します。
++
+この手順は、 Cloud Volumes ONTAP でデータの階層化を有効にし、 S3 バケットに格納されているデータを暗号化する場合に必要です。
+
++
+作業環境の作成時に IAM ロールが作成されるため、このステップの _ 導入後 _ Cloud Volumes ONTAP を実行する必要があります。（もちろん、既存の Cloud Volumes ONTAP IAM ロールを使用することもできるため、この手順を前に実行することもできます）。
+
++
+https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html["AWS のドキュメント：「キーの編集"^]
+
+

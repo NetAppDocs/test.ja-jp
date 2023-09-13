@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: concept-flash-cache.html 
+keywords: cloud volumes ontap, flash cache, read-intensive, read, random, databases, email, file services, compression, performance, nvme 
+summary: 一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレージが含まれており、Cloud Volumes ONTAP はパフォーマンスを向上させるためにFlash Cacheとして使用します。 
+---
+= Flash Cache
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレージが含まれており、Cloud Volumes ONTAP はパフォーマンスを向上させるために_Flash Cache _として使用します。
+
+
+
+== Flash Cacheとは
+
+Flash Cache は、最近読み取られたユーザデータとネットアップのメタデータをリアルタイムでインテリジェントにキャッシングすることで、データへのアクセスを高速化します。データベース、 E メール、ファイルサービスなど、ランダムリードが大量に発生するワークロードに効果的です。
+
+
+
+== サポートされている構成
+
+Flash Cacheは、特定のCloud Volumes ONTAP 構成でサポートされています。でサポートされている構成を表示します https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html["Cloud Volumes ONTAP リリースノート"^]
+
+
+
+== 制限
+
+* Cloud Volumes ONTAP 9.12.0までのFlash Cacheのパフォーマンス向上を利用するには、すべてのボリュームで圧縮を無効にする必要があります。Cloud Volumes ONTAP 9.12.1を導入またはアップグレードする場合、圧縮を無効にする必要はありません。
++
+BlueXPからボリュームを作成するときにStorage Efficiencyを使用しないようにするか、ボリュームを作成してから http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/GUID-8508A4CB-DB43-4D0D-97EB-859F58B29054.html["CLI を使用してデータ圧縮を無効にします"^]。
+
+* 再起動後のキャッシュの再ウォームアップは、 Cloud Volumes ONTAP ではサポートされていません。
+

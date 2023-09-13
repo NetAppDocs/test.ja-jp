@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: concept-cvo-aiq-digital-advisor.html 
+keywords: concepts, active iq digital advisor, cloud volumes ontap, cloud manager, BlueXP 
+summary: 'Active IQ デジタルアドバイザは"BlueXP UIに統合されているため"1つの画面でONTAP クラスタの操作"セキュリティ"パフォーマンスを最適化できます' 
+---
+= Active IQ デジタルアドバイザを使用して Cloud Volumes ONTAP システムを最適化します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+https://www.netapp.com/services/support/active-iq/["Active IQ Digital Advisor"] はBlueXP UIに統合されているため、Cloud Volumes ONTAP システムの運用、セキュリティ、パフォーマンスを単一のコンソールで最適化できます。
+
+
+
+== 機能
+
+Active IQ デジタルアドバイザを使用すると、ストレージシステムの全体的なステータス、システムの健全性に関する概要情報、インベントリ、計画、監視リストレベルの価値ある分析情報を確認できます。
+
+* ストレージシステムの健常性を分析し、最適化できます
+* ストレージシステムのすべてのリスクと、リスクを軽減するための対処方法に関する分析情報を取得できます
+* を表示して、ストレージデバイスのパフォーマンスを分析します パフォーマンスデータのグラフ形式
+* 容量の 90% を超えたシステムまたはを超えたシステムに関する詳細を確認できます 容量の使用率が 90% に近づいています
+
+
+
+
+== サポート対象の ONTAP システム
+
+Cloud Volumes ONTAP デジタルアドバイザは、 NSS アカウント内のすべてのオンプレミス ONTAP システムと Active IQ システムに関する情報を提供します。
+
+
+
+== コスト
+
+このサービスはBlueXPで無料でご利用いただけます。
+
+
+
+== Active IQ Digital AdvisorがBlueXPとどのように連携するか
+
+Active IQ デジタルアドバイザのユーザインターフェイスは、BlueXPに完全に統合されています。
+
+BlueXPで、Active IQ サービスをクリックします。
+
+* BlueXPに既存のNSSアカウントを登録済みの場合は、Active IQ Digital AdvisorのUIがスタンドアロン実装の場合と同じように表示されます https://activeiq.netapp.com/[]。
++
+image:screenshot_aiq_digital_advisor.png["BlueXPのActive IQ Digital Advisorユーザーインタフェースのスクリーンショット"]
+
+* BlueXPでNSSアカウントを登録していない場合は、 https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["NSS アカウントを今すぐ登録してください"^] 次に、 Active IQ デジタルアドバイザ UI が表示されます。
+
+
+
+NOTE: 2021 年 12 月 3 日時点で、ネットアップは NSS アカウントのクレデンシャルの登録方法を新たに変更しました。 https://kb.netapp.com/Advice_and_Troubleshooting/Miscellaneous/FAQs_for_NetApp_adoption_of_MS_Azure_AD_B2C_for_login["詳細については、この FAQ を参照してください"]。NSS アカウントで古いクレデンシャルのセットを使用している場合は、新しいクレデンシャルに更新する必要があります。
+
+
+
+== 次のステップ
+
+を参照してください https://docs.netapp.com/us-en/active-iq/index.html["Active IQ デジタルアドバイザのドキュメント"] を参照してください。

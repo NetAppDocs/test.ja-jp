@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: task-change-ec2-instance.html 
+keywords: ec2 instance type, change ec2 instance type, change instance type, modify instance type, modify ec2 instance, amazon ec2 
+summary: AWS で Cloud Volumes ONTAP を起動する際には、いくつかのインスタンスまたはタイプから選択できます。インスタンスタイプは、ニーズに合わせてサイズが小さすぎる、または大きすぎると判断した場合にいつでも変更できます。 
+---
+= Cloud Volumes ONTAP の EC2 インスタンスタイプを変更します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+AWS で Cloud Volumes ONTAP を起動する際には、いくつかのインスタンスまたはタイプから選択できます。インスタンスタイプは、ニーズに合わせてサイズが小さすぎる、または大きすぎると判断した場合にいつでも変更できます。
+
+.このタスクについて
+* Cloud Volumes ONTAP HA ペア（デフォルト設定）で自動ギブバックを有効にする必要があります。サポートされていない場合、処理は失敗します。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/GUID-3F50DE15-0D01-49A5-BEFD-D529713EC1FA.html["ONTAP 9 ドキュメント：「 Commands for configuring automatic giveback"^]
+
+* インスタンスタイプを変更すると、 AWS のサービス料金に影響する可能性があります。
+* Cloud Volumes ONTAP が再起動されます。
++
+シングルノードシステムの場合、 I/O は中断されます。
+
++
+HA ペアの場合、変更は中断されません。HA ペアは引き続きデータを提供します。
+
++
+
+TIP: テイクオーバーを開始してギブバックを待機することで、BlueXPは一度に1つのノードを正常に変更します。ネットアップの QA チームは、このプロセスでファイルの書き込みと読み取りの両方をテストしたため、クライアント側で問題は発生しませんでした。接続が変更されると、 I/O レベルでの再試行が表示されますが、アプリケーションレイヤはこれらの NFS / CIFS 接続の「再配線」の省略形を使用しています。
+
+
+
+.参照
+AWSでサポートされるインスタンスタイプの一覧については、を参照してください link:https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html#supported-ec2-compute["サポートされているEC2インスタンス"^]。
+
+.手順
+. [Canvas]ページで、作業環境を選択します。
+. [Overview]タブで、[Features]パネルをクリックし、*[Instance type]*の横にある鉛筆アイコンをクリックします。
++
+image::screenshot_features_instance_type.png[400だ]
+
++
+.. ノードベースのPAYGOライセンスを使用している場合は、*[ライセンスタイプ]*の横にある鉛筆のアイコンをクリックして、別のライセンスとインスタンスタイプを選択することもできます。
+
+
+. インスタンスタイプを選択し、変更の影響を理解していることを確認するチェックボックスを選択して、*[変更]*をクリックします。
+
+
+.結果
+Cloud Volumes ONTAP が新しい設定でリブートします。

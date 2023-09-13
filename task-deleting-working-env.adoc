@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: task-deleting-working-env.html 
+keywords: terminate, delete, working environment, remove, terminate working environment, terminate instance, delete cloud volumes ontap, delete instance, delete working environment, delete backups, cloud backup, cloud data sense 
+summary: クラウドプロバイダのコンソールからではなく、Cloud Volumes ONTAP システムを必ずBlueXPから削除してください。たとえば、クラウドプロバイダからライセンスが有効な Cloud Volumes ONTAP インスタンスを終了すると、別のインスタンスでこのライセンスキーを使用できなくなります。ライセンスをリリースするには、作業環境をBlueXPから削除する必要があります。 
+---
+= Cloud Volumes ONTAP システムを削除する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+クラウドプロバイダのコンソールからではなく、Cloud Volumes ONTAP システムを必ずBlueXPから削除してください。たとえば、クラウドプロバイダからライセンスが有効な Cloud Volumes ONTAP インスタンスを終了すると、別のインスタンスでこのライセンスキーを使用できなくなります。ライセンスをリリースするには、作業環境をBlueXPから削除する必要があります。
+
+作業環境を削除すると'BlueXPはCloud Volumes ONTAP インスタンスを終了し'ディスクとスナップショットを削除します
+
+BlueXPのバックアップとリカバリのバックアップやBlueXP分類のインスタンスなど、他のサービスで管理されるリソースは、作業環境を削除しても削除されません。手動で削除する必要があります。そうしないと、これらのリソースの料金が引き続き請求されます。
+
+
+NOTE: クラウドプロバイダにCloud Volumes ONTAP を導入すると、BlueXPはインスタンスでの終端保護を有効にします。このオプションを使用すると、偶発的な終了を防止できます
+
+.手順
+. 作業環境でBlueXPのバックアップとリカバリを有効にした場合は、バックアップデータが引き続き必要かどうかを確認し、実行します https://docs.netapp.com/us-en/bluexp-backup-recovery/task-manage-backups-ontap.html#deleting-backups["必要に応じて、バックアップを削除します"^]。
++
+BlueXPのバックアップとリカバリは、設計上Cloud Volumes ONTAP から独立しています。Cloud Volumes ONTAP システムを削除しても、BlueXPのバックアップとリカバリではバックアップが自動的に削除されません。また、システムの削除後にバックアップを削除する機能は現在UIでサポートされていません。
+
+. この作業環境でBlueXPの分類を有効にし、他の作業環境でこのサービスを使用していない場合は、サービスのインスタンスを削除する必要があります。
++
+https://docs.netapp.com/us-en/bluexp-classification/concept-cloud-compliance.html#the-cloud-data-sense-instance["BlueXP分類インスタンスの詳細については、こちらをご覧ください"^]。
+
+. Cloud Volumes ONTAP 作業環境を削除します。
++
+.. キャンバスページで、削除する Cloud Volumes ONTAP 作業環境の名前をダブルクリックします。
+.. BlueXPコンソールの右上にある楕円アイコンをクリックし、*[削除]*を選択します。
++
+image:screenshot_settings_delete.png["削除アクションを含む作業環境で使用可能なメニューを示すスクリーンショット。"]
+
+.. [Delete Working Environment]ウィンドウで、作業環境の名前を入力し、*[Delete]*をクリックします。
++
+作業環境を削除するには、最大 5 分かかります。
+
+
+
+

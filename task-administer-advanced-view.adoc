@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: task-administer-advanced-view.html 
+keywords: system manager, advanced view, access system manager, load system manager, use system manager, cloud tiering 
+summary: Cloud Volumes ONTAP の高度な管理が必要な場合は、ONTAP システムに付属の管理インターフェイスであるONTAP System Managerを使用して実行できます。BlueXPにはSystem Managerインターフェイスが搭載されているので、高度な管理のためにBlueXPを残す必要はありません。 
+---
+= 拡張ビューを使用してCloud Volumes ONTAP を管理します
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Volumes ONTAP の高度な管理が必要な場合は、ONTAP システムに付属の管理インターフェイスであるONTAP System Managerを使用して実行できます。BlueXPにはSystem Managerインターフェイスが搭載されているので、高度な管理のためにBlueXPを残す必要はありません。
+
+この拡張ビューはプレビューとして使用できます。今後のリリースでは、この点をさらに改良し、機能を強化する予定です。製品内のチャットでご意見をお寄せください。
+
+
+
+== 機能
+
+BlueXPの詳細ビューでは、次の管理機能を使用できます。
+
+* 高度なストレージ管理
++
+整合グループ、共有、qtree、クォータ、およびStorage VMの管理
+
+* ネットワーク管理
++
+IPspace、ネットワークインターフェイス、ポートセット、およびイーサネットポートを管理します。
+
+* イベントとジョブ
++
+イベントログ、システムアラート、ジョブ、および監査ログを表示します。
+
+* 高度なデータ保護
++
+Storage VM、LUN、および整合グループを保護する。
+
+* ホスト管理
++
+SANイニシエータグループとNFSクライアントを設定します。
+
+
+
+
+
+== サポートされている構成
+
+System Managerを使用した高度な管理は、標準のクラウドリージョンでCloud Volumes ONTAP 9.10.0以降でサポートされます。
+
+GovCloudリージョンまたはアウトバウンドのインターネットアクセスがないリージョンでは、System Managerの統合はサポートされません。
+
+
+
+== 制限
+
+System Managerインターフェイスに表示されるいくつかの機能は、Cloud Volumes ONTAP ではサポートされません。
+
+* BlueXPの階層化
++
+Cloud Volumes ONTAP では、BlueXP階層化サービスはサポートされていません。ボリュームを作成するときは、BlueXPの標準ビューからデータをオブジェクトストレージに階層化するように直接設定する必要があります。
+
+* 階層
++
+アグリゲートの管理（ローカル階層とクラウド階層を含む）はSystem Managerではサポートされていません。アグリゲートは、BlueXPのStandard Viewから直接管理する必要があります。
+
+* ファームウェアのアップグレード
++
+Cloud Volumes ONTAP では、[クラスタ]>[設定*]ページからの自動ファームウェア更新はサポートされていません。
+
+
+
+また、System Managerからのロールベースアクセス制御はサポートされていません。
+
+
+
+== 開始方法
+
+Cloud Volumes ONTAP 作業環境を開き、詳細ビューオプションをクリックします。
+
+.手順
+. 左側のナビゲーションメニューから、* Storage > Canvas *を選択します。
+. キャンバスページで、Cloud Volumes ONTAP システムの名前をダブルクリックします。
+. 右上の*[拡張表示に切り替える]をクリックします。
++
+image:screenshot_advanced_view.png["詳細ビューに切り替えオプションを示すCloud Volumes ONTAP 作業環境のスクリーンショット。"]
+
+. 確認メッセージが表示されたら、そのメッセージを読み、*閉じる*をクリックします。
+. System Managerを使用してCloud Volumes ONTAP を管理する。
+. 必要に応じて、[標準表示に切り替える]をクリックして、BlueXPを使用した標準管理に戻ります。
+
+
+
+
+== System Managerの使用方法に関するヘルプ
+
+Cloud Volumes ONTAP でSystem Managerを使用する際にサポートが必要な場合は、を参照してください https://docs.netapp.com/us-en/ontap/index.html["ONTAP のドキュメント"^] を参照してください。役立つリンクをいくつか紹介します。
+
+* https://docs.netapp.com/us-en/ontap/volume-admin-overview-concept.html["ボリュームとLUNの管理"^]
+* https://docs.netapp.com/us-en/ontap/network-manage-overview-concept.html["Network Management の略"^]
+* https://docs.netapp.com/us-en/ontap/concept_dp_overview.html["データ保護"^]
+

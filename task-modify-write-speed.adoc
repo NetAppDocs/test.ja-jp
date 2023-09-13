@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: task-modify-write-speed.html 
+keywords: write speed, high write speed, normal write speed, change write speed 
+summary: ストレージニーズの変化に合わせて Cloud Volumes ONTAP システム構成の変更が必要になる場合があります。たとえば、従量課金制構成の変更、インスタンスや VM のタイプの変更などが可能です。 
+---
+= システムの書き込み速度を変更する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+BlueXPを使用すると、Cloud Volumes ONTAP で通常の書き込み速度または高速の書き込み速度を選択できます。デフォルトの書き込み速度は normal です。ワークロードで高速書き込みパフォーマンスが必要な場合は、高速書き込み速度に変更できます。
+
+高速の書き込み速度は、すべてのタイプのシングルノードシステムと一部のHAペア構成でサポートされています。でサポートされている構成を表示します https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/["Cloud Volumes ONTAP リリースノート"^]
+
+書き込み速度を変更する前に、次のことを確認してください link:concept-write-speed.html["通常の設定と高い設定の違いを理解する"]。
+
+.このタスクについて
+* ボリュームやアグリゲートの作成などの処理が実行中でないことを確認してください。
+* この変更によって Cloud Volumes ONTAP システムが再起動される点に注意してください。これはシステムの停止を伴うプロセスであり、システム全体のダウンタイムが必要となります。
+
+
+.手順
+. Canvasページで、書き込み速度に設定するシステムの名前をダブルクリックします。
+. [概要]タブで、[機能]パネルをクリックし、*[書き込み速度]*の横にある鉛筆アイコンをクリックします。
++
+image::screenshot_features_write_speed.png[400だ]
+
+. 「 * Normal * 」または「 * High * 」を選択します。
++
+「高」を選択した場合は、「 I understand ... 」文を読んで、チェックボックスをオンにして確認する必要があります。
+
++
+
+NOTE: 高速*書き込み速度オプションは、Google Cloudバージョン9.13.0以降のCloud Volumes ONTAP HAペアでサポートされます。
+
+. [保存]*をクリックし、確認メッセージを確認して*[承認]*をクリックします。
+

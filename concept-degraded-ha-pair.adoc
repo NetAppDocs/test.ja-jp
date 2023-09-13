@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: concept-degraded-ha-pair.html 
+keywords: storage takeover, storage giveback, degraded, degraded status, degraded state, ha pair, ha takeover, takeover, giveback 
+summary: HA ペアの一方のノードが利用できない場合は、もう一方のノードがパートナーに引き続きデータを提供します。これをストレージテイクオーバーと呼びます。storage giveback が完了するまで、いくつかの操作は実行できません。 
+---
+= テイクオーバー中は操作を実行できません
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+HA ペアの一方のノードが利用できない場合は、もう一方のノードがパートナーに引き続きデータを提供します。これを _storage takeover _ と呼びます。storage giveback が完了するまで、いくつかの操作は実行できません。
+
+
+TIP: HAペアのノードが利用できない場合、BlueXPの作業環境の状態は_Degraded__です。
+
+BlueXPストレージのテイクオーバーでは、次の操作を実行できません。
+
+* サポート登録
+* ライセンスの変更
+* インスタンスまたは VM のタイプが変更された
+* 書き込み速度の変更
+* CIFSセットアップ
+* 構成バックアップの場所を変更する
+* クラスタのパスワードを設定しています
+* ディスクとアグリゲートの管理（高度な割り当て）
+
+
+これらの操作は、ストレージのギブバックが完了し、作業環境の状態が正常に戻ったあとで再度実行できます。
