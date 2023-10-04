@@ -1451,7 +1451,6 @@ Azure AD ドメインサービスを Cloud Volumes ONTAP の AD サーバとし�
   <block id="a35eb7b32c61adf984cdcc0cc1594b1c" category="image-alt">スクリーンショットは、Autonomous Ransomware Protectionのアドオンライセンスを示しています。</block>
   <block id="243263104c829e77835d632f591230d5" category="summary">ネットアップテクニカルサポートでサポートケースをオープンするには、まずNetApp Support Site アカウントをBlueXPに追加し、サポートに登録する必要があります。</block>
   <block id="42748df9eaa0be17ddc5cc1593cf57ab" category="doc">サポートに登録します</block>
-  <block id="0c7db2bd63c891adb2c0fa4527805d72" category="paragraph">BlueXPアカウントと個 々 のCloud Volumes ONTAPシステムにサポートを登録する必要があります。</block>
   <block id="0b0e252af8897fbe981ec6682d2aa33b" category="section-title">サポート登録の概要</block>
   <block id="192054ad7601240a3e8be54cc5cc548e" category="paragraph">サポート資格を有効にする登録には、次の2つの形式があります。</block>
   <block id="2322ca552c2b0ebe090c8485519246a8" category="list-text">BlueXPアカウントIDサポートサブスクリプションの登録(BlueXPの[サポートリソース]ページにある20桁の960xxxxxxxxxシリアル番号)。</block>
@@ -1459,8 +1458,6 @@ Azure AD ドメインサービスを Cloud Volumes ONTAP の AD サーバとし�
   <block id="55ff64467cd508971910145ab5d6b3b8" category="list-text">クラウドプロバイダのマーケットプレイスでのサブスクリプションに関連付けられているCloud Volumes ONTAP のシリアル番号を登録している（909201xxxxxxxxのシリアル番号）。</block>
   <block id="67dbdeb11e22ea7def810bade59ce818" category="paragraph">これらのシリアル番号は、通常PAY_GOシリアル番号と呼ばれ、Cloud Volumes ONTAP の導入時にBlueXPによって生成されます。</block>
   <block id="28164bf9e881ddc9e7ff74744bfce180" category="paragraph">両方のタイプのシリアル番号を登録することで、サポートチケットのオープンやケースの自動生成などの機能を利用できます。登録を完了するには、以下の手順でNetApp Support Site（NSS）アカウントをBlueXPに追加してください。</block>
-  <block id="0375f4855be072c7d856a0233cc21de9" category="section-title">クラウドプロバイダソリューションのサポート</block>
-  <block id="e922b9aa0836a1d93e11cac0fe4c9004" category="paragraph">以下のクラウドプロバイダソリューションに関するテクニカルサポートについては、その製品のBlueXPドキュメントの「困ったときは」を参照してください。</block>
   <block id="18cf072964a583150dd247485ba75b92" category="inline-link-macro">ONTAP 対応の Amazon FSX</block>
   <block id="9d06990508d25d367d9158c6558eb9c8" category="list-text"><block ref="9d06990508d25d367d9158c6558eb9c8" category="inline-link-macro-rx"></block></block>
   <block id="2e0c742f4616eb27b5b7646aa790edfe" category="list-text"><block ref="2e0c742f4616eb27b5b7646aa790edfe" category="inline-link-macro-rx"></block></block>
@@ -5153,4 +5150,9 @@ Elastic VolumesをサポートするAWSのアグリゲートの場合は、BlueX
   <block id="310c228207a0f8446bbe4c5d16978cb7" category="paragraph">endif::gcp[]</block>
   <block id="5a81378cdc7edd9ea960cf02d6ca78d2" category="paragraph">ifdef::aws[]</block>
   <block id="6beb2fa01dc121194547db1bfbe03408" category="paragraph">endif::aws[]</block>
+  <block id="ece19bab46695021f109a5e50f08bebe" category="paragraph">BlueXPとそのストレージソリューションおよびサービスに固有のテクニカルサポートを受けるには、サポート登録が必要です。Cloud Volumes ONTAPシステムの主要なワークフローを有効にするには、サポート登録も必要です。</block>
+  <block id="8a3d807608e632d188a288fc5f4aa7eb" category="paragraph">サポートに登録しても、クラウドプロバイダのファイルサービスでNetAppのサポートは有効になりません。クラウドプロバイダのファイルサービスとそのインフラ、またはサービスを使用する解決策に関連するテクニカルサポートについては、該当する製品のBlueXPドキュメントの「困ったときは」を参照してください。</block>
+  <block id="522cbb900314aeb84eb5a961c5f94672" category="section-title">クラウドプロバイダのファイルサービスのサポート</block>
+  <block id="f6185bb12f5e53c800be8cda7fbca65b" category="paragraph">クラウドプロバイダのファイルサービスとそのインフラ、またはサービスを使用する解決策に関連するテクニカルサポートについては、該当する製品のBlueXPドキュメントの「困ったときは」を参照してください。</block>
+  <block id="3880ae5df9fdc4d0fc4a6d00a2239530" category="paragraph">BlueXPおよびそのストレージソリューションとサービスに固有のテクニカルサポートを受けるには、以下に記載されているサポートオプションを使用してください。</block>
 </blocks>
