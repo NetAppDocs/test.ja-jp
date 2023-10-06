@@ -14,7 +14,7 @@ summary: 一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレ�
 
 
 [role="lead"]
-一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレージが含まれており、Cloud Volumes ONTAP はパフォーマンスを向上させるために_Flash Cache _として使用します。
+一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレージが含まれており、Cloud Volumes ONTAP はパフォーマンスを向上させるために_Flash Cache _として使用します。トークン更新テストの行を追加しています。
 
 
 
