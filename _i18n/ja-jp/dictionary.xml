@@ -5154,5 +5154,5 @@ Elastic VolumesをサポートするAWSのアグリゲートの場合は、BlueX
   <block id="f6185bb12f5e53c800be8cda7fbca65b" category="paragraph">クラウドプロバイダのファイルサービスとそのインフラ、またはサービスを使用する解決策に関連するテクニカルサポートについては、該当する製品のBlueXPドキュメントの「困ったときは」を参照してください。</block>
   <block id="3880ae5df9fdc4d0fc4a6d00a2239530" category="paragraph">BlueXPおよびそのストレージソリューションとサービスに固有のテクニカルサポートを受けるには、以下に記載されているサポートオプションを使用してください。</block>
   <block id="85a772bebde3e95966723beb7a641685" category="paragraph">一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレージが含まれており、Cloud Volumes ONTAP はパフォーマンスを向上させるために_Flash Cache _として使用します。トークン更新テストの行を追加しています。</block>
-  <block id="831f5238637d5e95172a19700b3d60d2" category="paragraph">Cloud Volumes ONTAP は、クラウドで ONTAP データ管理ソフトウェアを実行するソフトウェア型のストレージアプライアンスです。次の主要機能を備えたエンタープライズクラスのストレージを提供します。</block>
+  <block id="f1186c9ba34a61c2fa682874b26fd08d" category="paragraph">Cloud Volumes ONTAP は、クラウドで ONTAP データ管理ソフトウェアを実行するソフトウェア型のストレージアプライアンスです。次回のテストでは、次の主要機能を備えたエンタープライズクラスのストレージを提供します。</block>
 </blocks>
