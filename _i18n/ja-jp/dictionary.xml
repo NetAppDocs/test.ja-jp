@@ -4076,8 +4076,6 @@ UNIX（NFSボリュームの場合）</block>
   <block id="9a3db1abe5491d0eb9bb5d125981356c" category="paragraph">BlueXPナレッジベースで問題のトラブルシューティングに役立つ記事を検索します。</block>
   <block id="410fdb9caa9c64da2ff3f88f4836960d" category="list-text"><block ref="410fdb9caa9c64da2ff3f88f4836960d" category="inline-link-rx"></block></block>
   <block id="00c5fef3bb9d593ae96bf5d2ee60354a" category="paragraph">BlueXPコミュニティに参加して、進行中のディスカッションをフォローしたり、新しいディスカッションを作成したりできます。</block>
-  <block id="80b1b0d2b1ebf2b3cba2d25759801afd" category="list-text">mailto ： ng-cloudmanager-feedback@netapp.com [ フィードバックメール ]</block>
-  <block id="6702efec14563f45f1ee2f8c613b8ad8" category="paragraph">お客様のご意見をお考えください。フィードバックを送信して、BlueXPの改善に役立ててください。</block>
   <block id="d88bacf2a9fdcbbc844edcba97c34e30" category="section-title">ネットアップサポートと一緒にケースを作成します</block>
   <block id="82812db645b6ff5e9c2a24ddfb66c8d6" category="paragraph">上記のセルフサポートオプションに加え、サポートを有効にしたあとで問題が発生した場合は、ネットアップサポートの担当者と相談して解決できます。</block>
   <block id="920fe1428c19533eda6222fe7e58efbe" category="inline-link">BlueXPログインに関連付けられているクレデンシャルの管理方法について説明します</block>
@@ -5155,4 +5153,35 @@ Elastic VolumesをサポートするAWSのアグリゲートの場合は、BlueX
   <block id="3880ae5df9fdc4d0fc4a6d00a2239530" category="paragraph">BlueXPおよびそのストレージソリューションとサービスに固有のテクニカルサポートを受けるには、以下に記載されているサポートオプションを使用してください。</block>
   <block id="85a772bebde3e95966723beb7a641685" category="paragraph">一部のCloud Volumes ONTAP 構成にはローカルのNVMeストレージが含まれており、Cloud Volumes ONTAP はパフォーマンスを向上させるために_Flash Cache _として使用します。トークン更新テストの行を追加しています。</block>
   <block id="f1186c9ba34a61c2fa682874b26fd08d" category="paragraph">Cloud Volumes ONTAP は、クラウドで ONTAP データ管理ソフトウェアを実行するソフトウェア型のストレージアプライアンスです。次回のテストでは、次の主要機能を備えたエンタープライズクラスのストレージを提供します。</block>
+  <block id="db19a2aeddd86c6afbd5d3983a9579d2" category="section-title">AsciiDocの文字置換と組み込み属性のテスト</block>
+  <block id="6d8c8e2d0adf3332b744316a6ebdbf75" category="paragraph">すべての言語のローカリゼーションと公開を通じて、エンドツーエンドのテストを実施します。</block>
+  <block id="9c8ae0945940e5baec5a93c4c8ec869e" category="paragraph-title">アスタリスク</block>
+  <block id="019791a796a02f18a46a3dcb39b816e7" category="paragraph">｛アスタリスク｝
+text{アスタリスク}
+text{アスタリスク}
+text{アスタリスク}テキスト</block>
+  <block id="22ed5e498bf77d3a1534c7e861ebb5a4" category="paragraph-title">二重コロン</block>
+  <block id="c864eac8459131738baec5694d99d481" category="paragraph">｛2コロン｝
+text{2つのコロン}
+text{2つのコロン}
+text{two-colons}テキスト</block>
+  <block id="2349b5a4555c8daaba967bb9d648e02a" category="paragraph-title">垂直バー</block>
+  <block id="a92de313c578d9511ef232e68df3ecac" category="paragraph">｛vbar｝
+text{vbar}
+text{vbar}
+text{vbar}テキスト</block>
+  <block id="32ba78fe43257d3e7f88e3935a8ea0d4" category="paragraph-title">プラス</block>
+  <block id="058acd890f3615536573cc493a22c8c6" category="paragraph">｛plus｝
+text{plus}
+text{plus}
+text{plus}テキスト</block>
+  <block id="52d20dd6a39397247940a5255508a9eb" category="paragraph-title">角かっこ</block>
+  <block id="688d8707adb64eca76570a9f9f4fccab" category="paragraph">｛startsb｝および｛endsb｝
+text{startsb}およびtext{endsb}
+text{startsb}およびtext{endsb}
+text{startsb}およびtext{endsb}テキスト</block>
+  <block id="077918e5e759dea8ebe9b14af40f6a8c" category="paragraph-title">解除されないスペース</block>
+  <block id="f606f03b9471e3c22a0e9412852320bd" category="paragraph">｛nbsp｝以前</block>
+  <block id="64e9073b4fb50b91766ce8b5e61945c1" category="paragraph-title">ゼロ幅スペース</block>
+  <block id="589a92e5ac7fd2654f5ce5d9594f5e7c" category="paragraph">｛zwsp｝以前</block>
 </blocks>

@@ -42,3 +42,45 @@ link:concept-client-protocols.html["S3およびその他のクライアントプ
 BlueXPは、Storage VM（SVM）ディザスタリカバリのセットアップやオーケストレーションのサポートは提供していません。System Manager または CLI を使用する必要があります。
 
 link:task-manage-svm-dr.html["SVMディザスタリカバリに関する詳細情報"]。
+
+
+
+== AsciiDocの文字置換と組み込み属性のテスト
+
+すべての言語のローカリゼーションと公開を通じて、エンドツーエンドのテストを実施します。
+
+.アスタリスク
+｛アスタリスク｝
+text{アスタリスク}
+text{アスタリスク}
+text{アスタリスク}テキスト
+
+.二重コロン
+｛2コロン｝
+text{2つのコロン}
+text{2つのコロン}
+text{two-colons}テキスト
+
+.垂直バー
+｛vbar｝
+text{vbar}
+text{vbar}
+text{vbar}テキスト
+
+.プラス
+｛plus｝
+text{plus}
+text{plus}
+text{plus}テキスト
+
+.角かっこ
+｛startsb｝および｛endsb｝
+text{startsb}およびtext{endsb}
+text{startsb}およびtext{endsb}
+text{startsb}およびtext{endsb}テキスト
+
+.解除されないスペース
+｛nbsp｝以前
+
+.ゼロ幅スペース
+｛zwsp｝以前
