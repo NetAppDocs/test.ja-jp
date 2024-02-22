@@ -1,0 +1,4271 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>新機能 | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="新機能 | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/test/whats-new.html" />
+	<meta property="og:description" content="BlueXPのCloud Volumes ONTAP Managementの新機能をご紹介します。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/test/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="BlueXPのCloud Volumes ONTAP Managementの新機能をご紹介します。">
+  <meta name="keywords" content=" what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, cloud manager, BlueXP, digital wallet, cloud backup, cloud data sense, cloud tiering, keystone flex, keystone"><!-- Icons -->
+  <link rel="icon" href="/ja-jp/test/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/ja-jp/test/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/test/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ja-jp/test/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/test/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/ja-jp/test/whats-new.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/test/whats-new.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/test/whats-new.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/test/whats-new.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/test/whats-new.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/test/whats-new.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/test/whats-new.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/test/whats-new.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/test/whats-new.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/test/whats-new.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/test/whats-new.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/test/js/na-search.js'></script><script src='/ja-jp/test/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/ja-jp/test/js/custom-dropdown.js'></script>
+  <script src='/ja-jp/test/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/test/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/test/js/jszip.min.js'></script><script src='/ja-jp/test/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="gcp">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/ja-jp/test/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/ja/">
+                <image id="ie-header-logo" src="/ja-jp/test/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/ja/support-and-training/documentation/">ドキュメント</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/ja-jp/test/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">日本語</span>
+                    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/ja-jp/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/test/whats-new.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/ja-jp/test/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">すべてのNetApp</span>
+                    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/ja/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">サポート</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb-ja.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">ナレッジ ベース</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">トレーニング</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/ja-jp/test/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/ja-jp/test/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">すべてのドキュメント</a>
+    </li>
+    
+    
+    <li class="">
+      <a href="https://docs.netapp.com/us-en/cloud/">クラウド ドキュメント</a>
+    </li>
+    
+
+    
+    <li class="">
+      <a href="https://docs.netapp.com/ja-jp/bluexp-family/">
+        BlueXP
+      </a>
+    </li>
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/ja-jp/test/">-->
+      Cloud Volumes ONTAP
+    <!--</a>-->
+  </div>
+</div>
+
+            
+<div id="ie-selectors"><div id="version-dropdown-new" class="custom-dropdown" >
+  <div class="custom-dropdown-select unselected" title=" 9.13.1">
+    <label>バージョン</label>
+    <span translate="no" class="notranslate">9.13.1</span>
+    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown version invisible" />
+    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup version" />
+  </div>
+
+  <ul class="custom-dropdown-menu"><li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.13.1</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9130-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.13.0</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9121-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.12.1</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9120-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.12.0</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9111-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.11.1</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9110-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.11.0</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9101-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.10.1</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-9100-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.10.0</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-991-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.9.1</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-990-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.9.0</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-98-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.8</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-97-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.7</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-96-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.6</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-95-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.5</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-94-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.4</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/cloud-volumes-ontap-93-relnotes/whats-new.html" target="_self">
+        <span translate="no" class="notranslate"><span class="version"> 9.3</span></span>
+      </a>
+                     
+    </li>
+    
+  </ul>
+</div>
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/ja-jp/test/whats-new.html">
+  
+  
+  <div class="custom-dropdown-select selected" title="Google Cloud">
+    <label>クラウドプロバイダ</label>
+    <div>Google Cloud</div>  
+    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown flavor invisible" />
+    <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup flavor" />
+    <!--<img src="/ja-jp/test/images/dismiss.svg" class="custom-icon selected" id="remove-flavor" alt="" />-->
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/ja-jp/test/aws/whats-new.html">Amazon Web Services の
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/ja-jp/test/gcp/whats-new.html">Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/ja-jp/test/azure/whats-new.html">Microsoft Azure
+    </li>
+    
+    
+    <li data-url="/ja-jp/test/whats-new.html">すべてのクラウドプロバイダ</li>
+  </ul>
+</div>
+</div>
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/ja-jp/test/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/ja-jp/test/gcp/search.html" 
+        data-type="widget"
+        data-placeholder="ドキュメントを検索"
+        data-no-results-found="{query}に一致する結果は見つかりませんでした"
+        data-did-you-mean="{suggestion}で検索しています。"
+        data-no-results-found-did-you-mean="{query}に一致する結果は見つかりませんでした。{suggestion}で検索しますか？"
+        data-results-found="{hitCount}件の結果が見つかりました"
+        data-error-message="エラーが発生しました。もう一度お試しください。"
+        data-error-reset="検索をリセット"
+        data-sk-es-pf-indexes="" 
+        data-flavor="gcp">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP のドキュメント"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/test/gcp/index.html">
+        Cloud Volumes ONTAP のドキュメント
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リリースノート"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> リリースノート</div>-->
+         リリースノート
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="新機能"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/whats-new.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/whats-new.html">
+        新機能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既知の制限"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/reference-limitations.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/reference-limitations.html">
+        既知の制限
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP リリースノート"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/whats-new-ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/whats-new-ontap.html">
+        Cloud Volumes ONTAP リリースノート
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> はじめに</div>-->
+         はじめに
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP の詳細をご覧ください"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-overview-cvo.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/concept-overview-cvo.html">
+        Cloud Volumes ONTAP の詳細をご覧ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="新規導入でサポートされるバージョン"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/reference-versions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/reference-versions.html">
+        新規導入でサポートされるバージョン
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google Cloud で始めましょう"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Google Cloud で始めましょう</div>-->
+         Google Cloud で始めましょう
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クイックスタート"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-getting-started-gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-getting-started-gcp.html">
+        クイックスタート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="構成を計画"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-planning-your-config-gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-planning-your-config-gcp.html">
+        構成を計画
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットワークをセットアップします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/reference-networking-gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/reference-networking-gcp.html">
+        ネットワークをセットアップします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VPC サービスコントロールを計画する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/reference-vpc-service-controls-gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/reference-vpc-service-controls-gcp.html">
+        VPC サービスコントロールを計画する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="サービスアカウントを作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-creating-gcp-service-account.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-creating-gcp-service-account.html">
+        サービスアカウントを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="お客様が管理する暗号化キーを使用します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-setting-up-gcp-encryption.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-setting-up-gcp-encryption.html">
+        お客様が管理する暗号化キーを使用します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライセンスをセットアップする"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-set-up-licensing-google.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-set-up-licensing-google.html">
+        ライセンスをセットアップする
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google CloudでCloud Volumes ONTAP を起動します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-deploying-gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-deploying-gcp.html">
+        Google CloudでCloud Volumes ONTAP を起動します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google Cloud Platformイメージの検証"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Google Cloud Platformイメージの検証</div>-->
+         Google Cloud Platformイメージの検証
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概要"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-gcp-image-verification.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/test/gcp/concept-gcp-image-verification.html">
+        概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCPで画像をRaw形式に変換します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-gcp-convert-image-raw.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/test/gcp/task-gcp-convert-image-raw.html">
+        GCPで画像をRaw形式に変換します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="画像署名の検証"
+      data-li-level="4" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-4  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 画像署名の検証</div>-->
+         画像署名の検証
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCP署名済みイメージを確認します"
+      data-li-level="5#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-gcp-verify-signed-image.html" 
+    ><a class="ie-sidebar-menuitem-5 " href="/ja-jp/test/gcp/concept-gcp-verify-signed-image.html">
+        GCP署名済みイメージを確認します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="OpenSSLを使用してコンテンツを確認します"
+      data-li-level="5#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-verify-openssl-gcp.html" 
+    ><a class="ie-sidebar-menuitem-5 " href="/ja-jp/test/gcp/task-verify-openssl-gcp.html">
+        OpenSSLを使用してコンテンツを確認します
+      </a></li></ul></li></ul></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP を使用します"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Volumes ONTAP を使用します</div>-->
+         Cloud Volumes ONTAP を使用します
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライセンス管理"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ライセンス管理</div>-->
+         ライセンス管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="容量ベースのライセンスを管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-capacity-licenses.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-capacity-licenses.html">
+        容量ベースのライセンスを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Keystoneサブスクリプションの管理"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-keystone.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-keystone.html">
+        Keystoneサブスクリプションの管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ノードベースのライセンスを管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-node-licenses.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-node-licenses.html">
+        ノードベースのライセンスを管理します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ボリュームと LUN の管理"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ボリュームと LUN の管理</div>-->
+         ボリュームと LUN の管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ボリュームを作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-create-volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-create-volumes.html">
+        ボリュームを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既存のボリュームを管理"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-volumes.html">
+        既存のボリュームを管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アクセス頻度の低いデータをオブジェクトストレージに階層化します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-tiering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-tiering.html">
+        アクセス頻度の低いデータをオブジェクトストレージに階層化します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="LUN をホストに接続します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-connect-lun.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-connect-lun.html">
+        LUN をホストに接続します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FlexCache でデータアクセスを高速化"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-accelerate-data-access.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-accelerate-data-access.html">
+        FlexCache でデータアクセスを高速化
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アグリゲートの管理"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> アグリゲートの管理</div>-->
+         アグリゲートの管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アグリゲートを作成する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-create-aggregates.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-create-aggregates.html">
+        アグリゲートを作成する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既存のアグリゲートを管理する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-aggregates.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-aggregates.html">
+        既存のアグリゲートを管理する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="容量の設定を管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-capacity-settings.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-capacity-settings.html">
+        容量の設定を管理します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Storage VM 管理"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Storage VM 管理</div>-->
+         Storage VM 管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="BlueXPでStorage VMを操作します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-managing-svms.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-managing-svms.html">
+        BlueXPでStorage VMを操作します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google CloudでStorage VMを作成します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-managing-svms-gcp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-managing-svms-gcp.html">
+        Google CloudでStorage VMを作成します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SVMディザスタリカバリのセットアップ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-manage-svm-dr.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-manage-svm-dr.html">
+        SVMディザスタリカバリのセットアップ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="セキュリティとデータ暗号化"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> セキュリティとデータ暗号化</div>-->
+         セキュリティとデータ暗号化
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ネットアップの暗号化機能でボリュームを暗号化"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-encrypting-volumes.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-encrypting-volumes.html">
+        ネットアップの暗号化機能でボリュームを暗号化
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google Cloud KMSを使用してキーを管理します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-google-key-manager.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-google-key-manager.html">
+        Google Cloud KMSを使用してキーを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ランサムウェアからの保護を強化"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-protecting-ransomware.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-protecting-ransomware.html">
+        ランサムウェアからの保護を強化
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システム管理"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> システム管理</div>-->
+         システム管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP をアップグレードします"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-updating-ontap-cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-updating-ontap-cloud.html">
+        Cloud Volumes ONTAP をアップグレードします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="従量課金制システムを登録"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-registering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-registering.html">
+        従量課金制システムを登録
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムを停止して起動します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-managing-state.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-managing-state.html">
+        システムを停止して起動します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システム時間を同期します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-sync-time.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-sync-time.html">
+        システム時間を同期します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムの書き込み速度を変更する"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-modify-write-speed.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-modify-write-speed.html">
+        システムの書き込み速度を変更する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムパスワードを変更します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-change-password.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-change-password.html">
+        システムパスワードを変更します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムを追加、削除、または削除します"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> システムを追加、削除、または削除します</div>-->
+         システムを追加、削除、または削除します
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既存のシステムを追加します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-adding-systems.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/test/gcp/task-adding-systems.html">
+        既存のシステムを追加します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="作業環境を削除します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-removing.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/test/gcp/task-removing.html">
+        作業環境を削除します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムを削除します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-deleting-working-env.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/test/gcp/task-deleting-working-env.html">
+        システムを削除します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google Cloudの管理"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Google Cloudの管理</div>-->
+         Google Cloudの管理
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="マシンタイプを変更します"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-change-gcp-machine.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/ja-jp/test/gcp/task-change-gcp-machine.html">
+        マシンタイプを変更します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="System Managerで管理を行います"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-administer-advanced-view.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-administer-advanced-view.html">
+        System Managerで管理を行います
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CLIからの管理"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-connecting-to-otc.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-connecting-to-otc.html">
+        CLIからの管理
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="システムの健全性とイベント"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> システムの健全性とイベント</div>-->
+         システムの健全性とイベント
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AutoSupport のセットアップを確認します"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-verify-autosupport.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-verify-autosupport.html">
+        AutoSupport のセットアップを確認します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="EMSの設定"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-configure-ems.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/task-configure-ems.html">
+        EMSの設定
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概念"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 概念</div>-->
+         概念
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライセンス"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-licensing.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/concept-licensing.html">
+        ライセンス
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージ"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ストレージ</div>-->
+         ストレージ
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クライアントプロトコル"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-client-protocols.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-client-protocols.html">
+        クライアントプロトコル
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ディスクとアグリゲート"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-storage.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-storage.html">
+        ディスクとアグリゲート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データの階層化"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-data-tiering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-data-tiering.html">
+        データの階層化
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージ管理"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-storage-management.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-storage-management.html">
+        ストレージ管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="書き込み速度"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-write-speed.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-write-speed.html">
+        書き込み速度
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flash Cache"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-flash-cache.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-flash-cache.html">
+        Flash Cache
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="WORM ストレージ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-worm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-worm.html">
+        WORM ストレージ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ハイアベイラビリティペア"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> ハイアベイラビリティペア</div>-->
+         ハイアベイラビリティペア
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="GCPノHAペア"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-ha-google-cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-ha-google-cloud.html">
+        GCPノHAペア
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージテイクオーバー中の操作"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-degraded-ha-pair.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/ja-jp/test/gcp/concept-degraded-ha-pair.html">
+        ストレージテイクオーバー中の操作
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="セキュリティ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-security.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/concept-security.html">
+        セキュリティ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="パフォーマンス"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-performance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/concept-performance.html">
+        パフォーマンス
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ノードベースの BYOL の管理"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-license-management.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/concept-license-management.html">
+        ノードベースの BYOL の管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AutoSupport と Active IQ デジタルアドバイザ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/concept-active-iq.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/concept-active-iq.html">
+        AutoSupport と Active IQ デジタルアドバイザ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="デフォルト設定"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/reference-default-configs.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/reference-default-configs.html">
+        デフォルト設定
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="知識とサポート"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/ja-jp/test/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/ja-jp/test/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> 知識とサポート</div>-->
+         知識とサポート
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="サポートに登録します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-support-registration.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/task-support-registration.html">
+        サポートに登録します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ヘルプを表示します"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/task-get-help.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/ja-jp/test/gcp/task-get-help.html">
+        ヘルプを表示します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法的通知"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/whats-new.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/ja-jp/test/gcp/legal-notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/ja-jp/test"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/ja-jp/test"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/ja-jp/test/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">新機能</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2023-09-13 15:06:43 +0000">09/13/2023</time>
+        
+    
+    
+        <span>共同作成者
+        </span>
+    
+    
+        <a target="_blank" class="ext-link-indicator" href="/ja-jp/test/feed.xml"><img width="21" height="21" src="/ja-jp/test/images/rss-button.png" alt="RSS" title="このページのRSS更新に関する通知を受け取る" /></a>
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/ja-jp/test/images/discuss-sm.svg" alt="" class="github-icon" />変更を提案</span>
+        <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/ja-jp/test/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/test.ja-jp/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/ja-jp/test/whats-new.html&page-title=新機能" class="page-nav-contribute-link" role="button">ドキュメントの変更をリクエスト</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/test/blob/main/whats-new.adoc" class="page-nav-contribute-link" role="button">このページを編集</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >フィードバックを送るには</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/ja-jp/test/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/ja-jp/test/pdfs/gcp/fullsite-sidebar/Cloud_Volumes_ONTAP_のドキュメント.pdf" >
+                    <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>このドキュメント ページのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/リリースノート.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            リリースノート
+          </a>
+          
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/はじめに.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            はじめに
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Amazon_Web_Services_の利用を開始しましょう.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Amazon Web Services の利用を開始しましょう
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/ネットワークをセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ネットワークをセットアップします
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Microsoft_Azure_で利用を開始しましょう.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Microsoft Azure で利用を開始しましょう
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Google_Cloud_で始めましょう.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Google Cloud で始めましょう
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Google_Cloud_Platformイメージの検証.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Google Cloud Platformイメージの検証
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/画像署名の検証.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            画像署名の検証
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Cloud_Volumes_ONTAP_を使用します.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Volumes ONTAP を使用します
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/ライセンス管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ライセンス管理
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/ボリュームと_LUN_の管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ボリュームと LUN の管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/アグリゲートの管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            アグリゲートの管理
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Storage_VM_管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Storage VM 管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/セキュリティとデータ暗号化.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            セキュリティとデータ暗号化
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/システム管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            システム管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/システムを追加_削除_または削除します.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            システムを追加、削除、または削除します
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/AWSの管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            AWSの管理
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Azureの管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Azureの管理
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/Google_Cloudの管理.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Google Cloudの管理
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/システムの健全性とイベント.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            システムの健全性とイベント
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/概念.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            概念
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/ストレージ.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ストレージ
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/ハイアベイラビリティペア.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            ハイアベイラビリティペア
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/ja-jp/test/pdfs/gcp/sidebar/知識とサポート.pdf" 
+            
+          >
+            <img src="/ja-jp/test/images/pdf-icon.png" alt="" width="16" height="16"/>
+            知識とサポート
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/ja-jp/test/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>PDF版ドキュメントのセット<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>BlueXPのCloud Volumes ONTAP Managementの新機能をご紹介します。</p>
+</div>
+<div class="paragraph">
+<p>このページで説明Cloud Volumes ONTAP する機能拡張は'BlueXPの機能に固有のものであり'BlueXPの管理を可能にしますCloud Volumes ONTAP ソフトウェア自体の新機能については、 <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/index.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP のリリースノートに移動します"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年9月10日">2023年9月10日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.33リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="azureでのlsv3シリーズvmのサポート">AzureでのLsv3シリーズVMのサポート</h3>
+<div class="paragraph">
+<p>AzureのCloud Volumes ONTAPでは、9.13.1リリース以降で、単一のアベイラビリティゾーンと複数のアベイラビリティゾーンに管理対象ディスクを共有するシングルノード環境とハイアベイラビリティペア環境で、L48s_v3とL64s_v3のインスタンスタイプがサポートされるようになりました。これらのインスタンスタイプでは、Flash Cacheがサポートされます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html">"AzureでサポートされるCloud Volumes ONTAP構成を確認する"</a><br>
+<a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-azure.html">"AzureでのCloud Volumes ONTAPのストレージ制限を表示"</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年7月30日">2023年7月30日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.32リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="google-cloudでflash-cacheと高速書き込み速度をサポート">Google CloudでFlash Cacheと高速書き込み速度をサポート</h3>
+<div class="paragraph">
+<p>Google Cloud for Cloud Volumes ONTAP 9.13.1以降では、Flash Cacheと高速書き込み速度を個別に有効にすることができます。高速の書き込み速度は、サポートされているすべてのインスタンスタイプで使用できます。Flash Cacheは、次のインスタンスタイプでサポートされています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>N2-STANDARD-16</p>
+</li>
+<li>
+<p>N2-STANDARD-32</p>
+</li>
+<li>
+<p>N2-STANDARD-48</p>
+</li>
+<li>
+<p>N2-STANDARD-64</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>これらの機能は、シングルノード環境とハイアベイラビリティペア環境の両方で個別に使用することも、一緒に使用することもできます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html">"Google CloudでCloud Volumes ONTAP を起動します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="使用状況レポートの機能拡張">使用状況レポートの機能拡張</h3>
+<div class="paragraph">
+<p>使用状況レポートに表示される情報に対するさまざまな改善が利用可能になりました。使用状況レポートの機能拡張は次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>TiB単位が列名に追加されました。</p>
+</li>
+<li>
+<p>シリアル番号の新しい「ノード」フィールドが追加されました。</p>
+</li>
+<li>
+<p>[Storage VMs]使用状況レポートに新しい[Workload Type]列が追加されました。</p>
+</li>
+<li>
+<p>作業環境の名前がStorage VMとボリュームの使用状況レポートに表示されるようになりました。</p>
+</li>
+<li>
+<p>ボリュームタイプ「file」のラベルが「Primary（Read/Write）」に変更されました。</p>
+</li>
+<li>
+<p>ボリュームタイプ「secondary」のラベルが「Secondary（DP）」に変更されました。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>使用状況レポートの詳細については、を参照してください。 <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html#download-usage-reports" target="_blank" rel="noopener">"使用状況レポートをダウンロードします"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年7月26日">2023年7月26日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.31リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-13-1-ga">Cloud Volumes ONTAP 9.13.1 GA</h3>
+<div class="paragraph">
+<p>BlueXPで、AWS、Azure、Google CloudにCloud Volumes ONTAP 9.13.1 General Availabilityリリースを導入、管理できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年7月2日">2023年7月2日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.31リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="azureでのhaマルチアベイラビリティゾーン環境のサポート">AzureでのHAマルチアベイラビリティゾーン環境のサポート</h3>
+<div class="paragraph">
+<p>Azureの東日本および韓国中部では、Cloud Volumes ONTAP 9.12.1 GA以降でHAマルチアベイラビリティゾーンの導入がサポートされるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>複数のアベイラビリティゾーンをサポートするすべてのリージョンのリストについては、を参照してください <a href="https://bluexp.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">"Azureのグローバルリージョンマップ"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="自律型ランサムウェア対策のサポート">自律型ランサムウェア対策のサポート</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAPでAutonomous Ransomware Protection（ARP）がサポートされるようになりました。ARPサポートは、Cloud Volumes ONTAPバージョン9.12.1以降で使用できます。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAPを使用したARPの詳細については、を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-protecting-ransomware.html#autonomous-ransomware-protection" target="_blank" rel="noopener">"自律的なランサムウェア防御"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年6月26日">2023年6月26日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.30リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-13-1-rc1">Cloud Volumes ONTAP 9.13.1 RC1</h3>
+<div class="paragraph">
+<p>BlueXPで、AWS、Azure、Google CloudにCloud Volumes ONTAP 9.13.1を導入、管理できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年6月4日">2023年6月4日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.30リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontapアップグレードバージョンセレクタの更新">Cloud Volumes ONTAPアップグレードバージョンセレクタの更新</h3>
+<div class="paragraph">
+<p>Upgrade Cloud Volumes ONTAPページで、Cloud Volumes ONTAPの最新バージョンまたは古いバージョンへのアップグレードを選択できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>BlueXPを使用したCloud Volumes ONTAPのアップグレードの詳細については、を参照してください <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-updating-ontap-cloud.html#upgrade-cloud-volumes-ontap" target="_blank" rel="noopener">"Cloud Volumes ONTAP をアップグレードします"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年5月7日">2023年5月7日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.29リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="カタール地域がgoogle-cloudでサポートされるようになりました">カタール地域がGoogle Cloudでサポートされるようになりました</h3>
+<div class="paragraph">
+<p>カタール地域は、Google Cloud for Cloud Volumes ONTAP およびConnector for Cloud Volumes ONTAP 9.12.1 GA以降でサポートされるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sweden-centralリージョンがazureでサポートされるようになりました">Sweden CentralリージョンがAzureでサポートされるようになりました</h3>
+<div class="paragraph">
+<p>Sweden Centralリージョンは、Azure for Cloud Volumes ONTAP およびConnector for Cloud Volumes ONTAP 9.12.1 GA以降でサポートされるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-australia-eastでのha複数アベイラビリティゾーンの導入のサポート">Azure Australia EastでのHA複数アベイラビリティゾーンの導入のサポート</h3>
+<div class="paragraph">
+<p>Azureのオーストラリア東部リージョンでは、Cloud Volumes ONTAP 9.12.1 GA以降でHAマルチアベイラビリティゾーンの導入がサポートされるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="充電使用量の内訳">充電使用量の内訳</h3>
+<div class="paragraph">
+<p>容量ベースのライセンスにサブスクライブしたときに課金される料金を確認できるようになりました。次のタイプの使用状況レポートは、BlueXPのデジタルウォレットからダウンロードできます。使用状況レポートには、サブスクリプションの容量の詳細と、Cloud Volumes ONTAP サブスクリプションのリソースに対する課金状況が表示されます。ダウンロード可能なレポートは、他のユーザーと簡単に共有できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Volumes ONTAP パッケージの使用状況</p>
+</li>
+<li>
+<p>使用状況の概要</p>
+</li>
+<li>
+<p>Storage VMの使用状況</p>
+</li>
+<li>
+<p>ボリュームの使用状況</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>詳細については、を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html" target="_blank" rel="noopener">"容量ベースのライセンスを管理します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="marketplaceのサブスクリプションなしでbluexpにアクセスすると通知が表示されるようになりました">MarketplaceのサブスクリプションなしでBlueXPにアクセスすると通知が表示されるようになりました</h3>
+<div class="paragraph">
+<p>Marketplaceのサブスクリプションを購入せずにBlueXPでCloud Volumes ONTAP にアクセスすると、必ず通知が表示されるようになりました。通知には、「この作業環境のマーケットプレイスサブスクリプションは、Cloud Volumes ONTAP の利用規約に準拠する必要があります」と記載されています。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年4月4日">2023年4月4日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.12.1 GA以降では、次のように中国リージョンがAWSでサポートされるようになりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>シングルノードシステムがサポートされます。</p>
+</li>
+<li>
+<p>ネットアップから直接購入したライセンスはサポートされます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>地域ごとの可用性については、を参照してください <a href="https://bluexp.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">"Cloud Volumes ONTAP のグローバルリージョンマップ"</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年4月3日">2023年4月3日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.28リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="turinリージョンがgoogle-cloudでサポートされるようになりました">TurinリージョンがGoogle Cloudでサポートされるようになりました</h3>
+<div class="paragraph">
+<p>Turinリージョンは、Google Cloud for Cloud Volumes ONTAP およびConnector for Cloud Volumes ONTAP 9.12.1 GA以降でサポートされるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bluexpのデジタルウォレット機能の強化">BlueXPのデジタルウォレット機能の強化</h3>
+<div class="paragraph">
+<p>BlueXPのデジタルウォレットに、Marketplaceのプライベートオファーで購入したライセンス容量が表示されるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html" target="_blank" rel="noopener">"アカウントの使用済み容量を表示する方法について説明します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ボリューム作成時のコメントがサポートされます">ボリューム作成時のコメントがサポートされます</h3>
+<div class="paragraph">
+<p>このリリースでは、APIを使用してCloud Volumes ONTAP FlexGroup ボリュームまたはFlexVol ボリュームを作成する際にコメントを作成することができます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-のoverviewvolumesaggregatesページでbluexpのユーザインターフェイスが再設計されました">Cloud Volumes ONTAP の[Overview]、[Volumes]、[Aggregates]ページでBlueXPのユーザインターフェイスが再設計されました</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP の[概要]、[ボリューム]、[アグリゲート]ページで使用できるユーザインターフェイスが再設計されました。タイルベースのデザインでは、より包括的な情報が各タイルに表示され、ユーザーエクスペリエンスが向上します。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-resource-page-rn.png" alt="このスクリーンショットは、Cloud Volumes ONTAP の概要ページに再設計されたBlueXPユーザインターフェイスを示しています。さまざまなタイルに、ストレージ効率、バージョン、容量分布、Cloud Volumes ONTAP 環境に関する情報、ボリューム、アグリゲート、レプリケーション、バックアップが表示されます。"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="flexgroup-ボリュームはcloud-volumes-ontap-で確認できます">FlexGroup ボリュームはCloud Volumes ONTAP で確認できます</h3>
+<div class="paragraph">
+<p>CLIまたはSystem Managerで作成したFlexGroup ボリュームは、BlueXPの再設計された[ボリューム]タイルで直接表示できるようになりました。FlexVol ボリュームの場合と同じように、作成したFlexGroup ボリュームの詳細情報は専用の[Volumes]タイルで確認できます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="メモ">
+</td>
+<td class="content">
+現時点では、BlueXPでは既存のFlexGroup ボリュームのみを表示できます。BlueXPでFlexGroup ボリュームを作成することはできませんが、今後のリリースでサポートする予定です。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-show-flexgroup-volume.png" alt="&quot;[Volumes"></span>タイルの下にFlexGroup ボリュームアイコンが配置されたテキストを示すスクリーンショット。"]</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-volumes.html" target="_blank" rel="noopener">"作成したFlexGroup ボリュームの表示について詳しくは、こちらをご覧ください。"</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年3月13日">2023年3月13日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="中国地域のサポート">中国地域のサポート</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.12.1 GA以降では、次のように中国リージョンのサポートがAzureでサポートされるようになりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Volumes ONTAP は中国北部3でサポートされています。</p>
+</li>
+<li>
+<p>シングルノードシステムがサポートされます。</p>
+</li>
+<li>
+<p>ネットアップから直接購入したライセンスはサポートされます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>地域ごとの可用性については、を参照してください <a href="https://bluexp.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">"Cloud Volumes ONTAP のグローバルリージョンマップ"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年3月5日">2023年3月5日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.27リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-13-0">Cloud Volumes ONTAP 9.13.0</h3>
+<div class="paragraph">
+<p>BlueXPで、AWS、Azure、Google CloudにCloud Volumes ONTAP 9.13.0を導入、管理できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azureで16tibと32tibをサポート">Azureで16TiBと32TiBをサポート</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP では、Azureのマネージドディスクで実行される高可用性環境向けに、16TiBと32TiBのディスクサイズがサポートされるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>の詳細を確認してください <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-azure.html#supported-disk-sizes" target="_blank" rel="noopener">"Azureでサポートされるディスクサイズ"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mtekmライセンス">MTEKMライセンス</h3>
+<div class="paragraph">
+<p>バージョン9.12.1 GA以降を実行する新規および既存のCloud Volumes ONTAP システムに、マルチテナント暗号化キー管理（MTEKM）ライセンスが含まれるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>マルチテナントの外部キー管理を使用すると、NetApp Volume Encryptionの使用時に、個々のStorage VM（SVM）でKMIPサーバを介して独自のキーを保持できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-encrypting-volumes.html" target="_blank" rel="noopener">"ネットアップの暗号化ソリューションでボリュームを暗号化する方法について説明します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="インターネットを使用しない環境のサポート">インターネットを使用しない環境のサポート</h3>
+<div class="paragraph">
+<p>インターネットから完全に分離されたすべてのクラウド環境でCloud Volumes ONTAP がサポートされるようになりました。これらの環境では、ノードベースのライセンス（BYOL）のみがサポートされます。容量単位のライセンスはサポートされていません。開始するには、コネクタソフトウェアを手動でインストールし、コネクタで実行されているBlueXPコンソールにログインし、BlueXPデジタルウォレットにBYOLライセンスを追加してから、Cloud Volumes ONTAP を導入します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-private-mode.html" target="_blank" rel="noopener">"インターネットにアクセスできない場所にコネクタを取り付けます"</a></p>
+</li>
+<li>
+<p><a href="https://docs.netapp.com/us-en/bluexp-setup-admin/task-managing-connectors.html#access-the-local-ui" target="_blank" rel="noopener">"コネクタのBlueXPコンソールにアクセスします"</a></p>
+</li>
+<li>
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html#manage-byol-licenses" target="_blank" rel="noopener">"未割り当てライセンスを追加します"</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloudでのflash-cacheと高速書き込み">Google CloudでのFlash Cacheと高速書き込み</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.13.0リリースでは、Flash Cache、高速な書き込み速度、最大転送単位（MTU）8、896バイトがサポートされるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>の詳細を確認してください <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html" target="_blank" rel="noopener">"Google Cloudのライセンスごとにサポートされる構成"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年2月5日">2023年2月5日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.26リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="awsでの配置グループの作成">AWSでの配置グループの作成</h3>
+<div class="paragraph">
+<p>AWS HA単一アベイラビリティゾーン（AZ）環境で配置グループを作成するための新しい設定が追加されました。失敗した配置グループの作成をバイパスして、AWS HA単一のAZ環境を正常に完了できるようにすることができます。</p>
+</div>
+<div class="paragraph">
+<p>配置グループの作成設定の詳細については、を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-configure-placement-group-failure-aws.html#overview" target="_blank" rel="noopener">"AWS HA単一AZ用の配置グループの作成を設定する"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="プライベートdnsゾーン設定の更新">プライベートDNSゾーン設定の更新</h3>
+<div class="paragraph">
+<p>Azureプライベートリンクの使用時にプライベートDNSゾーンと仮想ネットワークの間にリンクを作成しないように、新しい設定が追加されました。作成はデフォルトで有効になっています。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-enabling-private-link.html#provide-bluexp-with-details-about-your-azure-private-dns" target="_blank" rel="noopener">"AzureプライベートDNSの詳細をBlueXPに提供します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wormストレージとデータ階層化">WORMストレージとデータ階層化</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.8以降のシステムを作成するときに、データ階層化とWORMストレージの両方を有効にできるようになりました。WORMストレージによるデータ階層化を有効にすると、データをクラウドのオブジェクトストアに階層化できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-worm.html" target="_blank" rel="noopener">"WORMストレージについて説明します。"</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2023年1月1日">2023年1月1日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.25リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="google-cloudで提供されているライセンスパッケージ">Google Cloudで提供されているライセンスパッケージ</h3>
+<div class="paragraph">
+<p>最適化さCloud Volumes ONTAP れた容量ベースのライセンスパッケージとエッジキャッシュ容量ベースのライセンスパッケージは、Google Cloud Marketplaceで従量課金制サービスまたは年間契約として提供されます。</p>
+</div>
+<div class="paragraph">
+<p>を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages" target="_blank" rel="noopener">"Cloud Volumes ONTAP ライセンス"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-のデフォルト設定">Cloud Volumes ONTAP のデフォルト設定</h3>
+<div class="paragraph">
+<p>マルチテナント暗号化キー管理（MTEKM）ライセンスは新しいCloud Volumes ONTAP 環境には含まれなくなりました。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP とともに自動的にインストールされるONTAP 機能ライセンスの詳細については、を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/reference-default-configs.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP のデフォルト設定"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年12月15日">2022年12月15日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-12-0">Cloud Volumes ONTAP 9.12.0</h3>
+<div class="paragraph">
+<p>BlueXPでは、AWSとGoogle CloudにCloud Volumes ONTAP 9.12.0を導入して管理できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-9120-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年12月8日">2022年12月8日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-12-1">Cloud Volumes ONTAP 9.12.1</h3>
+<div class="paragraph">
+<p>BlueXPでは、Cloud Volumes ONTAP 9.12.1を導入および管理できるようになりました。新機能やその他のクラウドプロバイダリージョンのサポートが含まれます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年12月4日">2022年12月4日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.24リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-の作成中にworm-cloud-backupを利用できるようになりました">Cloud Volumes ONTAP の作成中に、Worm+ Cloud Backupを利用できるようになりました</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP の作成プロセスで、Write Once、Read Many（WORM）、およびCloud Backupの両方の機能をアクティブ化できるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="イスラエルでgoogle-cloudがサポートされるようになりました">イスラエルでGoogle Cloudがサポートされるようになりました</h3>
+<div class="paragraph">
+<p>イスラエルのリージョンは、Google Cloud for Cloud Volumes ONTAP とConnector for Cloud Volumes ONTAP 9.11.1 P3以降でサポートされるようになりました。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年11月15日">2022年11月15日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.23リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="google-cloudのontap-s3ライセンス">Google CloudのONTAP S3ライセンス</h3>
+<div class="paragraph">
+<p>ONTAP Cloud Platformでバージョン9.12.1以降を実行する新規および既存のCloud Volumes ONTAP システムに、S3ライセンスが含まれるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/ontap/object-storage-management/index.html" target="_blank" rel="noopener">"ONTAP で S3 オブジェクトストレージサービスを設定および管理する方法について説明します"</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年11月6日">2022年11月6日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.23リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="azureでリソースグループを移動しています">Azureでリソースグループを移動しています</h3>
+<div class="paragraph">
+<p>同じAzureサブスクリプション内で、Azure内の1つのリソースグループから別のリソースグループに作業環境を移動できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>詳細については、を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-moving-resource-groups-azure.html">"リソースグループを移動しています"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ndmp-copy証明書">NDMP-copy証明書</h3>
+<div class="paragraph">
+<p>ONTAP VolumeでのNDMPコピーの使用が認定されました。</p>
+</div>
+<div class="paragraph">
+<p>NDMPの設定方法および使用方法については、を参照してください <a href="https://docs.netapp.com/us-en/ontap/ndmp/index.html">"NDMP構成の概要"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azureのマネージドディスク暗号化機能をサポート">Azureのマネージドディスク暗号化機能をサポート</h3>
+<div class="paragraph">
+<p>作成時にすべての管理対象ディスクを暗号化できる、新しいAzure権限が追加されました。</p>
+</div>
+<div class="paragraph">
+<p>この新機能の詳細については、を参照してください <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-set-up-azure-encryption.html">"Azure でお客様が管理するキーを使用するように Cloud Volumes ONTAP を設定します"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年9月18日">2022年9月18日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.22リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="デジタルウォレットの機能強化">デジタルウォレットの機能強化</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>デジタルウォレットに、最適化されたI/Oライセンスパッケージと、アカウント全体でCloud Volumes ONTAP システム用にプロビジョニングされたWORM容量の概要が表示されます。</p>
+<div class="paragraph">
+<p>これらの詳細情報は、充電状況や容量の追加購入が必要かどうかを把握するのに役立ちます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html">"アカウントの使用済み容量を表示する方法について説明します"</a>。</p>
+</div>
+</li>
+<li>
+<p>1つの充電方法から最適化された充電方法に変更できるようになりました。</p>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html">"充電方法を変更する方法について説明します"</a>。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="コストとパフォーマンスを最適化">コストとパフォーマンスを最適化</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP システムのコストとパフォーマンスをキャンバスから直接最適化できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>作業環境を選択したら、コストとパフォーマンスの最適化*オプションを選択して、Cloud Volumes ONTAP のインスタンスタイプを変更できます。サイズの小さいインスタンスを選択するとコストを削減できますが、サイズの大きいインスタンスに変更することでパフォーマンスを最適化できます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-optimize-cost-performance.png" alt="&quot;作業環境を選択すると、Canvasから利用できる[コストとパフォーマンスの最適化"></span>オプションのスクリーンショット。"]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autosupport-通知">AutoSupport 通知</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP システムがAutoSupport メッセージを送信できない場合、BlueXPは通知を生成するようになりました。この通知には、ネットワークの問題のトラブルシューティングに使用できる手順へのリンクが記載されています。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年7月31日">2022年7月31日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.21リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="mtekmライセンス-2">MTEKMライセンス</h3>
+<div class="paragraph">
+<p>バージョン9.11.1以降を実行している新規および既存のCloud Volumes ONTAP システムに、Multi-tenant Encryption Key Management（MTEKM）ライセンスが追加されました。</p>
+</div>
+<div class="paragraph">
+<p>マルチテナントの外部キー管理を使用すると、NetApp Volume Encryptionの使用時に、個々のStorage VM（SVM）でKMIPサーバを介して独自のキーを保持できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-encrypting-volumes.html">"ネットアップの暗号化ソリューションでボリュームを暗号化する方法について説明します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="プロキシサーバ">プロキシサーバ</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP AutoSupport メッセージの送信にアウトバウンドのインターネット接続を使用できない場合、BlueXPでは、コネクタをプロキシサーバとして使用するようにシステムが自動的に設定されるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>AutoSupport は、システムの健常性をプロアクティブに監視し、ネットアップテクニカルサポートにメッセージを送信します。</p>
+</div>
+<div class="paragraph">
+<p>唯一の要件は、コネクタのセキュリティグループがポート3128で_ inbound_connectionsを許可することです。コネクタを展開した後、このポートを開く必要があります。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="充電方法を変更します">充電方法を変更します</h3>
+<div class="paragraph">
+<p>容量ベースのライセンスを使用するCloud Volumes ONTAP システムの充電方法を変更できるようになりました。たとえば、Essentialsパッケージを含むCloud Volumes ONTAP システムを導入した場合、ビジネスニーズの変化に応じて、そのシステムをProfessionalパッケージに変更できます。この機能は、デジタルウォレットから使用できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-capacity-licenses.html">"充電方法を変更する方法について説明します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="セキュリティグループの機能拡張">セキュリティグループの機能拡張</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 作業環境を作成するときに、ユーザインターフェイスを使用して、事前定義されたセキュリティグループで選択したネットワークのみ（推奨）またはすべてのネットワーク内のトラフィックを許可するかどうかを選択できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-allow-traffic.png" alt="セキュリティグループを選択したときに作業環境ウィザードで使用可能なAllow traffic withinオプションを示すスクリーンショット。"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年7月18日">2022年7月18日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="azureの新しいライセンスパッケージです">Azureの新しいライセンスパッケージです</h3>
+<div class="paragraph">
+<p>Azure Marketplaceサブスクリプションでのお支払い時に、Cloud Volumes ONTAP 用に2つの容量ベースのライセンスパッケージが新たに提供されます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>最適化</strong>：プロビジョニングされた容量とI/O処理に別々に課金します</p>
+</li>
+<li>
+<p>* Edge Cache*:のライセンス <a href="https://cloud.netapp.com/cloud-volumes-edge-cache" target="_blank" rel="noopener">"Cloud Volume エッジキャッシュ"</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html#packages">"これらのライセンスパッケージの詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年7月3日">2022年7月3日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.20リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="デジタルウォレット">デジタルウォレット</h3>
+<div class="paragraph">
+<p>デジタルウォレットに、アカウントで消費された合計容量とライセンスパッケージで消費された容量が表示されるようになりました。この情報は、料金の支払い方法や、容量の追加購入が必要かどうかを把握するのに役立ちます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-digital-wallet-summary.png" alt="容量ベースのライセンスのデジタルウォレットページを示すスクリーンショット。アカウントの使用済み容量の概要が表示され、ライセンスパッケージ別に容量が表示されます。"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="elastic-volumesの機能拡張">Elastic Volumesの機能拡張</h3>
+<div class="paragraph">
+<p>BlueXPでは、ユーザーインターフェイスからCloud Volumes ONTAP 作業環境を作成する際に、Amazon EBS Elastic Volumes機能がサポートされるようになりました。Elastic Volumes機能は、GP3またはio1ディスクを使用している場合、デフォルトで有効になっています。初期容量はストレージのニーズに基づいて選択し、Cloud Volumes ONTAP の導入後に変更することができます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html">"Elastic VolumesのAWSサポートの詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="awsのontap-s3ライセンス">AWSのONTAP S3ライセンス</h3>
+<div class="paragraph">
+<p>AWSでバージョン9.11.0以降を実行している新規および既存のCloud Volumes ONTAP システムにONTAP S3ライセンスが追加されました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/ontap/object-storage-management/index.html" target="_blank" rel="noopener">"ONTAP で S3 オブジェクトストレージサービスを設定および管理する方法について説明します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-cloudリージョンが新たにサポートされます">Azure Cloudリージョンが新たにサポートされます</h3>
+<div class="paragraph">
+<p>9.10.1リリース以降、Azure West US 3リージョンでCloud Volumes ONTAP がサポートされるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">"Cloud Volumes ONTAP でサポートされるリージョンの完全なリストを表示します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azureのontap-s3ライセンス">AzureのONTAP S3ライセンス</h3>
+<div class="paragraph">
+<p>バージョン9.9.1以降を実行する新規および既存のCloud Volumes ONTAP システムにONTAP S3ライセンスが追加されました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/ontap/object-storage-management/index.html" target="_blank" rel="noopener">"ONTAP で S3 オブジェクトストレージサービスを設定および管理する方法について説明します"</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年6月7日">2022年6月7日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.19リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-11-1">Cloud Volumes ONTAP 9.11.1</h3>
+<div class="paragraph">
+<p>BlueXPでは、Cloud Volumes ONTAP 9.11.1の導入と管理ができるようになりました。これには、新機能のサポートとその他のクラウドプロバイダリージョンの追加が含まれています。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-9111-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="新しい詳細ビュー">新しい詳細ビュー</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP の高度な管理を行う必要がある場合は、ONTAP システムに付属の管理インターフェイスであるONTAP System Managerを使用します。BlueXPにはSystem Managerインターフェイスが搭載されているので、高度な管理のためにBlueXPを残す必要はありません。</p>
+</div>
+<div class="paragraph">
+<p>この拡張ビューは、Cloud Volumes ONTAP 9.10.0以降でプレビューとして使用できます。今後のリリースでは、この点をさらに改良し、機能を強化する予定です。製品内のチャットでご意見をお寄せください。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-administer-advanced-view.html">"詳細については、「詳細ビュー」を参照してください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="amazon-ebs-elastic-volumesのサポート">Amazon EBS Elastic Volumesのサポート</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP アグリゲートでAmazon EBS Elastic Volumes機能がサポートされるため、パフォーマンスが向上し、容量が追加されます。また、必要に応じて基盤となるディスク容量が自動的に拡張されます。</p>
+</div>
+<div class="paragraph">
+<p>Elastic Volumeは、Cloud Volumes ONTAP 9.11.0システム以降、GP3およびio1 EBSディスクタイプでサポートされます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-aws-elastic-volumes.html">"Elastic Volumesのサポートに関する詳細情報"</a>。</p>
+</div>
+<div class="paragraph">
+<p>Elastic Volumesをサポートするために、Connectorに対する新しいAWS権限が必要になることに注意してください。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"ec2:DescribeVolumesModifications",
+"ec2:ModifyVolume",</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>BlueXPに追加したAWSクレデンシャルの各セットに、これらの権限を必ず付与してください。 <a href="https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html" target="_blank" rel="noopener">"AWSの最新のコネクタポリシーを確認します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="共有awsサブネットでのhaペアの導入をサポートします">共有AWSサブネットでのHAペアの導入をサポートします</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.11.1では、AWS VPC共有がサポートされています。このリリースのコネクタでは、APIを使用するときにAWS共有サブネットにHAペアを導入できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="task-deploy-aws-shared-vpc.html">"共有サブネットにHAペアを導入する方法について説明します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="サービスエンドポイントを使用する場合はネットワークアクセスが制限されます">サービスエンドポイントを使用する場合は、ネットワークアクセスが制限されます</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP とストレージアカウント間の接続にVNetサービスエンドポイントを使用する場合に、ネットワークアクセスが制限されるようになりました。Azure Private Link接続を無効にすると、BlueXPはサービスエンドポイントを使用します。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-enabling-private-link.html">"Cloud Volumes ONTAP でのAzureプライベートリンク接続の詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloudでのstorage-vmの作成がサポートされます">Google CloudでのStorage VMの作成がサポートされます</h3>
+<div class="paragraph">
+<p>Google CloudのCloud Volumes ONTAP では、9.11.1リリース以降、複数のStorage VMがサポートされています。このリリースのコネクタから、BlueXPでは、Cloud Volumes ONTAP を使用してGoogle CloudのHAペアにStorage VMを作成できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>Storage VMの作成をサポートするには、次のコネクタに対する新しいGoogle Cloud権限が必要です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">- compute.instanceGroups.get
+- compute.addresses.get</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ONTAP CLIまたはSystem Managerを使用して、シングルノードシステムにStorage VMを作成する必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-limits-gcp.html#storage-vm-limits" target="_blank" rel="noopener">"Google CloudのStorage VMの制限に関する詳細を確認できます"</a></p>
+</li>
+<li>
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-managing-svms-gcp.html">"Google CloudでCloud Volumes ONTAP 向けのデータ提供用Storage VMを作成する方法をご確認ください"</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年5月2日">2022年5月2日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.18リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-11-0">Cloud Volumes ONTAP 9.11.0</h3>
+<div class="paragraph">
+<p>BlueXPでCloud Volumes ONTAP 9.11.0の導入と管理が可能になりました</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-9110-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="メディエーターのアップグレードに関する機能拡張">メディエーターのアップグレードに関する機能拡張</h3>
+<div class="paragraph">
+<p>BlueXPがHAペアのメディエーターをアップグレードすると、新しいメディエーターイメージがブートディスクを削除する前に使用可能であることが検証されるようになりました。この変更により、アップグレードプロセスが失敗した場合でもメディエーターは正常に動作し続けることができます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="k8sタブが削除されました">K8sタブが削除されました</h3>
+<div class="paragraph">
+<p>K8sタブは以前のでは廃止されており、現在は削除されています。KubernetesとCloud Volumes ONTAP を併用する場合は、高度なデータ管理のための作業環境として、管理対象- Kubernetesクラスタをキャンバスに追加できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-kubernetes/concept-kubernetes.html" target="_blank" rel="noopener">"BlueXPでのKubernetesのデータ管理について説明します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azureの年間契約">Azureの年間契約</h3>
+<div class="paragraph">
+<p>EssentialsパッケージとProfessionalパッケージは、年間契約を通じてAzureで利用できるようになりました。年間契約を購入するには、ネットアップの営業担当者にお問い合わせください。この契約は、Azure Marketplaceでのプライベートオファーとして提供されます。</p>
+</div>
+<div class="paragraph">
+<p>ネットアップがお客様とプライベートオファーを共有したあとは、Azure Marketplaceでの作業環境の作成時にサブスクリプションするときに、年間プランを選択できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html">"ライセンスの詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="s3-glacierのインスタント検索">S3 Glacierのインスタント検索</h3>
+<div class="paragraph">
+<p>Amazon S3 Glacier Instant Retrievalストレージクラスに階層化データを格納できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html#changing-the-storage-class-for-tiered-data">"階層化データのストレージクラスを変更する方法について説明します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="コネクタに新しいaws権限が必要です">コネクタに新しいAWS権限が必要です</h3>
+<div class="paragraph">
+<p>単一のAvailability Zone（AZ；アベイラビリティゾーン）にHAペアを導入する際にAWS分散配置グループを作成するためには、次の権限が必要です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"ec2:DescribePlacementGroups",
+"iam:GetRolePolicy",</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>これらの権限は、BlueXPによる配置グループの作成方法を最適化するために必要になりました。</p>
+</div>
+<div class="paragraph">
+<p>BlueXPに追加したAWSクレデンシャルの各セットに、これらの権限を必ず付与してください。 <a href="https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-aws.html" target="_blank" rel="noopener">"AWSの最新のコネクタポリシーを確認します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="新しいgoogle-cloudリージョンサポート">新しいGoogle Cloudリージョンサポート</h3>
+<div class="paragraph">
+<p>9.10.1リリース以降、Cloud Volumes ONTAP は次のGoogle Cloudリージョンでサポートされるようになりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>デリー（アジア-サウス2）</p>
+</li>
+<li>
+<p>メルボルン（オーストラリア-スモアカス2）</p>
+</li>
+<li>
+<p>Milan（Europe - west8）-シングルノードのみ</p>
+</li>
+<li>
+<p>Santiago（southamerica-west1）-シングルノードのみ</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">"Cloud Volumes ONTAP でサポートされるリージョンの完全なリストを表示します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloudでのn2標準16のサポート">Google Cloudでのn2標準16のサポート</h3>
+<div class="paragraph">
+<p>Google CloudのCloud Volumes ONTAP では、9.10.1リリース以降のn2標準-16マシンタイプがサポートされます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html" target="_blank" rel="noopener">"Google CloudでCloud Volumes ONTAP がサポートされている構成を表示します"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloudファイアウォールポリシーの機能強化">Google Cloudファイアウォールポリシーの機能強化</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Google CloudでCloud Volumes ONTAP HAペアを作成すると、VPC内の既存のすべてのファイアウォールポリシーがBlueXPに表示されるようになりました。</p>
+<div class="paragraph">
+<p>以前は、ターゲットタグがないVPC -1、VPC -2、またはVPC -3のポリシーは表示されませんでした。</p>
+</div>
+</li>
+<li>
+<p>Google CloudでCloud Volumes ONTAP シングルノードシステムを作成する際に、定義済みのファイアウォールポリシーで、選択したVPC内のトラフィックのみを許可するか（推奨）、すべてのVPC内のトラフィックを許可するかを選択できるようになりました。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloudサービスアカウントの機能強化">Google Cloudサービスアカウントの機能強化</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP で使用するGoogle Cloudサービスアカウントを選択すると、各サービスアカウントに関連付けられているメールアドレスがBlueXPに表示されるようになりました。メールアドレスを表示すると、同じ名前を共有するサービスアカウントを区別しやすくなります。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/bluexp-cloud-volumes-ontap/main/media/screenshot-google-cloud-service-account.png" alt="サービスアカウントフィールドのスクリーンショット"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年4月3日">2022年4月3日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="system-manager-のリンクが削除されました">System Manager のリンクが削除されました</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 作業環境内から以前に利用可能だった System Manager のリンクを削除しました。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP システムに接続している Web ブラウザにクラスタ管理 IP アドレスを入力しても、 System Manager に接続できます。 <a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-connecting-to-otc.html">"System Manager への接続に関する詳細情報"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="worm-ストレージの充電">WORM ストレージの充電</h3>
+<div class="paragraph">
+<p>導入時の特別料金が期限切れになり、 WORM ストレージの使用料が請求されます。WORM ボリュームのプロビジョニング済みの合計容量に基づいて、 1 時間ごとに課金されます。この環境 の新規および既存の Cloud Volumes ONTAP システムです。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://cloud.netapp.com/pricing" target="_blank" rel="noopener">"WORM ストレージの価格設定については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年2月27日">(2022年2月27日).</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.16リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="ボリュームウィザードの再設計">ボリュームウィザードの再設計</h3>
+<div class="paragraph">
+<p>特定のアグリゲートに * Advanced allocation * オプションからボリュームを作成するときに、新しいボリューム作成ウィザードを使用できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-create-volumes.html">"特定のアグリゲートにボリュームを作成する方法について説明します"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年2月9日">2022年2月9日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="市場の最新情報">市場の最新情報</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>EssentialsパッケージとProfessionalパッケージは、すべてのクラウドプロバイダマーケットプレイスで利用できるようになりました。</p>
+<div class="paragraph">
+<p>容量単位の課金方法では、時間単位での支払いや、年間契約の購入をクラウドプロバイダから直接行うことができます。容量単位のライセンスは、ネットアップから直接購入することもできます。</p>
+</div>
+<div class="paragraph">
+<p>クラウドマーケットプレイスで既存のサブスクリプションがある場合は、それらの新しいサービスにも自動的にサブスクライブされます。新しい Cloud Volumes ONTAP 作業環境の導入時に、容量単位の課金を選択できます。</p>
+</div>
+<div class="paragraph">
+<p>新規のお客様の場合は、新しい作業環境を作成するときに登録を求めるメッセージが表示されます。</p>
+</div>
+</li>
+<li>
+<p>すべてのクラウドプロバイダマーケットプレイスからのノード単位のライセンスが廃止され、新しいユーザには提供されなくなりました。これには、年間契約と時間単位のサブスクリプション（ Explore 、 Standard 、 Premium ）が含まれます。</p>
+<div class="paragraph">
+<p>この充電方法は、有効なサブスクリプションをお持ちの既存のお客様には引き続きご利用いただけます。</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-licensing.html">"Cloud Volumes ONTAP のライセンスオプションの詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年2月6日">2022年2月6日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="未割り当ての-exchange-ライセンス">未割り当ての Exchange ライセンス</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 用の未割り当てのノードベースライセンスがあり、使用していない場合は、そのライセンスを Cloud Backup ライセンス、 Cloud Data Sense ライセンス、 Cloud Tiering ライセンスに変換してライセンスを交換できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>この操作により、 Cloud Volumes ONTAP ライセンスが取り消され、同じ有効期限のサービスに対してドル相当のライセンスが作成されます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses">"未割り当てのノードベースライセンスを交換する方法について説明します"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年1月30日">(2022年1月30日).</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.15リリースでは、次の変更が加えられました。</p>
+</div>
+<div class="sect2">
+<h3 id="ライセンスの選択を再設計">ライセンスの選択を再設計</h3>
+<div class="paragraph">
+<p>新しい Cloud Volumes ONTAP 作業環境を作成する際に、ライセンス選択画面を再設計しました。この変更は、 2021 年 7 月に導入された容量別課金方法と、クラウドプロバイダマーケットプレイスを通じて提供される予定のサービスを反映しています。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="デジタルウォレットの更新">デジタルウォレットの更新</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP ライセンスを 1 つのタブに統合し、 * デジタルウォレット * を更新しました。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2022年1月2日">2022年1月2日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.14リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="追加のazure-vmタイプがサポートされます">追加のAzure VMタイプがサポートされます</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP は、 9.10.1 リリース以降、 Microsoft Azure で次の VM タイプでサポートされるようになりました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>e4ds_v4</p>
+</li>
+<li>
+<p>E8ds_v4</p>
+</li>
+<li>
+<p>E32ds_v4</p>
+</li>
+<li>
+<p>E48ds_v4</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>にアクセスします <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes" target="_blank" rel="noopener">"Cloud Volumes ONTAP リリースノート"</a> サポートされる構成の詳細については、を参照してください。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="flexclone-による課金の更新">FlexClone による課金の更新</h3>
+<div class="paragraph">
+<p>を使用する場合 <a href="concept-licensing.html" target="_blank" rel="noopener">"容量単位のライセンスです"</a> Cloud Volumes ONTAP については、 FlexClone ボリュームで使用される容量の追加料金は発生しません。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="充電方法が表示されます">充電方法が表示されます</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP の各作業環境の充電方法がキャンバスの右側のパネルに表示されるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-cvo-charging-method.png" alt="Cloud Volumes ONTAP 作業環境の充電方法を示すスクリーンショット。キャンバスから作業環境を選択すると、右側のパネルに表示されます。"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ユーザ名を選択します">ユーザ名を選択します</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 作業環境を作成する際に、デフォルトの admin ユーザ名ではなく、優先ユーザ名を入力できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-cvo-user-name.png" alt="ユーザ名を指定できる作業環境ウィザードの詳細とクレデンシャルページのスクリーンショット。"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ボリューム作成の機能拡張">ボリューム作成の機能拡張</h3>
+<div class="paragraph">
+<p>ボリューム作成機能がいくつか強化されました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>使いやすいようにボリューム作成ウィザードの設計が変更されました。</p>
+</li>
+<li>
+<p>ボリュームに追加するタグがアプリケーションテンプレートサービスに関連付けられ、リソースの管理を整理して簡単にすることができます。</p>
+</li>
+<li>
+<p>これで、 NFS 用のカスタムエクスポートポリシーを選択できるようになりました。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot-cvo-create-volume.png" alt="新しいボリュームの作成時にプロトコルページを示すスクリーンショット。"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年11月28日">(2021年11月28日).</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.13リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-10-1">Cloud Volumes ONTAP 9.10.1</h3>
+<div class="paragraph">
+<p>BlueXPでCloud Volumes ONTAP 9.10.1の導入と管理が可能になりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-9101-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="netapp-keystone-サブスクリプション">NetApp Keystone サブスクリプション</h3>
+<div class="paragraph">
+<p>Keystoneサブスクリプションを使用して、Cloud Volumes ONTAP HAペアの料金を支払うことができるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>Keystoneサブスクリプションは、CAPEX（設備投資）やリースよりもOPEX（運用コスト）消費モデルを希望するお客様に、シームレスなハイブリッドクラウドエクスペリエンスを提供する、従量課金制のサブスクリプションベースのサービスです。</p>
+</div>
+<div class="paragraph">
+<p>Keystoneサブスクリプションは、BlueXPから導入できるすべての新しいバージョンのCloud Volumes ONTAP でサポートされます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.netapp.com/services/keystone/" target="_blank" rel="noopener">"NetApp Keystone サブスクリプションの詳細については、こちらをご覧ください"</a>。</p>
+</li>
+<li>
+<p><a href="task-manage-keystone.html" target="_blank" rel="noopener">"BlueXPでKeystoneサブスクリプションの利用を開始する方法をご紹介します"</a>。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-リージョンが新たにサポートされるようになり">AWS リージョンが新たにサポートされるようになり</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP は、 AWS アジア太平洋（大阪）リージョン（ AP-F北東 -3 ）でサポートされるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ポート削減">ポート削減</h3>
+<div class="paragraph">
+<p>Azure の Cloud Volumes ONTAP システムでは、シングルノードシステムと HA ペアの両方に対してポート 8023 と 49000 が開かれなくなりました。</p>
+</div>
+<div class="paragraph">
+<p>これにより、 Cloud Volumes ONTAP の _new_環境 システムが、 3.9.13 リリース以降のコネクタから変更されます。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年10月4日">2021年10月4日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.11リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-10-0">Cloud Volumes ONTAP 9.10.0</h3>
+<div class="paragraph">
+<p>BlueXPはCloud Volumes ONTAP 9.10.0を導入して管理できるようになりました</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-9100-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="導入時間を短縮">導入時間を短縮</h3>
+<div class="paragraph">
+<p>通常の書き込み速度が有効な場合、 Microsoft Azure または Google Cloud で Cloud Volumes ONTAP 作業環境を導入するための時間を短縮しました。導入時間が平均して 3~4 分短縮されます。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年9月2日">2021年9月2日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.10リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="azure-のお客様が管理する暗号化キー">Azure のお客様が管理する暗号化キー</h3>
+<div class="paragraph">
+<p>データは、を使用して Azure の Cloud Volumes ONTAP で自動的に暗号化されます <a href="https://azure.microsoft.com/en-us/documentation/articles/storage-service-encryption/" target="_blank" rel="noopener">"Azure Storage Service Encryption の略"</a> Microsoft が管理するキーを使用する場合：ただし、次の手順を実行する代わりに、お客様が管理する独自の暗号化キーを使用できるようになりました。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Azure で、キーヴォールトを作成し、そのヴォールトでキーを生成します。</p>
+</li>
+<li>
+<p>BlueXPから'APIを使用して'キーを使用するCloud Volumes ONTAP 作業環境を作成します</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="task-set-up-azure-encryption.html">"これらの手順の詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021-年-7-月-7-日">2021 年 7 月 7 日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>3.9.8リリースのコネクタには、次の変更が加えられています。</p>
+</div>
+<div class="sect2">
+<h3 id="新しい充電方法">新しい充電方法</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP では、新しい充電方法を利用できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>* 容量ベースの BYOL * ：容量ベースのライセンスでは、 TiB あたりの Cloud Volumes ONTAP 料金を支払うことができます。このライセンスはネットアップアカウントに関連付けられており、ライセンスで十分な容量が確保されていれば、複数の Cloud Volumes ONTAP システムを作成できるようになっています。容量ベースのライセンスは、 <em>Essentials_or_Professional</em> のいずれかのパッケージ形式で提供されます。</p>
+</li>
+<li>
+<p>* Freemium offering * ： Freemium により、ネットアップのすべての Cloud Volumes ONTAP 機能を無償で使用できます（クラウドプロバイダの料金は引き続き適用されます）。システムあたりのプロビジョニング可能な容量は 500 GiB に制限されており、サポート契約はありません。最大 10 個の Freemium システムを使用できます。</p>
+<div class="paragraph">
+<p><a href="concept-licensing.html">"これらのライセンスオプションの詳細については、こちらをご覧ください"</a>。</p>
+</div>
+<div class="paragraph">
+<p>以下に、充電方法の例を示します。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cvo_charging_methods.png" alt="Cloud Volumes ONTAP 作業環境ウィザードのスクリーンショット。充電方法を選択できます。"></span></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="一般的に使用できる-worm-ストレージ">一般的に使用できる WORM ストレージ</h3>
+<div class="paragraph">
+<p>Write Once 、 Read Many （ WORM ）ストレージはプレビューではなくなり、 Cloud Volumes ONTAP で一般的に使用できるようになりました。 <a href="concept-worm.html">"WORM ストレージの詳細については、こちらをご覧ください。"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-で-m5dn-24xlarge-をサポートしています">AWS で m5dn.24xlarge をサポートしています</h3>
+<div class="paragraph">
+<p>9.9.1 リリース以降、 Cloud Volumes ONTAP では m5dn.24xlarge インスタンスタイプがサポートされるようになりました。課金方式は PAYGO Premium 、 Bring Your Own License （ BYOL ；お客様所有のライセンスを使用）、 Freemium です。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-aws.html" target="_blank" rel="noopener">"AWS で Cloud Volumes ONTAP のサポートされている構成を表示します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="既存の-azure-リソースグループを選択します">既存の Azure リソースグループを選択します</h3>
+<div class="paragraph">
+<p>Azure で Cloud Volumes ONTAP システムを作成する際に、 VM とその関連リソースに対して既存のリソースグループを選択できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_azure_resource_group.png" alt="既存のリソースグループを選択できる作業環境作成ウィザードのスクリーンショット。"></span></p>
+</div>
+<div class="paragraph">
+<p>次の権限を使用すると、展開に失敗したり削除したりした場合に、Cloud Volumes ONTAP リソースをリソースグループから削除できます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"Microsoft.Network/privateEndpoints/delete",
+"Microsoft.Compute/availabilitySets/delete",</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>BlueXPに追加したAzureクレデンシャルの各セットに、これらの権限を必ず付与してください。 <a href="https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html" target="_blank" rel="noopener">"Azureの最新のコネクタポリシーを表示します"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="blob-パブリックアクセスが-azure-で無効になりました">Blob パブリックアクセスが Azure で無効になりました</h3>
+<div class="paragraph">
+<p>セキュリティの強化として、Cloud Volumes ONTAP 用のストレージアカウントを作成する際に、BlueXPは*Blobパブリックアクセス*を無効にするようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-private-link-の機能強化">Azure Private Link の機能強化</h3>
+<div class="paragraph">
+<p>BlueXPでは、新しいCloud Volumes ONTAP システムのブート診断ストレージアカウントでAzure Private Link接続がデフォルトで有効になっています。</p>
+</div>
+<div class="paragraph">
+<p>つまり、 Cloud Volumes ONTAP の _all_storage アカウントでプライベートリンクが使用されるようになります。</p>
+</div>
+<div class="paragraph">
+<p><a href="task-enabling-private-link.html">"Azure プライベートリンクとクラウドの使用の詳細については、こちらをご覧ください Volume ONTAP の略"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud-内の分散型の永続的ディスク">Google Cloud 内の分散型の永続的ディスク</h3>
+<div class="paragraph">
+<p>9.9.1 リリース以降、 Cloud Volumes ONTAP では Balanced Persistent Disk （ pd-bBalanced ）がサポートされるようになりました。</p>
+</div>
+<div class="paragraph">
+<p>この SSD は、 GiB あたりの IOPS を下げて、パフォーマンスとコストのバランスを取ります。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="custom-4-16384-は-google-cloud-でサポートされなくなりました">Custom-4-16384 は Google Cloud でサポートされなくなりました</h3>
+<div class="paragraph">
+<p>新しい Cloud Volumes ONTAP システムでは、 custom-4-16384 マシンタイプはサポートされなくなりました。</p>
+</div>
+<div class="paragraph">
+<p>このタイプのマシンで既存のシステムを実行している場合は、引き続き使用できますが、 n2 標準 -4 マシンタイプに切り替えることをお勧めします。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes/reference-configs-gcp.html" target="_blank" rel="noopener">"GCPのCloud Volumes ONTAPでサポートされている構成を表示する"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年5月30日">2021年5月30日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.7リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="aws-での新しいプロフェッショナルパッケージ">AWS での新しいプロフェッショナルパッケージ</h3>
+<div class="paragraph">
+<p>新しいプロフェッショナルパッケージでは、 AWS Marketplace で毎年契約を締結し、 Cloud Volumes ONTAP と Cloud Backup Service をバンドルできます。支払いは TiB あたりです。このサブスクリプションでは、オンプレミスのデータをバックアップすることはできません。</p>
+</div>
+<div class="paragraph">
+<p>この支払いオプションを選択すると、 EBS ディスクを介して Cloud Volumes ONTAP システムあたり最大 2PiB をプロビジョニングし、 S3 オブジェクトストレージ（シングルノードまたは HA ）に階層化することができます。</p>
+</div>
+<div class="paragraph">
+<p>にアクセスします <a href="https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri" target="_blank" rel="noopener">"AWS Marketplace のページ"</a> 価格の詳細を表示するには、を参照してください <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-relnotes" target="_blank" rel="noopener">"Cloud Volumes ONTAP リリースノート"</a> このライセンスオプションの詳細については、を参照してください。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-の-ebs-ボリュームでタグを使用します">AWS の EBS ボリュームでタグを使用します</h3>
+<div class="paragraph">
+<p>新しいCloud Volumes ONTAP 作業環境を作成すると、EBSボリュームにタグが追加されます。タグは、 Cloud Volumes ONTAP の導入後に作成されたものです。</p>
+</div>
+<div class="paragraph">
+<p>この変更は、サービス制御ポリシー（ SCP ）を使用して権限を管理する場合に役立ちます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-階層化ポリシーの最小クーリング期間">auto 階層化ポリシーの最小クーリング期間</h3>
+<div class="paragraph">
+<p>auto 階層化ポリシーを使用してボリュームのデータ階層化を有効にした場合、 API を使用して最小クーリング期間を調整できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="task-tiering.html#changing-the-cooling-period-for-the-auto-tiering-policy">"最小クーリング期間の調整方法について説明します。"</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="カスタムエクスポートポリシーの機能拡張">カスタムエクスポートポリシーの機能拡張</h3>
+<div class="paragraph">
+<p>新しいNFSボリュームを作成すると、カスタムのエクスポートポリシーが昇順に表示されるようになり、必要なエクスポートポリシーを簡単に見つけることができます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="古いクラウド-snapshot-の削除">古いクラウド Snapshot の削除</h3>
+<div class="paragraph">
+<p>BlueXPは、Cloud Volumes ONTAP システムの導入時に作成されたルートディスクと起動ディスクの古いクラウドスナップショットを、電源がオフになるたびに削除するようになりました。ルートボリュームとブートボリュームの両方に対して最新の 2 つの Snapshot のみが保持されます。</p>
+</div>
+<div class="paragraph">
+<p>この機能拡張により、不要になった Snapshot を削除することでクラウドプロバイダのコストを削減できます。</p>
+</div>
+<div class="paragraph">
+<p>Azure スナップショットを削除するには、 Connector で新しい権限が必要になることに注意してください。 <a href="https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html" target="_blank" rel="noopener">"Azureの最新のコネクタポリシーを表示します"</a>。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"Microsoft.Compute/snapshots/delete"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年5月24日">2021年5月24日</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-9-1">Cloud Volumes ONTAP 9.9.1</h3>
+<div class="paragraph">
+<p>BlueXPでCloud Volumes ONTAP 9.9.1の導入と管理が可能になりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-991-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年4月11日">2021年4月11日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.5リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="論理スペースのレポート">論理スペースのレポート</h3>
+<div class="paragraph">
+<p>BlueXPでは、Cloud Volumes ONTAP 用に作成された最初のStorage VMで論理スペースのレポートが可能になりました。</p>
+</div>
+<div class="paragraph">
+<p>スペースが論理的に報告されると、 ONTAP は、 Storage Efficiency 機能で削減されたすべての物理スペースが使用済みと報告するようにボリュームスペースを報告します。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-で-gp3-ディスクがサポートされます">AWS で GP3 ディスクがサポートされます</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP では、 9.7 リリース以降、 _General Purpose SSD （ GP3 ） _disks がサポートされるようになりました。GP3 ディスクは、幅広いワークロードのコストとパフォーマンスのバランスが取れた、最も低コストの SSD です。</p>
+</div>
+<div class="paragraph">
+<p><a href="task-planning-your-config.html#sizing-your-system-in-aws">"Cloud Volumes ONTAP で GP3 ディスクを使用する方法については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="コールド-hdd-ディスクは-aws-ではサポートされなくなりました">コールド HDD ディスクは AWS ではサポートされなくなりました</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP はコールド HDD （ sc1 ）ディスクをサポートしなくなりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tls-1-2-を使用して-azure-ストレージアカウントを作成します">TLS 1.2 を使用して Azure ストレージアカウントを作成します</h3>
+<div class="paragraph">
+<p>BlueXPがAzure for Cloud Volumes ONTAP でストレージアカウントを作成すると、ストレージアカウントのTLSバージョンがバージョン1.2になります。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年3月8日">2021年3月8日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.4リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="cloud-volumes-ontap-9-9">Cloud Volumes ONTAP 9.9.</h3>
+<div class="paragraph">
+<p>BlueXPでは、Cloud Volumes ONTAP 9.9.2.0を展開および管理できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap-990-relnotes" target="_blank" rel="noopener">"このリリースのに含まれる新機能について説明します Cloud Volumes ONTAP"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-c2s-環境をサポートします">AWS C2S 環境をサポートします</h3>
+<div class="paragraph">
+<p>クラウドサービス 9.8 を AWS Commercial Cloud Volumes ONTAP （ C2S ）環境に導入できるようになりました。</p>
+</div>
+<div class="paragraph">
+<p><a href="task-getting-started-aws-c2s.html">"C2S の使用を開始する方法をご確認ください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-暗号化でユーザが管理する-cmk-を使用">AWS 暗号化でユーザが管理する CMK を使用</h3>
+<div class="paragraph">
+<p>BlueXPでは、AWS Key Management Service（KMS）を使用してCloud Volumes ONTAP データを暗号化できるようになりました。Cloud Volumes ONTAP 9.9.9..0 以降では、お客様が管理する CMK を選択すると、 EBS ディスク上のデータと S3 に階層化されたデータが暗号化されます。これまでは、 EBS データだけが暗号化されていました。</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP IAM ロールに CMK を使用するためのアクセス権を付与する必要があります。</p>
+</div>
+<div class="paragraph">
+<p><a href="task-setting-up-kms.html">"Cloud で AWS KMS を設定する方法については、こちらをご覧ください Volume ONTAP の略"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-dod-のサポート">Azure DoD のサポート</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.8 を、国防総省（ DoD ）の影響レベル 6 （ IL6 ）に導入できるようになりました。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud-での-ip-アドレスの削減">Google Cloud での IP アドレスの削減</h3>
+<div class="paragraph">
+<p>Google Cloud で Cloud Volumes ONTAP 9.8 以降に必要な IP アドレスの数が削減されました。デフォルトでは、 IP アドレスを 1 つ減らす必要があります（インタークラスタ LIF をノード管理 LIF と統合しました）。また、 API を使用する場合は SVM 管理 LIF の作成を省略でき、追加の IP アドレスが不要になります。</p>
+</div>
+<div class="paragraph">
+<p><a href="reference-networking-gcp.html#requirements-for-cloud-volumes-ontap">"Google Cloud の IP アドレス要件の詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud-での共有-vpc-サポート">Google Cloud での共有 VPC サポート</h3>
+<div class="paragraph">
+<p>Google Cloud で Cloud Volumes ONTAP HA ペアを導入する際に、 VPC -1 、 VPC -2 、および VPC -3 の共有 VPC を選択できるようになりました。以前は、 VPC を共有できるのは VPC のみでした。この変更は Cloud Volumes ONTAP 9.8 以降でサポートされています。</p>
+</div>
+<div class="paragraph">
+<p><a href="reference-networking-gcp.html">"Google Cloud のネットワーク要件の詳細については、こちらをご覧ください"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2021年1月4日">2021年1月4日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.2リリースでは、次の変更が加えられています。</p>
+</div>
+<div class="sect2">
+<h3 id="aws-がアウトポスト">AWS がアウトポスト</h3>
+<div class="paragraph">
+<p>数カ月前に、 Cloud Volumes ONTAP が Amazon Web Services （ AWS ）の提供開始を宣言したことを発表しました。本日は、AWSのアウトポストでBlueXPとCloud Volumes ONTAP を検証しました。</p>
+</div>
+<div class="paragraph">
+<p>AWS Outpost を使用している場合は、 Working Environment ウィザードで Outpost VPC を選択して、その Outpost に Cloud Volumes ONTAP を導入できます。エクスペリエンスは、 AWS に存在する他の VPC と同じです。最初に、 AWS Outpost にコネクタを導入する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>指摘すべき制限事項はいくつかあります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>でサポートされるのはシングルノードの Cloud Volumes ONTAP システムのみです 今回は</p>
+</li>
+<li>
+<p>Cloud Volumes で使用できる EC2 インスタンス ONTAP は、 Outpost で利用できる機能に限定されています</p>
+</li>
+<li>
+<p>現時点では、汎用 SSD （ gp2 ）のみがサポートされます</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="サポートされている-azure-リージョンで-ultra-ssd-vnvram-を使用します">サポートされている Azure リージョンで Ultra SSD VNVRAM を使用します</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP では、 Ultra SSD をとして使用できるようになりました VNVRAM （ E32s_v3 VM タイプをで使用する場合） シングルノードシステム <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd" target="_blank" rel="noopener">"サポートされる任意の Azure リージョン"</a>。</p>
+</div>
+<div class="paragraph">
+<p>VNVRAM により、書き込みパフォーマンスが向上します。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-でアベイラビリティゾーンを選択してください">Azure でアベイラビリティゾーンを選択してください</h3>
+<div class="paragraph">
+<p>これで、シングルノードの Cloud Volumes ONTAP システムを導入するアベイラビリティゾーンを選択できます。AZを選択しない場合は、BlueXPによってそのAZが選択されます。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_azure_az.gif" alt="リージョンを選択したあとに使用可能な Availability Zone ドロップダウンリストのスクリーンショット。"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud-の大容量ディスク">Google Cloud の大容量ディスク</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP は GCP で 64 TB のディスクをサポートするようになりました。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/test/images/note.svg" alt="メモ">
+</td>
+<td class="content">
+GCP の制限により、ディスクのみの場合の最大システム容量は 256 TB のままです。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="google-cloud-の新しいマシンタイプ">Google Cloud の新しいマシンタイプ</h3>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP では、次のマシンタイプがサポートされるようになりました</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>N2 - 標準 -4 （ Explore ライセンスを含む、 BYOL を含む）</p>
+</li>
+<li>
+<p>標準ライセンスを使用し、 BYOL を使用した N2-standard-8</p>
+</li>
+<li>
+<p>N2 - Standard - 32 （ Premium ライセンスを使用、 BYOL を使用）</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2020年11月3日">2020年11月3日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コネクタの3.9.0リリースでは、次の変更が導入されました。</p>
+</div>
+<div class="sect2">
+<h3 id="azure-private-link-for-cloud-volumes-ontap-の略">Azure Private Link for Cloud Volumes ONTAP の略</h3>
+<div class="paragraph">
+<p>デフォルトでは、BlueXPはCloud Volumes ONTAP とそれに関連付けられたストレージアカウント間のAzure Private Link接続を有効にします。プライベートリンクは、 Azure のエンドポイント間の接続を保護します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/private-link/private-link-overview" target="_blank" rel="noopener">"Azure プライベートリンクの詳細については、こちらをご覧ください"</a></p>
+</li>
+<li>
+<p><a href="task-enabling-private-link.html" target="_blank" rel="noopener">"Azure プライベートリンクとクラウドの使用の詳細については、こちらをご覧ください Volume ONTAP の略"</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/ja-jp/test/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/ja-jp/test/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">このページ</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">ご利用規約</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">プライバシー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">クッキー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">クッキーの設定</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">このページに関するフィードバックをお寄せください</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/test/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/test/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/test/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/test/js/ie-tabbed-blocks.js'></script>
+    <script src='/ja-jp/test/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
