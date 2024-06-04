@@ -5184,6 +5184,6 @@ text{startsb}およびtext{endsb}テキスト</block>
   <block id="64e9073b4fb50b91766ce8b5e61945c1" category="paragraph-title">ゼロ幅スペース</block>
   <block id="589a92e5ac7fd2654f5ce5d9594f5e7c" category="paragraph">｛zwsp｝以前</block>
   <block id="d59e0b46782e48a01966e5c7ccc38d17" category="paragraph">NetAppでは、サポートとライセンスに固有の認証サービスのIDプロバイダとしてMicrosoftエントラIDを使用します。</block>
-  <block id="1e7177c795477cb086ca058b93815a58" category="paragraph">ローカリゼーションのための変更。</block>
   <block id="62dfedabf822fc3986bc7eb04a7ea341" category="paragraph">ONTAP の AutoSupport コンポーネントはテレメトリを収集し、分析用に送信します。Active IQ デジタルアドバイザは AutoSupport からデータを分析し、プロアクティブなサポートと最適化を提供します。Active IQ は、人工知能を使用して潜在的な問題を特定し、ビジネスに影響が及ぶ前に解決を支援します。カットオーバーテストのために変更</block>
+  <block id="a243121cae38fa11182b684742bb34d4" category="paragraph">ローカリゼーションのための変更。docbotを有効にします。</block>
 </blocks>
